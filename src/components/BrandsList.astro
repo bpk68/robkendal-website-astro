@@ -1,11 +1,16 @@
 ---
+interface Props {
+  title: string;
+  intro: string;  
+}
+
+const { title, intro } = Astro.props;
 ---
 
 <section class='section is-md my-10'>
-  <h2 class='heading-2 text-center mb-1'>Trusted by brands big and small</h2>
+  <h2 class='heading-2 text-center mb-1'>{title}</h2>
   <p class='text-center text-md max-w-lg mx-auto'>
-    I've been honoured to work with local and national brands to build
-    marketing websites powered by WordPress
+    {intro}
   </p>
   <div class='columns-3 gap-3 mt-5'>
     <img src='/img/logos/nhs-logo.png' alt='NHS logo' class="w-full aspect-video" />

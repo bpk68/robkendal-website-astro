@@ -1,0 +1,145 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+import PageHeader from "src/components/PageHeader.astro";
+import Button from "src/components/Button.astro";
+---
+
+<PageLayout>
+  <PageMeta    
+    title='Download and buy web development ebooks and resources | Rob Kendal, freelance developer'
+    description='Download helpful web development ebooks, videos and training courses on starting to code'
+    slot="meta" 
+  />
+  <section slot="main" class="mb-20">
+    <div class="prose max-w-none prose-bubblegum">
+      <PageHeader>
+        Publications
+      </PageHeader>
+      <p>
+          In addition to my
+          <a href='/mentorship'>
+            mentorship programs
+          </a>
+          , I'm a published author and course creator, regularly crafting
+          content to help people learn to code, land their first job, and
+          improve their coding life!
+        </p>
+        <p>
+          You can view, download and purchase my recent publications right here.
+        </p>
+    </div>
+
+    <div class='my-14'>
+      <div class=''>
+        <a
+          href='https://www.newline.co/courses/beginners-guide-to-real-world-react'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <img
+            src='/img/publications/react-guide-course.png'
+            alt='The Beginners Guide to Real-World React course cover'
+            class=''
+          />
+        </a>
+      </div>
+      <div class='bg-white border-2 border-gray-600 border-t-0 rounded-b-sm shadow-md p-10'>
+        <h3 class='heading-2'>
+          <a
+            href='https://www.newline.co/courses/beginners-guide-to-real-world-react'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            The Beginner's Guide to Real-World React
+          </a>
+        </h3>
+        <div class='prose max-w-none prose-bubblegum'>
+          <p>
+            My course, The Beginner's Guide to Real-World React is available now and well-suited to new and aspiring developers
+            alike.
+          </p>
+          <p>
+            It's perfect for those new to the React library and will teach you solid fundamentals of React development through
+            heaps of practical lessons, projects and realistic examples.
+          </p>
+          <p>
+            With the course, you'll get access to:
+          </p>
+          <ul>
+            <li>8+ hours of video,</li>
+            <li>50 lessons,</li>
+            <li>loads of practical React advice,</li>
+            <li>project-based learning through building real applications,</li>
+            <li>step-by-step teaching and guidance from a seasoned React developer,</li>
+            <li>...and much more</li>
+          </ul>                  
+          <p class='text-center'>                    
+            <Button 
+              href="https://www.newline.co/courses/beginners-guide-to-real-world-react" 
+              text="Learn more" 
+              variant="primary" 
+              external              
+            />           
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class='my-8'>
+      <div class=''>
+        <a
+          href='https://gum.co/WssIGB'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <img
+            src='/img/publications/from-aspire-to-hired-cover.png'
+            alt='From Aspire to Hired cover'
+            class='unstyled'
+          />
+        </a>
+      </div>
+      <div class='bg-white border-2 border-gray-600 border-t-0 rounded-b-sm shadow-md p-10'>
+        <h3 class='heading-2'>
+          <a
+            href='https://www.newline.co/courses/beginners-guide-to-real-world-react'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            From Aspire To Hired
+          </a>
+        </h3>
+        <div class='prose max-w-none prose-bubblegum'>
+          <p>
+            I've helped people get into coding and land their first job
+            as a developer. They did it. I did it. You can do it too!
+          </p>
+          <p>
+            This ebook pulls together a collection of my most popular
+            articles including topics on:
+          </p>
+          <ul>
+            <li>Getting into development,</li>
+            <li>What to learn as a frontend developer,</li>
+            <li>
+              How to look for and land a job in the tech industry,
+            </li>
+            <li>...and more</li>
+          </ul>                
+          <p class='text-center'> 
+            <script src='https://gumroad.com/js/gumroad.js'></script>                   
+            <Button 
+              href="https://gum.co/WssIGB" 
+              text="Get the ebook" 
+              variant="primary" 
+              external              
+            />           
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </section> 
+</PageLayout>

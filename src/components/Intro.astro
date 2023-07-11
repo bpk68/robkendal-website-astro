@@ -62,19 +62,26 @@ import PageHeader from './PageHeader.astro';
   </div>
 
   <ServicesList />
-  <BrandsList />
-  <Testimonials list={snippets.testimonials} />
+  <BrandsList 
+    title="Trusted by brands big and small"
+    intro="I've been honoured to work with local and national brands to build Shopify stores, websites, and business software."
+  />
+  <Testimonials 
+    title="Don't take my word for it"
+    intro="I've been trusted by UK-wide and local Yorkshire businesses for years. Here's what they say about my work."
+    list={snippets.testimonials} 
+  />
   <CallToAction 
     type="global"
     title="Need some help?"
     buttons={[
       {
         href: '/contact',
-        text: 'discuss your project'
+        text: 'discuss your project',
       },
       {
         href: '/mentorship',
-        text: 'discover mentorship'
+        text: 'discover mentorship',
       }
     ]}
   >

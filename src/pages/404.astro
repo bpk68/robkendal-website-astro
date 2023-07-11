@@ -1,0 +1,49 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+import PageHeader from "../components/PageHeader.astro";
+---
+
+<PageLayout>
+  <PageMeta 
+    title='Page Not Found | Rob Kendal, freelance developer'
+    description="Looks like you found a page route that does not exist. Sorry about that. Let's get you back to the home page"
+  />
+  <section slot="main">
+    <div class="prose max-w-none prose-bubblegum">
+      <PageHeader>
+        404; NO PAGE HERE
+      </PageHeader>
+      <img
+        src='https://media.giphy.com/media/65EzQXyjjn5jW/giphy.gif'
+        alt='tumbleweed blowing across the plane'
+      />
+      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <p>But don't worry, you still have options:</p>
+      <ul>
+        <li>
+          Go 
+          <a href='#previous-page' id="btn-back">
+            back to the previous page
+          </a>
+        </li>
+        <li>
+          <a href='/'>
+            Visit the home page
+          </a>
+           or,
+        </li>
+        <li>
+          Read some more
+          <a href='/blog'>
+            lovely articles
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</PageLayout>
+
+<script>
+document.getElementById('btn-back')?.addEventListener('click', () => history.back());
+</script>

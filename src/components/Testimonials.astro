@@ -2,17 +2,18 @@
 import type { TestimonialItem } from '../lib/types';
 
 interface Props {
+  title: string;
+  intro: string;
   list: TestimonialItem[];
 }
 
-const { list } = Astro.props;
+const { title, intro, list } = Astro.props;
 ---
 
 <section class='section is-md my-10'>  
-  <h2 class='heading-2 text-center'>Don't take my word for it</h2>
+  <h2 class='heading-2 text-center'>{title}</h2>
   <p class='text-center text-md max-w-lg mx-auto mb-8'>
-    I've been trusted by UK-wide and local Yorkshire businesses for
-    years. Here's what they say about my work.
+    {intro}
   </p>
   {list.map((item: TestimonialItem, i) => (
    <blockquote 
@@ -25,14 +26,10 @@ const { list } = Astro.props;
       rounded
       border-b-primary-blue 
       border-b-4 
-
       flex
       items-start
       space-between
-      gap-10
-
-
-      
+      gap-10      
       ${i % 2 === 0 ? '-rotate-1' : 'rotate-1'}
     `}>
       <figure>

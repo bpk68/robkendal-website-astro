@@ -6,6 +6,7 @@ interface Props {
   variant?: 'default' | 'primary' | 'secondary';
   isOutline?: boolean;
   classes?: string[];
+  external?: boolean;
 }
 
 const { 
@@ -14,7 +15,8 @@ const {
   size = 'md',
   variant = 'default', 
   isOutline = false,
-  classes = []
+  classes = [],
+  external = false,
  } = Astro.props;
 
  if(isOutline) {
@@ -71,6 +73,8 @@ const {
 
     ${classes.join(' ')}
   `}
+  target={`${external ? '__blank' : '__self'}`}
+  rel={`${external ? 'noopener noreferrer' : ''}`}
 >
   <span 
     class="

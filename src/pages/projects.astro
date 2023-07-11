@@ -1,65 +1,69 @@
 ---
-import { readAll } from "../lib/markdoc/read";
-import { project } from "../lib/markdoc/frontmatter.schema";
+import snippets from '../data/content-snippets.json';
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
-import { SITE_TITLE } from "../config";
-
-const projects = await readAll({
-  directory: "projects",
-  frontmatterSchema: project,
-});
-
-const sortedProjects = projects
-  .filter((p) => p.frontmatter.draft !== true)
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.date).valueOf() -
-      new Date(a.frontmatter.date).valueOf()
-  );
+import PageHeader from "src/components/PageHeader.astro";
 ---
 
 <PageLayout>
-  <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
+  <PageMeta 
+    title='Discover open source projects and resources by Rob Kendal, freelance developer'
+    description='Find out more about my open source projects, such as the Google Sheets API Reader and React Query Builder'
+    slot="meta" 
+  />
   <section slot="main">
-    <ul>
-      {
-        sortedProjects.map((project) => {
-          const formattedDate = new Date(
-            project.frontmatter.date
-          ).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          });
-          return (
-            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
-              <div class="title">
-                <a
-                  href={project.frontmatter.url}
-                  target="_blank"
-                  class="unset
-                      transition-[background-size] duration-300 
-                      bg-gradient-to-r bg-left-bottom bg-no-repeat
-                      bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px]
-                      from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue
-                    "
-                >
-                  <span>{project.frontmatter.title}</span>
-                  <span>
-                    <i class="ml-1 mr-1 text-[12px] pb-2 fa-solid fa-up-right-from-square" />
-                  </span>
-                </a>
-              </div>
-              <div class="text-text-muted text-sm italic pt-1">
-                <time datetime={project.frontmatter.date.toISOString()}>
-                  {formattedDate}
-                </time>
-              </div>
-            </li>
-          );
-        })
-      }
-    </ul>
-  </section>
+    <div class="prose max-w-none prose-bubblegum">
+      <PageHeader>
+        Projects
+      </PageHeader>
+      <p>
+        I have a few open source projects and repositories that I'm working on
+        or have available on{' '}
+        <a href='https://github.com/bpk68/'>my GitHub account</a>.
+      </p>
+      <p>
+        I've broken down a few of the more popular ones here. Check them out
+        and feel free to fork, feedback, leave pull requests, or request
+        features :D.
+      </p>
+    </div>    
+
+    {snippets.projects.map(project => (
+      <div class="my-16 group">
+        <article class="flex gap-10 items-start mx-auto" >
+          <figure class="w-1/4 aspect-square mt-2">
+            <a href={project.href}>
+              <img src={project.img} alt={`intro image for article ${project.imgAlt}`} class="w-full block h-auto" />
+            </a>
+          </figure>
+          <div class="w-3/4">
+            <span class="text-gray-500 uppercase">{project.subtitle}</span>
+            <h3 class="heading-2 m-0 p-0 mb-2">
+              <a href={project.href} class="fancy-underline unset">
+                {project.title}
+              </a>  
+            </h3>            
+            <p>
+              {project.blurb}
+            </p>
+            <p class="text-right font-bold mt-4">
+              <a href={project.href}>Find out more <i class="fa-solid fa-chevron-circle-right"></i></a>  
+            </p>
+          </div>
+        </article>
+        <div class="h-3 mx-auto border-b-slate-200 border-b pt-6 pb-2 group-last:border-none"></div>
+      </div>
+    ))}
+    
+    <br />
+    <iframe
+      src='https://github.com/sponsors/bpk68/card'
+      title='Sponsor me'
+      height='225'
+      style={{ border: '0', width: '100%' }}
+    ></iframe>
+  </section> 
 </PageLayout>
+        
+
+        

@@ -41,7 +41,7 @@ const archivedPosts = sortedPosts.slice(6);
         </a>
       </figure>
       <div class="">
-        <time datetime={currentPost.frontmatter.date.toISOString()} class="italic text-gray-500">
+        <time datetime={currentPost.frontmatter.date.toISOString()} class="text-gray-500">
           {new Date(currentPost.frontmatter.date).toLocaleDateString("en-gb", {
             year: "numeric",
             month: "short",
@@ -92,7 +92,7 @@ const archivedPosts = sortedPosts.slice(6);
                   {post.frontmatter.title}
                 </a>                
               </div>
-              <div class="text-text-muted text-sm italic pt-1">
+              <div class="text-text-muted text-sm pt-1">
                 <time datetime={post.frontmatter.date.toISOString()}>
                   {formattedDate}
                 </time>

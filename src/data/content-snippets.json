@@ -47,5 +47,31 @@
       "text": "Rob is great! He has a real knack of instilling confidence by breaking\n        down and simplifying any problem I've had. He is always available and\n        genuinely happy to help.",
       "cite": "Asam Shan"
     }
+  ],
+  "projects": [
+    {
+      "img": "/img/g-sheets-logo.png",
+      "imgAlt": "Google Sheets icon",
+      "title": "Google Sheets Reader",
+      "subtitle": "g-sheets-api",
+      "href": "https://github.com/bpk68/g-sheets-api",
+      "blurb": "This tiny (but hopefully mighty) utility package helps fetch, read and process data from a Google Sheet without the faff of having to deal with the full-blown Google Sheets API"
+    },
+    {
+      "img": "/img/nodejs-new-pantone-black.png",
+      "imgAlt": "Node JS logo",
+      "title": "Node API Server Starter Kit",
+      "subtitle": "api-server-starter",
+      "href": "https://github.com/bpk68/api-server-starter",
+      "blurb": "This popular starter kit (currently being used as part of the curriculum in a university course) contains everything you'll need to create your very own Node-based API server. It uses Express JS and is configured to serve JSON files for data."
+    },
+    {
+      "img": "/img/react-logo.png",
+      "imgAlt": "React logo",
+      "title": "React Visual Query Builder",
+      "subtitle": "react-visual-query-builder",
+      "href": "https://github.com/bpk68/react-visual-query-builder",
+      "blurb": " Driven by a need for a more customised query builder tool built in React, I developed an open source query builder that will output a structured JSON query object comprised of rules, rule-groups and a number of field components depending on desired input type."
+    }
   ]
 }

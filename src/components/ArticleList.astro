@@ -36,12 +36,12 @@ const {
   )}
   {sortedPosts.slice(skip, count).map(article => (
     <div class="mb-6 group">
-      <div class={`flex gap-5 ${showBlurb ? "items-start" : "items-center"} mx-auto ${centralise ? "justify-center" : ""}`}>
+      <article class={`flex gap-5 ${showBlurb ? "items-start" : "items-center"} mx-auto ${centralise ? "justify-center" : ""}`}>
         <figure class={`max-w-[20%] aspect-video ${showBlurb ? "mt-2" : ""}`}>
           <img src={article.frontmatter.featuredimage} alt={`intro image for article ${article.frontmatter.title}`} class="shadow-md" />
         </figure>
         <div class={`${centralise ? "max-w-md" : ""}`}>
-          <time datetime={article.frontmatter.date.toISOString()} class="italic text-gray-500">
+          <time datetime={article.frontmatter.date.toISOString()} class="text-gray-500">
             {new Date(article.frontmatter.date).toLocaleDateString("en-gb", {
               year: "numeric",
               month: "short",
@@ -59,7 +59,7 @@ const {
             </p>
           )}
         </div>
-      </div>
+      </article>
       <div class="max-w-lg h-3 w-full mx-auto border-b-slate-200 border-b pt-6 pb-2 group-last:border-none"></div>
     </div>
   ))}
