@@ -1,0 +1,68 @@
+---
+import { readAll } from "../lib/markdoc/read";
+import { blog } from "../lib/markdoc/frontmatter.schema";
+
+interface Props {
+  count: number;
+  skip?: number;
+  showHeading?: boolean;
+  centralise?: boolean;
+  showBlurb?: boolean;
+}
+
+const posts = await readAll<typeof blog>({
+  directory: "blog",
+  frontmatterSchema: blog
+});
+
+const sortedPosts = posts
+.filter(p => p.frontmatter.draft !== true)
+.sort((a,b) => 
+  new Date(b.frontmatter.date).valueOf() -
+  new Date(a.frontmatter.date).valueOf());
+
+const { 
+  count = 5, 
+  skip = 0, 
+  showHeading = false, 
+  centralise = false,
+  showBlurb = false,
+} = Astro.props;
+---
+
+<section class='section my-10'>
+  {showHeading && (
+    <h2 class='heading-2 text-center mb-8'>Latest articles</h2>
+  )}
+  {sortedPosts.slice(skip, count).map(article => (
+    <div class="mb-6 group">
+      <div class={`flex gap-5 ${showBlurb ? "items-start" : "items-center"} mx-auto ${centralise ? "justify-center" : ""}`}>
+        <figure class={`max-w-[20%] aspect-video ${showBlurb ? "mt-2" : ""}`}>
+          <img src={article.frontmatter.featuredimage} alt={`intro image for article ${article.frontmatter.title}`} class="shadow-md" />
+        </figure>
+        <div class={`${centralise ? "max-w-md" : ""}`}>
+          <time datetime={article.frontmatter.date.toISOString()} class="italic text-gray-500">
+            {new Date(article.frontmatter.date).toLocaleDateString("en-gb", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}  
+          </time>
+          <h3 class="heading-3 m-0 p-0">
+            <a href={`/blog/${article.slug}`} class="fancy-underline unset">
+              {article.frontmatter.title}
+            </a>  
+          </h3>
+          {showBlurb && (
+            <p>
+              {article.frontmatter.description}
+            </p>
+          )}
+        </div>
+      </div>
+      <div class="max-w-lg h-3 w-full mx-auto border-b-slate-200 border-b pt-6 pb-2 group-last:border-none"></div>
+    </div>
+  ))}
+</section>
+
+{console.log('hi there')}

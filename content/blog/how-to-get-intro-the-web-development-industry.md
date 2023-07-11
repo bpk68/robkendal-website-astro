@@ -1,0 +1,27 @@
+---
+templateKey: 'blog-post'
+title: 'How to get into the web development industry [DRAFT]'
+#featuredimage: /img/
+featured: false
+published: false
+draft: true
+date: 2017-01-04T15:04:10.000Z
+description: >-
+  Looking for your first development job or want to get into the industry? Here's some advice from a long-serving advocate.
+tags:
+  - Development
+  - Thoughts
+---
+
+mention the great article by Rachel Andrew (<https://rachelandrew.co.uk/archives/2019/01/30/html-css-and-our-vanishing-industry-entry-points/>)
+she mentions MySpace (where I met the wife and got my first taste of CSS!)
+she also mentions vanishing end points, but I would argue that it's never been better or easier to get into the industry with lots of free content from
+freecodecamp, treehouse, codeacademy, wesbos, etc.
+
+also, some career advice sent to Katelin
+Ahh well, that's all about sales really and how to sell yourself.So, you're definitely going to be at a slight disadvantage with some companies as, you're right, they will be looking for experience (even for entry-level stuff) in the form of other jobs. You have to accept that some places will just rule you out because of this and there's not much you can do about it - but on the positive side, this just means they're not the right fit for you and don't deserve you!When I started out, it was in general IT and infrastructure, not development -- I learned that as I went along. But I was in a similar position to you in that I was very good with computers and tech, but had no experience. I volunteered for a couple of months at a local school helping with IT support and this gave me both experience I could talk about and a recommendation from the person I reported to during the volunteering.If I was in your position now, I'd do something along these lines:
+Look for some sort of volunteer work or freelancing. Small, local businesses are always looking for help with their websites or small projects and don't forget about charities -- they have very little cash but offer great reward (for you personally and in the eyes of potential employers) in terms of doing good for good causes. Either of these options will give you some valuable experience that you can talk about on a CV
+Alternatively, look at an internship. I'd maybe look for a short term one or one with genuine prospects of a paying job at the end of it. I know they're not really very fair in the US (from what I've seen, and they seem to be largely unpaid?). We don't really have them here in the UK and the ones we do are always paid minimum wage by law.
+Get a clean, clear but polished CV and talk yourself up. I use visual cv for mine (<https://www.visualcv.com/>). It's free and you can build a great-looking CV online using one of their awesome templates. This is mine (<https://www.visualcv.com/rob-kendal-dev/>) and I know it works really well given the enquiries I had recent when I was laid-off! It's taken me a while to get there with a lot of trial and error.
+Get a good LinkedIn profile. Again, here's mine (<https://www.linkedin.com/in/robkendal/>). It kind of mirrors my CV to be honest, but I keep it as a living document of what I'm up to at the moment and I share articles on there, get involved with discussions and connect with both recruiters and fellow developer professionals.
+Start talking to recruiters. This one's probably key for you. With having little commercial experience, you're going to have a smaller CV to be able to show off during applications. Some companies will overlook you, which is a real shame. If you can get in touch with some recruiters, however, they will act as a sort of middle-man sales person between you and the company they're hiring for. It's their job to big you up and really sell you to the company they represent. This could be a great way for you to leverage the recruiter's relationship with their client and get across your dedication and portfolio which showcases your abilities. If you're not dealt with many before then you need to watch out for some of them because some are like used car salesmen, they just want to bang you through the process and don't really care about you and your needs. Others have no idea what they're talking about. I had one recently that start arguing with me about a 'frontend' role that was entirely PHP-based...The best ones want to understand you and are genuinely interested in getting the best fit for you and the role.I think those sorts of steps will help you out. Beyond that it's a case of applying for role after role and seeing what sticks. Even at my career stage it's no easier so please don't get discouraged. I use Trello to track my applications and what stage I'm at with them. It can be tiring and demoralizing -- especially when you've had the same conversation with 10 different recruiters or hiring managers. And it sucks when you either don't hear back about an application or you get turned down.But, if you think of it like a sales process and whether something is a good fit or not, that helps. It's all to easy to take too much personally and think you're not good enough but it's not that you're not good enough, it's just you're not the right fit -- and that's fine! Hope that helps, but let me know what you think and if you need help with any of those steps, I'm all ears :D

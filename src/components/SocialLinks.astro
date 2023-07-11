@@ -1,0 +1,67 @@
+---
+interface Props {
+  centralise?: boolean;
+}
+
+const { centralise = false } = Astro.props;
+---
+<div class={`social-links my-10 text-2xl flex gap-5 ${centralise ? "justify-center" : ""}`}>
+  <a
+    href="https://indieweb.social/@kendalmintcode"
+    target="_blank"
+    rel="noreferrer noopener me"    
+  >
+    <span class="fa-brands fa-mastodon" aria-hidden="true"></span>
+    <span class="screen-reader-text">Follow me on Mastodon</span>
+  </a>
+  <a
+    href="https://github.com/bpk68/"
+    target="_blank"
+    rel="noreferrer noopener me"    
+  >
+    <span class="fa-brands fa-github" aria-hidden="true"></span>
+    <span class="screen-reader-text">Check out my code on GitHub</span>
+  </a>
+  <a
+    href="https://codepen.io/robkendal/"
+    target="_blank"
+    rel="noreferrer noopener me"    
+  >
+    <span class="fa-brands fa-codepen" aria-hidden="true"></span>
+    <span class="screen-reader-text">Have a peek at my Codepen</span>
+  </a>
+  <a
+    href="https://dev.to/kendalmintcode"
+    target="_blank"
+    rel="noreferrer noopener me"    
+  >
+    <span class="fa-brands fa-dev" aria-hidden="true"></span>
+    <span class="screen-reader-text">Connect with me on Dev.to</span>
+  </a>
+  <a
+    href="https://anchor.fm/the-front-end"
+    target="_blank"
+    rel="noreferrer noopener"
+  >
+    <span class="fa-solid fa-podcast" aria-hidden="true"></span>
+    <span class="screen-reader-text">
+      Listen to The Front End Podcast on Anchor
+    </span>
+  </a>
+  <a
+    href="https://robkendal.co.uk/rss.xml"
+    target="_blank"
+    rel="noreferrer noopener"
+  >
+    <span class="fa-solid fa-rss" aria-hidden="true"></span>
+    <span class="screen-reader-text">Subscribe to my RSS feed</span>
+  </a>
+</div>
+
+<style>  
+  .social-links a {
+    display: block;
+    text-decoration: none;
+    background-image: none;
+  }
+</style>

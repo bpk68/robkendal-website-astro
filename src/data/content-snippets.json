@@ -1,0 +1,51 @@
+{
+  "homepage": {
+    "benefits": [
+      "A fullstack developer with 15+ years experience building fast, lead-generating websites.",
+      "A reliable development professional who will always give you straightforward, honest advice.",
+      "A freelancer with expert skills in <a href='/freelance-shopify-developer'><strong>Shopify development</strong></a>, <a href='/small-business-websites'><strong>small business websites</strong></a> and <a href='/enterprise-software-development'><strong>enterprise software development</strong></a>",
+      "Marketing website design and Shopify development driven by your business growth goals.",
+      "Award-winning marketing and Search Engine Optimisation (SEO) knowledge and support.",
+      "Expert web development services using forward-thinking echnologies such as Frontity, Gatsby.js, Next.js, WordPress REST API, GraphQL and the Jamstack.",
+      "Help and support launching super fast, accessible, static websites that rank well on search engines."
+    ]
+  },
+  "testimonials": [
+    {
+      "avatar": "/img/avatars/andrea-hall.jpeg",
+      "avatarAlt": "Andrea Hall",
+      "text": "Rob has been managing my website for years, but more recently I turned to him for a complete re-build to a bespoke e-commerce solution. I trust him implicitly to know what system is best for my business, and to simplify the process for me. It feels like a colleague relationship rather than a supplier, and the quality of his support, and patience is invaluable.",
+      "cite": "Andrea Hall"
+    },
+    {
+      "avatar": "/img/avatars/ann.jpeg",
+      "avatarAlt": "Anne de Freyman",
+      "text": "I struggled for years to find the right person to build a website I would be proud of for my business.\n        Until I met Rob. I was impressed with Rob's creative talent and his\n        patience. He built exactly the website I wanted and gave me all the help\n        I needed to make it work. Superlative customer service!",
+      "cite": "Anne de Freyman"
+    },
+    {
+      "avatar": "/img/avatars/claire.jpeg",
+      "avatarAlt": "Claire Horsfield",
+      "text": "Rob helped me setup HubSpot and integrate it with my website. \n        Rob's work is professional and to a high standard, always being completed quickly. He helped me\n        learn the new software quickly.",
+      "cite": "Claire Horsfield"
+    },
+    {
+      "avatar": "/img/avatars/heidi.jpeg",
+      "avatarAlt": "Heidi Green",
+      "text": "Rarely do you meet someone who\n        gives so generously of their knowledge, sharing so much information to\n        help others achieve their goals. Rob is an inspiration in his approach,\n        taking the fear out of what sometimes seems an overwhelming task.\n        Professional, approachable, innovative, what more can I say!",
+      "cite": "Heidi Green"
+    },
+    {
+      "avatar": "/img/avatars/simeron.jpeg",
+      "avatarAlt": "Simeron Taak",
+      "text": "Rob has been an excellent\n        mentor for me. I would definitely recommend working with Rob to any\n        developers looking for a mentor. Rob has been part of my biggest JavaScript\n        progression to date.",
+      "cite": "Simeron Taak"
+    },
+    {
+      "avatar": "/img/avatars/asam.jpeg",
+      "avatarAlt": "Asam Shan",
+      "text": "Rob is great! He has a real knack of instilling confidence by breaking\n        down and simplifying any problem I've had. He is always available and\n        genuinely happy to help.",
+      "cite": "Asam Shan"
+    }
+  ]
+}

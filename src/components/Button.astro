@@ -1,0 +1,142 @@
+---
+interface Props {
+  href: string;
+  text: string;  
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'default' | 'primary' | 'secondary';
+  isOutline?: boolean;
+  classes?: string[];
+}
+
+const { 
+  href, 
+  text, 
+  size = 'md',
+  variant = 'default', 
+  isOutline = false,
+  classes = []
+ } = Astro.props;
+
+ if(isOutline) {
+  classes.push('');
+ }
+
+ switch (size) {
+  case 'sm':
+    classes.push('');
+    break;
+  case 'md':
+    classes.push('text-lg');
+    break;
+  case 'lg':
+    classes.push('');
+    break;
+  default:
+    break;
+ }
+
+ switch (variant) {
+  case 'default':
+    classes.push('bg-');
+    break;
+  case 'primary':
+    classes.push('');
+    break;
+  case 'secondary':
+    classes.push('');
+    break;
+ 
+  default:
+    break;
+ }
+---
+
+<a 
+  href={href}
+  class={`
+    relative 
+    inline-block 
+    px-5 
+    py-3 
+    group 
+    rounded-sm 
+    font-bold
+    text-bold 
+    text-shadow
+    text-lg 
+    transition 
+    duration-200 
+    ease-out 
+    hover:-rotate-2
+
+    ${classes.join(' ')}
+  `}
+>
+  <span 
+    class="
+      absolute 
+      inset-0 
+      w-full 
+      h-full 
+      transition 
+      duration-200 
+      ease-out 
+      transform 
+      translate-x-1 
+      translate-y-1 
+      bg-primary-blue 
+      group-hover:-translate-x-0 
+      group-hover:-translate-y-0
+    "
+  ></span>
+  <span 
+    class={`
+      absolute 
+      inset-0 
+      w-full 
+      h-full 
+      bg-white 
+      border-2 
+      border-gray-800 
+      group-hover:bg-primary-blue    
+    `}></span>
+  <span 
+    class="
+      relative 
+      text-black 
+      group-hover:text-white
+    ">
+    {text}
+  </span>
+  <span class='fa-solid fa-chevron-circle-right relative z-10'></span>
+</a>
+
+<style>
+  .btn {
+    text-shadow: 0px 2px var(--brand-alt-lighter);
+  }
+  .button {
+    position: relative;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    text-shadow: 0px 2px var(--brand-alt-lighter);
+    color: var(--grey);
+    transition: all 0.1s;
+    cursor: pointer;
+  }
+  .button.is-primary {
+    border: 1px solid var(--brand-secondary);
+    border-bottom: 5px solid var(--brand-secondary-dark);
+    background-color: var(--brand-secondary);
+    color: var(--brand-primary-lighter);
+    text-shadow: 0px 2px var(--brand-secondary-darker);
+  }
+  .button.is-primary:active {
+    border-bottom: 1px solid var(--brand-secondary);
+  }
+</style>

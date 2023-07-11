@@ -1,0 +1,48 @@
+---
+import type { TestimonialItem } from '../lib/types';
+
+interface Props {
+  list: TestimonialItem[];
+}
+
+const { list } = Astro.props;
+---
+
+<section class='section is-md my-10'>  
+  <h2 class='heading-2 text-center'>Don't take my word for it</h2>
+  <p class='text-center text-md max-w-lg mx-auto mb-8'>
+    I've been trusted by UK-wide and local Yorkshire businesses for
+    years. Here's what they say about my work.
+  </p>
+  {list.map((item: TestimonialItem, i) => (
+   <blockquote 
+    class={`
+      mb-8
+      py-4 
+      px-6
+      bg-blue-50 
+      border 
+      rounded
+      border-b-primary-blue 
+      border-b-4 
+
+      flex
+      items-start
+      space-between
+      gap-10
+
+
+      
+      ${i % 2 === 0 ? '-rotate-1' : 'rotate-1'}
+    `}>
+      <figure>
+        <img src={item.avatar} alt={item.avatarAlt} class="max-w-[5rem] rounded-full shadow-md mt-2" />
+      </figure>
+      <p>
+        <span class='fa-solid fa-quote-left text-2xl pr-2'></span>
+        {item.text}
+        <cite>{item.cite}</cite>
+      </p>
+    </blockquote>
+  ))}
+</section>
