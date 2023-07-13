@@ -2,19 +2,20 @@
 ---
 <mode-toggle class="flex">
   <button
-    class="justify-self-end bg-black dark:bg-white ml-4 inline-flex h-6 w-11 items-center rounded-full"
+    class="justify-self-end bg-black dark:bg-white inline-flex h-6 w-11 items-center rounded-full"
     id="mode-toggle"
     role="switch"
     type="button"
     tabindex="0"
     aria-checked="false"
     data-headlessui-state=""
-    ><span class="sr-only">Toggle dark mode</span><span
+  >
+    <span class="sr-only">Toggle dark mode</span>
+    <span
       id="mode-circle"
       class="light inline-block h-4 w-4 rounded-full bg-gradient-to-tr invisible"
-      ><span
-        class="absolute top-0 right-0 w-[10px] h-[10px] rounded-full bg-gray-700 scale-[0]"
-      ></span>
+    >
+      <span class="absolute top-0 right-0 w-[10px] h-[10px] rounded-full bg-gray-700 scale-[0]"></span>
     </span>
   </button>
 </mode-toggle>
@@ -25,28 +26,19 @@
       'meta[name="theme-color"]'
     );
 
-    if (mode === "dark") {
-      document.documentElement.classList.remove("light");
-      document.documentElement.classList.add("dark");
-      if (themeColorMetaTag) {
-        // @ts-ignore
-        themeColorMetaTag.content = "#262626";
-      }
-    } else {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
-      if (themeColorMetaTag) {
-        // @ts-ignore
-        themeColorMetaTag.content = "#ffffff";
-      }
-    }
+    const classToRemove = mode === 'dark' ? 'light' : 'dark';
+    const classToAdd = mode === 'dark' ? 'dark' : 'light';
+    const themeMetaTag = mode === 'dark' ? '#262626' : '#ffffff'; 
+    
+    document.documentElement.classList.remove(classToRemove);
+    document.documentElement.classList.add(classToAdd);
+    if (themeColorMetaTag) {
+      // @ts-ignore
+      themeColorMetaTag.content = themeMetaTag;
+    }    
   }
   function updateStorageTheme(mode: "light" | "dark") {
-    if (mode === "dark") {
-      sessionStorage.setItem("theme", "dark");
-    } else {
-      sessionStorage.setItem("theme", "light");
-    }
+    sessionStorage.setItem("theme", mode);    
   }
   class ModeToggle extends HTMLElement {
     constructor() {
@@ -70,21 +62,14 @@
 
         // Each time the button is clicked, update the count.
         toggle?.addEventListener("click", () => {
-          if (currentMode === "dark") {
-            const modeToSwitch = "light";
-            iconElem.classList.remove("dark");
-            iconElem.classList.add("light");
-            updateHTMLTheme(modeToSwitch);
-            updateStorageTheme(modeToSwitch);
-            currentMode = modeToSwitch;
-          } else {
-            const modeToSwitch = "dark";
-            iconElem.classList.remove("light");
-            iconElem.classList.add("dark");
-            updateHTMLTheme(modeToSwitch);
-            updateStorageTheme(modeToSwitch);
-            currentMode = modeToSwitch;
-          }
+
+          const modeToSwitch = currentMode === "dark" ? "light" : "dark";
+          
+          iconElem.classList.remove(currentMode === "dark" ? "dark" : "light");
+          iconElem.classList.add(currentMode === "dark" ? "light" : "dark");
+          updateHTMLTheme(modeToSwitch);
+          updateStorageTheme(modeToSwitch);
+          currentMode = modeToSwitch;          
 
           // prevent slide animation on page load for dark mode
           if (!iconElem.classList.contains("duration-300")) {

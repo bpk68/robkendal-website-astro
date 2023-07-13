@@ -4,9 +4,10 @@ import Button from './Button.astro';
 interface Props {
   formName?: string;
   action?: string;
+  pageLocation?: string;
 }
-const { formName = "contact-form", action = "/contact/thanks" } = Astro.props;
-const path = Astro.request.url;
+const { formName = "contact-form", action = "/contact/thanks", pageLocation } = Astro.props;
+const path = pageLocation ?? Astro.request.url;
 ---
 
 <form

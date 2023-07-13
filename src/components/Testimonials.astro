@@ -1,5 +1,6 @@
 ---
 import type { TestimonialItem } from '../lib/types';
+import { shuffle } from '../lib/utils';
 
 interface Props {
   title: string;
@@ -7,12 +8,14 @@ interface Props {
   list: TestimonialItem[];
 }
 
-const { title, intro, list } = Astro.props;
+const { title, intro, list: unsortedList } = Astro.props;
+
+const list = shuffle(unsortedList).slice(0, 5);
 ---
 
 <section class='section is-md my-10'>  
   <h2 class='heading-2 text-center'>{title}</h2>
-  <p class='text-center text-md max-w-lg mx-auto mb-8'>
+  <p class='text-center text-md max-w-xl mx-auto mb-8'>
     {intro}
   </p>
   {list.map((item: TestimonialItem, i) => (
@@ -38,7 +41,7 @@ const { title, intro, list } = Astro.props;
       <p>
         <span class='fa-solid fa-quote-left text-2xl pr-2'></span>
         {item.text}
-        <cite>{item.cite}</cite>
+        <cite class="block text-right mt-2">- {item.cite}</cite>
       </p>
     </blockquote>
   ))}

@@ -7,16 +7,20 @@ import HeaderLink from "./HeaderLink.astro";
     <section class="text-text-bold">
       <ul class="unset flex gap-4 [&>li]:p-0 items-center">
         <li><HeaderLink href="/">
-        <img
-            src="/img/ark-labs-logo_trans.png"
-            alt="Rob Kendal Freelance Shopify Developer" 
-            class="max-w-[50px]"           
-          />
-        </HeaderLink></li>
+          <img
+              src="/img/ark-labs-logo_trans.png"
+              alt="Rob Kendal Freelance Shopify Developer" 
+              class="max-w-[50px]"           
+            />
+          </HeaderLink>
+        </li>
         <li><HeaderLink href="/about">about</HeaderLink></li>
         <li><HeaderLink href="/publications">work</HeaderLink></li>
+        <li><HeaderLink href="/freelance-shopify-developer">shopify</HeaderLink></li>
+        <li><HeaderLink href="/enterprise-software-development">software</HeaderLink></li>
+        <li><HeaderLink href="/case-studies">case studies</HeaderLink></li>
         <li><HeaderLink href="/blog">articles</HeaderLink></li>
-        <li><HeaderLink href="/contact">contact</HeaderLink></li>
+        <!-- <li><HeaderLink href="/contact">contact</HeaderLink></li> -->
       </ul>
     </section>
   </nav>
@@ -39,11 +43,21 @@ import HeaderLink from "./HeaderLink.astro";
           <span class="fa-sr-only">Close mobile menu</span>
         </button>
         <ul class="unset flex flex-col text-text-bold gap-4 [&>li]:p-0 px-6">
-          <li><HeaderLink href="/">Home</HeaderLink></li>
+          <li><HeaderLink href="/">
+            <img
+                src="/img/ark-labs-logo_trans.png"
+                alt="Rob Kendal Freelance Shopify Developer" 
+                class="max-w-[50px]"           
+              />
+            </HeaderLink>
+          </li>
           <li><HeaderLink href="/about">about</HeaderLink></li>
-        <li><HeaderLink href="/publications">work</HeaderLink></li>
-        <li><HeaderLink href="/blog">articles</HeaderLink></li>
-        <li><HeaderLink href="/contact">contact</HeaderLink></li>
+          <li><HeaderLink href="/publications">work</HeaderLink></li>
+          <li><HeaderLink href="/freelance-shopify-developer">shopify</HeaderLink></li>
+          <li><HeaderLink href="/enterprise-software-development">software</HeaderLink></li>
+          <li><HeaderLink href="/case-studies">case studies</HeaderLink></li>
+          <li><HeaderLink href="/blog">articles</HeaderLink></li>
+          <li><HeaderLink href="/contact">contact</HeaderLink></li>
         </ul>
       </div>
     </section>

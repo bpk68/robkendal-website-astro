@@ -1,0 +1,87 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+import PageHeader from "src/components/PageHeader.astro";
+import ContactForm from 'src/components/ContactForm.astro';
+
+
+interface Props {
+  title: string;
+  metaTitle: string;
+  description: string;
+  img: string;
+  imgAlt: string;
+}
+
+const { 
+  title, 
+  metaTitle,
+  description,
+  img,
+  imgAlt
+} = Astro.props;
+---
+
+<PageLayout>
+  <PageMeta 
+    title={metaTitle}
+    description={description}
+    slot="meta" 
+  />
+  <section slot="main">        
+    <div class="flex align-middle my-8 gap-6 -mx-24">
+      <div class="w-1/2">
+        <PageHeader classes="mb-6">
+          {title}
+        </PageHeader>
+        <slot name="intro" />
+        <h2 class="heading-2">The challenge</h2>
+        <slot name="challenge" />
+      </div>
+      <img
+        src={img}
+        alt={imgAlt}
+        class="w-1/2 object-contain"
+      />
+    </div>
+
+    <slot name="additional-content" />
+
+    <h2 class="heading-2 text-center overflow-hidden mb-4 z-10 block relative max-w-lg mx-auto">
+      How I helped
+    </h2>
+    <div class="prose max-w-none prose-bubblegum mb-16">
+      <slot name="help-content" />
+    </div>
+
+    <div 
+      class="
+        relative
+        my-10
+        before:z-0
+        before:block 
+        before:absolute 
+        before:-inset-1 
+        before:-skew-y-2
+        before:-rotate-2
+        before:bg-gradient-to-bl 
+        before:bg-no-repeat
+        before:bg-bottom 
+        before:bg-[length:95%_95%]
+        before:from-primary-blue 
+        before:to-primary-blue 
+        before:dark:from-primary-blue 
+        before:dark:to-primary-blue
+     ">  
+      <h2 class="heading-2 text-center overflow-hidden mb-4 z-10 block relative max-w-lg mx-auto">
+        Project highlights
+      </h2>      
+      <slot name="highlights">
+    </div>      
+
+    <div class="my-16">
+      <h2 class="heading-2">Tell me how about your project</h2>
+      <ContactForm action="/contact/thanks" pageLocation='case study' />
+    </div>
+  </section> 
+</PageLayout>

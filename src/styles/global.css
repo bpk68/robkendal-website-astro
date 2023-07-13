@@ -132,7 +132,6 @@
   .heading-1 {
     @apply font-bold text-text-heading text-4xl md:text-5xl pt-4 pb-2;
   }
-
   .heading-2 {
     @apply font-bold text-text-heading text-2xl md:text-3xl pt-4 pb-2 mb-4;
   }

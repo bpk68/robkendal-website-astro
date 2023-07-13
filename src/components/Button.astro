@@ -25,10 +25,10 @@ const {
 
  switch (size) {
   case 'sm':
-    classes.push('');
+    classes.push('text-base px-3 py-1');
     break;
   case 'md':
-    classes.push('text-lg');
+    classes.push('text-lg px-5 py-3');
     break;
   case 'lg':
     classes.push('');
@@ -58,8 +58,7 @@ const {
   class={`
     relative 
     inline-block 
-    px-5 
-    py-3 
+    
     group 
     rounded-sm 
     font-bold
@@ -73,7 +72,7 @@ const {
 
     ${classes.join(' ')}
   `}
-  target={`${external ? '__blank' : '__self'}`}
+  target={`${external ? '_blank' : '_self'}`}
   rel={`${external ? 'noopener noreferrer' : ''}`}
 >
   <span 
