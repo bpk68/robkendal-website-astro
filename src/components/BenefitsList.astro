@@ -7,7 +7,7 @@ const { list } = Astro.props;
 ---
 <ul class="unset max-w-2xl text-lg mx-auto">
   {list.map(item => (
-    <li class='flex justify-center items-baseline pb-3'>
+    <li class='flex items-baseline pb-3'>
       <span class='fa-solid fa-thumbs-up pr-3 text-xl'></span>
       <span set:html={item}/>
     </li>
