@@ -98,6 +98,15 @@ export const config: Config = {
       },
       selfClosing: true,
     },
+    iframe: {
+      render: 'IFrameEmbed',
+      attributes: {
+        url: { type: String, required: true },
+        label: { type: String, required: true },
+        style: { type: String, required: false },
+      },
+      selfClosing: true,
+    },
   },
   nodes: {
     heading: {
@@ -120,6 +129,9 @@ export const config: Config = {
         rel: { type: String },
         title: { type: String },
       },
+    },
+    blockquote: {
+      render: 'Blockquote',
     },
     // if you want to customise default tags, this is where you'd do it
     // after adding the code here, add an Astro component for this node
