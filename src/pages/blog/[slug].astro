@@ -1,10 +1,15 @@
 ---
 import { readOne, readAll } from "../../lib/markdoc/read";
 import { blog } from "../../lib/markdoc/frontmatter.schema";
+import { SITE_URL } from "../../config";
 import Renderer from "../../components/Renderer.astro";
 import BlogPostMeta from "../../components/BlogPostMeta.astro";
 import ContentLayout from "../../layouts/ContentLayout.astro";
-import { SITE_URL } from "../../config";
+import CallToAction from "src/components/CallToAction.astro";
+import AuthorBio from "src/components/AuthorBio.astro";
+import WebMentions from "src/components/WebMentions.astro";
+import PostComments from "src/components/PostComments.astro";
+import RelatedPosts from "src/components/RelatedPosts.astro";
 
 export async function getStaticPaths() {
   const posts = await readAll({
@@ -32,10 +37,11 @@ const { content, frontmatter } = await readOne({
   frontmatterSchema: blog,
 });
 
-const ogImageAbsoluteUrl = new URL(frontmatter.ogImagePath ?? frontmatter.featuredimage, SITE_URL).toString();
+const imageUrl = frontmatter.ogImagePath ?? frontmatter.featuredimage;
+const ogImageAbsoluteUrl = imageUrl ? new URL(imageUrl, SITE_URL).toString() : '';
 ---
 
-<ContentLayout title={frontmatter.title} date={frontmatter.date}>
+<ContentLayout title={frontmatter.title} date={frontmatter.date} tags={frontmatter.tags}>
   <BlogPostMeta
     title={frontmatter.title}
     description={frontmatter.description}
@@ -45,4 +51,64 @@ const ogImageAbsoluteUrl = new URL(frontmatter.ogImagePath ?? frontmatter.featur
     slot="meta"
   />
   <Renderer content={content} slot="content" />
+
+  <Fragment slot="additional-content">
+    <div class="border-b"></div>
+    <CallToAction 
+      type="post"
+      title="Learn React from scratch"
+      img="/img/publications/react-guide-course.png"
+      buttons={[
+        {
+          href: 'https://robkendal.co.uk/publications',
+          text: 'Find out more',
+        },
+      ]}
+    >
+      The Beginner's Guide to Real World React
+    </CallToAction>
+    <AuthorBio />
+    <WebMentions url={`blog/${slug}`}/>
+    <PostComments slug={slug} />
+    <div class="border-b"></div>
+    <RelatedPosts tags={frontmatter.tags} pathToSkip={slug} />
+  </Fragment>
 </ContentLayout>
+
+
+<script define:vars={{
+  id: slug,
+  tags: frontmatter.tags
+}}>
+  const adHtml = `
+    <div
+        data-ea-publisher="robkendal-co-uk"
+        class="horizontal adaptive flat"
+        data-ea-type="image"
+        id="ea_text_id_${id}"
+        data-ea-keywords="${tags.join('|')}"
+        data-ea-manual="true"
+        data-ea-style="stickybox"
+    />
+  `;
+
+  function applyAds() {
+      const articleContent = document.querySelector(
+        '#article-content .post-content'
+      );
+      const selectParagraph = articleContent.querySelectorAll('p')[3];
+
+      selectParagraph.insertAdjacentHTML('afterend', adHtml);
+
+      try {
+        if (ethicalads) {
+          ethicalads.load();
+        }
+      } catch (error) {
+        // ethical ads not found
+      }
+    }
+    window.addEventListener('load', applyAds);
+
+    return () => window.removeEventListener('load', applyAds);
+</script>
