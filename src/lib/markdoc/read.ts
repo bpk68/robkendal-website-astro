@@ -20,8 +20,8 @@ async function parseAndTransform({
   const errors = Markdoc.validate(ast, config);
 
   if (errors.length) {
-    // console.log('error reading file', filepath);
-    // console.error(errors);
+    console.log('error reading file', filepath);
+    console.error(errors);
     throw new Error('Markdoc validation error');
   }
   const transformedContent = Markdoc.transform(ast, config);
