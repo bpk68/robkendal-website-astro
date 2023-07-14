@@ -28,6 +28,15 @@ if (isBuild) {
 }
 
 export default defineConfig({
+  experimental: {
+    redirects: true,
+  },
+  redirects: {
+    '/sitemap.xml': {
+      status: 302,
+      destination: '/sitemap-index.xml',
+    },
+  },
   server: { port: SERVER_PORT },
   site: BASE_URL,
   integrations: [
