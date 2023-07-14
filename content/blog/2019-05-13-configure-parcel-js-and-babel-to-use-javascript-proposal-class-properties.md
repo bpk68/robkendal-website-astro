@@ -14,6 +14,7 @@ tags:
   - Development
   - Tutorials
 ---
+
 ![Article hero image including title Babel and Parcel using proposal class properties](/img/using-proposal-class-properties-blog-post.png)
 
 Continuing on from the recent posts on [using Parcel as a Webpack alternative](https://robkendal.co.uk/blog/2019-04-26-using-parcel-bundler-as-a-webpack-alternative/) and [using React with Parcel JS](https://robkendal.co.uk/blog/2019-04-29-using-parcel-bundler-with-react-js/), I've been thinking a lot about using modern JavaScript development approaches. One such approach is using the [shiny new class properties proposal](https://tc39.github.io/proposal-class-public-fields/), specifically the public fields declaration part.
@@ -28,14 +29,14 @@ As an example, this is currently how you could create a JS class:
 
 ```javascript
 class MyClass {
-    someFunction() {
-        console.log(this.bigNumber);
-    }
-    
-    constructor() {
-        this.someFunction = this.someFunction.bind(this); // bind our method to 'this'
-    	this.bigNumber = 123456789; // a property
-    }
+  someFunction() {
+    console.log(this.bigNumber);
+  }
+
+  constructor() {
+    this.someFunction = this.someFunction.bind(this); // bind our method to 'this'
+    this.bigNumber = 123456789; // a property
+  }
 }
 ```
 
@@ -45,15 +46,15 @@ However, by switching it up with the new declaration syntax, you get this:
 
 ```javascript
 class MyClass {
-    bigNumber = 123456789;
+  bigNumber = 123456789;
 
-    someFunction = () => {
-        console.log(this.bigNumber);
-    }
+  someFunction = () => {
+    console.log(this.bigNumber);
+  };
 
-    constructor() {
-	// other constructor stuff
-    }
+  constructor() {
+    // other constructor stuff
+  }
 }
 ```
 
@@ -63,13 +64,13 @@ There's not much in it at this point, but the class is now much more self-docume
 
 If you've discovered the previous article on [using Parcel bundler as a Webpack alternative](https://robkendal.co.uk/blog/2019-04-26-using-parcel-bundler-as-a-webpack-alternative/), then we're almost there in terms of setup for this to work. You can [fork the codebase here and implement your own solution](https://codesandbox.io/embed/8z4vzk10p8) using the Babel plugin we'll get to in a moment.
 
-Because the new class properties are in the proposal stage, we need a bit of help from Babel JS magic to start using them now. 
+Because the new class properties are in the proposal stage, we need a bit of help from Babel JS magic to start using them now.
 
 If you [head over to the official Babel JS plugin page](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties) you can read all about it. With that in mind, let's get a new project going.
 
 ### The initial set up
 
-I've created a [fully-working solution using Parcel and the Babel plugin-proposal-class-properties plugin on CodeSandbox](https://codesandbox.io/embed/zqjr30zznm). 
+I've created a [fully-working solution using Parcel and the Babel plugin-proposal-class-properties plugin on CodeSandbox](https://codesandbox.io/embed/zqjr30zznm).
 
 It's a simple project that involves 3 files of interest:
 
@@ -95,13 +96,8 @@ Next, we'll need to add a .babelrc file (if you haven't one already) in the proj
 
 ```json
 {
-  "presets": [
-    "env"
-  ],
-  "plugins": [
-    "transform-runtime",
-    "@babel/plugin-proposal-class-properties"
-  ]
+  "presets": ["env"],
+  "plugins": ["transform-runtime", "@babel/plugin-proposal-class-properties"]
 }
 ```
 
@@ -112,13 +108,13 @@ The line with the '@babel/plugin-proposal-class-properties' part is the key here
 Starting with `index.js`:
 
 ```javascript
-import "./styles.css";
-import ListMaker from "./listmaker";
+import './styles.css';
+import ListMaker from './listmaker';
 
 // let's make some silly lists
 const myLists = {
-  vegetables: ["cucumber", "turnip", "potato", "carrot", "spinach"],
-  dogsNames: ["Rover", "Bosley", "Finn", "Digby", "Doggy McDogface"]
+  vegetables: ['cucumber', 'turnip', 'potato', 'carrot', 'spinach'],
+  dogsNames: ['Rover', 'Bosley', 'Finn', 'Digby', 'Doggy McDogface'],
 };
 
 // instantiate our ListMaker class
@@ -128,7 +124,7 @@ const listMaker = new ListMaker(myLists);
 listMaker.generateLists();
 
 // output the html to the browser
-document.getElementById("app").innerHTML = `
+document.getElementById('app').innerHTML = `
 <h1>Let's make lists!</h1>
 <div>
   ${listMaker.listsOutput}
@@ -141,24 +137,24 @@ Next, inside listmaker.js:
 
 ```javascript
 class ListMaker {
-  listHtml = "<div><ul>{0}</ul></div>";
-  listItemHtml = "<li>{0}</li>";
+  listHtml = '<div><ul>{0}</ul></div>';
+  listItemHtml = '<li>{0}</li>';
   lists = {};
-  listsOutput = "";
-  
+  listsOutput = '';
+
   constructor(listsObj = {}) {
     this.lists = listsObj;
   }
-  
-  makeList = list => {
-    let listItemsOutput = "";
+
+  makeList = (list) => {
+    let listItemsOutput = '';
 
     list.forEach(
-      listItem =>
-        (listItemsOutput += this.listItemHtml.replace("{0}", listItem))
+      (listItem) =>
+        (listItemsOutput += this.listItemHtml.replace('{0}', listItem))
     );
 
-    return this.listHtml.replace("{0}", listItemsOutput);
+    return this.listHtml.replace('{0}', listItemsOutput);
   };
 
   generateLists = () => {
@@ -175,7 +171,7 @@ class ListMaker {
 export default ListMaker;
 ```
 
-Right away, at the top of the class, we're defining a few class variables such as the output HTML and  default lists object.
+Right away, at the top of the class, we're defining a few class variables such as the output HTML and default lists object.
 
 When the constructor is called, we're updating one of the class variables using the supplied list object.
 
@@ -193,4 +189,8 @@ If you'd like to take a look at the finished project for reference, you can [jum
 
 I've also included it here:
 
-<iframe src="https://codesandbox.io/embed/zqjr30zznm?fontsize=14" title="Parcel example with class transform from blog" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+{% iframe
+  url="https://codesandbox.io/embed/zqjr30zznm?fontsize=14"
+  label="Parcel example with class transform from blog"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+/%}

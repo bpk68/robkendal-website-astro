@@ -1,17 +1,18 @@
 ---
 templateKey: blog-post
-title: " Creating a React code editor and syntax highlighter"
+title: ' Creating a React code editor and syntax highlighter'
 date: 2020-02-20T08:02:21.235+00:00
 featured: true
-featuredimage: "/img/react-syntax-highlighter-blog-post.png"
-description: Can you build a simple, lightweight code and syntax highlighter using
+featuredimage: '/img/react-syntax-highlighter-blog-post.png'
+description:
+  Can you build a simple, lightweight code and syntax highlighter using
   Prism JS and React? Sure you can. I'll show how I did it in no time flat.
 tags:
-- Development
-- Tutorials
-- React
-
+  - Development
+  - Tutorials
+  - React
 ---
+
 ![](/img/react-syntax-highlighter-blog-post.png)
 
 Fuelled by a workplace conundrum about finding a reliable, efficient means to do a simple job, without needing to bring in the heavy hammer of another dependency, I recently created a React-based code syntax highlighter.
@@ -43,16 +44,16 @@ yarn add prismjs
 Next we need to add our CodeEditor component to the main App.js file to kick everything else off.
 
 ```javascript
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // Styles
-import "./styles.css";
+import './styles.css';
 
 // Components
-import CodeEditor from "./CodeEditor";
+import CodeEditor from './CodeEditor';
 
 export default function App() {
-  const [editorLanguage, setEditorLanguage] = useState("javascript");
+  const [editorLanguage, setEditorLanguage] = useState('javascript');
 
   return (
     <div className="App">
@@ -65,8 +66,8 @@ export default function App() {
           id="javascript"
           name="language"
           value="javascript"
-          checked={editorLanguage === "javascript"}
-          onChange={() => setEditorLanguage("javascript")}
+          checked={editorLanguage === 'javascript'}
+          onChange={() => setEditorLanguage('javascript')}
         />
         <label htmlFor="javascript">JavaScript</label>
         <input
@@ -74,8 +75,8 @@ export default function App() {
           id="xml"
           name="language"
           value="markup"
-          checked={editorLanguage === "markup"}
-          onChange={() => setEditorLanguage("markup")}
+          checked={editorLanguage === 'markup'}
+          onChange={() => setEditorLanguage('markup')}
         />
         <label htmlFor="xml">XML</label>
         <input
@@ -83,8 +84,8 @@ export default function App() {
           id="css"
           name="language"
           value="css"
-          checked={editorLanguage === "css"}
-          onChange={() => setEditorLanguage("css")}
+          checked={editorLanguage === 'css'}
+          onChange={() => setEditorLanguage('css')}
         />
         <label htmlFor="css">CSS</label>
       </fieldset>
@@ -110,23 +111,23 @@ Now we come to the main event, the syntax highlighter itself, the CodeEditor com
 Here it is in full:
 
 ```javascript
-import React, { useState, useEffect } from "react";
-import Prism from "prismjs";
+import React, { useState, useEffect } from 'react';
+import Prism from 'prismjs';
 
-const CodeEditor = props => {
+const CodeEditor = (props) => {
   const [content, setContent] = useState(props.content);
 
-  const handleKeyDown = evt => {
+  const handleKeyDown = (evt) => {
     let value = content,
       selStartPos = evt.currentTarget.selectionStart;
 
     console.log(evt.currentTarget);
 
     // handle 4-space indent on
-    if (evt.key === "Tab") {
+    if (evt.key === 'Tab') {
       value =
         value.substring(0, selStartPos) +
-        "    " +
+        '    ' +
         value.substring(selStartPos, value.length);
       evt.currentTarget.selectionStart = selStartPos + 3;
       evt.currentTarget.selectionEnd = selStartPos + 4;
@@ -145,7 +146,7 @@ const CodeEditor = props => {
       <textarea
         className="code-input"
         value={content}
-        onChange={evt => setContent(evt.target.value)}
+        onChange={(evt) => setContent(evt.target.value)}
         onKeyDown={handleKeyDown}
       />
       <pre className="code-output">
@@ -183,25 +184,25 @@ Which is very neat and effective. One of the benefits of React Hooks!
 The most interesting part is what happens on the `onKeyDown` event:
 
 ```javascript
-const handleKeyDown = evt => {
-    let value = content,
-      selStartPos = evt.currentTarget.selectionStart;
+const handleKeyDown = (evt) => {
+  let value = content,
+    selStartPos = evt.currentTarget.selectionStart;
 
-    console.log(evt.currentTarget);
+  console.log(evt.currentTarget);
 
-    // handle 4-space indent on
-    if (evt.key === "Tab") {
-      value =
-        value.substring(0, selStartPos) +
-        "    " +
-        value.substring(selStartPos, value.length);
-      evt.currentTarget.selectionStart = selStartPos + 3;
-      evt.currentTarget.selectionEnd = selStartPos + 4;
-      evt.preventDefault();
+  // handle 4-space indent on
+  if (evt.key === 'Tab') {
+    value =
+      value.substring(0, selStartPos) +
+      '    ' +
+      value.substring(selStartPos, value.length);
+    evt.currentTarget.selectionStart = selStartPos + 3;
+    evt.currentTarget.selectionEnd = selStartPos + 4;
+    evt.preventDefault();
 
-      setContent(value);
-    }
-  };
+    setContent(value);
+  }
+};
 ```
 
 In a nutshell, whenever the user hits a key, we check to see if it's the tab key. If it is, we alter the current state value from our input and add in some spacing, updating the selection point of the cursor along the way. This almost makes it feel like a genuine code editor.
@@ -237,7 +238,7 @@ For our styles, there's nothing too flash, but here they are:
   height: 100%;
   padding: 1rem;
   border: none;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 0.8rem;
   background: transparent;
   white-space: pre-wrap;
@@ -269,12 +270,12 @@ code {
   display: block;
   color: hsl(0, 0%, 40%);
   font-size: 0.8rem;
-  font-family: "PT Mono", monospace;
+  font-family: 'PT Mono', monospace;
 }
 
 /* overrides */
-.code-edit-container :not(pre) > code[class*="language-"],
-.code-edit-container pre[class*="language-"] {
+.code-edit-container :not(pre) > code[class*='language-'],
+.code-edit-container pre[class*='language-'] {
   background: transparent;
   margin: 0;
 }
@@ -286,19 +287,16 @@ Finally, we have to add a few Prism overrides to just neaten everything up.
 
 ## React code syntax highlighter in action
 
-<iframe
-src="https://codesandbox.io/embed/focused-forest-y9re6?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-title="focused-forest-y9re6"
-allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-
-> </iframe>
+{% iframe
+  url="https://codesandbox.io/embed/focused-forest-y9re6?fontsize=14&hidenavigation=1&theme=dark"
+  label="focused-forest-y9re6"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+/%}
 
 ## Helpful links
 
 And that's it really. If you'd like to see it in action, there's a Code Sandbox below as well as some other helpful links.
 
-* [React forms and controlled components](https://reactjs.org/docs/forms.html#controlled-components)
-* [Prism JS for syntax highlighting](https://prismjs.com/)
-* [Code Sandbox example project to see the React highlighter in action](https://codesandbox.io/s/focused-forest-y9re6?fontsize=14&hidenavigation=1&theme=dark)
+- [React forms and controlled components](https://reactjs.org/docs/forms.html#controlled-components)
+- [Prism JS for syntax highlighting](https://prismjs.com/)
+- [Code Sandbox example project to see the React highlighter in action](https://codesandbox.io/s/focused-forest-y9re6?fontsize=14&hidenavigation=1&theme=dark)

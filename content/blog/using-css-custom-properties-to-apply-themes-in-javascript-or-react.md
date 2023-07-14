@@ -22,16 +22,14 @@ Let's get to it!
 
 **PS -** as always, [feel free to skip to the meat and potatoes of the article](#building-a-custom-theme-machine).
 
-Disclaimer: there is no React...
---------------------------------
+## Disclaimer: there is no React...
 
 Straight out the gates I'm going to preface this entire post with an admission: I've built this demo using vanilla JS. I know, I know, it mentions React in the title and I started out the code with React-intentions, but as I got into the details, I realised that actually, you don't need React at all for this sort of thing. By switching up the angle to a broader target, we can achieve two things:
 
 1.  Include people who prefer to not use React but would still like to apply custom CSS properties in their theme work.
 2.  Recognise that React is **awesome**, but it is not some holy silver bullet that everything needs to be built in...
 
-Understanding custom CSS properties
------------------------------------
+## Understanding custom CSS properties
 
 I was inspired recently by the [Smashing Mag Book 6](https://www.smashingmagazine.com/2018/09/smashing-book-6-release/) which had a huge section devoted to CSS custom properties, written by [Mike Riethmuller](https://www.madebymike.com.au/) – in my opinion, one of the pioneers of using custom properties in the real world and you should go read his work.
 
@@ -43,24 +41,23 @@ You might see them in use like this:
 
 ```css
 :root {
-    --hero-bg-color: yellow;
-    --heading-font-size: 1.5rem;
- }
- 
- /* ...other styles */
- 
- .hero {
-     background-color: var(--hero-bg-color); 
-     /* this is evaluated to: background-color: yellow */
- }
+  --hero-bg-color: yellow;
+  --heading-font-size: 1.5rem;
+}
+
+/* ...other styles */
+
+.hero {
+  background-color: var(--hero-bg-color);
+  /* this is evaluated to: background-color: yellow */
+}
 ```
 
 In the Smashing book (and his website), Mike explains in great detail about the in's and out's of CSS custom properties, why, when and how to use them, as well as some common pitfalls and approaches.
 
 I'm not going to revisit well documented information here; instead, I will present you with a useable strategy to enable you to apply custom, dynamic styling to your sites _today_ using power of CSS custom properties.
 
-Loading themes dynamically
---------------------------
+## Loading themes dynamically
 
 At IAM Cloud, we have a suite of [products in the enterprise authentication space](https://www.iamcloud.com/). One such product allows a level of customisation per client, ultimately applying a set of high-level style changes, heading colours, button colours, background images, etc.
 
@@ -76,8 +73,7 @@ The thinking (and the process) of how a custom property theming mechanism could 
 
 Let's work through the steps and build up a dynamically loaded theme for ourselves.
 
-<a name="building-a-custom-theme-machine"></a>Building a custom theme machine
--------------------------------
+## <a name="building-a-custom-theme-machine"></a>Building a custom theme machine
 
 For those eager beavers among you, [head over to the finished project](https://codesandbox.io/embed/5z6yjrpr84) to see what we're building. I'm using [CodeSandbox.io](https://codesandbox.io/) to host the files which in turn uses the impressive [Parcel](https://parceljs.org/getting_started.html) for bundling (PS - I'm switching my projects to Parcel from Webpack in the future and will be creating a Parcel Start Kit to match my Webpack Starter Kit).
 
@@ -96,11 +92,11 @@ index.html
 
 Nothing too complex here, but each file plays a part:
 
-*   `theme.json` – this is where we'll keep out client's custom style choices.
-*   `themeBuilder.js` – unsurprisingly, the themeBuilder file helps to build out our styles using the custom properties set in `theme.json`.
-*   `index.js` – our main JavaScript starting point for the project. It handles the fetching of the styles and calling the themeBuilder.
-*   `theme.css` – we'll keep our default set of CSS variables here, ready to be overridden later on.
-*   `index.html` – the main starter point for the project and the file that Parcel loads to begin with.
+- `theme.json` – this is where we'll keep out client's custom style choices.
+- `themeBuilder.js` – unsurprisingly, the themeBuilder file helps to build out our styles using the custom properties set in `theme.json`.
+- `index.js` – our main JavaScript starting point for the project. It handles the fetching of the styles and calling the themeBuilder.
+- `theme.css` – we'll keep our default set of CSS variables here, ready to be overridden later on.
+- `index.html` – the main starter point for the project and the file that Parcel loads to begin with.
 
 ### Looking at the default styles
 
@@ -183,9 +179,9 @@ Inside our `index.js` file, we have a fairly straightforward couple of things go
 // With help from David Walsh:
 // https://davidwalsh.name/add-rules-stylesheets
 const buildStyleElement = () => {
-  const styleEl = document.createElement("style");
+  const styleEl = document.createElement('style');
 
-  styleEl.appendChild(document.createTextNode(""));
+  styleEl.appendChild(document.createTextNode(''));
   document.head.appendChild(styleEl);
 
   return styleEl.sheet;
@@ -201,7 +197,7 @@ const init = () => {
   // load up our custom theme via some sort of async method (in real life)
   // here, we'll simulate an ajax call
   setTimeout(() => {
-    if (typeof CustomStyles !== "undefined") {
+    if (typeof CustomStyles !== 'undefined') {
       // successful 'ajax' call
       const stylesheet = buildStyleElement();
       const customStyleRules = CustomThemeBuilder(CustomStyles);
@@ -223,7 +219,7 @@ Now for the fun part, building the theme. Inside the `/helpers/themeBuilder.js` 
 ```javascript
 // our customTheme object (from the JSON) should be an object like this:
 // { "theme-property-name": "#abcdef" }
-const ThemeBuilder = customTheme => {
+const ThemeBuilder = (customTheme) => {
   // return if there's no custom theme available
   if (typeof customTheme === 'undefined') {
     return;
@@ -233,15 +229,15 @@ const ThemeBuilder = customTheme => {
   // we're using the ES6 backtick string notation here to keep things readable
   const stylesToInsert = `
  .custom-theme {
-    ${insertPropertyIfValid("--hero-bg-color", customTheme["hero-bg-color"])};
+    ${insertPropertyIfValid('--hero-bg-color', customTheme['hero-bg-color'])};
     ${insertPropertyIfValid(
-      "--notification-bg-color",
-      customTheme["notification-bg-color"]
+      '--notification-bg-color',
+      customTheme['notification-bg-color']
     )};
-    ${insertPropertyIfValid("--content-color", customTheme["content-color"])};
+    ${insertPropertyIfValid('--content-color', customTheme['content-color'])};
     ${insertPropertyIfValid(
-      "--button-bg-color",
-      customTheme["button-bg-color"]
+      '--button-bg-color',
+      customTheme['button-bg-color']
     )};
   }
 `;
@@ -267,11 +263,11 @@ return `${cssProperty}: ${customPropertyValue};`;
 
 The last part is to apply our styles to the page. As `themeBuilder.js` returns us a nice CSS rule/selector with our overrides in place, this line in `index.js` adds them to the page:
 
-```stylesheet.insertRule(customStyleRules);```
+`stylesheet.insertRule(customStyleRules);`
 
 We could have used the JS mechanism for this of course, which looks like this:
 
-```element.style.setProperty('--my-epic-var', someValue);```
+`element.style.setProperty('--my-epic-var', someValue);`
 
 I feel this boils down to personal preference. Using the `setProperty()` method means styles will be applied one by one; using our style injection method means you get everything fired off at once. It also looks a little more readable (arguably) from a code point of view.
 
@@ -287,8 +283,7 @@ And here's what you get (after about 1.5 seconds delay) when our customised styl
 
 Our same content with our custom client theme applied
 
-Taking it further with an automated style builder
--------------------------------------------------
+## Taking it further with an automated style builder
 
 What we've got is a solid bit of theming work as it stands. However, given that we have a somewhat hard-coded collection of custom properties in the `themeBuilder.js` file, this isn't going to scale very well. For our situation at IAM Cloud, it's fine because it's clear what's happening in the file and we don't have a lot of properties of deal with.
 
@@ -297,24 +292,26 @@ If, however, this list started to grow, we would have to find a way to deal with
 But fear not, we can easily update our `themeBuilder.js` file to cope with a variable sized JSON list using a bit of code that could work like this:
 
 ```javascript
-let stylesToInsert = ".custom-theme {";
-  Object.keys(customTheme).forEach(key => {
-    const cssProperty = `--${key}`;
-    console.log(cssProperty);
-    stylesToAdd += insertPropertyIfValid(cssProperty, customTheme[key]);
-  });
-  stylesToAdd += "}";
+let stylesToInsert = '.custom-theme {';
+Object.keys(customTheme).forEach((key) => {
+  const cssProperty = `--${key}`;
+  console.log(cssProperty);
+  stylesToAdd += insertPropertyIfValid(cssProperty, customTheme[key]);
+});
+stylesToAdd += '}';
 ```
 
 **Note:** for this to work smoothly, we're assuming that the CSS custom properties in the JSON file(s) are named the same as they are in the final CSS files (or at least in a way that allows for easy manipulation in the JavaScript).
 
-Looking through the finished project
-------------------------------------
+## Looking through the finished project
 
-<iframe src="https://codesandbox.io/embed/5z6yjrpr84?fontsize=14" title="Theming with custom properties" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+{% iframe
+  url="https://codesandbox.io/embed/5z6yjrpr84?fontsize=14"
+  label="Theming with custom properties"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+/%}
 
-Alternatives to theming with CSS custom properties
---------------------------------------------------
+## Alternatives to theming with CSS custom properties
 
 Before we all get giddy, there are some drawbacks to using custom properties to apply themes right now, specifically around browser support. More specifically around Internet Explorer support :(
 
@@ -332,7 +329,6 @@ However you swing it, you'll essentially be compiling a CSS sheet and updating t
 
 To really ensure complete coverage you'll have to revert to the old days of simply building a set of style overrides that take advantage of the cascade to apply your theme. It doesn't have to be specifically CSS of course, you could still use your favourite CSS pre-processor to generate the styles, but you would lose the dynamic nature of the whole articles approach: loading style themes dynamically and apply them via CSS custom properties.
 
-What ideas and approaches do you know for theming?
---------------------------------------------------
+## What ideas and approaches do you know for theming?
 
 Topics like theming and customisation are a minefield for debate; there are a ton of ways to approach them and achieve results. What ideas have you got, how did you find this article on custom properties being used for theming?

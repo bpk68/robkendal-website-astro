@@ -723,9 +723,8 @@ export default Carousel;
 
 Here's the finished carousel code embedded via CodeSandbox and you can [find a link to the sandbox here too](https://codesandbox.io/s/react-multi-item-carousel-uvmchp 'Codesandbox link to React multi-item carousel demo'):
 
-<iframe src="https://codesandbox.io/embed/fragrant-feather-uvmchp?fontsize=14&hidenavigation=1&theme=dark"
+{% iframe
+  url="https://codesandbox.io/embed/fragrant-feather-uvmchp?fontsize=14&hidenavigation=1&theme=dark"
+  label="react-multi-item-carousel"
   style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-  title="react-multi-item-carousel"
-  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+/%}

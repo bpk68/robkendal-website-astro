@@ -3,14 +3,15 @@ templateKey: blog-post
 title: Saving text to a client-side file using vanilla JS
 date: 2020-04-17T14:30:00.263+00:00
 featured: true
-featuredimage: "/img/saving-to-client-side-files-blog-post.png"
-description: Want to save files to the client using JavaScript? Let's look at how
+featuredimage: '/img/saving-to-client-side-files-blog-post.png'
+description:
+  Want to save files to the client using JavaScript? Let's look at how
   to save a file client-side using s simple handful of vanilla JavaScript
 tags:
-- Tutorials
-- JavaScript
-
+  - Tutorials
+  - JavaScript
 ---
+
 ![](/img/saving-to-client-side-files-blog-post.png)
 
 Another one of those 'born of an issue I stumbled across' sort of situations, I came across the need to save some data entered into a form (some configuration details into a textarea to be specific).
@@ -46,18 +47,18 @@ Now, for the JavaScript:
 ```javascript
 const downloadToFile = (content, filename, contentType) => {
   const a = document.createElement('a');
-  const file = new Blob([content], {type: contentType});
-  
-  a.href= URL.createObjectURL(file);
+  const file = new Blob([content], { type: contentType });
+
+  a.href = URL.createObjectURL(file);
   a.download = filename;
   a.click();
 
-	URL.revokeObjectURL(a.href);
+  URL.revokeObjectURL(a.href);
 };
 
 document.querySelector('#btnSave').addEventListener('click', () => {
   const textArea = document.querySelector('textarea');
-  
+
   downloadToFile(textArea.value, 'my-new-file.txt', 'text/plain');
 });
 ```
@@ -74,10 +75,11 @@ Finally, we trigger our new anchor element's click event, which kicks off the do
 
 You can [view the code in action](https://codepen.io/robkendal/pen/dyYMqMP) in my CodePen, or below in a handy iFrame.
 
-<iframe height="650" style="width: 100%;" scrolling="no" title="Saving files with JavaScript" src="https://codepen.io/robkendal/embed/dyYMqMP?height=265&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" loading="lazy">
-See the Pen <a href='https://codepen.io/robkendal/pen/dyYMqMP'>Saving files with JavaScript</a> by Rob Kendal
-(<a href='https://codepen.io/robkendal'>@robkendal</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
+{% iframe
+  url="https://codepen.io/robkendal/embed/dyYMqMP?height=265&theme-id=dark&default-tab=result"
+  label="Saving files with JavaScript"
+  style="width:100%; height:650px; border:0; border-radius: 4px; overflow:hidden;"
+/%}
 
 ## Wrapping things up
 
@@ -85,7 +87,7 @@ And that's it. Nice and simple, gets the job done. Sometimes, the most straightf
 
 You might also like these articles that use plain old JS and CSS:
 
-* [Funky text backgrounds with background-clip CSS](https://robkendal.co.uk/blog/2020-04-02-funky-text-backgrounds-with-background-clip-css/)
-* [Creating unique, merged arrays using JavaScript's Set (and more)](https://robkendal.co.uk/blog/2020-02-04-creating-unique-merged-arrays-using-javascripts-set-and-more/)
-* [Configure Parcel JS and Babel to use JavaScript proposal class properties](https://robkendal.co.uk/blog/2019-05-13-configure-parcel-js-and-babel-to-use-javascript-proposal-class-properties/)
-* [How to use arrow functions in JavaScript ES6](https://robkendal.co.uk/blog/how-to-use-arrow-functions-in-javascript-es6/)
+- [Funky text backgrounds with background-clip CSS](https://robkendal.co.uk/blog/2020-04-02-funky-text-backgrounds-with-background-clip-css/)
+- [Creating unique, merged arrays using JavaScript's Set (and more)](https://robkendal.co.uk/blog/2020-02-04-creating-unique-merged-arrays-using-javascripts-set-and-more/)
+- [Configure Parcel JS and Babel to use JavaScript proposal class properties](https://robkendal.co.uk/blog/2019-05-13-configure-parcel-js-and-babel-to-use-javascript-proposal-class-properties/)
+- [How to use arrow functions in JavaScript ES6](https://robkendal.co.uk/blog/how-to-use-arrow-functions-in-javascript-es6/)

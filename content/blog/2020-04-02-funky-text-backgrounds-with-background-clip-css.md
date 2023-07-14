@@ -95,10 +95,11 @@ Support is pretty good actually with modern browsers happily clipping that text.
 
 And there we have it. Simple, quick, but such a striking effect that can brighten up some otherwise dull text — just be mindful of what background you choose as it can have an impact on visual impairments and make some text hard to read.
 
-<iframe height="550" style="width: 100%;" scrolling="no" title="Textured Transparent Text Effect - CSS" src="https://codepen.io/robkendal/embed/MWwRmMo?height=550&theme-id=dark&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/robkendal/pen/MWwRmMo'>Textured Transparent Text Effect - CSS</a> by Rob Kendal
-  (<a href='https://codepen.io/robkendal'>@robkendal</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
+{% iframe
+  url="https://codepen.io/robkendal/embed/MWwRmMo?height=550&theme-id=dark&default-tab=result"
+  label="Textured Transparent Text Effect - CSS"
+  style="width:100%; height:550px; border:0; border-radius: 4px; overflow:hidden;"
+/%}
 
 ## Helpful links
 

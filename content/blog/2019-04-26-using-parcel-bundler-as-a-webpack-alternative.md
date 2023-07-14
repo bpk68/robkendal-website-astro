@@ -91,7 +91,11 @@ parcel index.html
 
 And that's it (for now). Parcel handily includes a development server (you can browse to `http://localhost:1234` to view the output of the code above) so you should see the above rendered something like this output from my Code Sandbox instance:
 
-<iframe src="https://codesandbox.io/embed/8z4vzk10p8?fontsize=14" title="Parcel example from blog" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+{% iframe
+  url="https://codesandbox.io/embed/8z4vzk10p8?fontsize=14"
+  label="Parcel example from blog"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+/%}
 
 ## Introducing the Parcel JS starter kit
 

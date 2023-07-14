@@ -3,16 +3,17 @@ templateKey: blog-post
 title: Replacing React's Redux library with the useReducer Hook
 date: 2020-04-07T08:01:00.263+00:00
 featured: true
-featuredimage: "/img/useReducer-blog-post.png"
-description: Redux can be a tricky concept to get. By using React's useReducer Hook
+featuredimage: '/img/useReducer-blog-post.png'
+description:
+  Redux can be a tricky concept to get. By using React's useReducer Hook
   we can replace complex Redux configurations and still use state management.
 tags:
-- React
-- Development
-- Tutorials
-- JavaScript
-
+  - React
+  - Development
+  - Tutorials
+  - JavaScript
 ---
+
 ![Blog header for the article on replacing Redux libraries with the useReducer Hook](/img/useReducer-blog-post.png)
 
 I've been moving over to using React Hooks in my development of late. They offer a much simpler, terser approach to development and are super powerful. They do require a certain mind-shift towards [thinking in React Hooks](https://wattenberger.com/blog/react-hooks) (read that article by Amelia Wattenberger, it's so well written and helpful!), but they really push your development on.
@@ -27,21 +28,21 @@ So let's start using it!
 
 This is a long article, so if you want to skip around then you'll find this outline handy:
 
-* [Redux primer](#redux-primer) a gentle introduction to Redux for beginners
-  * [Reducers](#reducers)
-  * [Action creators](#action-creators)
-  * [Dispatchers](#dispatch-methods)
-* [Redux with useReducer](#redux-with-usereducer)
-  * [Creating the reducer](#creating-reducers)
-* [Wiring up the App component](#wiring-the-app)
-  * [Faking API calls](#fake-api-calls)
-  * [Rendering components](#rendering-components)
-* [Displaying our ShoppingList](#displaying-the-list)
-  * [Introducing React's Context](#introducing-context)
-  * [Dispatching updates to state](#dispatch-updates)
-* [Adding new items](#add-new-items)
-* [Demo and working code in action](#demo)
-* [Further reading and resources](#further-reading)
+- [Redux primer](#redux-primer) a gentle introduction to Redux for beginners
+  - [Reducers](#reducers)
+  - [Action creators](#action-creators)
+  - [Dispatchers](#dispatch-methods)
+- [Redux with useReducer](#redux-with-usereducer)
+  - [Creating the reducer](#creating-reducers)
+- [Wiring up the App component](#wiring-the-app)
+  - [Faking API calls](#fake-api-calls)
+  - [Rendering components](#rendering-components)
+- [Displaying our ShoppingList](#displaying-the-list)
+  - [Introducing React's Context](#introducing-context)
+  - [Dispatching updates to state](#dispatch-updates)
+- [Adding new items](#add-new-items)
+- [Demo and working code in action](#demo)
+- [Further reading and resources](#further-reading)
 
 ## A Redux primer
 
@@ -189,11 +190,11 @@ We're going to build a small shopping list app that accepts some simple data via
 
 The tools we'll be using include:
 
-* `useReducer` - this is the [React Hook](https://reactjs.org/docs/hooks-reference.html#usereducer) that is billed as an alternative to `useState`.
-* `useContext` - the [useContext Hook](https://reactjs.org/docs/hooks-reference.html#usecontext) will allow us to grab the current context value from the specific context we're referencing. In our case, we'll be passing down both a dispatch function to allow for state updates and the state object itself to make use of its contents.
-* Creating a reducer function to update our state
-* Making an action creator function that just simplifies the building of an action
-* Creating an initial state with some predefined items on our list
+- `useReducer` - this is the [React Hook](https://reactjs.org/docs/hooks-reference.html#usereducer) that is billed as an alternative to `useState`.
+- `useContext` - the [useContext Hook](https://reactjs.org/docs/hooks-reference.html#usecontext) will allow us to grab the current context value from the specific context we're referencing. In our case, we'll be passing down both a dispatch function to allow for state updates and the state object itself to make use of its contents.
+- Creating a reducer function to update our state
+- Making an action creator function that just simplifies the building of an action
+- Creating an initial state with some predefined items on our list
 
 So let's get to it; first up, we'll create our initial state
 
@@ -747,9 +748,9 @@ export const reducer = (state, action) => {
 
 This is arguably the most complex part of our reducer, but it's easy to follow:
 
-* We work out the current highest id value in our shopping list items and increment it by one (not recommended in real life!);
-* We add the id to a new item object;
-* We update the state's shoppingList property by copying the array to a new array, adding in the new item object.
+- We work out the current highest id value in our shopping list items and increment it by one (not recommended in real life!);
+- We add the id to a new item object;
+- We update the state's shoppingList property by copying the array to a new array, adding in the new item object.
 
 Finally, we clear out any saved fields/input data by replacing local state with the `_defaultFields` object.
 
@@ -759,14 +760,11 @@ Finally, we clear out any saved fields/input data by replacing local state with 
 
 You can see the finished app and play about with it below, and you can [view it online in the CodeSandbox environment](https://codesandbox.io/s/redux-with-usereducer-9tfko).
 
-<iframe
-src="https://codesandbox.io/embed/redux-with-usereducer-9tfko?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-title="redux-with-usereducer"
-allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-
-> </iframe>
+{% iframe
+    url="https://codesandbox.io/embed/redux-with-usereducer-9tfko?fontsize=14&hidenavigation=1&theme=dark"
+    label="redux-with-usereducer"
+    style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+/%}
 
 ## Caveats, gotchas and things to bear in mind
 
@@ -784,8 +782,8 @@ I would (and do) use this commercially, but do take what you see here and adapt 
 
 It's always handy to have a list of other sources of information, so here's that very list of useful references, links, resources that are worth a peek to help you in your quest to be a Redux master:
 
-* [Redux JS](https://redux-toolkit.js.org/tutorials/basic-tutorial) - discover more about the Redux methodology and library
-* [Redux Toolkit](https://redux-toolkit.js.org/) - an opinionated version of the Redux JS library for React
-* [React's official documentation on Hooks](https://reactjs.org/docs/hooks-reference.html) - especially helpful for the [useContext](https://reactjs.org/docs/hooks-reference.html#usecontext) and [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer) Hooks
-* Amelia Wattenberger's ['thinking in hooks' article](https://wattenberger.com/blog/react-hooks) - super helpful, clear resource for shifting your mindset into using Hooks in your own code
-* My own articles on Redux and React, using API's and data handlers. I have an [article part one](https://robkendal.co.uk/blog/2020-01-21-react-redux-components-apis-and-handler-utilities/), and [article part two](https://robkendal.co.uk/blog/2020-01-27-react-redux-components-apis-and-handler-utilities-part-two/) available, which cover some more real-world examples.
+- [Redux JS](https://redux-toolkit.js.org/tutorials/basic-tutorial) - discover more about the Redux methodology and library
+- [Redux Toolkit](https://redux-toolkit.js.org/) - an opinionated version of the Redux JS library for React
+- [React's official documentation on Hooks](https://reactjs.org/docs/hooks-reference.html) - especially helpful for the [useContext](https://reactjs.org/docs/hooks-reference.html#usecontext) and [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer) Hooks
+- Amelia Wattenberger's ['thinking in hooks' article](https://wattenberger.com/blog/react-hooks) - super helpful, clear resource for shifting your mindset into using Hooks in your own code
+- My own articles on Redux and React, using API's and data handlers. I have an [article part one](https://robkendal.co.uk/blog/2020-01-21-react-redux-components-apis-and-handler-utilities/), and [article part two](https://robkendal.co.uk/blog/2020-01-27-react-redux-components-apis-and-handler-utilities-part-two/) available, which cover some more real-world examples.
