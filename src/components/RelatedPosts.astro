@@ -1,0 +1,19 @@
+---
+import ArticleList from './ArticleList.astro';
+
+interface Props {
+  tags: string[];
+  pathToSkip?: string;
+}
+
+const { tags, pathToSkip } = Astro.props; 
+---
+
+<ArticleList 
+  title="Read more"
+  count={5} 
+  relatedPostTags={tags} 
+  pathToSkip={pathToSkip} 
+  showHeading 
+  showBlurb
+/>

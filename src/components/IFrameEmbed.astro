@@ -1,0 +1,22 @@
+---
+type Props = {
+  url: string;
+  label: string;
+  style?: string;
+};
+
+const { url, label, style } = Astro.props;
+---
+
+<div>
+  <iframe 
+    class="aspect-video w-full"
+    src={url}
+    title={label}
+    frame-border="0"
+    style={style}  
+    allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+    sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  >
+  </iframe>  
+</div>

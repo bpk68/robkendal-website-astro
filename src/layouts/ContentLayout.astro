@@ -1,29 +1,19 @@
 ---
 /* 
-  This layout is used in pages that render markdoc content
+  This layout is used in pages that render markdoc content (i.e. blog/article pages).
   - pages/blog/[slug].astro
 */
 
-// Import the global.css file here so that it is included on
-import '../styles/global.css';
-
-import GoogleFont from './GoogleFont.astro';
-import FontAwesome from './FontAwesome.astro';
-import ThemeScript from './ThemeScript.astro';
-import Sitemap from './Sitemap.astro';
-import WebMentions from './WebMentions.astro';
-import GlobalMeta from './GlobalMeta.astro';
-import GlobalStyle from './GlobalStyle.astro';
-import Favicon from './Favicon.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BasePageLayout from "./BasePageLayout.astro";
+import PageHeader from 'src/components/PageHeader.astro';
 
 export interface Props {
   title: string;
   date: Date;
+  tags: string[];
 }
 
-const { title, date } = Astro.props;
+const { title, date, tags } = Astro.props;
 const formattedDate = new Date(date).toLocaleDateString('en-us', {
   year: 'numeric',
   month: 'short',
@@ -31,38 +21,36 @@ const formattedDate = new Date(date).toLocaleDateString('en-us', {
 });
 ---
 
-<!DOCTYPE html>
-<html class="theme-bubblegum" lang="en">
-  <head>
-    <GlobalMeta />
-    <Favicon />
+<BasePageLayout>
+  <Fragment slot="meta">
     <slot name="meta" />
-    <GoogleFont />
-    <ThemeScript />
-    <FontAwesome />
-    <Sitemap />
-    <WebMentions />
-  </head>
+  </Fragment>
 
-  <body class="max-w-3xl mx-auto min-h-screen px-6 sm:px-8">
-    <Header />
-    <main id="main">
-      <section class="blog-post prose max-w-none prose-bubblegum">
-        <h1 class="m-0 mb-[0.25em]">
-          <span
-            class="pl-6 relative block leading-[150%] after:absolute after:content-[''] after:w-2 after:h-full after:top-0 after:left-0 after:bg-primary-green"
-          >
-            {title}
-          </span>
-        </h1>
-        <time
-          class="block mb-[2em] text-text-muted"
-          datetime={date.toDateString()}>{formattedDate}</time
-        >
+  <Fragment slot="main">
+    <article id="article-content">
+      <PageHeader classes='mb-6'>
+        {title}
+      </PageHeader>
+      <div class="flex justify-between items-center text-text-muted border-b pb-4 pt-2">
+        <time class="block mb-0 text-xl" datetime={date.toDateString()}>
+          {formattedDate}
+        </time>
+        <div class="flex text-sm">
+          <p>posted in:</p>
+          <ul class="unset flex">
+            {tags.map(tag => (
+              <li><a href={`/tags/${tag.toLowerCase()}`}>#{tag.toLowerCase()}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <section class="blog-post prose md:prose-lg max-w-none prose-bubblegum post-content">      
         <slot name="content" />
-      </section>
-    </main>
-    <Footer />
-    <GlobalStyle />
-  </body>
-</html>
+      </section>    
+    </article>
+  </Fragment>
+  
+  <section class="my-14" slot="additional-content">
+    <slot name="additional-content" />
+  </section>
+</BasePageLayout>

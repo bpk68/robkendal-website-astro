@@ -1,44 +1,19 @@
 ---
 /* 
-  This layout is used in all pages except for landing pages such as 'small business websites'
+  This layout is used as a base for all pagesin all pages except for landing pages such as 'small business websites'
 */
 
-// Import the global.css file here so that it is included on
-import '../styles/global.css';
-
-import GoogleFont from './GoogleFont.astro';
-import FontAwesome from './FontAwesome.astro';
-import ThemeScript from './ThemeScript.astro';
-import Sitemap from './Sitemap.astro';
-import WebMentions from './WebMentions.astro';
-import GlobalMeta from './GlobalMeta.astro';
-import GlobalStyle from './GlobalStyle.astro';
-import Favicon from './Favicon.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BasePageLayout from "./BasePageLayout.astro";
 ---
 
-<!DOCTYPE html>
-<html class="theme-bubblegum" lang="en">
-  <head>
-    <GlobalMeta />
-    <Favicon />
-    <slot name="meta" />
-    <GoogleFont />
-    <ThemeScript />
-    <FontAwesome />
-    <Sitemap />
-    <WebMentions />
-  </head>
 
-  <body class="min-h-screen px-6 sm:px-8">
-    <Header />
-    <div class="max-w-3xl mx-auto">
-      <main id="main" class="mb-16">
-        <slot name="main" />
-      </main>
-      <Footer />
-    </div>
-    <GlobalStyle />
-  </body>
-</html>
+<BasePageLayout>
+  <Fragment slot="meta">
+    <slot name="meta" />
+  </Fragment>
+
+  <Fragment slot="main">
+    <slot name="main" />
+  </Fragment>
+</BasePageLayout>
+

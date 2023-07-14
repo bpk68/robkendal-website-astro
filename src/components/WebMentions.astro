@@ -1,0 +1,53 @@
+---
+interface Props {
+  // format of '/blog/slug-of-the-post-here'
+  url: string;
+}
+
+interface Mention {
+  author: {
+    url: string;
+    photo: string;
+    name: string;
+  }
+}
+
+const { url } = Astro.props;
+let mentions: Mention[] = [];  
+
+try {
+  const response = await fetch(`https://webmention.io/api/mentions.jf2?target=https://robkendal.co.uk/${url}/`);
+  const data = await response.json();
+  mentions = data?.children
+} catch (err: unknown) {
+  console.log('error fetching webmentions: ', (err as Error).message);
+}
+
+// https://webmention.io/api/mentions.jf2?target=https://robkendal.co.uk/blog/how-to-fix-property-does-not-exist-on-window-type-in-typescript/
+---
+
+<div class="my-14">
+  <h2 class="heading-2">Webmentions for this article</h2>
+  {mentions.map((mention) => (
+    <figure class="">
+      <a
+        href={mention.author.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src={mention.author.photo} alt={mention.author.name} />
+      </a>
+    </figure>
+  ))}
+  {mentions.length <= 0 && (
+    <p>
+      Be one of the first to{' '}
+      <a
+        href={`https://indieweb.social/share?text=check this front end article by Rob Kendal -> &url=https://robkendal.co.uk/${url}`}
+      >
+        mention this article on Mastodon
+      </a>
+      .
+    </p>
+  )}
+</div>

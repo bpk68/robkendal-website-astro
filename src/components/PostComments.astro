@@ -1,0 +1,176 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+---
+
+<section id='comments-area' class='comments-area my-14'>
+   <h2 class="heading-2">Comments</h2>
+
+  <div class='comments-inside'>
+    <div id='disqus_thread'></div>
+  </div>
+  <div id='comments-overlay' class='comments-overlay'>
+    <Button 
+      id='comments-show'
+      href="#nogo"
+      text="Show comments"
+      variant="primary" 
+    />    
+  </div>
+  <noscript>
+    Please enable JavaScript to view the{' '}
+    <a href='https://disqus.com/?ref_noscript' target="_blank">
+      comments powered by Disqus.
+    </a>
+  </noscript>
+</section>
+
+<script define:vars={{ slug }}>
+  const scriptLoader = (url, callback = null) => {
+    const d = document;
+    const s = d.createElement('script');
+
+    s.src = url;
+
+    if (callback) {
+      s.onload = callback;
+    }
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  };
+
+  const loadShowMore = (disqusContent) => {
+    if (disqusContent !== null) {      
+      const interval = setInterval(function () {
+        const disqusHeight = disqusContent.clientHeight;
+
+        if (disqusHeight > 100) {
+          document
+            .querySelector('#comments-area')
+            .classList.add('comments--loaded');
+          clearInterval(interval);
+        }
+      }, 100);
+
+      document
+        .querySelector('#comments-overlay, #comments-show')
+        .addEventListener('click', (e) => {
+          const commentsArea = document.querySelector('#comments-area');
+          commentsArea?.classList.remove('comments--loaded');
+          commentsArea?.classList.add('comments--opened');
+          e.preventDefault();
+        });
+    }
+  };
+  
+  const CommentsLoader = () => {
+    let disqusContent = document.querySelector('#disqus_thread');
+
+    console.log('found something: ' + disqusContent);
+
+    if (disqusContent !== null) {
+      loadShowMore(disqusContent);
+    } else {
+      setTimeout(() => {
+        disqusContent = document.querySelector('#disqus_thread');
+        if (disqusContent !== null) {
+          loadShowMore(disqusContent);
+        }
+      }, 1000);
+    }
+  };
+
+  const DisqusLoader = (url, identifier) => {
+    console.log('loading up Disqus for ', url);
+
+    const disqus_config = function () {
+      this.page.url = `https://robkendal.co.uk/${url}`;
+      this.page.identifier = identifier;
+    };
+
+    scriptLoader('https://robkendal.disqus.com/embed.js');
+  };
+  
+
+  window.addEventListener('load', () => {
+    DisqusLoader(slug, slug);
+    CommentsLoader();
+  }, false);  
+  
+  </script>
+  <!-- <script type="text/javascript src="https://robkendal.disqus.com/embed.js" /> -->
+
+  <style>
+  /**
+  * 4.2 Comments
+  * ----------------------------------------------------------------------------
+  */
+  .comments-area {
+    margin: 2.5em 0 1.66667em;
+    position: relative;
+  }
+  .comments-area.comments--loaded .comments-inside {
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .comments-area.comments--opened .comments-inside {
+    height: auto;
+    overflow: auto;
+  }
+
+  .comments-area.comments--loaded .comments-overlay {
+    display: block;
+  }
+
+  .comments-area.comments--opened .comments-overlay {
+    display: none;
+  }
+  
+
+  .comments-overlay {
+    background: -webkit-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    bottom: 0;    
+    display: none;
+    height: 250px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+  }
+
+  .comments-show {
+    border-bottom: 2px solid blue;
+    bottom: 0;
+    font-weight: bold;
+    left: 50%;
+    position: absolute;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    z-index: 1;
+  }
+
+  .comments-show:hover {
+    border-color: black;
+    color: black;
+  }
+</style>

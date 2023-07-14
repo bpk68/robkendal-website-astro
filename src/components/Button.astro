@@ -1,5 +1,6 @@
 ---
 interface Props {
+  id?: string;
   href: string;
   text: string;  
   size?: 'sm' | 'md' | 'lg';
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const { 
+  id,
   href, 
   text, 
   size = 'md',
@@ -74,6 +76,7 @@ const {
   `}
   target={`${external ? '_blank' : '_self'}`}
   rel={`${external ? 'noopener noreferrer' : ''}`}
+  id={id}
 >
   <span 
     class="

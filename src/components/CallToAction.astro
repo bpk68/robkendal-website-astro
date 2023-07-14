@@ -7,12 +7,13 @@ interface CtaButton {
 }
 
 interface Props {
-  type: 'global' | '';
+  type: 'global' | 'post';
   title: string;
   buttons: CtaButton[];
+  img?: string;
 }
 
-const { type, title, buttons } = Astro.props;
+const { type, title, buttons, img } = Astro.props;
 ---
 
 {type === 'global' && (
@@ -56,10 +57,57 @@ const { type, title, buttons } = Astro.props;
           ))}          
       </div>
     </div>
-  </div>
- 
+  </div> 
 )}
 
-{type !== 'global' && (
-  <p>Generic CallToAction component</p>
+{type === 'post' && (
+  <div class="relative my-20 border-2 border-primary-blue py-8 px-8 rounded-sm bg-primary-blue -mx-12">
+  <span 
+    class="
+      absolute 
+      inset-0 
+      w-full 
+      h-full 
+      transition 
+      duration-200 
+      ease-out 
+      transform 
+      translate-x-1 
+      translate-y-1 
+      bg-black
+      group-hover:-translate-x-0 
+      group-hover:-translate-y-0
+    "
+  ></span>
+  <span 
+    class={`
+      absolute 
+      inset-0 
+      w-full 
+      h-full 
+      bg-primary-blue 
+      border-2 
+      border-gray-800 
+      group-hover:bg-primary-blue    
+    `}></span>
+    <div class="relative flex items-center gap-6">
+      <figure class="w-1/2">
+        <img
+          src={img}
+          alt="Promotional content for current article"          
+        />
+      </figure>
+      <div>
+        <h2 class="heading-2">{title}</h2>
+        <p class="mb-8 leading-normal text-xl">
+          <slot />
+        </p>
+        <div class="flex justify-start gap-5 items-center">
+          {buttons.map((button, i) => (
+            <Button href={button.href} text={button.text} variant="primary" isOutline={i % 2 === 0 ? true : false} />
+            ))}
+        </div>
+      </div>
+    </div>
+  </div>
 )}

@@ -3,12 +3,26 @@ import { readAll } from "../lib/markdoc/read";
 import { blog } from "../lib/markdoc/frontmatter.schema";
 
 interface Props {
+  title?: string;
   count: number;
   skip?: number;
   showHeading?: boolean;
   centralise?: boolean;
   showBlurb?: boolean;
+  relatedPostTags?: string[];
+  pathToSkip?: string;
 }
+
+const { 
+  title = "Latest articles",
+  count = 5, 
+  skip = 0, 
+  showHeading = false, 
+  centralise = false,
+  showBlurb = false,
+  relatedPostTags,
+  pathToSkip = '',
+} = Astro.props;
 
 const posts = await readAll<typeof blog>({
   directory: "blog",
@@ -17,22 +31,16 @@ const posts = await readAll<typeof blog>({
 
 const sortedPosts = posts
 .filter(p => p.frontmatter.draft !== true)
+.filter(p => p.slug !== pathToSkip)
+.filter(p => !relatedPostTags?.length || (relatedPostTags?.length && p.frontmatter.tags.some(t => relatedPostTags.includes(t.toLocaleLowerCase()))))
 .sort((a,b) => 
   new Date(b.frontmatter.date).valueOf() -
   new Date(a.frontmatter.date).valueOf());
-
-const { 
-  count = 5, 
-  skip = 0, 
-  showHeading = false, 
-  centralise = false,
-  showBlurb = false,
-} = Astro.props;
 ---
 
 <section class='section my-10'>
   {showHeading && (
-    <h2 class='heading-2 text-center mb-8'>Latest articles</h2>
+    <h2 class='heading-2 text-center mb-8'>{title}</h2>
   )}
   {sortedPosts.slice(skip, count).map(article => (
     <div class="mb-6 group">
@@ -64,5 +72,3 @@ const {
     </div>
   ))}
 </section>
-
-{console.log('hi there')}

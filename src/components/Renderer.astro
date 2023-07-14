@@ -7,6 +7,9 @@ import CodePenEmbed from "./CodePenEmbed.astro";
 import GitHubGistEmbed from "./GitHubGistEmbed.astro";
 import CodeBlock from "./CodeBlock.astro";
 import Heading from "./Heading.astro";
+import AppLink from './AppLink.astro';
+import Blockquote from './Blockquote.astro';
+import IFrameEmbed from "./IFrameEmbed.astro";
 
 type Props = {
   content: Content;
@@ -39,6 +42,18 @@ const components = {
     Component: GitHubGistEmbed,
     props: {},
   },
+  AppLink: {
+    Component: AppLink,
+    props: {}
+  },
+  Blockquote: {
+    Component: Blockquote,
+    props: {}
+  },
+  IFrameEmbed: {
+    Component: IFrameEmbed,
+    props: {}
+  }
 };
 ---
 

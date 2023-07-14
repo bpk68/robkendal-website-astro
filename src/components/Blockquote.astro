@@ -1,0 +1,28 @@
+---
+const props = Astro.props;
+---
+<blockquote 
+  class="
+    relative
+    my-10
+    md:my-14
+    before:z-0
+    before:block 
+    before:absolute 
+    before:-inset-1 
+    before:-skew-y-1
+    before:-rotate-1
+    before:bg-gradient-to-bl 
+    before:bg-no-repeat
+    before:bg-bottom 
+    before:bg-[length:95%_95%]
+    before:from-primary-blue 
+    before:to-primary-blue 
+    before:dark:from-primary-blue 
+    before:dark:to-primary-blue
+  ">
+  <i class="fa-solid fa-quote-left text-4xl absolute top-1 left-0"></i>
+  <div class="relative px-2">
+    <slot />  
+  </div>
+</blockquote>
