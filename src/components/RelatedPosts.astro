@@ -6,14 +6,16 @@ interface Props {
   pathToSkip?: string;
 }
 
-const { tags, pathToSkip } = Astro.props; 
+const { tags, pathToSkip } = Astro.props;
 ---
 
-<ArticleList 
-  title="Read more"
-  count={5} 
-  relatedPostTags={tags} 
-  pathToSkip={pathToSkip} 
-  showHeading 
-  showBlurb
-/>
+<div class="mt-20">
+  <ArticleList
+    title="Read more"
+    count={5}
+    relatedPostTags={tags}
+    pathToSkip={pathToSkip}
+    showHeading
+    showBlurb
+  />
+</div>

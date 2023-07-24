@@ -28,9 +28,9 @@ if (isBuild) {
 }
 
 export default defineConfig({
-  experimental: {
-    redirects: true,
-  },
+  // experimental: {
+  //   redirects: true,
+  // },
   redirects: {
     '/sitemap.xml': {
       status: 302,
