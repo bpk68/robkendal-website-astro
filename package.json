@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "pnpm tinacms dev -c 'pnpm astro dev'",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "tinacms build && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "clean": "rm -rf dist"
@@ -17,12 +17,14 @@
     "@astrojs/tailwind": "^4.0.0",
     "@markdoc/markdoc": "^0.3.0",
     "@tailwindcss/typography": "^0.5.9",
+    "@tinacms/cli": "^1.5.26",
     "astro": "^2.9.2",
     "astro-markdoc-renderer": "0.0.1-alpha.1",
     "globby": "^13.2.2",
     "gray-matter": "^4.0.3",
     "slugify": "^1.6.6",
     "tailwindcss": "^3.3.3",
+    "tinacms": "^1.5.17",
     "zod": "^3.21.4"
   },
   "devDependencies": {

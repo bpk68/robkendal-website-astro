@@ -10,37 +10,54 @@ interface Service {
 
 const services: Service[] = [
   {
-    icon: "fa-brands fa-shopify",
-    title: "Shopify development & support",
-    blurb: "As a Shopify Partner, I can help with ecommerce websites on Shopify, store migrations, custom Shopify theme development and more.",
-    href: "/freelance-shopify-developer"
+    icon: 'fa-brands fa-shopify',
+    title: 'Shopify development & support',
+    blurb:
+      'As a Shopify Partner, I can help with ecommerce websites on Shopify, store migrations, custom Shopify theme development and more.',
+    href: '/freelance-shopify-developer',
   },
   {
-    icon: "fa-solid fa-database",
-    title: "Enterprise software development",
-    blurb: "With years of experience building custom web apps for organisations just like yours, I can help create software solutions for your business.",
-    href: "/enterprise-software-development"
+    icon: 'fa-solid fa-database',
+    title: 'Enterprise software development',
+    blurb:
+      'With years of experience building custom web apps for organisations just like yours, I can help create software solutions for your business.',
+    href: '/enterprise-software-development',
   },
   {
-    icon: "fa-regular fa-window-restore",
-    title: "Small business websites",
-    blurb: "I help build blazing fast, accessible & beautiful websites for businesses of all shapes and sizes using headless CMS's powering Jamstack technologies.",
-    href: "/small-business-websites"
-  }
-]
+    icon: 'fa-regular fa-window-restore',
+    title: 'Small business websites',
+    blurb:
+      "I help build blazing fast, accessible & beautiful websites for businesses of all shapes and sizes using headless CMS's powering Jamstack technologies.",
+    href: '/small-business-websites',
+  },
+];
 ---
 
-<section class='section my-10 -mx-40'>
-  <h2 class='heading-2 text-center'>How can I help?</h2>
-  <p class='text-center text-md max-w-2xl mx-auto'>
-    As a freelance Shopify developer, Shopify partner and software development consultant, I can help build your next 
-    business website, enterprise software application, or ecommerce store.
+<section class="section my-10 lg:-mx-40">
+  <h2 class="heading-2 text-center">How can I help?</h2>
+  <p class="text-center text-md max-w-2xl mx-auto">
+    As a freelance Shopify developer, Shopify partner and software development
+    consultant, I can help build your next business website, enterprise software
+    application, or ecommerce store.
   </p>
-  <div class='columns-3 gap-5 mt-5'>
-    {services.map(service => (
-      <div class="relative bg-brand-blue-dark border-2 border-brand-blue text-brand-cream rounded-sm py-5 px-6">
-        <span 
-          class="
+  <div class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+    {
+      services.map((service, index) => (
+        <div
+          class={`
+            ${
+              index === services.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''
+            }
+            relative 
+            bg-brand-blue-dark 
+            border-2 
+            border-brand-blue 
+            text-brand-cream 
+            rounded-sm py-5 px-6
+          `}
+        >
+          <span
+            class="
             absolute 
             inset-0 
             w-full 
@@ -55,9 +72,9 @@ const services: Service[] = [
             group-hover:-translate-x-0 
             group-hover:-translate-y-0
           "
-        ></span>
-        <span 
-          class={`
+          />
+          <span
+            class={`
             absolute 
             inset-0 
             w-full 
@@ -66,23 +83,30 @@ const services: Service[] = [
             border-2 
             border-gray-800 
             group-hover:bg-primary-blue    
-          `}></span>
+          `}
+          />
           <div class="relative z-10">
-            <i class={`text-7xl text-center block ${service.icon}`}></i>
+            <i class={`text-7xl text-center block ${service.icon}`} />
             <h3 class="heading-3 text-brand-cream text-center">
               <span
-            class="
+                class="
                 bg-gradient-to-bl bg-no-repeat bg-bottom bg-[length:100%_40%]
                 from-brand-blue to-brand-blue dark:from-primary-blue dark:to-primary-blue
             "
-          >
-              {service.title}
+              >
+                {service.title}
               </span>
             </h3>
             <p class="mb-6">{service.blurb}</p>
-            <Button href={service.href} text="Find out more" variant="primary" classes={["mx-auto", "block", "w-full", "text-center"]} />
-            </div>
-      </div>
-    ))}
+            <Button
+              href={service.href}
+              text="Find out more"
+              variant="primary"
+              classes={['mx-auto', 'block', 'w-full', 'text-center']}
+            />
+          </div>
+        </div>
+      ))
+    }
   </div>
 </section>

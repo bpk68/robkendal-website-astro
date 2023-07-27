@@ -1,5 +1,6 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "module": "esnext",
   "display": "theme/bubblegum",
   "compilerOptions": {
     "types": ["astro/client"],
