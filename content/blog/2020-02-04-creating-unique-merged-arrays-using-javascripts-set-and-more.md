@@ -3,16 +3,17 @@ templateKey: blog-post
 title: Creating unique, merged arrays using JavaScript's Set (and more)
 date: 2020-02-04T15:43:28.124+00:00
 featured: true
-featuredimage: "/img/merging-arrays-blog-post.png"
-description: Merging arrays in JavaScript isn't all that tricky. Getting unique values
+featuredimage: '/img/merging-arrays-blog-post.png'
+description:
+  Merging arrays in JavaScript isn't all that tricky. Getting unique values
   in merged arrays can be. We'll look at some different methods and approaches in
   JavaScript that create unique arrays, including the shiny Set object.
 tags:
-- JavaScript
-- Tutorials
-- Development
-
+  - JavaScript
+  - Tutorials
+  - Development
 ---
+
 ![](/img/merging-arrays-blog-post.png)
 
 Picture the scene: you've got two (or more) similar arrays, each containing some overlapping data. How can you use JavaScript to merge the two into one single array that contains only _unique_ values?
@@ -21,9 +22,9 @@ Well, as it turns out, there are quite a few ways...
 
 For all the the sections below, we'll be using the following two array's that have a combination of different and identical numerical values:
 
-```JavaScript
-const arr1 = [1,2,3,4,5,6];
-const arr2 = [1,3,4,7,8,9];
+```javascript
+const arr1 = [1, 2, 3, 4, 5, 6];
+const arr2 = [1, 3, 4, 7, 8, 9];
 ```
 
 We'll be using the fancy arrow functions all over this article; if you [want to know more about arrow functions, then I have a lovely article on them here](https://robkendal.co.uk/blog/how-to-use-arrow-functions-in-javascript-es6/).
@@ -32,7 +33,7 @@ We'll be using the fancy arrow functions all over this article; if you [want to 
 
 Sure, you can merge two (or more) arrays using the `concat()` method or the [shiny ES6/ES2015 spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
 
-```JavaScript
+```javascript
 arr1.concat(arr2)
 // OR
 [...arr1, ...arr2] // this is functionally the same as concat
@@ -53,11 +54,11 @@ It doesn't return a new array or alter the existing array's data, it just moves 
 
 To use it to combine two arrays into a single, unique output, we can do the following:
 
-```JavaScript
-﻿let combinedArr = [];
+```javascript
+let combinedArr = [];
 
-arr1.forEach(value => {
-  if(!arr2.includes(value)) {
+arr1.forEach((value) => {
+  if (!arr2.includes(value)) {
     combinedArr.push(value);
   }
 });
@@ -83,8 +84,8 @@ It's also worth noting that whilst it doesn't alter the original array, it does 
 
 Here's how the previous example works by replacing the implementation with `filter`:
 
-```JavaScript
-﻿arr1.concat(arr2.filter(value => !arr1.includes(value)));
+```javascript
+arr1.concat(arr2.filter((value) => !arr1.includes(value)));
 
 // outputs > [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
@@ -99,16 +100,14 @@ If you really want to get fancy, you can use `array.reduce()`. Looking at [the M
 
 For our purposes, however, we'll be using reduce like this:
 
-```JavaScript
-﻿let uniqueArr = arr1.concat(arr2).reduce(
-  (accumulator, currentValue) => {
-      if(!accumulator.includes(currentValue)) {
-        accumulator.push(currentValue);
-      }
-    
-      return accumulator;
-  }, []
-);
+```javascript
+let uniqueArr = arr1.concat(arr2).reduce((accumulator, currentValue) => {
+  if (!accumulator.includes(currentValue)) {
+    accumulator.push(currentValue);
+  }
+
+  return accumulator;
+}, []);
 
 // outputs > [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
@@ -117,9 +116,9 @@ We have our concatenated starter arrays (`arr1` and `arr2`) and then we run `red
 
 Here are the arguments we're using and what they do:
 
-* Callback > accumulator - an array that ends up being an accumulation of our callback function's return statement(s).
-* Callback > current value - simply the current item in the array at the current position in the loop.
-* Reduce > Initial value - we pass in an empty array (`[]`) here so that the reducer will start at position 0 in our target array. If not supplied, it'll start at 1.
+- Callback > accumulator - an array that ends up being an accumulation of our callback function's return statement(s).
+- Callback > current value - simply the current item in the array at the current position in the loop.
+- Reduce > Initial value - we pass in an empty array (`[]`) here so that the reducer will start at position 0 in our target array. If not supplied, it'll start at 1.
 
 The `reduce` method can be a little cumbersome to get to grips with but once you get there, it's a powerful tool to have in your belt when it comes to manipulating arrays and certainly has a really useful place in specific applications. You can [read the MDN docs on reduce for more use cases](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce).
 
@@ -135,11 +134,8 @@ It offers a lot of similarities to the Array object, but the biggest advantage i
 
 Let's take a look:
 
-```JavaScript
-﻿const mySet = new Set([
-  ...arr1,
-  ...arr2
-]);
+```javascript
+const mySet = new Set([...arr1, ...arr2]);
 
 // outputs > [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
@@ -158,8 +154,8 @@ The downside, of course, is that `Set` is a newer language feature and, as such,
 
 This isn't a huge burden, however, and can be achieved like this:
 
-```JavaScript
-﻿const newArr = Array.from(mySet);
+```javascript
+const newArr = Array.from(mySet);
 // OR
 const newArr = [...mySet];
 ```
@@ -186,9 +182,9 @@ To test the performance of each of these methods on some large arrays, and check
 
 After performing each of the listed operations, here are the times involved:
 
-* `forEach` > 102ms
-* `filter` > 124ms
-* `reduce` > 223ms
-* `Set` > 7 ms
+- `forEach` > 102ms
+- `filter` > 124ms
+- `reduce` > 223ms
+- `Set` > 7 ms
 
 Our humble `forEach` is actually super quick compared to the clunkier `reduce` but none are quite as performant as the hero of the piece, `Set`.

@@ -59,10 +59,10 @@ A bit like this:
 
 To do that, first, we'll set out the building blocks of the App component.
 
-```JavaScript
-import React from "react";
+```javascript
+import React from 'react';
 
-import "./styles.css";
+import './styles.css';
 
 class App extends React.Component {
   handleLoadUsersClick = () => {
@@ -86,9 +86,9 @@ class App extends React.Component {
         {this.props.loading ? <p>loading...</p> : null}
         {!this.props.loading && this.props.users ? (
           <ul>
-            {this.props.users.map(user => (
-             <li>
-               <strong>{user.name}</strong> | {user.email}
+            {this.props.users.map((user) => (
+              <li>
+                <strong>{user.name}</strong> | {user.email}
               </li>
             ))}
           </ul>
@@ -111,53 +111,50 @@ To achieve these goals, we need to create two objects (or functions that return 
 
 Let's add the `connect()` function to our App component and the two functions that wire up state and dispatch.
 
-```JavaScript
+```javascript
 // ...other imports
 
-import { connect } from "react-redux";
-import { getUsers, getUsersSuccess } from "./actions";
+import { connect } from 'react-redux';
+import { getUsers, getUsersSuccess } from './actions';
 
 class App extends React.Component {
-	// ...App implementation
+  // ...App implementation
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   users: state.users,
-  loading: state.isLoading
+  loading: state.isLoading,
 });
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onLoadUsersClick: () => {
       dispatch(getUsers());
     },
-    onLoadUsersComplete: users => {
+    onLoadUsersComplete: (users) => {
       dispatch(getUsersSuccess(users));
-    }
+    },
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```
 
 The main imports section and App implementation remain the same, but we just add in our new imports
 
-```JavaScript
-import { connect } from "react-redux";
-import { getUsers, getUsersSuccess } from "./actions";
+```javascript
+import { connect } from 'react-redux';
+import { getUsers, getUsersSuccess } from './actions';
 ```
 
 To load in the `connect` function from React Redux, and to grab our reducer actions from another file — that's the `getUsers` and `getUsersSuccess` named imports above.
 
 Now, we'll wire up elements of our app state into the App component's props:
 
-```JavaScript
-const mapStateToProps = state => ({
+```javascript
+const mapStateToProps = (state) => ({
   users: state.users,
-  loading: state.isLoading
+  loading: state.isLoading,
 });
 ```
 
@@ -165,15 +162,15 @@ This is a very typical setup where we create a function that returns an object w
 
 Next, we create a similar function to map Redux's dispatch function to the component's props object:
 
-```JavaScript
-const mapDispatchToProps = dispatch => {
+```javascript
+const mapDispatchToProps = (dispatch) => {
   return {
     onLoadUsersClick: () => {
       dispatch(getUsers());
     },
-    onLoadUsersComplete: users => {
+    onLoadUsersComplete: (users) => {
       dispatch(getUsersSuccess(users));
-    }
+    },
   };
 };
 ```
@@ -182,11 +179,8 @@ With this function, we're accepting the Redux dispatch method (which will act up
 
 Finally, we wire up the state props, dispatch props, and our App component using the Redux connect function in this bit of code:
 
-```JavaScript
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+```javascript
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```
 
 ### Wiring up the button handler and our API call
@@ -195,7 +189,7 @@ The final step in the puzzle to make everything hum is to make our button click 
 
 Currently, whilst connected to the `onClick` event of our button, the handler method is looking a little sad and empty:
 
-```JavaScript
+```javascript
 handleLoadUsersClick = () => {
   // TODO - we'll handle loading the users from the
   // API here and some Redux state management.
@@ -204,13 +198,13 @@ handleLoadUsersClick = () => {
 
 So let's populate it with some of our Redux actions and our API call:
 
-```JavaScript
+```javascript
 handleLoadUsersClick = () => {
   this.props.onLoadUsersClick();
 
-  fetch("https://jsonplaceholder.typicode.com/users")
-    .then(response => response.json())
-    .then(json => this.props.onLoadUsersComplete(json));
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then((response) => response.json())
+    .then((json) => this.props.onLoadUsersComplete(json));
 };
 ```
 

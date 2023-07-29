@@ -1,15 +1,15 @@
 ---
-import { MarkdocRenderer } from "astro-markdoc-renderer";
-import type { Content } from "astro-markdoc-renderer";
-import YouTubeEmbed from "./YouTubeEmbed.astro";
-import TweetEmbed from "./TweetEmbed.astro";
-import CodePenEmbed from "./CodePenEmbed.astro";
-import GitHubGistEmbed from "./GitHubGistEmbed.astro";
-import CodeBlock from "./CodeBlock.astro";
-import Heading from "./Heading.astro";
+import { MarkdocRenderer } from 'astro-markdoc-renderer';
+import type { Content } from 'astro-markdoc-renderer';
+import YouTubeEmbed from './YouTubeEmbed.astro';
+import TweetEmbed from './TweetEmbed.astro';
+import CodePenEmbed from './CodePenEmbed.astro';
+import GitHubGistEmbed from './GitHubGistEmbed.astro';
+import ShikiCodeBlock from './ShikiCodeBlock.astro';
+import Heading from './Heading.astro';
 import AppLink from './AppLink.astro';
 import Blockquote from './Blockquote.astro';
-import IFrameEmbed from "./IFrameEmbed.astro";
+import IFrameEmbed from './IFrameEmbed.astro';
 
 type Props = {
   content: Content;
@@ -22,8 +22,8 @@ const components = {
     Component: Heading,
     props: {},
   },
-  CodeBlock: {
-    Component: CodeBlock,
+  ShikiCodeBlock: {
+    Component: ShikiCodeBlock,
     props: {},
   },
   YouTubeEmbed: {
@@ -44,16 +44,16 @@ const components = {
   },
   AppLink: {
     Component: AppLink,
-    props: {}
+    props: {},
   },
   Blockquote: {
     Component: Blockquote,
-    props: {}
+    props: {},
   },
   IFrameEmbed: {
     Component: IFrameEmbed,
-    props: {}
-  }
+    props: {},
+  },
 };
 ---
 

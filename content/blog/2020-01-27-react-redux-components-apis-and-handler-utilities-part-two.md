@@ -70,7 +70,7 @@ So let's get going. Here's a list of the changes we need to make:
 
 Let's begin by installing the [Redux Starter Kit](https://redux-starter-kit.js.org/introduction/quick-start) by running the following command:
 
-```JavaScript
+```javascript
 # NPM
 npm install --save @reduxjs/toolkit
 
@@ -88,12 +88,12 @@ Next, we'll need three things:
 
 We create a new file, `rootReducer.js` and populate it like so:
 
-```JavaScript
-import { combineReducers } from "@reduxjs/toolkit";
-import users from "./usersReducer";
+```javascript
+import { combineReducers } from '@reduxjs/toolkit';
+import users from './usersReducer';
 
 const rootReducer = combineReducers({
-  users
+  users,
 });
 
 export default rootReducer;
@@ -111,10 +111,10 @@ However, by using our pending reducer factory, we can abstract a lot of this pot
 
 We'll make a new file, `usersReducer.js` and code out the following:
 
-```JavaScript
-import ReducerFactory from "./reducerFactory";
+```javascript
+import ReducerFactory from './reducerFactory';
 
-const factory = new ReducerFactory("users", "users");
+const factory = new ReducerFactory('users', 'users');
 
 export const reducer = factory.reducer;
 export const actions = factory.actions;
@@ -135,20 +135,20 @@ Finally, to make everything talk to each other, we need to fire up the `index.js
 
 It looks like this:
 
-```JavaScript
+```javascript
 // ...other imports
 
-import { configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
-import rootReducer from "./reducers";
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import rootReducer from './reducers';
 
-import App from "./App";
+import App from './App';
 
 const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
 });
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.render(
   <Provider store={store}>
     <App />
@@ -169,18 +169,16 @@ It will reduce a lot of duplication when it comes to reducers that essentially d
 
 Here's our reducer factory class:
 
-
-
-```JavaScript
-import { createSlice } from "@reduxjs/toolkit";
-import initialState from "./state";
+```javascript
+import { createSlice } from '@reduxjs/toolkit';
+import initialState from './state';
 
 class ReducerFactory {
   constructor(slice, state) {
     const reducerResult = createSlice({
       name: slice,
       initialState: initialState[state],
-      reducers: this._generateReducers()
+      reducers: this._generateReducers(),
     });
 
     this.reducer = reducerResult.reducer;
@@ -199,7 +197,7 @@ class ReducerFactory {
       },
       requestGetItemsError: (state, action) => {
         state.isLoading = false;
-      }
+      },
     };
   };
 }
@@ -211,30 +209,26 @@ Starting from the top, we import the `createSlice` method from the starter kit. 
 
 We supply it with a slice name, the section of state we wish to act upon and a list of reducers to alter that section of state.
 
-
-
-```JavaScript
+```javascript
 const reducerResult = createSlice({
-    name: slice,
-    initialState: initialState[state],
-    reducers: this._generateReducers()
-  });
+  name: slice,
+  initialState: initialState[state],
+  reducers: this._generateReducers(),
+});
 ```
 
 We're doing this in the reducer factory's constructor to take advantage of our `slice` and `state` arguments. We also imported `initialState` from our state file and found the section we need using our `state` argument.
 
 The `createSlice` function returns an object that contains the created reducer and actions, which we assign to our reducer factory instance like so:
 
-
-
-```JavaScript
+```javascript
 this.reducer = reducerResult.reducer;
 this.actions = reducerResult.actions;
 ```
 
 Finally, we create our reducers in the private function, `_generateReducers()`.
 
-```JavaScript
+```javascript
 _generateReducers = () => {
   return {
     // get our list of items
@@ -247,7 +241,7 @@ _generateReducers = () => {
     },
     requestGetItemsError: (state, action) => {
       state.isLoading = false;
-    }
+    },
   };
 };
 ```
@@ -272,7 +266,7 @@ The penultimate piece in the puzzle is to remove all of the Redux interactions a
 
 Our new `dataHandler.js` looks like this:
 
-```JavaScript
+```javascript
 class DataHandler {
   constructor(dispatch, actions, baseUrl) {
     this.dispatch = dispatch;
@@ -284,8 +278,8 @@ class DataHandler {
     this.dispatch(this.actions.requestGetItems());
 
     return fetch(this.baseUrl)
-      .then(response => response.json())
-      .then(json => this.dispatch(this.actions.requestGetItemsSuccess(json)));
+      .then((response) => response.json())
+      .then((json) => this.dispatch(this.actions.requestGetItemsSuccess(json)));
   };
 }
 
@@ -312,22 +306,22 @@ Finally, to connect all the dots, we need to plumb our shiny data handler into o
 
 As a refresher, here how it looked before:
 
-```JavaScript
-import React from "react";
+```javascript
+import React from 'react';
 
-import { connect } from "react-redux";
-import { getUsers, getUsersSuccess } from "./actions";
+import { connect } from 'react-redux';
+import { getUsers, getUsersSuccess } from './actions';
 
-import "./styles.css";
+import './styles.css';
 
 class App extends React.Component {
   handleLoadUsersClick = () => {
     this.props.onLoadUsersClick();
 
     // let's do our api call
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(response => response.json())
-      .then(json => this.props.onLoadUsersComplete(json));
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((json) => this.props.onLoadUsersComplete(json));
   };
 
   render() {
@@ -346,7 +340,7 @@ class App extends React.Component {
         {this.props.loading ? <p>loading...</p> : null}
         {!this.props.loading && this.props.users ? (
           <ul>
-            {this.props.users.map(user => (
+            {this.props.users.map((user) => (
               <li key={user.id}>
                 <strong>{user.name}</strong> | {user.email}
               </li>
@@ -358,38 +352,34 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   users: state.users,
-  loading: state.isLoading
+  loading: state.isLoading,
 });
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onLoadUsersClick: () => {
       dispatch(getUsers());
     },
-    onLoadUsersComplete: users => {
+    onLoadUsersComplete: (users) => {
       dispatch(getUsersSuccess(users));
-    }
+    },
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```
 
 We need to replace the `mapDispatchToProps` with our data handler, and the click handler `handleLoadUsersClick` method with a call to our new data handler.
 
 Here's the updated code:
 
-```JavaScript
+```javascript
 // ...other imports
 
-import { actions } from "./usersReducer";
-import DataHandler from "./dataHandler";
-
+import { actions } from './usersReducer';
+import DataHandler from './dataHandler';
 
 class App extends React.Component {
   handleLoadUsersClick = () => {
@@ -403,12 +393,12 @@ class App extends React.Component {
 
 // ...mapStateToProps
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   dataHandler: new DataHandler(
     dispatch,
     actions,
-    "https://jsonplaceholder.typicode.com/users"
-  )
+    'https://jsonplaceholder.typicode.com/users'
+  ),
 });
 
 // ...rest of file

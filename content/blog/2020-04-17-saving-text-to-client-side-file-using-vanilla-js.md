@@ -30,7 +30,7 @@ So here we are, a really simple way to create and save a file on the client side
 
 First, the HTML...
 
-```markup
+```html
 <fieldset>
   <legend>Enter some config details</legend>
   <textarea></textarea>

@@ -35,8 +35,8 @@ The HTML files weren't complete documents, however, simply _fragments_ of HTML t
 
 I'm using Webpack to bundle everything and deal with the CSS and JS processing, so it made sense to try and find a simple way to involve Webpack to grab these files and process them. Sure, I could have used some sort of templating language, but this would cause a couple of issues:
 
-*   Introducing another level of complexity (however small) in what is otherwise a straightforward site.
-*   Having to redo the components in a templating language.
+- Introducing another level of complexity (however small) in what is otherwise a straightforward site.
+- Having to redo the components in a templating language.
 
 There are other options of course, but some aren't all that feasible...
 
@@ -48,8 +48,8 @@ Well, there isn't one really. There are lots of solutions involving `iframe` and
 
 There is a brilliant article by Eric Bidelman on [using HTML imports](https://www.html5rocks.com/en/tutorials/webcomponents/imports/). His method uses the current [Editor's Draft spec from W3C](https://w3c.github.io/webcomponents/spec/imports/) for the importing of HTML files using the `link` element in the head of a document as follows:
 
-```markup
-<link rel="import" href="/path/to/awesome/file.html">
+```html
+<link rel="import" href="/path/to/awesome/file.html" />
 ```
 
 From here, you can use some really simple JavaScript to grab the HTML content and load it onto the page:
@@ -70,15 +70,14 @@ Checking out [Can I Use's site](https://caniuse.com/#feat=imports) (at the time 
 Again, you can use some vanilla JS or even jQuery to load up other files, something like this:
 
 ```javascript
-$(function() {
-	$('#placeToShoveContent').load('path/to/file.html');
+$(function () {
+  $('#placeToShoveContent').load('path/to/file.html');
 });
 ```
 
 That's simple enough, but then it means loading jQuery into the project, just to do that. The vanilla JS solution is slightly more verbose then is ideal, mainly using AJAX to request the files (which is what the `jQuery.load()` function is really doing under the hood anyway).
 
-<a name="webpack-and-require-context-to-the-rescue"></a>Webpack and require.context() to the rescue!
---------------------------------------------
+## <a name="webpack-and-require-context-to-the-rescue"></a>Webpack and require.context() to the rescue!
 
 So then, since we're already using Webpack to build this thing, let's leverage one of Webpack's great features: require.context().
 
@@ -94,21 +93,19 @@ From here, we need to add the html-loader configuration into our `webpack.config
 
 ```javascript
 module: {
-        rules: 
-        [
-            {
-                test: /\.html$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'html-loader'
-                }
-            },
-            ...
-            {
-            //other rules here
-            }
-        ]
-      }
+  rules: [
+    {
+      test: /\.html$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'html-loader',
+      },
+    },
+    ...{
+      //other rules here
+    },
+  ];
+}
 ```
 
 Now, Webpack can recognise and process HTML files for us if we do something like this:
@@ -132,7 +129,10 @@ let htmlFragmentCache = {};
 
 // here, we're creating an anonymous function that loads up our HTML fragments
 // then it adds them to our cache object
-const importAll = requireContext => requireContext.keys().forEach(key => htmlFragmentCache[key] = requireContext(key));
+const importAll = (requireContext) =>
+  requireContext
+    .keys()
+    .forEach((key) => (htmlFragmentCache[key] = requireContext(key)));
 
 // next, we call our importAll() function to load the files
 // notice how this is where we call the require.context() function
@@ -140,24 +140,25 @@ const importAll = requireContext => requireContext.keys().forEach(key => htmlFra
 importAll(require.context('./fragments', false, /.html$/));
 
 // finally, we can loop over our cache's keys and add the HTML to our output element
-Object.keys(htmlFragmentCache).forEach(key => output.innerHTML += htmlFragmentCache[key]);
+Object.keys(htmlFragmentCache).forEach(
+  (key) => (output.innerHTML += htmlFragmentCache[key])
+);
 ```
 
 And it's as simple as that! Of course, even those scant few lines can be condensed into an [anonymous function](https://robkendal.co.uk/arrow-functions-in-javascript/) (really, an example of an [Immediately Invoked Function Expression](https://blog.mgechev.com/2012/08/29/self-invoking-functions-in-javascript-or-immediately-invoked-function-expression/) or IIFE) to create an even cleaner, terser end result:
 
 ```javascript
-(context => {
-	// need to clear out the current element's contents (just in case!)
-	output.innerHTML = '';
+((context) => {
+  // need to clear out the current element's contents (just in case!)
+  output.innerHTML = '';
 
-	// now, load up the html fragments and add them to the page
-	context.keys().forEach(key => output.innerHTML += context(key));
+  // now, load up the html fragments and add them to the page
+  context.keys().forEach((key) => (output.innerHTML += context(key)));
 })(require.context('./fragments', false, /.html$/));
 ```
 
 And there we have it. A really clean, simple way to load in a bunch of HTML files in a folder, using `require.context()` in a JavaScript file, loaded, processed and bundled using Webpack. Bosh!
 
-Any other ideas?
-----------------
+## Any other ideas?
 
 Comments: you got 'em! Let me know how you would (or have) handled this sort of thing in the past. Do you have an easier solution, something better? I'd love to hear your thoughts and ideas.

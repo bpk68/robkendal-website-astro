@@ -111,13 +111,13 @@ The first thing we need to do is install the [axios project](https://github.com/
 
 We'll also add in [the Dotenv package](https://www.npmjs.com/package/dotenv 'Dotenv - a package for loading environment variable files'). This will enable us to load in our API URL information from the default `.env.local` file we added in the previous articles.
 
-```node
+```cmd
     yarn add --dev axios dotenv
 ```
 
 Now, we'll need to add a new Node script into the `package.json` file. Open up the `package.json` file and add in the following line to the `"scripts"` section:
 
-```node
+```cmd
     "deploy": "yarn build && next export && node rss-gen.js"
 ```
 

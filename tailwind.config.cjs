@@ -56,6 +56,11 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            pre: false,
+            code: false,
+            'pre code': false,
+            'code::before': false,
+            'code::after': false,
             a: {
               'text-decoration': 'none',
               'background-repeat': 'no-repeat',
@@ -70,12 +75,6 @@ module.exports = {
             'h1, h2, h3, h4, h5': {
               color: 'rgb(var(--color-text-heading))',
             },
-            'code::before': {
-              content: 'none',
-            },
-            'code::after': {
-              content: 'none',
-            },
             blockquote: {
               border: 'none',
               position: 'relative',
@@ -88,14 +87,6 @@ module.exports = {
               'padding-left': '1.5rem',
               'padding-right': '1.5rem',
             },
-            // 'blockquote::before': {
-            //   content: "'“'",
-            //   'font-size': '4em',
-            //   color: 'rgb(var(--color-text-bold))',
-            //   position: 'absolute',
-            //   left: '-10px',
-            //   top: '-10px',
-            // },
             'blockquote::after': {
               content: '',
             },

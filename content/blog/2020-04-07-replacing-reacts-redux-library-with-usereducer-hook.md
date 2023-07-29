@@ -98,14 +98,14 @@ A **payload** could be anything: a value, string, integer, array, object, etc. I
 
 It might look like this:
 
-```JavaScript
+```javascript
 function mySuperReducer(state, action) {
-    switch(action.type) {
-        case 'ADD_USER':
-            return [...state, action.payload.newUser]
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case 'ADD_USER':
+      return [...state, action.payload.newUser];
+    default:
+      return state;
+  }
 }
 ```
 
@@ -124,7 +124,7 @@ When you pass an action (the result of an action creator) into a reducer, it is 
 
 What they look like varies from use to use, but in a relatively standard Redux setup, they'll look either like this:
 
-```JavaScript
+```javascript
 const ADD_USER = 'ADD USER; // our string constant part
 
 function addUser(newUser) {
@@ -134,7 +134,7 @@ function addUser(newUser) {
 
 or like this if you're using one of the Redux library's handy helpers:
 
-```JavaScript
+```javascript
 const addUser = createAction('ADD USER');
 ```
 
@@ -148,18 +148,18 @@ You call a dispatch function, passing in an action. The dispatch function takes 
 
 Using a dispatcher might look like this:
 
-```JavaScript
+```javascript
 // Here's our action
 function addUser(newUser) {
-    return { type: 'ADD_USER', newUser };
+  return { type: 'ADD_USER', newUser };
 }
 
 // here's a new user object
 const user = {
-    name: 'rob kendal',
-    age: 380,
-    dob: 01/01/1901
-}
+  name: 'rob kendal',
+  age: 380,
+  dob: 01 / 01 / 1901,
+};
 
 // and here's the dispatch to trigger things
 dispatch(addUser(user));
@@ -202,23 +202,24 @@ So let's get to it; first up, we'll create our initial state
 
 Firstly, we'll need a place to store our app's data, our initial state. We'll create a new file `initialstate.js` and load it up.
 
-```JavaScript
+```javascript
 export default {
-    loadingItems: false, // our app uses this to determine if we're loading our list
-    shoppingList: [ // our initial list of items
+  loadingItems: false, // our app uses this to determine if we're loading our list
+  shoppingList: [
+    // our initial list of items
     {
-        id: 1,
-        name: "Bananas",
-        description: "A bunch of 5 bananas, fresh from the plant",
-        price: 1.83
+      id: 1,
+      name: 'Bananas',
+      description: 'A bunch of 5 bananas, fresh from the plant',
+      price: 1.83,
     },
     {
-        id: 2,
-        name: "Soup",
-        description: "A can of beef broth",
-        price: 0.54
-    }
-    ]
+      id: 2,
+      name: 'Soup',
+      description: 'A can of beef broth',
+      price: 0.54,
+    },
+  ],
 };
 ```
 
@@ -236,9 +237,9 @@ Next, we'll create our reducer file, `reducer.js`. It will contain a few items w
 
 Our new file looks like this:
 
-```JavaScript
+```javascript
 // We need React in scope to create our context objects
-import React from "react";
+import React from 'react';
 
 // Context
 // will be used to pass down the dispatch method and our
@@ -250,10 +251,10 @@ export const StoreContext = React.createContext(null);
 // we will import this object and use the various properties
 // in child objects when calling the dispatch method
 export const actions = {
-    GET_ITEMS: "get items",
-    GET_ITEMS_SUCCESS: "get items success",
-    ADD_ITEM: "add item",
-    REMOVE_ITEM: "remove item"
+  GET_ITEMS: 'get items',
+  GET_ITEMS_SUCCESS: 'get items success',
+  ADD_ITEM: 'add item',
+  REMOVE_ITEM: 'remove item',
 };
 
 // This is a simple helper function that will take a type
@@ -261,50 +262,50 @@ export const actions = {
 // value which needs to be affected in state it returns
 // a simple object that will be passed to our dispatch function
 export const createAction = (type, payload) => {
-    return {
+  return {
     type,
-    payload
-    };
+    payload,
+  };
 };
 
 // Reducer
 // the function that accepts our app state, and the action to
 // take upon it, which then carries out that action
 export const reducer = (state, action) => {
-    switch (action.type) {
+  switch (action.type) {
     case actions.GET_ITEMS:
-        return {
+      return {
         ...state,
-        loadingItems: true
-        };
+        loadingItems: true,
+      };
     case actions.GET_ITEMS_SUCCESS:
-        return {
+      return {
         ...state,
-        loadingItems: false
-        };
+        loadingItems: false,
+      };
     case actions.ADD_ITEM:
-        const nextId = Math.max.apply(
+      const nextId = Math.max.apply(
         null,
-        state.shoppingList.map(item => item.id)
-        );
-        const newItem = {
+        state.shoppingList.map((item) => item.id)
+      );
+      const newItem = {
         ...action.payload,
-        id: nextId + 1
-        };
-        return {
+        id: nextId + 1,
+      };
+      return {
         ...state,
-        shoppingList: [...state.shoppingList, newItem]
-        };
+        shoppingList: [...state.shoppingList, newItem],
+      };
     case actions.REMOVE_ITEM:
-        return {
+      return {
         ...state,
         shoppingList: state.shoppingList.filter(
-            item => item.id !== action.payload
-        )
-        };
+          (item) => item.id !== action.payload
+        ),
+      };
     default:
-        return state;
-    }
+      return state;
+  }
 };
 ```
 
@@ -326,37 +327,34 @@ So we've got a reducer (and it's other moving parts) and some state for the redu
 
 First, we'll import some important items at the top of the file:
 
-```JavaScript
-import React, { useReducer, useEffect } from "react";
+```javascript
+import React, { useReducer, useEffect } from 'react';
 
 // Styles
-import "./styles.css";
+import './styles.css';
 
 // Data
-import initialState from "./initialstate";
-import { reducer, StoreContext, actions } from "./reducer";
+import initialState from './initialstate';
+import { reducer, StoreContext, actions } from './reducer';
 
 // Components
-import AddItem from "./components/AddItem";
-import ShoppingList from "./components/ShoppingList";
+import AddItem from './components/AddItem';
+import ShoppingList from './components/ShoppingList';
 ```
 
 We'll get to useReducer and useEffect in a minute. The important bits of this so far are that we're importing our app's initial state, as well as most items from the `/reducer.js` file.
 
 Next, we'll define our main export and proceed to fill it as we go.
 
-```JavaScript
-export default props => {
-
-    return (
-        <div>The app has landed</div>
-    );
+```javascript
+export default (props) => {
+  return <div>The app has landed</div>;
 };
 ```
 
 From here, we'll finally use our useReducer Hook:
 
-```JavaScript
+```javascript
 export default props => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -395,16 +393,16 @@ In the useEffect Hook, we actually use the dispatch method for the first time. W
 
 You can see in our `reducer.js` file what affect this has on state:
 
-```JavaScript
+```javascript
 export const reducer = (state, action) => {
-    switch (action.type) {
+  switch (action.type) {
     case actions.GET_ITEMS:
-        return {
+      return {
         ...state,
-        loadingItems: true
-        };
+        loadingItems: true,
+      };
     // ... rest of reducer
-    }
+  }
 };
 ```
 
@@ -416,30 +414,29 @@ We simply set the 'loadingItems' flag to true, which means in our App component,
 
 Finally, we need to wire up the app so that it actually renders something useful. We'll do that here:
 
-```JavaScript
-export default props => {
+```javascript
+export default (props) => {
+  // ...unchanged
 
-    // ...unchanged
-
-    return (
+  return (
     <StoreContext.Provider value={{ dispatch, state }}>
       <h1>Redux fun with shopping lists</h1>
       <hr />
       {state.loadingItems && <div className="loading">...loading</div>}
       {!state.loadingItems && (
-          <div className="columns">
+        <div className="columns">
           <div className="column">
-              <h2>Add a new item</h2>
-              <AddItem />
+            <h2>Add a new item</h2>
+            <AddItem />
           </div>
           <div className="column">
-              <h2>Shopping list</h2>
-              <ShoppingList />
+            <h2>Shopping list</h2>
+            <ShoppingList />
           </div>
-          </div>
+        </div>
       )}
     </StoreContext.Provider>
-    );
+  );
 };
 ```
 
@@ -455,55 +452,55 @@ Everything else is pretty much standard React stuff. We check to see if the `loa
 
 Here's our app's entry point in complete, the App component:
 
-```JavaScript
-import React, { useReducer, useEffect } from "react";
+```javascript
+import React, { useReducer, useEffect } from 'react';
 
 // Styles
-import "./styles.css";
+import './styles.css';
 
 // Data
-import initialState from "./initialstate";
-import { reducer, StoreContext, actions } from "./reducer";
+import initialState from './initialstate';
+import { reducer, StoreContext, actions } from './reducer';
 
 // Components
-import AddItem from "./components/AddItem";
-import ShoppingList from "./components/ShoppingList";
+import AddItem from './components/AddItem';
+import ShoppingList from './components/ShoppingList';
 
-export default props => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+export default (props) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-    useEffect(() => {
+  useEffect(() => {
     // simulate loading of items from an API
     dispatch({
-        type: actions.GET_ITEMS
+      type: actions.GET_ITEMS,
     });
 
     setTimeout(() => {
-        dispatch({
-        type: actions.GET_ITEMS_SUCCESS
-        });
+      dispatch({
+        type: actions.GET_ITEMS_SUCCESS,
+      });
     }, 2000);
-    }, []);
+  }, []);
 
-    return (
+  return (
     <StoreContext.Provider value={{ dispatch, state }}>
       <h1>Redux fun with shopping lists</h1>
       <hr />
       {state.loadingItems && <div className="loading">...loading</div>}
       {!state.loadingItems && (
-          <div className="columns">
+        <div className="columns">
           <div className="column">
-              <h2>Add a new item</h2>
-              <AddItem />
+            <h2>Add a new item</h2>
+            <AddItem />
           </div>
           <div className="column">
-              <h2>Shopping list</h2>
-              <ShoppingList />
+            <h2>Shopping list</h2>
+            <ShoppingList />
           </div>
-          </div>
+        </div>
       )}
     </StoreContext.Provider>
-    );
+  );
 };
 ```
 
@@ -513,26 +510,22 @@ export default props => {
 
 Next, we'll dig into the ShoppingList component. At the top of the file, we'll see a familiar set of imports:
 
-```JavaScript
-import React, { useContext } from "react";
+```javascript
+import React, { useContext } from 'react';
 
 // State
-import {
-    StoreContext,
-    actions,
-    createAction
-} from "../reducer";
+import { StoreContext, actions, createAction } from '../reducer';
 ```
 
 Next, we'll define the main output for this component:
 
-```JavaScript
-export default props => {
+```javascript
+export default (props) => {
   const store = useContext(StoreContext);
   const state = store.state;
   const dispatch = store.dispatch;
 
-  const handleRemoveItem = id => {
+  const handleRemoveItem = (id) => {
     dispatch(createAction(actions.REMOVE_ITEM, id));
   };
 
@@ -540,31 +533,31 @@ export default props => {
     <>
       {!state.shoppingList && <p>no items in list</p>}
       {state.shoppingList && (
-      <table>
+        <table>
           <thead>
-          <tr>
+            <tr>
               <th>Name</th>
               <th>Description</th>
               <th>Price</th>
               <th>Actions</th>
-          </tr>
+            </tr>
           </thead>
           <tbody>
-          {state.shoppingList &&
-              state.shoppingList.map(item => (
-              <tr key={item.id}>
+            {state.shoppingList &&
+              state.shoppingList.map((item) => (
+                <tr key={item.id}>
                   <td>{item.name}</td>
                   <td>{item.description}</td>
                   <td>£{item.price}</td>
                   <td>
-                  <button onClick={() => handleRemoveItem(item.id)}>
+                    <button onClick={() => handleRemoveItem(item.id)}>
                       remove
-                  </button>
+                    </button>
                   </td>
-              </tr>
+                </tr>
               ))}
           </tbody>
-      </table>
+        </table>
       )}
     </>
   );
@@ -581,7 +574,7 @@ We know from our App component that we're already passing down the Redux dispatc
 
 Simple: with the `useContext` Hook...
 
-```JavaScript
+```javascript
 const store = useContext(StoreContext);
 const state = store.state;
 const dispatch = store.dispatch;
@@ -597,9 +590,9 @@ Similarly, we use `dispatch` to trigger state changes; in our case to remove ite
 
 Whilst you could inline the following directly into the button element (and I normally would for brevity), I think it's a little clearer for learning to abstract the 'remove' button's click handler into its own variable.
 
-```JavaScript
-const handleRemoveItem = id => {
-    dispatch(createAction(actions.REMOVE_ITEM, id));
+```javascript
+const handleRemoveItem = (id) => {
+  dispatch(createAction(actions.REMOVE_ITEM, id));
 };
 ```
 
@@ -607,9 +600,9 @@ Again, quite a simple approach, but we call the dispatch function, passing in th
 
 It's worth noting that the above is functionally equivalent to the following:
 
-```JavaScript
-const handleRemoveItem = id => {
-    dispatch({ type: 'remove item', payload: id});
+```javascript
+const handleRemoveItem = (id) => {
+  dispatch({ type: 'remove item', payload: id });
 };
 ```
 
@@ -617,18 +610,18 @@ It just looks a bit neater in the first example, and leaves less room for error(
 
 Again, you can see that this links through to our reducer file like so:
 
-```JavaScript
+```javascript
 export const reducer = (state, action) => {
-    switch (action.type) {
+  switch (action.type) {
     // ...rest of reducer
     case actions.REMOVE_ITEM:
-        return {
+      return {
         ...state,
         shoppingList: state.shoppingList.filter(
-            item => item.id !== action.payload
-        )
-        };
-    }
+          (item) => item.id !== action.payload
+        ),
+      };
+  }
 };
 ```
 
@@ -642,36 +635,36 @@ Finally, we need to be able to add an item to our list to complete the circle of
 
 By now, things should start looking familiar, so we'll take a look at the entire AddItem component as a whole and walk through the finer points:
 
-```JavaScript
-import React, { useContext, useState } from "react";
+```javascript
+import React, { useContext, useState } from 'react';
 
 // State
-import { StoreContext, actions, createAction } from "../reducer";
+import { StoreContext, actions, createAction } from '../reducer';
 
-export default props => {
-    const _defaultFields = {
-      name: "",
-      description: "",
-      price: ""
-    };
-    const store = useContext(StoreContext);
-    const dispatch = store.dispatch;
-    const [fields, setFields] = useState({ ..._defaultFields });
+export default (props) => {
+  const _defaultFields = {
+    name: '',
+    description: '',
+    price: '',
+  };
+  const store = useContext(StoreContext);
+  const dispatch = store.dispatch;
+  const [fields, setFields] = useState({ ..._defaultFields });
 
-    const handleInputChange = evt => {
-      setFields({
-          ...fields,
-          [evt.target.id]: evt.target.value
-      });
-    };
+  const handleInputChange = (evt) => {
+    setFields({
+      ...fields,
+      [evt.target.id]: evt.target.value,
+    });
+  };
 
-    const handleFormSubmit = evt => {
-      evt.preventDefault();
-      dispatch(createAction(actions.ADD_ITEM, fields));
-      setFields(_defaultFields);
-    };
+  const handleFormSubmit = (evt) => {
+    evt.preventDefault();
+    dispatch(createAction(actions.ADD_ITEM, fields));
+    setFields(_defaultFields);
+  };
 
-    return (
+  return (
     <form onSubmit={handleFormSubmit}>
       <label htmlFor="name">Name</label>
       <input
@@ -696,7 +689,7 @@ export default props => {
       />
       <button type="submit">Add item</button>
     </form>
-    );
+  );
 };
 ```
 
@@ -710,11 +703,11 @@ Most everything else is pretty standard React form field handling [using control
 
 What we're interested in, however, happens in the `handleFormSubmit()` method:
 
-```JavaScript
-const handleFormSubmit = evt => {
-    evt.preventDefault();
-    dispatch(createAction(actions.ADD_ITEM, fields));
-    setFields(_defaultFields);
+```javascript
+const handleFormSubmit = (evt) => {
+  evt.preventDefault();
+  dispatch(createAction(actions.ADD_ITEM, fields));
+  setFields(_defaultFields);
 };
 ```
 
@@ -724,25 +717,25 @@ Next, we call our familiar dispatch method, passing in the action 'ADD_ITEM' and
 
 What happens in our reducer looks like this:
 
-```JavaScript
+```javascript
 export const reducer = (state, action) => {
-    switch (action.type) {
+  switch (action.type) {
     // ...rest of reducer
     case actions.ADD_ITEM:
       const nextId = Math.max.apply(
         null,
-        state.shoppingList.map(item => item.id)
+        state.shoppingList.map((item) => item.id)
       );
       const newItem = {
         ...action.payload,
-        id: nextId + 1
+        id: nextId + 1,
       };
       return {
         ...state,
-        shoppingList: [...state.shoppingList, newItem]
+        shoppingList: [...state.shoppingList, newItem],
       };
     // ...rest of reducer
-    }
+  }
 };
 ```
 

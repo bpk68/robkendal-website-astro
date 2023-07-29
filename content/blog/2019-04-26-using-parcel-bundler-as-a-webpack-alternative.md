@@ -60,7 +60,7 @@ yarn init -y
 
 Now, at step 3, we can just create two files to do something useful. First, a starter html file
 
-```markup
+```html
 /* add this to your project root as index.html */
 <html>
   <body>

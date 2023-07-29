@@ -102,34 +102,34 @@ Nothing too complex here, but each file plays a part:
 
 If you open up the `index.html` file, you'll notice a couple of things. Firstly we're pulling in the fantastic [Bulma CSS framework](https://bulma.io/documentation/) in the head using this line:
 
-```markup
+```html
 <!-- grab the Bulma library (for some good base styles) -->
 <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
 />
 ```
 
 Next, we have a really simple content structure that shows off a couple of styles that we can customise:
 
-```markup
+```html
 <main class="custom-theme">
-    <section class="hero is-fullheight">
+  <section class="hero is-fullheight">
     <div class="hero-body">
-        <div class="container">
+      <div class="container">
         <div class="content notification">
-            <h1 class="title">What an interesting title</h1>
-            <p>
-            Integer sollicitudin, tortor a mattis commodo, velit urna
-            rhoncus erat, vitae congue lectus dolor consequat libero. Donec
-            leo ligula, maximus et pellentesque sed, gravida a metus. Cras
-            ullamcorper a nunc ac porta.
-            </p>
-            <button class="button">Make exciting things happen</button>
+          <h1 class="title">What an interesting title</h1>
+          <p>
+            Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus
+            erat, vitae congue lectus dolor consequat libero. Donec leo ligula,
+            maximus et pellentesque sed, gravida a metus. Cras ullamcorper a
+            nunc ac porta.
+          </p>
+          <button class="button">Make exciting things happen</button>
         </div>
-        </div>
+      </div>
     </div>
-    </section>
+  </section>
 </main>
 ```
 
