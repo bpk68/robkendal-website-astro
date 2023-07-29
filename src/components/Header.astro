@@ -1,10 +1,12 @@
 ---
-import Nav from "./Nav.astro";
-import DarkModeToggle from "./DarkModeToggle.astro";
-import Button from "./Button.astro";
+import Nav from './Nav.astro';
+import DarkModeToggle from './DarkModeToggle.astro';
+import Button from './Button.astro';
 ---
 
-<header class="flex items-center justify-center gap-40">
+<header
+  class="flex items-center justify-between lg:justify-center gap-10 lg:gap-40"
+>
   <div>
     <a
       class="unset absolute z-10 left-[50%] -top-[100rem] translate-x-[-50%] bg-white text-black px-8 py-2 focus:top-[initial]"
@@ -14,64 +16,30 @@ import Button from "./Button.astro";
     </a>
     <Nav />
   </div>
-  <div class="justify-self-end py-2 flex items-center content-center text-text-bold gap-4">
+  <div
+    class="justify-self-end py-2 flex items-center content-center text-text-bold gap-4"
+  >
     <a
-      class="
-        unset 
-        rounded-sm 
-        transition-[background-size] 
-        duration-150 
-        ease-in-out 
-        bg-left-bottom 
-        bg-[length:0%_55%] 
-        hover:bg-[length:100%_55%] 
-        bg-no-repeat 
-        bg-gradient-to-r 
-        from-primary-yellow 
-        to-primary-yellow 
-        dark:bg-none 
-        dark:hover:text-primary-yellow
-        text-2xl
-      "
+      class="unset rounded-sm transition-[background-size] duration-150 ease-in-out bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%] bg-no-repeat bg-gradient-to-r from-primary-yellow to-primary-yellow dark:bg-none dark:hover:text-primary-yellow text-2xl"
       href="https://github.com/bpk68"
     >
-      <i class="fa-brands fa-github" aria-hidden="true" title="View Rob Kendal's GitHub profile"></i>
+      <i
+        class="fa-brands fa-github"
+        aria-hidden="true"
+        title="View Rob Kendal's GitHub profile"></i>
       <span class="is-sr-only">GitHub</span>
     </a>
     <a
-      class="
-        unset 
-        rounded-sm 
-        transition-[background-size] 
-        duration-150 
-        bg-left-bottom 
-        bg-[length:0%_55%] 
-        hover:bg-[length:100%_55%] 
-        bg-no-repeat 
-        bg-gradient-to-r 
-        from-primary-blue 
-        to-primary-blue 
-        dark:bg-none 
-        dark:hover:text-primary-blue
-        text-2xl
-      "
+      class="unset rounded-sm transition-[background-size] duration-150 bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%] bg-no-repeat bg-gradient-to-r from-primary-blue to-primary-blue dark:bg-none dark:hover:text-primary-blue text-2xl"
       href="https://www.linkedin.com/in/robkendal"
     >
-      <i class="fa-brands fa-linkedin" aria-hidden="true" title="Connect with Rob Kendal on LinkedIn"></i>
+      <i
+        class="fa-brands fa-linkedin"
+        aria-hidden="true"
+        title="Connect with Rob Kendal on LinkedIn"></i>
       <span class="is-sr-only">Linked In</span>
-    </a>    
+    </a>
     <DarkModeToggle />
     <Button href="/contact" text="Hire me" variant="primary" size="sm" />
   </div>
 </header>
-<style>
-  /* header {
-    grid-area: header;
-    display: grid;
-    align-items: center;
-    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(
-        0,
-        max-content
-      );
-  } */
-</style>

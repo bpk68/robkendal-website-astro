@@ -6,7 +6,11 @@ interface Props {
   action?: string;
   pageLocation?: string;
 }
-const { formName = "contact-form", action = "/contact/thanks", pageLocation } = Astro.props;
+const {
+  formName = 'contact-form',
+  action = '/contact/thanks',
+  pageLocation,
+} = Astro.props;
 const path = pageLocation ?? Astro.request.url;
 ---
 
@@ -16,27 +20,13 @@ const path = pageLocation ?? Astro.request.url;
   method="post"
   action={action}
   data-netlify="true"
-  data-netlify-honeypot="bot-field"  
-  class="relative mt-8 mb-16 border-2 border-primary-blue p-10 rounded-sm bg-primary-blue"
+  data-netlify-honeypot="bot-field"
+  class="relative mt-8 mb-16 border-2 border-primary-blue p-5 md:p-10 rounded-sm bg-primary-blue"
 >
-  <span 
-    class="
-      absolute 
-      inset-0 
-      w-full 
-      h-full 
-      transition 
-      duration-200 
-      ease-out 
-      transform 
-      translate-x-1 
-      translate-y-1 
-      bg-black
-      group-hover:-translate-x-0 
-      group-hover:-translate-y-0
-    "
+  <span
+    class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"
   ></span>
-  <span 
+  <span
     class={`
       absolute 
       inset-0 
@@ -47,114 +37,79 @@ const path = pageLocation ?? Astro.request.url;
       border-gray-800 
       group-hover:bg-primary-blue    
     `}></span>
-    <div class="relative z-10">
-      {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-      <input type="hidden" name="form-name" value={formName} />
-      <input type="hidden" name="page-sent-from" value={path} />
-      <div hidden>
-        <label>
-          Don’t fill this out:{" "}
-          <input id="bot-field" name="bot-field" />
-        </label>
+  <div class="relative z-10">
+    {
+      /* The `form-name` hidden field is required to support form submissions without JavaScript */
+    }
+    <input type="hidden" name="form-name" value={formName} />
+    <input type="hidden" name="page-sent-from" value={path} />
+    <div hidden>
+      <label>
+        Don’t fill this out:{' '}
+        <input id="bot-field" name="bot-field" />
+      </label>
+    </div>
+
+    <div class="mb-4">
+      <label class="label" for="txtName"> Your name</label>
+      <div class="control">
+        <input
+          id="txtName"
+          name="name"
+          class="form-control w-full px-4 py-3 rounded-sm mt-2 shadow appearance-none leading-tight outline-brand-purple placeholder-slate-400"
+          type="text"
+          placeholder="Alice Jones"
+          required
+        />
       </div>
-    
-      <div class="mb-4">
-        <label class="label" for="txtName">
-          Your name
-        </label>
-        <div class="control">
-          <input
-            id="txtName"
-            name="name"
-            class="form-control w-full px-4 py-3 rounded-sm mt-2 shadow appearance-none leading-tight outline-brand-purple placeholder-slate-400"
-            type="text"
-            placeholder="Alice Jones"        
-            required
-          />
-        </div>
+    </div>
+    <div class="mb-4">
+      <label class="label" for="txtEmail"> Your email address</label>
+      <div class="control">
+        <input
+          id="txtEmail"
+          name="email"
+          class="form-control w-full px-4 py-3 rounded-sm mt-2 shadow appearance-none leading-tight outline-brand-purple placeholder-slate-400"
+          type="email"
+          placeholder="alice.jones@outlook.com"
+          required
+        />
       </div>
-      <div class="mb-4">
-        <label class="label" for="txtEmail">
-          Your email address
-        </label>
-        <div class="control">
-          <input
-            id="txtEmail"
-            name="email"
-            class="form-control w-full px-4 py-3 rounded-sm mt-2 shadow appearance-none leading-tight outline-brand-purple placeholder-slate-400"
-            type="email"
-            placeholder="alice.jones@outlook.com"        
-            required
-          />
-        </div>
+    </div>
+    <div class="mb-4">
+      <label class="label" for="txtDiscovery"> How did you discover me?</label>
+      <div class="control">
+        <input
+          id="txtDiscovery"
+          name="txtDiscovery"
+          class="form-control w-full px-4 py-3 rounded-sm mt-2 shadow appearance-none leading-tight outline-brand-purple placeholder-slate-400"
+          type="text"
+          placeholder={`Through a google search for 'awesome developers in XYZ'`}
+        />
       </div>
-      <div class="mb-4">
-        <label class="label" for="txtDiscovery">
-          How did you discover me?
-        </label>
-        <div class="control">
-          <input
-            id="txtDiscovery"
-            name="txtDiscovery"
-            class="form-control w-full px-4 py-3 rounded-sm mt-2 shadow appearance-none leading-tight outline-brand-purple placeholder-slate-400"
-            type="text"
-            placeholder={`Through a google search for 'awesome developers in XYZ'`}        
-          />
-        </div>
+    </div>
+    <div class="mb-4">
+      <label class="label" for="txtMessage"> Your message</label>
+      <div class="control">
+        <textarea
+          id="txtMessage"
+          name="message"
+          class="form-control w-full px-4 py-3 rounded-sm mt-2 shadow appearance-none leading-tight outline-brand-purple placeholder-slate-400"
+          placeholder="Hey Rob, I have an exciting Shopify store, software or web development project I want to talk about (please provide as much detail as you can)"
+          rows="10"
+          required></textarea>
       </div>
-      <div class="mb-4">
-        <label class="label" for="txtMessage">
-          Your message
-        </label>
-        <div class="control">
-          <textarea
-            id="txtMessage"
-            name="message"
-            class="form-control w-full px-4 py-3 rounded-sm mt-2 shadow appearance-none leading-tight outline-brand-purple placeholder-slate-400"
-            placeholder="Hey Rob, I have an exciting Shopify store, software or web development project I want to talk about (please provide as much detail as you can)"        
-            rows="10"
-            required
-          />
-        </div>
-      </div>
-      <div class="">
-        <button
-          type="submit"
-          class="
-            relative 
-            inline-block 
-            px-5 
-            py-3 
-            group 
-            rounded-sm 
-            font-bold
-            text-bold 
-            text-shadow
-            text-lg 
-            transition 
-            duration-200 
-            ease-out 
-            hover:-rotate-2
-          ">
-            <span 
-              class="
-                absolute 
-                inset-0 
-                w-full 
-                h-full 
-                transition 
-                duration-200 
-                ease-out 
-                transform 
-                translate-x-1 
-                translate-y-1 
-                bg-primary-blue 
-                group-hover:-translate-x-0 
-                group-hover:-translate-y-0
-              "
-            ></span>
-            <span 
-              class={`
+    </div>
+    <div class="">
+      <button
+        type="submit"
+        class="relative inline-block px-5 py-3 group rounded-sm font-bold text-bold text-shadow text-lg transition duration-200 ease-out hover:-rotate-2 w-full text-center md:w-auto md:text-left"
+      >
+        <span
+          class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-primary-blue group-hover:-translate-x-0 group-hover:-translate-y-0"
+        ></span>
+        <span
+          class={`
                 absolute 
                 inset-0 
                 w-full 
@@ -164,63 +119,60 @@ const path = pageLocation ?? Astro.request.url;
                 border-gray-800 
                 group-hover:bg-primary-blue    
               `}></span>
-            <span 
-              class="
-                relative 
-                text-black 
-                group-hover:text-white
-              ">
-              Send
-            </span>
-            <span class='fa-solid fa-chevron-circle-right relative z-10'></span>
-          </button>
-    </div>
+        <span class="relative text-black group-hover:text-white"> Send</span>
+        <span class="fa-solid fa-chevron-circle-right relative z-10"></span>
+      </button>
     </div>
   </div>
 </form>
 
-
-<script   
+<script
   define:vars={{
     formName,
-    action
-  }
-}>
-  const encode = (data) => {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
+    action,
+  }}
+>
+const encode = (data) => {
+  return Object.keys(data)
+    .map(
+      (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+    )
+    .join('&');
+};
+
+let fields = {};
+
+const handleChange = (e) => {
+  fields = {
+    ...fields,
+    [e.target.name]: e.target.value,
   };
+};
 
-  let fields = {};  
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-  const handleChange = (e) => {    
-    fields = {
-      ...fields,      
-      [e.target.name]: e.target.value,
-    };
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": formName,
-        ...fields,
-      }),
-    })
-    .then(() => window.location.replace(action))      
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encode({
+      'form-name': formName,
+      ...fields,
+    }),
+  })
+    .then(() => window.location.replace(action))
     .catch((error) => alert(error));
-  };  
+};
 
-  // adding event handlers  
-  document.getElementById(formName).addEventListener("submit", handleSubmit);
-  document.getElementById('bot-field').addEventListener("change", handleChange);
-  document.getElementById('txtName').addEventListener("change", handleChange);
-  document.getElementById('txtEmail').addEventListener("change", handleChange);
-  document.getElementById('txtDiscovery').addEventListener("change", handleChange);
-  document.getElementById('txtMessage').addEventListener("change", handleChange);
+// adding event handlers
+document.getElementById(formName).addEventListener('submit', handleSubmit);
+document.getElementById('bot-field').addEventListener('change', handleChange);
+document.getElementById('txtName').addEventListener('change', handleChange);
+document.getElementById('txtEmail').addEventListener('change', handleChange);
+document
+  .getElementById('txtDiscovery')
+  .addEventListener('change', handleChange);
+document
+  .getElementById('txtMessage')
+  .addEventListener('change', handleChange);
 </script>

@@ -29,8 +29,6 @@ const posts = await readAll<typeof blog>({
   frontmatterSchema: blog,
 });
 
-console.log(relatedPostTags);
-
 const sanitisedTags = relatedPostTags?.map((tag) => tag.toLocaleLowerCase());
 
 const sortedPosts = posts
@@ -49,8 +47,6 @@ const sortedPosts = posts
       new Date(b.frontmatter.date).valueOf() -
       new Date(a.frontmatter.date).valueOf()
   );
-
-console.log(sortedPosts);
 ---
 
 <section class="section my-10">
@@ -59,11 +55,18 @@ console.log(sortedPosts);
     sortedPosts.slice(skip, count).map((article) => (
       <div class="mb-6 group">
         <article
-          class={`flex gap-5 ${
-            showBlurb ? 'items-start' : 'items-center'
-          } mx-auto ${centralise ? 'justify-center' : ''}`}
+          class={`
+            flex 
+            flex-col
+            md:flex-row
+            gap-5 
+            mx-auto 
+            ${showBlurb ? 'items-start' : 'items-center'} 
+            ${centralise ? 'justify-center' : ''}`}
         >
-          <figure class={`max-w-[20%] aspect-video ${showBlurb ? 'mt-2' : ''}`}>
+          <figure
+            class={`md:max-w-[20%] aspect-video ${showBlurb ? 'mt-2' : ''}`}
+          >
             <img
               src={article.frontmatter.featuredimage}
               alt={`intro image for article ${article.frontmatter.title}`}

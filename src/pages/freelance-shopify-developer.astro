@@ -1,94 +1,107 @@
 ---
-import LandingPageLayout from "src/layouts/LandingPageLayout.astro";
-import BenefitsList from "src/components/BenefitsList.astro";
-import CallToAction from "src/components/CallToAction.astro";
-import Button from "src/components/Button.astro";
+import LandingPageLayout from 'src/layouts/LandingPageLayout.astro';
+import BenefitsList from 'src/components/BenefitsList.astro';
+import CallToAction from 'src/components/CallToAction.astro';
+import Button from 'src/components/Button.astro';
 
-const benefits = [ 
-  "You're looking to launch a new Shopify ecommerce websitet and need planning and development advice to get started.",
+const benefits = [
+  "You're looking to launch a new Shopify ecommerce website and need planning and development advice to get started.",
   "You're existing Shopify website is not performing or converting sales well as it could.",
-  "You want to use Shopify as a core part of your ecommerce strategy and need support to develop a solution.",
+  'You want to use Shopify as a core part of your ecommerce strategy and need support to develop a solution.',
   "You want to migrate your current ecommerce solution to Shopify but aren't sure where to start.",
   "You want to maximise your site's performance by using Shopify as a headless ecommerce platform that powers a static site generator such as Gatsby or Next.js.",
-  "You want conversion optimisation or SEO advice to improve your existing Shopify ecommerce website.",
-  "You want to design and develop a custom Shopify theme."
+  'You want conversion optimisation or SEO advice to improve your existing Shopify ecommerce website.',
+  'You want to design and develop a custom Shopify theme.',
 ];
 const services = [
   {
-  "icon": "far fa-hand-pointer",
-  "title": "Shopify website",
-  "blurb": "Shopify is an ideal choice for a winning ecommerce website. From full, end to end builds, design and development, I've got you covered.",
+    icon: 'far fa-hand-pointer',
+    title: 'Shopify website',
+    blurb:
+      "Shopify is an ideal choice for a winning ecommerce website. From full, end to end builds, design and development, I've got you covered.",
   },
   {
-  "icon": "fas fa-suitcase-rolling",
-  "title": "Migrations & moves",
-  "blurb": "Moving an ecommerce wesite to Shopify is no mean feat! Let me take the headache out of it and take over the heavy lifting for you.",
+    icon: 'fas fa-suitcase-rolling',
+    title: 'Migrations & moves',
+    blurb:
+      'Moving an ecommerce wesite to Shopify is no mean feat! Let me take the headache out of it and take over the heavy lifting for you.',
   },
   {
-  "icon": "fas fa-cash-register",
-  "title": "Ecommerce strategy",
-  "blurb": "As well as full ecommerce development builds, I can help with initial planning and strategy to get your site started on the right foot.",
+    icon: 'fas fa-cash-register',
+    title: 'Ecommerce strategy',
+    blurb:
+      'As well as full ecommerce development builds, I can help with initial planning and strategy to get your site started on the right foot.',
   },
   {
-  "icon": "fas fa-rocket",
-  "title": "Conversion Rate Optimisation & SEO",
-  "blurb": "Current Shopify site not converting customers as well as it did? Need help climbing those search rankings? Let me take a look for you.",
+    icon: 'fas fa-rocket',
+    title: 'Conversion Rate Optimisation & SEO',
+    blurb:
+      'Current Shopify site not converting customers as well as it did? Need help climbing those search rankings? Let me take a look for you.',
   },
   {
-  "icon": "fas fa-server",
-  "title": "Headless Shopify",
-  "blurb": "For ultimate ecommerce website performance, I can deliver Shopify as a headless ecommerce solution, wiring it up with a static front end.",
+    icon: 'fas fa-server',
+    title: 'Headless Shopify',
+    blurb:
+      'For ultimate ecommerce website performance, I can deliver Shopify as a headless ecommerce solution, wiring it up with a static front end.',
   },
   {
-  "icon": "fab fa-shopify",
-  "title": "Theme development",
-  "blurb": "I can help build custom Shopify themes, add to existing themes or advise on your current Shopify site setup.",
-   }         
+    icon: 'fab fa-shopify',
+    title: 'Theme development',
+    blurb:
+      'I can help build custom Shopify themes, add to existing themes or advise on your current Shopify site setup.',
+  },
 ];
 const callouts = [
-  "Advice from a professional freelance developer with over 15 years in the business.",
+  'Advice from a professional freelance developer with over 15 years in the business.',
   "A source of straightforward, honest advice that always has you and your business' interests in mind.",
-  "An approach that leans on strong marketing goals, conversion-optimised ecommerce websites and seeing a return on your investment.",
-  "Superb support and guidance from the get go, all the through development, site launch and beyond!",
-  "Marketing and Search Engine Optimisation (SEO) services that have been recognised by national business awards.",
-  "Expert Shopify services and modern development practices including, Next.js, GraphQL and the Jamstack with Shopify as a headless ecommerce platform.",
-  "Help and support launching super fast, accessible, static websites that rank well on search engines",
+  'An approach that leans on strong marketing goals, conversion-optimised ecommerce websites and seeing a return on your investment.',
+  'Superb support and guidance from the get go, all the through development, site launch and beyond!',
+  'Marketing and Search Engine Optimisation (SEO) services that have been recognised by national business awards.',
+  'Expert Shopify services and modern development practices including, Next.js, GraphQL and the Jamstack with Shopify as a headless ecommerce platform.',
+  'Help and support launching super fast, accessible, static websites that rank well on search engines',
 ];
 ---
 
 <LandingPageLayout
   title="A freelance Shopify developer you can rely on"
-  metaTitle='Freelance Shopify developer | Shopify consultant Yorkshire | Rob Kendal, freelance Shopify partner'
-  description='As a freelance Shopify developer based in Selby and York, I can build custom Shopify themes and develop your Shopify ecommerce website'
+  metaTitle="Freelance Shopify developer | Shopify consultant Yorkshire | Rob Kendal, freelance Shopify partner"
+  description="As a freelance Shopify developer based in Selby and York, I can build custom Shopify themes and develop your Shopify ecommerce website"
   benefits={{
-    title: "My Shopify consultancy services can help in several ways:",
-    list: benefits
+    title: 'My Shopify consultancy services can help in several ways:',
+    list: benefits,
   }}
   services={{
-    title: "How I can support your Shopify website",
-    intro: "As a Shopify partner, I'm expertly positioned to help you with a range of different ecommerce projects.",
+    title: 'How I can support your Shopify website',
+    intro:
+      "As a Shopify partner, I'm expertly positioned to help you with a range of different ecommerce projects.",
     list: services,
-  }}  
+  }}
   brands={{
     title: "I've worked with some great brands",
-    intro: "As a freelance Shopify developer, I've worked with some amazing local and national brands, as well as a host of local Yorkshire businesses",
+    intro:
+      "As a freelance Shopify developer, I've worked with some amazing local and national brands, as well as a host of local Yorkshire businesses",
   }}
   testimonials={{
-    title: "Successful projects equal happy clients",
-    intro: "From Shopify ecommerce website development services to marketing and custom theme development here's what some of my clients have to say.",
-  }}  
+    title: 'Successful projects equal happy clients',
+    intro:
+      "From Shopify ecommerce website development services to marketing and custom theme development here's what some of my clients have to say.",
+  }}
 >
   <Fragment slot="intro">
-    <p>
-      If you're looking for the support of a <strong>freelance Shopify developer</strong> based in Wakefield and Leeds, or York, to help with Shopify migrations,
-      custom Shopify theme development, or full, end to end ecommerce website builds, then look no further!
-    </p>
+    If you're looking for the support of a <strong
+      >freelance Shopify developer</strong
+    > based in Wakefield and Leeds, or York, to help with Shopify migrations, custom
+    Shopify theme development, or full, end to end ecommerce website builds, then
+    look no further!
   </Fragment>
 
   <Fragment slot="additional-content">
     <div class="mt-20 -mb-4 text-center">
       <h2 class="heading-2">Proud to be a Shopify partner</h2>
-      <p class="mb-4">I wear my Shopify Partner badge with pride. It means peace of mind that you're in the hands of a trusted Shopify professional.</p>
+      <p class="mb-4">
+        I wear my Shopify Partner badge with pride. It means peace of mind that
+        you're in the hands of a trusted Shopify professional.
+      </p>
       <figure class="text-center mx-auto flex justify-center">
         <img src="/img/shopify-partner.png" alt="Shopify Partners logo" />
       </figure>
@@ -98,38 +111,60 @@ const callouts = [
   <Fragment slot="hireme">
     Let's take a look at your Shopify project and see how we can work together.
   </Fragment>
-  
+
   <Fragment slot="callout">
-    <div class="flex gap-10 relative z-10">
-      <figure class="flex items-center flex-col w-1/3">
-        <img src="/img/example-shopify.png" alt="Example small business website displayed on a laptop" class="" />
-        <img src="/img/shopify_logo_white.png" alt="Shopify logo" class="" />
+    <div class="flex flex-col xl:flex-row gap-10 relative z-10 items-center">
+      <figure class="flex items-center flex-col md:w-3/4 xl:w-1/3 2xl:w-1/2">
+        <img
+          src="/img/example-shopify.png"
+          alt="Example small business website displayed on a laptop"
+          class=""
+        />
+        <img
+          src="/img/shopify_logo_white.png"
+          alt="Shopify logo"
+          class="hidden xl:block"
+        />
       </figure>
-      <div>
+      <div class="xl:w-2/3 2xl:w-1/2">
         <h2 class="heading-2">Shopify development services</h2>
-        <p class="mb-6">I specialise in delivering Shopify websites and Shopify consultancy services to a range of clients of all sizes.</p>
-        <p class="mb-6">With me, as well as a reliable Shopify Partner, you'll always get:</p>
-        <BenefitsList list={callouts}/>
         <p class="mb-6">
-          Let's talk about your Shopify project and how we can work together to hit your goals.
+          I specialise in delivering Shopify websites and Shopify consultancy
+          services to a range of clients of all sizes.
         </p>
-        <Button href="/contact" text="discuss your project" variant="primary" />
+        <p class="mb-6">
+          With me, as well as a reliable Shopify Partner, you'll always get:
+        </p>
+        <BenefitsList list={callouts} unset />
+        <p class="mb-6">
+          Let's talk about your Shopify project and how we can work together to
+          hit your goals.
+        </p>
+        <Button
+          href="/contact"
+          text="discuss your project"
+          variant="primary"
+          classes={['block w-full text-center md:w-auto md:text-left']}
+        />
       </div>
     </div>
   </Fragment>
-  
+
   <Fragment slot="cta">
-    <CallToAction 
+    <CallToAction
       type="global"
       title="How I can help your business"
       buttons={[
         {
           href: '/contact',
           text: 'discuss your project',
-        }
+        },
       ]}
-      >
-      If you're in need of a freelance Shopify developer, want a full Shopify ecommerce website, custom theme development or just need to hear some straightforward advice on how to start your next Shopify project, I'm all ears: let's have a chat!
+    >
+      If you're in need of a freelance Shopify developer, want a full Shopify
+      ecommerce website, custom theme development or just need to hear some
+      straightforward advice on how to start your next Shopify project, I'm all
+      ears: let's have a chat!
     </CallToAction>
   </Fragment>
 </LandingPageLayout>

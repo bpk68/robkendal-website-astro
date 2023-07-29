@@ -1,4 +1,5 @@
----import Button from './Button.astro';
+---
+import Button from './Button.astro';
 
 interface Props {
   title: string;
@@ -10,24 +11,20 @@ interface Props {
   }[];
 }
 
-const {
-  title,
-  intro,
-  list
-} = Astro.props;
+const { title, intro, list } = Astro.props;
 ---
 
-
-<section class='section is-md my-16 -mx-16'>
-  <h2 class='heading-2 text-center mb-1'>{title}</h2>
-  <p class='text-center text-md max-w-2xl mx-auto'>
+<section class="section is-md my-16 lg:-mx-16">
+  <h2 class="heading-2 text-center mb-1">{title}</h2>
+  <p class="text-center text-md max-w-2xl mx-auto">
     {intro}
   </p>
-  <div class='grid grid-cols-3 gap-6 mt-10'>
-    {list.map(service => (
-      <div class="relative bg-brand-blue-dark border-2 border-brand-blue text-brand-cream rounded-sm py-5 px-6">
-        <span 
-          class="
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+    {
+      list.map((service) => (
+        <div class="relative bg-brand-blue-dark border-2 border-brand-blue text-brand-cream rounded-sm py-5 px-6">
+          <span
+            class="
             absolute 
             inset-0 
             w-full 
@@ -42,9 +39,9 @@ const {
             group-hover:-translate-x-0 
             group-hover:-translate-y-0
           "
-        ></span>
-        <span 
-          class={`
+          />
+          <span
+            class={`
             absolute 
             inset-0 
             w-full 
@@ -53,28 +50,31 @@ const {
             border-2 
             border-gray-800 
             group-hover:bg-primary-blue    
-          `}></span>
-        <div class="relative z-10">
-          <i class={`text-7xl text-center block ${service.icon}`}></i>        
-          <h3 class="heading-3 text-brand-cream text-center">
-            <span
-              class="
+          `}
+          />
+          <div class="relative z-10">
+            <i class={`text-7xl text-center block ${service.icon}`} />
+            <h3 class="heading-3 text-brand-cream text-center">
+              <span
+                class="
                 bg-gradient-to-bl bg-no-repeat bg-bottom bg-[length:100%_40%]
                 from-brand-blue to-brand-blue dark:from-primary-blue dark:to-primary-blue
               "
-            >
-              {service.title}
-            </span>
-          </h3>
-          <p class="mb-6">
-            {service.blurb}
-          </p>
+              >
+                {service.title}
+              </span>
+            </h3>
+            <p class="mb-6">{service.blurb}</p>
+          </div>
         </div>
-      </div>      
-    ))}
+      ))
+    }
   </div>
   <div class="mt-8 mx-auto text-center">
-    <Button href="/contact" text="book a free discovery call" variant="primary" />
+    <Button
+      href="/contact"
+      text="book a free discovery call"
+      variant="primary"
+    />
   </div>
 </section>
-

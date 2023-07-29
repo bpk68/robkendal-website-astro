@@ -8,105 +8,103 @@ interface Props {
 const { slug } = Astro.props;
 ---
 
-<section id='comments-area' class='comments-area my-14'>
-   <h2 class="heading-2">Comments</h2>
+<section id="comments-area" class="comments-area my-14">
+  <h2 class="heading-2">Comments</h2>
 
-  <div class='comments-inside'>
-    <div id='disqus_thread'></div>
+  <div class="comments-inside">
+    <div id="disqus_thread"></div>
   </div>
-  <div id='comments-overlay' class='comments-overlay'>
-    <Button 
-      id='comments-show'
+  <div id="comments-overlay" class="comments-overlay">
+    <Button
+      id="comments-show"
       href="#nogo"
       text="Show comments"
-      variant="primary" 
-    />    
+      variant="primary"
+    />
   </div>
   <noscript>
     Please enable JavaScript to view the{' '}
-    <a href='https://disqus.com/?ref_noscript' target="_blank">
+    <a href="https://disqus.com/?ref_noscript" target="_blank">
       comments powered by Disqus.
     </a>
   </noscript>
 </section>
 
 <script define:vars={{ slug }}>
-  const scriptLoader = (url, callback = null) => {
-    const d = document;
-    const s = d.createElement('script');
+const scriptLoader = (url, callback = null) => {
+  const d = document;
+  const s = d.createElement('script');
 
-    s.src = url;
+  s.src = url;
 
-    if (callback) {
-      s.onload = callback;
-    }
+  if (callback) {
+    s.onload = callback;
+  }
 
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+};
+
+const loadShowMore = (disqusContent) => {
+  if (disqusContent !== null) {
+    const interval = setInterval(function () {
+      const disqusHeight = disqusContent.clientHeight;
+
+      if (disqusHeight > 100) {
+        document
+          .querySelector('#comments-area')
+          .classList.add('comments--loaded');
+        clearInterval(interval);
+      }
+    }, 100);
+
+    document
+      .querySelector('#comments-overlay, #comments-show')
+      .addEventListener('click', (e) => {
+        const commentsArea = document.querySelector('#comments-area');
+        commentsArea?.classList.remove('comments--loaded');
+        commentsArea?.classList.add('comments--opened');
+        e.preventDefault();
+      });
+  }
+};
+
+const CommentsLoader = () => {
+  let disqusContent = document.querySelector('#disqus_thread');
+
+  if (disqusContent !== null) {
+    loadShowMore(disqusContent);
+  } else {
+    setTimeout(() => {
+      disqusContent = document.querySelector('#disqus_thread');
+      if (disqusContent !== null) {
+        loadShowMore(disqusContent);
+      }
+    }, 1000);
+  }
+};
+
+const DisqusLoader = (url, identifier) => {
+  const disqus_config = function () {
+    this.page.url = `https://robkendal.co.uk/${url}`;
+    this.page.identifier = identifier;
   };
 
-  const loadShowMore = (disqusContent) => {
-    if (disqusContent !== null) {      
-      const interval = setInterval(function () {
-        const disqusHeight = disqusContent.clientHeight;
+  scriptLoader('https://robkendal.disqus.com/embed.js');
+};
 
-        if (disqusHeight > 100) {
-          document
-            .querySelector('#comments-area')
-            .classList.add('comments--loaded');
-          clearInterval(interval);
-        }
-      }, 100);
-
-      document
-        .querySelector('#comments-overlay, #comments-show')
-        .addEventListener('click', (e) => {
-          const commentsArea = document.querySelector('#comments-area');
-          commentsArea?.classList.remove('comments--loaded');
-          commentsArea?.classList.add('comments--opened');
-          e.preventDefault();
-        });
-    }
-  };
-  
-  const CommentsLoader = () => {
-    let disqusContent = document.querySelector('#disqus_thread');
-
-    console.log('found something: ' + disqusContent);
-
-    if (disqusContent !== null) {
-      loadShowMore(disqusContent);
-    } else {
-      setTimeout(() => {
-        disqusContent = document.querySelector('#disqus_thread');
-        if (disqusContent !== null) {
-          loadShowMore(disqusContent);
-        }
-      }, 1000);
-    }
-  };
-
-  const DisqusLoader = (url, identifier) => {
-    console.log('loading up Disqus for ', url);
-
-    const disqus_config = function () {
-      this.page.url = `https://robkendal.co.uk/${url}`;
-      this.page.identifier = identifier;
-    };
-
-    scriptLoader('https://robkendal.disqus.com/embed.js');
-  };
-  
-
-  window.addEventListener('load', () => {
+window.addEventListener(
+  'load',
+  () => {
     DisqusLoader(slug, slug);
     CommentsLoader();
-  }, false);  
-  
-  </script>
-  <!-- <script type="text/javascript src="https://robkendal.disqus.com/embed.js" /> -->
+  },
+  false
+);
+</script>
+<!-- <script type="text/javascript src="https://robkendal.disqus.com/embed.js" /> -->
 
-  <style>
+<style>
   /**
   * 4.2 Comments
   * ----------------------------------------------------------------------------
@@ -132,7 +130,6 @@ const { slug } = Astro.props;
   .comments-area.comments--opened .comments-overlay {
     display: none;
   }
-  
 
   .comments-overlay {
     background: -webkit-linear-gradient(
@@ -147,7 +144,7 @@ const { slug } = Astro.props;
       rgba(255, 255, 255, 0) 30%,
       rgba(255, 255, 255, 1) 100%
     );
-    bottom: 0;    
+    bottom: 0;
     display: none;
     height: 250px;
     left: 0;

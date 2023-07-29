@@ -2,31 +2,28 @@
 import SocialLinks from './SocialLinks.astro';
 ---
 
-<footer class="text-sm leading-[1.75] mt-4 border-t-2 pt-8">
-  
+<footer class="md:text-sm leading-[1.75] mt-4 border-t-2 pt-8">
   <h4 class="is-sr-only">Site links</h4>
-  <nav 
-    role="navigation" 
-    aria-label="Footer navigation" 
+  <nav
+    role="navigation"
+    aria-label="Footer navigation"
     class="columns-2 footer-nav align-middle max-w-lg mx-auto"
   >
-      <a href="/the-front-end-podcast">podcast</a>
-      <a href="/publications">publications</a>
-      <a href="/projects">projects</a>      
-      <a href="/faq-for-recruiters">recruitment FAQ</a>
-      <a href="/mentorship">mentorship</a>
-      <a href="/freelance-jamstack-developer">
-        freelance Jamstack developer
-      </a>
-      <a href="/freelance-shopify-developer"> freelance Shopify developer</a>
-      <a href="/enterprise-software-development">
-        enterprise software development
-      </a>    
+    <a href="/the-front-end-podcast">podcast</a>
+    <a href="/publications">publications</a>
+    <a href="/projects">projects</a>
+    <a href="/faq-for-recruiters">recruitment FAQ</a>
+    <a href="/mentorship">mentorship</a>
+    <a href="/freelance-jamstack-developer"> freelance Jamstack developer</a>
+    <a href="/freelance-shopify-developer"> freelance Shopify developer</a>
+    <a href="/enterprise-software-development">
+      enterprise software development
+    </a>
   </nav>
-  
+
   <div class="my-5 text-center">
     <h4 class="is-sr-only">Connect on social media</h4>
-    <SocialLinks centralise/>
+    <SocialLinks centralise />
   </div>
   <p class="mt-4 pb-8 text-xs text-center block">
     Copyright &copy; {new Date().getFullYear()} Rob Kendal. View the <a

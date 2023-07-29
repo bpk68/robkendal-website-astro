@@ -13,14 +13,15 @@ const { title, intro, list: unsortedList } = Astro.props;
 const list = shuffle(unsortedList).slice(0, 5);
 ---
 
-<section class='section is-md my-10'>  
-  <h2 class='heading-2 text-center'>{title}</h2>
-  <p class='text-center text-md max-w-xl mx-auto mb-8'>
+<section class="section is-md my-14">
+  <h2 class="heading-2 text-center">{title}</h2>
+  <p class="text-center text-md max-w-xl mx-auto mb-8">
     {intro}
   </p>
-  {list.map((item: TestimonialItem, i) => (
-   <blockquote 
-    class={`
+  {
+    list.map((item: TestimonialItem, i) => (
+      <blockquote
+        class={`
       mb-8
       py-4 
       px-6
@@ -29,20 +30,26 @@ const list = shuffle(unsortedList).slice(0, 5);
       rounded
       border-b-primary-blue 
       border-b-4 
-      flex
+      md:flex
       items-start
       space-between
       gap-10      
       ${i % 2 === 0 ? '-rotate-1' : 'rotate-1'}
-    `}>
-      <figure>
-        <img src={item.avatar} alt={item.avatarAlt} class="max-w-[5rem] rounded-full shadow-md mt-2" />
-      </figure>
-      <p>
-        <span class='fa-solid fa-quote-left text-2xl pr-2'></span>
-        {item.text}
-        <cite class="block text-right mt-2">- {item.cite}</cite>
-      </p>
-    </blockquote>
-  ))}
+    `}
+      >
+        <figure class="float-left md:float-none mr-4 md:mr-0">
+          <img
+            src={item.avatar}
+            alt={item.avatarAlt}
+            class="max-w-[5rem] rounded-full shadow-md mt-2"
+          />
+        </figure>
+        <p>
+          <span class="fa-solid fa-quote-left text-2xl pr-2" />
+          {item.text}
+          <cite class="block text-right mt-2">- {item.cite}</cite>
+        </p>
+      </blockquote>
+    ))
+  }
 </section>

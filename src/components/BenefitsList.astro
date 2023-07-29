@@ -1,15 +1,26 @@
 ---
 interface Props {
   list: string[];
+  unset?: boolean;
 }
 
-const { list } = Astro.props;
+const { list, unset = false } = Astro.props;
 ---
-<ul class="unset max-w-2xl text-lg mx-auto">
-  {list.map(item => (
-    <li class='flex items-baseline pb-3'>
-      <span class='fa-solid fa-thumbs-up pr-3 text-xl'></span>
-      <span set:html={item}/>
-    </li>
-  ))}
+
+<ul
+  class={`
+  unset   
+  text-lg 
+  mx-auto
+  ${!unset ? 'max-w-2xl' : ''}   
+  `}
+>
+  {
+    list.map((item) => (
+      <li class="flex items-baseline pb-3">
+        <span class="fa-solid fa-thumbs-up pr-3 text-xl" />
+        <span set:html={item} />
+      </li>
+    ))
+  }
 </ul>

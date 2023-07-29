@@ -1,22 +1,22 @@
 ---
 import snippets from '../data/content-snippets.json';
-import PageLayout from "../layouts/PageLayout.astro";
-import PageMeta from "../components/PageMeta.astro";
-import PageHeader from "src/components/PageHeader.astro";
-import BenefitsList from "src/components/BenefitsList.astro";
-import BrandsList from "src/components/BrandsList.astro";
-import Button from "src/components/Button.astro";
-import LPServicesList from "src/components/LPServicesList.astro";
-import Testimonials from "src/components/Testimonials.astro";
+import PageLayout from '../layouts/PageLayout.astro';
+import PageMeta from '../components/PageMeta.astro';
+import PageHeader from 'src/components/PageHeader.astro';
+import BenefitsList from 'src/components/BenefitsList.astro';
+import BrandsList from 'src/components/BrandsList.astro';
+import Button from 'src/components/Button.astro';
+import LPServicesList from 'src/components/LPServicesList.astro';
+import Testimonials from 'src/components/Testimonials.astro';
 
 interface Props {
   title: string;
   metaTitle: string;
-  description: string;  
+  description: string;
   benefits: {
     title: string;
     list: string[];
-  },    
+  };
   services: {
     title: string;
     intro: string;
@@ -25,85 +25,74 @@ interface Props {
       title: string;
       blurb: string;
     }[];
-  };  
+  };
   brands: {
     title: string;
     intro: string;
-  },
+  };
   testimonials: {
     title: string;
     intro: string;
-  }
+  };
 }
 
-const { 
-  title, 
+const {
+  title,
   metaTitle,
-  description,  
+  description,
   benefits,
-  services,  
+  services,
   brands,
   testimonials,
 } = Astro.props;
 ---
 
 <PageLayout>
-  <PageMeta 
-    title={metaTitle}
-    description={description}
-    slot="meta" 
-  />
-  <section slot="main">        
-    <div class="flex align-middle my-8 gap-6">
+  <PageMeta title={metaTitle} description={description} slot="meta" />
+  <section slot="main">
+    <div
+      class="flex flex-col text-center sm:text-left items-center sm:flex-row align-middle my-8 gap-6"
+    >
       <img
-        src='/img/avatars/rob-kendal-profile-lg-cartoon.png'
-        alt='Rob Kendal freelance Shopify developer, software developer and headless CMS developer'
-        class="border-gray-800 border-4 rounded-md max-w-[10rem] -rotate-3"
+        src="/img/avatars/rob-kendal-profile-lg-cartoon.png"
+        alt="Rob Kendal freelance Shopify developer, software developer and headless CMS developer"
+        class="border-gray-800 border-4 rounded-md max-w-[15rem] sm:max-w-[10rem] -rotate-3"
       />
       <PageHeader>
         {title}
-      </PageHeader>    
+      </PageHeader>
     </div>
-    <p class="text-xl">
+    <p class="text-xl text-center sm:text-left">
       <slot name="intro" />
     </p>
     <slot name="intro-content" />
-    <div 
-      class="
-        relative
-        my-8
-        before:z-0
-        before:block 
-        before:absolute 
-        before:-inset-1 
-        before:-skew-y-2
-        before:-rotate-2
-        before:bg-gradient-to-bl 
-        before:bg-no-repeat
-        before:bg-bottom 
-        before:bg-[length:95%_95%]
-        before:from-primary-blue 
-        before:to-primary-blue 
-        before:dark:from-primary-blue 
-        before:dark:to-primary-blue
-      ">      
-      <h2 class="heading-2 text-center overflow-hidden mb-4 z-10 block relative max-w-lg mx-auto">
+    <div
+      class="relative my-8 before:z-0 before:block before:absolute before:-inset-1 before:-skew-y-2 before:-rotate-2 before:bg-gradient-to-bl before:bg-no-repeat before:bg-bottom before:bg-[length:95%_95%] before:from-primary-blue before:to-primary-blue before:dark:from-primary-blue before:dark:to-primary-blue"
+    >
+      <h2
+        class="heading-2 text-center overflow-hidden mb-4 z-10 block relative max-w-lg mx-auto"
+      >
         {benefits.title}
       </h2>
-      <BenefitsList list={benefits.list}/>
-    </div>  
+      <BenefitsList list={benefits.list} />
+    </div>
 
     <slot name="additional-content" />
 
     <div class="text-center my-20 text-2xl border-t-2 pt-8">
-      <p class="mb-6 ">
+      <p class="mb-6">
         <slot name="hireme">
           Tell me about your project and let's see how we can work together.
         </slot>
       </p>
       <div class="flex justify-center gap-5 items-center">
         <Button href="/contact" text="hire me" variant="primary" />
-        <Button href="/blog" text="read my articles" variant="primary" isOutline />
+        <Button
+          href="/blog"
+          text="read my articles"
+          variant="primary"
+          isOutline
+        />
       </div>
     </div>
 
@@ -111,27 +100,15 @@ const {
       title={services.title}
       intro={services.intro}
       list={services.list}
-    />   
+    />
 
-    <div class="relative bg-primary-blue p-10 -mx-52">
-      <span 
-        class="
-          absolute 
-          inset-0 
-          w-full 
-          h-full 
-          transition 
-          duration-200 
-          ease-out 
-          transform 
-          translate-x-1 
-          translate-y-1 
-          bg-black
-          group-hover:-translate-x-0 
-          group-hover:-translate-y-0
-        "
+    <div
+      class="relative bg-primary-blue-OLD p-5 md:p-10 lg:-mx-32 xl:-mx-52 2xl:-mx-72"
+    >
+      <span
+        class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"
       ></span>
-      <span 
+      <span
         class={`
           absolute 
           inset-0 
@@ -145,17 +122,13 @@ const {
       <slot name="callout" />
     </div>
 
-    <BrandsList 
-      title={brands.title}
-      intro={brands.intro}
-    />
-    <Testimonials 
+    <BrandsList title={brands.title} intro={brands.intro} />
+    <Testimonials
       title={testimonials.title}
       intro={testimonials.intro}
-      list={snippets.testimonials} 
+      list={snippets.testimonials}
     />
 
     <slot name="cta" />
-
-  </section> 
+  </section>
 </PageLayout>

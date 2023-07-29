@@ -1,13 +1,13 @@
 ---
-import { readAll } from "../lib/markdoc/read";
-import { blog } from "../lib/markdoc/frontmatter.schema";
-import PageLayout from "../layouts/PageLayout.astro";
-import PageMeta from "../components/PageMeta.astro";
-import PageHeader from "../components/PageHeader.astro";
+import { readAll } from '../lib/markdoc/read';
+import { blog } from '../lib/markdoc/frontmatter.schema';
+import PageLayout from '../layouts/PageLayout.astro';
+import PageMeta from '../components/PageMeta.astro';
+import PageHeader from '../components/PageHeader.astro';
 import ArticleList from '../components/ArticleList.astro';
 
 const posts = await readAll({
-  directory: "blog",
+  directory: 'blog',
   frontmatterSchema: blog,
 });
 
@@ -24,65 +24,66 @@ const archivedPosts = sortedPosts.slice(6);
 ---
 
 <PageLayout>
-  <PageMeta 
-    title='Helpful blog articles about Shopify, React, Jamstack & frontend development | Rob Kendal, freelance web developer'
-    description='Read articles from Rob Kendal about Shopify, React, Jamstack, frontend development and JavaScript'
-    slot="meta" 
+  <PageMeta
+    title="Helpful blog articles about Shopify, React, Jamstack & frontend development | Rob Kendal, freelance web developer"
+    description="Read articles from Rob Kendal about Shopify, React, Jamstack, frontend development and JavaScript"
+    slot="meta"
   />
   <section slot="main">
-    <PageHeader>
-      Latest articles
-    </PageHeader>
+    <PageHeader>Latest articles</PageHeader>
 
     <div class="mx-auto my-10">
       <figure class="aspect-video">
         <a href={`/blog/${currentPost.slug}`} class="unset">
-          <img 
-            src={currentPost.frontmatter.featuredimage} 
-            alt={`intro image for article ${currentPost.frontmatter.title}`} 
-            class="shadow-md" />        
+          <img
+            src={currentPost.frontmatter.featuredimage}
+            alt={`intro image for article ${currentPost.frontmatter.title}`}
+            class="shadow-md"
+          />
         </a>
       </figure>
       <div class="">
-        <time datetime={currentPost.frontmatter.date.toISOString()} class="text-gray-500">
-          {new Date(currentPost.frontmatter.date).toLocaleDateString("en-gb", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })}  
+        <time
+          datetime={currentPost.frontmatter.date.toISOString()}
+          class="text-gray-500"
+        >
+          {
+            new Date(currentPost.frontmatter.date).toLocaleDateString('en-gb', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            })
+          }
         </time>
         <h3 class="heading-3 m-0 p-0">
           <a href={`/blog/${currentPost.slug}`} class="fancy-underline unset">
             {currentPost.frontmatter.title}
-          </a>  
+          </a>
         </h3>
-        {currentPost && (
-          <p>
-            {currentPost.frontmatter.description}
-          </p>
-        )}
+        {currentPost && <p>{currentPost.frontmatter.description}</p>}
       </div>
     </div>
-    <div class="max-w-lg h-3 w-full mx-auto border-b-slate-200 border-b pt-6 pb-2 group-last:border-none"></div>  
+    <div
+      class="max-w-lg h-3 w-full mx-auto border-b-slate-200 border-b pt-6 pb-2 group-last:border-none"
+    >
+    </div>
 
-    <ArticleList count={6} skip={1} showBlurb/>
+    <ArticleList count={6} skip={1} showBlurb />
 
-    <h2 class="heading-2">
-      Articles archive
-    </h2>
+    <h2 class="heading-2">Articles archive</h2>
     <ul>
       {
         archivedPosts.map((post) => {
           const formattedDate = new Date(
             post.frontmatter.date
-          ).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
+          ).toLocaleDateString('en-us', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
           });
           return (
-            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
-              <div class="title">                
+            <li class="grid grid-cols-[1fr_auto] mb-3 gap-2 items-start border-b pb-2 sm:pb-0 sm:border-none">
+              <div class="title">
                 <a
                   href={`/blog/${post.slug}`}
                   class="unset
@@ -93,7 +94,7 @@ const archivedPosts = sortedPosts.slice(6);
                     "
                 >
                   {post.frontmatter.title}
-                </a>                
+                </a>
               </div>
               <div class="text-text-muted text-sm pt-1">
                 <time datetime={post.frontmatter.date.toISOString()}>

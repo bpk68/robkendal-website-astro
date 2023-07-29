@@ -1,0 +1,65 @@
+---
+interface Props {
+  list: {
+    title: string;
+    description: string;
+  }[];
+}
+
+const { list } = Astro.props;
+
+const transformClasses = [
+  'rotate-12              origin-center                   lg:-left-0            xl:-left-3',
+  '-rotate-6 xl:rotate-45 origin-center xl:origin-bottom  lg:top-0 lg:left-8    xl:-top-8 xl:-left-10',
+  '-rotate-12             origin-bottom-left              lg:top-10 lg:left-5   xl:top-16 xl:-left-1',
+  '-rotate-6 xl:rotate-45 origin-center xl:origin-bottom  lg:top-0 lg:left-12   xl:-top-8 xl:-left-10',
+  // 'rotate-180 origin-center lg:-bottom-5 lg:left-10 xl:-left-1',
+];
+---
+
+<div
+  class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 relative gap-5 items-center align-middle xl:-mx-60 outline-1"
+>
+  {
+    list.map((item, i) => (
+      <div class="relative text-center py-3 lg:py-0 px-5 lg:px-8 group mx-10 lg:mx-auto">
+        <span
+          class={`
+            absolute            
+            h-0 
+            w-0             
+            border-x-transparent 
+            border-x-[10rem] 
+            border-b-[12rem] 
+            border-b-brand-purple
+            skew-x-3
+            -skew-y-2
+            ${transformClasses[i]}
+            hidden
+            lg:block
+          `}
+        />
+        <span
+          class={`
+            absolute
+            top-0
+            left-0
+            h-full
+            w-full
+            bg-brand-purple
+            skew-x-3
+            -skew-y-2
+            block
+            lg:hidden
+          `}
+        />
+        <div class="relative z-10 mt-4">
+          <h3 class="heading-3 mb-0">{item.title}</h3>
+          <p class="mb-6 text-lg">{item.description}</p>
+        </div>
+        <i class="fa-solid fa-angle-right absolute -right-5 top-[45%] group-last:hidden text-5xl text-slate-400 hidden xl:block" />
+        <i class="fa-solid fa-circle-chevron-down absolute right-3 top-0 group-last:hidden text-3xl text-white block xl:hidden" />
+      </div>
+    ))
+  }
+</div>

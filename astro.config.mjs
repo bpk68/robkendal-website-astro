@@ -33,8 +33,12 @@ export default defineConfig({
   // },
   redirects: {
     '/sitemap.xml': {
-      status: 302,
+      status: 301,
       destination: '/sitemap-index.xml',
+    },
+    '/freelance-jamstack-developer': {
+      status: 302,
+      destination: '/enterprise-software-development',
     },
   },
   server: { port: SERVER_PORT },

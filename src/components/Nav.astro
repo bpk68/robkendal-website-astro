@@ -1,35 +1,53 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
+import HeaderLink from './HeaderLink.astro';
 ---
 
 <Fragment>
-  <nav class="hidden md:inline">
+  <nav class="hidden lg:inline">
     <section class="text-text-bold">
       <ul class="unset flex gap-4 [&>li]:p-0 items-center">
-        <li><HeaderLink href="/">
-          <img
+        <li>
+          <HeaderLink href="/">
+            <img
               src="/img/ark-labs-logo_trans.png"
-              alt="Rob Kendal Freelance Shopify Developer" 
-              class="max-w-[50px]"           
+              alt="Rob Kendal Freelance Shopify Developer"
+              class="max-w-[50px]"
             />
           </HeaderLink>
         </li>
         <li><HeaderLink href="/about">about</HeaderLink></li>
         <li><HeaderLink href="/publications">work</HeaderLink></li>
-        <li><HeaderLink href="/freelance-shopify-developer">shopify</HeaderLink></li>
-        <li><HeaderLink href="/enterprise-software-development">software</HeaderLink></li>
+        <li>
+          <HeaderLink href="/freelance-shopify-developer">shopify</HeaderLink>
+        </li>
+        <li>
+          <HeaderLink href="/enterprise-software-development">
+            software
+          </HeaderLink>
+        </li>
         <li><HeaderLink href="/case-studies">case studies</HeaderLink></li>
         <li><HeaderLink href="/blog">articles</HeaderLink></li>
-        <!-- <li><HeaderLink href="/contact">contact</HeaderLink></li> -->
+        <li class="is-sr-only">
+          <HeaderLink href="/contact">contact</HeaderLink>
+        </li>
       </ul>
     </section>
   </nav>
-  <nav class="md:hidden">
-    <button id="mobile-menu-open">
-      <i class="fa-solid fa-bars" aria-hidden="true" title="Open mobile menu"
-      ></i>
-      <span class="fa-sr-only">Open mobile menu</span>
-    </button>
+  <nav class="lg:hidden relative z-20">
+    <div class="flex gap-4 items-center">
+      <HeaderLink href="/">
+        <img
+          src="/img/ark-labs-logo_trans.png"
+          alt="Rob Kendal Freelance Shopify Developer"
+          class="max-w-[50px]"
+        />
+      </HeaderLink>
+      <button id="mobile-menu-open">
+        <i class="fa-solid fa-bars" aria-hidden="true" title="Open mobile menu"
+        ></i>
+        <span class="fa-sr-only">Open mobile menu</span>
+      </button>
+    </div>
     <section
       id="mobile-menu"
       class="hide-menu fixed top-0 left-0 z-10 w-full h-full transition-transform bg-black/75 border-primary-blue"
@@ -43,18 +61,25 @@ import HeaderLink from "./HeaderLink.astro";
           <span class="fa-sr-only">Close mobile menu</span>
         </button>
         <ul class="unset flex flex-col text-text-bold gap-4 [&>li]:p-0 px-6">
-          <li><HeaderLink href="/">
-            <img
+          <li>
+            <HeaderLink href="/">
+              <img
                 src="/img/ark-labs-logo_trans.png"
-                alt="Rob Kendal Freelance Shopify Developer" 
-                class="max-w-[50px]"           
+                alt="Rob Kendal Freelance Shopify Developer"
+                class="max-w-[50px]"
               />
             </HeaderLink>
           </li>
           <li><HeaderLink href="/about">about</HeaderLink></li>
           <li><HeaderLink href="/publications">work</HeaderLink></li>
-          <li><HeaderLink href="/freelance-shopify-developer">shopify</HeaderLink></li>
-          <li><HeaderLink href="/enterprise-software-development">software</HeaderLink></li>
+          <li>
+            <HeaderLink href="/freelance-shopify-developer">shopify</HeaderLink>
+          </li>
+          <li>
+            <HeaderLink href="/enterprise-software-development">
+              software
+            </HeaderLink>
+          </li>
           <li><HeaderLink href="/case-studies">case studies</HeaderLink></li>
           <li><HeaderLink href="/blog">articles</HeaderLink></li>
           <li><HeaderLink href="/contact">contact</HeaderLink></li>
@@ -66,18 +91,18 @@ import HeaderLink from "./HeaderLink.astro";
 
 <script>
   // @ts-nocheck
-  document.querySelector("#mobile-menu-open").addEventListener("click", () => {
-    const menuElem = document.querySelector("#mobile-menu");
-    menuElem.classList.remove("hide-menu");
-    menuElem.classList.add("show-menu");
-    document.body.style.overflow = "hidden";
+  document.querySelector('#mobile-menu-open').addEventListener('click', () => {
+    const menuElem = document.querySelector('#mobile-menu');
+    menuElem.classList.remove('hide-menu');
+    menuElem.classList.add('show-menu');
+    document.body.style.overflow = 'hidden';
   });
 
-  document.querySelector("#mobile-menu-close").addEventListener("click", () => {
-    const menuElem = document.querySelector("#mobile-menu");
-    menuElem.classList.remove("show-menu");
-    menuElem.classList.add("hide-menu");
-    document.body.style.overflow = "auto";
+  document.querySelector('#mobile-menu-close').addEventListener('click', () => {
+    const menuElem = document.querySelector('#mobile-menu');
+    menuElem.classList.remove('show-menu');
+    menuElem.classList.add('hide-menu');
+    document.body.style.overflow = 'auto';
   });
 </script>
 

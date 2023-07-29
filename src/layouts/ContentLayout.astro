@@ -4,7 +4,7 @@
   - pages/blog/[slug].astro
 */
 
-import BasePageLayout from "./BasePageLayout.astro";
+import BasePageLayout from './BasePageLayout.astro';
 import PageHeader from 'src/components/PageHeader.astro';
 
 export interface Props {
@@ -28,28 +28,38 @@ const formattedDate = new Date(date).toLocaleDateString('en-us', {
 
   <Fragment slot="main">
     <article id="article-content">
-      <PageHeader classes='mb-6'>
+      <PageHeader classes="mb-6">
         {title}
       </PageHeader>
-      <div class="flex justify-between items-center text-text-muted border-b pb-4 pt-2">
+      <div
+        class="flex flex-col sm:flex-row justify-left sm:justify-between items-left sm:items-center text-text-muted border-b pb-4 pt-2"
+      >
         <time class="block mb-0 text-xl" datetime={date.toDateString()}>
           {formattedDate}
         </time>
         <div class="flex text-sm">
           <p>posted in:</p>
           <ul class="unset flex">
-            {tags.map(tag => (
-              <li><a href={`/tags/${tag.toLowerCase()}`}>#{tag.toLowerCase()}</a></li>
-            ))}
+            {
+              tags.map((tag) => (
+                <li>
+                  <a href={`/tags/${tag.toLowerCase()}`}>
+                    #{tag.toLowerCase()}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </div>
       </div>
-      <section class="blog-post prose md:prose-lg max-w-none prose-bubblegum post-content">      
+      <section
+        class="blog-post prose md:prose-lg max-w-none prose-bubblegum post-content"
+      >
         <slot name="content" />
-      </section>    
+      </section>
     </article>
   </Fragment>
-  
+
   <section class="my-14" slot="additional-content">
     <slot name="additional-content" />
   </section>

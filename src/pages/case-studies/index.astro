@@ -1,7 +1,7 @@
 ---
-import PageLayout from "../../layouts/PageLayout.astro";
-import PageMeta from "../../components/PageMeta.astro";
-import PageHeader from "../../components/PageHeader.astro";
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageMeta from '../../components/PageMeta.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import Button from '../../components/Button.astro';
 
@@ -11,7 +11,8 @@ const caseStudies = [
     title: 'Stones 4 Homes',
     subTitle: 'Ecommerce WordPress build',
     img: 'stones4homes-screenshot.png',
-    blurb: 'I helped deliver a brand new website design for this Yorkshire aggregate powerhouse. The new site lifted transaction rates by 100% and conversions by 200%',
+    blurb:
+      'I helped deliver a brand new website design for this Yorkshire aggregate powerhouse. The new site lifted transaction rates by 100% and conversions by 200%',
     link: 'stones4homes',
   },
   {
@@ -19,7 +20,8 @@ const caseStudies = [
     title: 'Print Plus Direct',
     subTitle: 'Ecommerce WordPress build',
     img: 'printplusdirect-screenshot.png',
-    blurb: 'Supplying NCR forms and stationery to businesses nationwide, I worked with Print Plus Direct on an ecommerce site that simplifies their complex product options and drives new leads to their business',
+    blurb:
+      'Supplying NCR forms and stationery to businesses nationwide, I worked with Print Plus Direct on an ecommerce site that simplifies their complex product options and drives new leads to their business',
     link: 'printplusdirect',
   },
   {
@@ -27,7 +29,8 @@ const caseStudies = [
     title: 'CreateTVT',
     subTitle: 'Multisite theming',
     img: 'createtvt-screenshot.png',
-    blurb: 'CreateTVT needed a multisite solution that combined a reusable branding theme with powerful hosting to support their multiple high-trafficked websites',
+    blurb:
+      'CreateTVT needed a multisite solution that combined a reusable branding theme with powerful hosting to support their multiple high-trafficked websites',
     link: 'createtvt',
   },
   {
@@ -35,7 +38,8 @@ const caseStudies = [
     title: 'Sneyds Wonderdog',
     subTitle: 'Ecommerce WordPress build',
     img: 'sneyds-screenshot.png',
-    blurb: 'Sneyds supply premium dog and animal feeds. I helped them build a new ecommerce website that attracted 65% more traffic, growing monthly sales by 17%',
+    blurb:
+      'Sneyds supply premium dog and animal feeds. I helped them build a new ecommerce website that attracted 65% more traffic, growing monthly sales by 17%',
     link: 'wonderdog',
   },
   {
@@ -43,7 +47,8 @@ const caseStudies = [
     title: 'Andrea Hall',
     subTitle: 'Custom Shopify theme development',
     img: 'andreahall-screenshot.png',
-    blurb: 'Andrea is an incredible local Yorkshire artist who creates art for open water swimmers. I built her a super speedy Shopify ecommerce website with custom Shopify theme development',
+    blurb:
+      'Andrea is an incredible local Yorkshire artist who creates art for open water swimmers. I built her a super speedy Shopify ecommerce website with custom Shopify theme development',
     link: 'andrea-hall',
   },
   {
@@ -51,7 +56,8 @@ const caseStudies = [
     title: 'Shepherds Purse',
     subTitle: 'Shopify theme development and support',
     img: 'shepherds-purse-screenshot.png',
-    blurb: 'Shepherds Purse are an award-winning cheese maker here in Yorkshire. They needed UX consultancy and support on their Shopify store including improving their user journey and highlighing their awards',
+    blurb:
+      'Shepherds Purse are an award-winning cheese maker here in Yorkshire. They needed UX consultancy and support on their Shopify store including improving their user journey and highlighing their awards',
     link: 'shepherds-purse-cheeses',
   },
   {
@@ -59,37 +65,40 @@ const caseStudies = [
     title: 'Ashes With Art',
     subTitle: 'Shopify SEO consultancy',
     img: 'ashes-with-art-screenshot.jpg',
-    blurb: 'Ashes With Art are an artisan jewellery crafter, making truly memorable gifts. I their SEO consultancy work, improving the speed of their Shopify store across mobile devices, and lifting their search engine positions.',
+    blurb:
+      'Ashes With Art are an artisan jewellery crafter, making truly memorable gifts. I their SEO consultancy work, improving the speed of their Shopify store across mobile devices, and lifting their search engine positions.',
     link: 'ashes-with-art',
   },
 ];
 ---
 
 <PageLayout>
-  <PageMeta 
-    title='WordPress and Shopify website case studies | Rob Kendal, freelance web developer York'
-    description='Discover how I used WordPress and Shopify to help local businesses to increase conversions by 200% and boost sales and lead generation through their websites'
-    slot="meta" 
+  <PageMeta
+    title="WordPress and Shopify website case studies | Rob Kendal, freelance web developer York"
+    description="Discover how I used WordPress and Shopify to help local businesses to increase conversions by 200% and boost sales and lead generation through their websites"
+    slot="meta"
   />
   <section slot="main">
     <div class="prose max-w-none prose-bubblegum">
-      <PageHeader>
-        Case studies
-      </PageHeader>
+      <PageHeader>Case studies</PageHeader>
       <p>
-        I've worked with some great clients over the years on a diverse range of 
-        <a href="/freelance-shopify-developer">Shopify</a> projects, both ecommerce and non-ecommerce business websites.
+        I've worked with some great clients over the years on a diverse range of
+        <a href="/freelance-shopify-developer">Shopify</a> projects, both ecommerce
+        and non-ecommerce business websites.
       </p>
       <p>
-        You can explore a few of the more recent and challenging ones here. Investigate, view the sites, ask me any questions, and please get in touch if you'd like
-        to know how I can achieve the same results for you and your business, including website consultation, strategy, custom Shopify development and more.
+        You can explore a few of the more recent and challenging ones here.
+        Investigate, view the sites, ask me any questions, and please get in
+        touch if you'd like to know how I can achieve the same results for you
+        and your business, including website consultation, strategy, custom
+        Shopify development and more.
       </p>
     </div>
-    <div class="my-10 grid grid-cols-2 gap-10 -mx-40">
+    <div class="my-10 grid lg:grid-cols-2 gap-10 xl:-mx-40 2xl:-mx-52">
       {
-        caseStudies.reverse().map(item => (            
-          <article class='shadow-md relative border-2 border-primary-blue rounded-sm'>
-            <span 
+        caseStudies.reverse().map((item) => (
+          <article class="shadow-md relative border-2 border-primary-blue rounded-sm">
+            <span
               class="
                 absolute 
                 inset-0 
@@ -105,8 +114,8 @@ const caseStudies = [
                 group-hover:-translate-x-0 
                 group-hover:-translate-y-0
               "
-            ></span>
-            <span 
+            />
+            <span
               class={`
                 absolute 
                 inset-0 
@@ -116,40 +125,44 @@ const caseStudies = [
                 border-2 
                 border-gray-800 
                 group-hover:bg-primary-blue    
-              `}></span>
+              `}
+            />
             <div class="relative">
-              <a href={`/case-studies/${item.link}`} class="unset block max-h-[20rem] overflow-hidden">
+              <a
+                href={`/case-studies/${item.link}`}
+                class="unset block max-h-[20rem] overflow-hidden"
+              >
                 <img
-                    src={`/img/case-studies/${item.img}`}
-                    alt={`Screenshot of the ${item.title} website`}
-                    class="object-cover p-1"
+                  src={`/img/case-studies/${item.img}`}
+                  alt={`Screenshot of the ${item.title} website`}
+                  class="object-cover p-1"
                 />
               </a>
-              <div class='p-8'>
-                <p class='uppercase text-text-muted m-0'>
-                  {item.subTitle}
-                </p>
-                <h2 class='heading-2 text-4xl mt-0 p-0'>
+              <div class="p-5 md:p-8">
+                <p class="uppercase text-text-muted m-0">{item.subTitle}</p>
+                <h2 class="heading-2 text-4xl mt-0 p-0">
                   <a href={`/case-studies/${item.link}`} class="unset">
                     {item.title}
                   </a>
                 </h2>
-                <p class="mt-5 mb-8">
-                  {item.blurb}
-                </p>
+                <p class="mt-5 mb-8">{item.blurb}</p>
                 <p>
-                  <Button 
-                    href={`/case-studies/${item.link}`} 
+                  <Button
+                    href={`/case-studies/${item.link}`}
                     text="Read the full story"
-                    variant="primary" 
+                    variant="primary"
+                    classes={[
+                      'block w-full text-center md:w-auto md:text-left',
+                    ]}
                   />
                 </p>
               </div>
             </div>
-          </article>            
+          </article>
         ))
       }
     </div>
     <h2 class="heading-2">Tell me how I can help</h2>
-    <ContactForm action="/contact/thanks" pageLocation='case studies list' />   
+    <ContactForm action="/contact/thanks" pageLocation="case studies list" />
+  </section>
 </PageLayout>
