@@ -1,6 +1,0 @@
-net[[plugins]]
-package = "netlify-plugin-image-optim"
-
-[[plugins]]
-package = "@netlify/plugin-sitemap"
-  
