@@ -1,0 +1,155 @@
+---
+import snippets from 'src/data/content-snippets.json';
+import PageLayout from 'src/layouts/PageLayout.astro';
+import PageMeta from 'src/components/PageMeta.astro';
+import PageHeader from 'src/components/PageHeader.astro';
+import Testimonials from 'src/components/Testimonials.astro';
+import Button from 'src/components/Button.astro';
+import BenefitsList from 'src/components/BenefitsList.astro';
+---
+
+<PageLayout>
+  <PageMeta
+    title="Frontend mentorship programmes | React mentoring | Rob Kendal, freelance developer"
+    description="Learn to code for free with a frontend mentorship with Rob Kendal. I offer a range of free code mentorship programmes and paid mentorship options to help people learn to code."
+    slot="meta"
+  />
+  <section slot="main">
+    <div class="prose max-w-none prose-bubblegum">
+      <PageHeader>Mentorship</PageHeader>
+      <p>
+        As well as a range of helpful{' '}
+        <a href="/blog"> web development articles</a>{' '}
+        and{' '}
+        <a href="/publications"> publications and resources</a>
+        , I'm proud to be a coding mentor, offering learn to code mentor support
+        to those looking to start their frontend development journey.
+      </p>
+      <p>
+        My coding mentorship starts for <strong>free</strong>, but I have paid
+        options if you need more support.
+      </p>
+    </div>
+    <div class="mt-10 h-1 border-b max-w-lg mx-auto"></div>
+    <div
+      class="relative my-10 before:z-0 before:block before:absolute before:-inset-1 before:-skew-y-1 before:-rotate-2 before:bg-gradient-to-bl before:bg-no-repeat before:bg-bottom before:bg-[length:95%_95%] before:from-primary-blue before:to-primary-blue before:dark:from-primary-blue before:dark:to-primary-blue"
+    >
+      <h2
+        class="heading-2 text-center overflow-hidden mb-4 z-10 block relative"
+      >
+        Mentorship base level
+      </h2>
+      <p class="relative max-w-2xl text-lg mx-auto mb-5">
+        I want to help as many people as I can learn to code and get into
+        frontend development. That's why my mentorship support starts at
+        <strong>free</strong>. With that you'll get access to over 15 years of
+        experience and knowledge in the tech industry as a self-taught
+        developer, a manager, and a marketer.
+      </p>
+      <p class="relative max-w-2xl text-lg mx-auto mb-5">
+        My free mentorship option includes:
+      </p>
+      <BenefitsList
+        list={[
+          'Unlimited email support (guaranteed answers within 24 hours).',
+          'Code reviews.',
+          'Limited video replies.',
+        ]}
+      />
+    </div>
+
+    <div class="grid grid-cols-2 gap-6 mt-24 mb-10 place-items-stretch">
+      <div class="border-2 border-gray-600 rounded-b-sm shadow-md">
+        <figure class="-mx-[2px] -mt-[2px]">
+          <img
+            src="/img/mentorship/level1.png"
+            alt="Mentorship level 1 option"
+          />
+        </figure>
+        <div class="bg-white p-8">
+          <h3 class="heading-2 text-4xl">
+            <span class="is-sr-only">Mentorship Level 1</span>
+            &pound;49 <br />
+            <small class="text-text-muted font-normal">(per month)</small>
+          </h3>
+          <div class="prose max-w-none prose-bubblegum">
+            <p>
+              For those seeking more structure and proactive regular support,
+              Level 1 is the right choice for you. It offers a perfect blend of
+              additional support and value, with regular updates, access to an
+              exclusive Discord community and monthly video calls.
+            </p>
+            <p>Level 1 includes:</p>
+            <ul>
+              <li>
+                Exclusive access to Discord community packed with fellow
+                aspiring devs
+              </li>
+              <li>1 virtual meeting per month via Zoom (45 mins)</li>
+              <li>Regular progress check-ins</li>
+              <li>Career coaching service, including CV reviews</li>
+              <li>Access to coding challenges</li>
+            </ul>
+          </div>
+          <p class="text-center mt-10">
+            <Button
+              href="https://pay.gocardless.com/AL000374P14DRK"
+              text="Sign me up!"
+              variant="primary"
+            />
+          </p>
+        </div>
+      </div>
+
+      <div class="border-2 border-gray-600 rounded-b-sm shadow-md">
+        <figure class="-mx-[2px] -mt-[2px]">
+          <img
+            src="/img/mentorship/level2.png"
+            alt="Mentorship level 2 option"
+          />
+        </figure>
+        <div class="bg-white p-8">
+          <h3 class="heading-2 text-4xl">
+            <span class="is-sr-only">Mentorship Level 2</span>
+            &pound;99 <br />
+            <small class="text-text-muted font-normal">(per month)</small>
+          </h3>
+          <div class="prose max-w-none prose-bubblegum">
+            <p>
+              For the most demanding of students, Level 2 ups the ante with more
+              regular video support, access to personalised video lessons and
+              help with larger projects. To really accelerate your learning
+              journey, this is the best option for you.
+            </p>
+            <p>Level 2 includes:</p>
+            <ul>
+              <li>Everything in Level 1, plus</li>
+              <li>2 virtual meetings per month via Zoom (45 mins each)</li>
+              <li>Access to personalised video lessons</li>
+              <li>Collaborative work on larger coding projects</li>
+            </ul>
+          </div>
+          <p class="text-center mt-10">
+            <Button
+              href="https://pay.gocardless.com/AL00039PXAH73Q"
+              text="Sign me up!"
+              variant="primary"
+            />
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="text-sm italic text-text-muted my-10">
+      Subscriptions are rolling month to month, but you're free to cancel any
+      time. Check the{' '}
+      <a href="/terms"> terms and conditions</a>{' '}
+      for more information
+    </p>
+    <div class="my-8 border-b max-w-lg mx-auto"></div>
+    <Testimonials
+      title="Don't take my word for it"
+      intro="I've worked with a number of mentees young and old. Here's what some of my previous clients said about our time together."
+      list={snippets.testimonials}
+    />
+  </section>
+</PageLayout>

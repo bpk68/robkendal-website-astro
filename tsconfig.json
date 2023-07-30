@@ -2,6 +2,7 @@
   "extends": "astro/tsconfigs/strict",
   "module": "esnext",
   "display": "theme/bubblegum",
+  "allowSyntheticImports": true,
   "compilerOptions": {
     "types": ["astro/client"],
     "baseUrl": "."

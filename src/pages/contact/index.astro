@@ -1,0 +1,32 @@
+---
+import PageLayout from 'src/layouts/PageLayout.astro';
+import PageMeta from 'src/components/PageMeta.astro';
+import ContactForm from 'src/components/ContactForm.astro';
+import PageHeader from 'src/components/PageHeader.astro';
+---
+
+<PageLayout>
+  <PageMeta
+    title="Contact Rob Kendal | Freelance Shopify developer in York, Selby, Leeds"
+    description="Contact Rob Kendal about your next Shopify website project, WordPress website, or if you're a developer looking for a coding mentor"
+    slot="meta"
+  />
+  <section slot="main">
+    <div class="prose max-w-none prose-bubblegum">
+      <PageHeader>Let's talk!</PageHeader>
+      <p>
+        Ready to talk about your business website needs, or your next WordPress
+        or Shopify project? Need help with a web development support and
+        maintenance? Or want to know more about my
+        <a href="/mentorship"> coding mentorship support</a>
+        ?
+      </p>
+      <p>
+        Send me a message below and <strong
+          >I'll get back to you within 24 hours</strong
+        >
+      </p>
+    </div>
+    <ContactForm action="/contact/thanks" />
+  </section>
+</PageLayout>

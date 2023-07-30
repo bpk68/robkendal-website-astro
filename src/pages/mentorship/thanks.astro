@@ -1,0 +1,49 @@
+---
+import PageLayout from 'src/layouts/PageLayout.astro';
+import PageMeta from 'src/components/PageMeta.astro';
+import PageHeader from 'src/components/PageHeader.astro';
+---
+
+<PageLayout>
+  <PageMeta
+    title="Thanks for signing up for mentorship with Rob Kendal, freelance web developer"
+    description="Learn to code for free with a frontend mentorship with Rob Kendal. I offer a range of free code mentorship programmes and paid mentorship options to help people learn to code"
+    slot="meta"
+  />
+  <section slot="main">
+    <div class="prose max-w-none prose-bubblegum">
+      <PageHeader>Thank you for joining up</PageHeader>
+      <div class="flex flex-col sm:flex-row sm:gap-5 items-start">
+        <img
+          src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif"
+          alt="Thumbs up"
+          class="w-full sm:w-1/3 sm:aspect-auto sm:object-contain"
+        />
+        <div>
+          <p>
+            Thank you for signing up to my mentorship program. You've made a
+            brave first step on your way to becoming a frontend developer.
+          </p>
+          <p>
+            I'll be in touch over the next 24 hours to arrange our first
+            kick-off meeting to get you started on the path to dev greatness.
+          </p>
+          <p>
+            In true 'choose your own adventure' style, you can choose where to
+            go next:
+          </p>
+          <ul class="sm:pl-10">
+            <li>
+              <a href="/"> Visit the home page</a>
+              or,
+            </li>
+            <li>
+              Read some
+              <a href="/blog"> blog articles</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
