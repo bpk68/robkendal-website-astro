@@ -26,10 +26,18 @@ switch (level) {
 ---
 
 <Tag
-  class={`font-bold text-text-heading ${headingClass} ${classes} overflow-hidden`}
+  class={`
+    font-bold 
+    text-text-heading 
+    overflow-hidden
+    ${headingClass} 
+    ${classes} 
+  `}
 >
   <span
-    class="bg-gradient-to-bl from-primary-blue to-primary-blue bg-no-repeat bg-bottom bg-[length:100%_40%] dark:from-primary-blue dark:to-primary-blue"
+    class="
+      fancy-header-bg
+    "
   >
     <slot />
   </span>
