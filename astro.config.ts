@@ -1,7 +1,9 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+// import tailwind from '@astrojs/tailwind';
+import prefetch from "@astrojs/prefetch";
 import sitemap from '@astrojs/sitemap';
+import compress from "astro-compress";
 
 /* 
   We are doing some URL mumbo jumbo here to tell Astro what the URL of your website will be.
@@ -28,6 +30,10 @@ if (isBuild) {
 }
 
 export default defineConfig({
+  experimental: {
+		assets: true,
+		viewTransitions: true,
+	},
   redirects: {
     '/sitemap.xml': {
       status: 301,
@@ -38,13 +44,16 @@ export default defineConfig({
       destination: '/enterprise-software-development',
     },
   },
+  compressHTML: true,
   server: { port: SERVER_PORT },
   site: BASE_URL,
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
+    // tailwind({
+    //   applyBaseStyles: false,
+    // }),
     sitemap(),
+		prefetch(),
+		compress({ logger: 1 }),
   ],
   markdown: {
     shikiConfig: {
@@ -52,4 +61,9 @@ export default defineConfig({
       wrap: true,
     },
   },
+  vite: {
+		build: {
+			sourcemap: true,
+		},
+	},
 });

@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-  content: ['./src/**/*.astro'],
+  content: [
+		"./public/**/*.html",
+		"./src/**/*.{astro,js,jsx,ts,tsx,vue,svelte}",
+	],
   darkMode: 'class',
   theme: {
     extend: {
@@ -124,8 +126,8 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {
