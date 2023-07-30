@@ -5,15 +5,454 @@ interface Props {
 }
 
 interface Mention {
+  type: string;
   author: {
-    url: string;
-    photo: string;
+    type: string;
     name: string;
+    photo: string;
+    url: string;
   };
+  url: string;
+  published: string | null;
+  'wm-received': string;
+  'wm-id': number;
+  'wm-source': string;
+  'wm-target': string;
+  content?:
+    | {
+        html: string;
+        text: string;
+      }
+    | undefined;
+  'in-reply-to': string;
+  'like-of': string;
+  'wm-property': string;
+  'wm-private': boolean;
 }
 
 const { url } = Astro.props;
-let mentions: Mention[] = [];
+let mentions: Partial<Mention>[] = [
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Radu-Cosmin',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/08949e28fb1fa8e646541286464a7697a324dfadddb75520b39c4a2ae4ae049a.png',
+      url: 'https://twitter.com/prcwebdev',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1454912529164083201#favorited-by-1074293576794804224',
+    published: null,
+    'wm-received': '2021-11-01T11:37:36Z',
+    'wm-id': 1298262,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1454912529164083201/1074293576794804224',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Kellen Mace',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/f317ce3c2bacc79912e3bb6ecc50f534eb6b41fd085b03f8fe277540e983b00f.jpg',
+      url: 'https://twitter.com/KellenMace',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1453288651027320840#favorited-by-62584124',
+    published: null,
+    'wm-received': '2021-10-27T19:15:46Z',
+    'wm-id': 1296763,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1453288651027320840/62584124',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Darren Potter',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/333ddafb68ecfa324bf4e387fddcc9259d88bb7e8eeafa01290edc8394ee3aff.jpg',
+      url: 'https://twitter.com/darpots',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1453288651027320840#favorited-by-2216609807',
+    published: null,
+    'wm-received': '2021-10-27T19:15:46Z',
+    'wm-id': 1296764,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1453288651027320840/2216609807',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Baran',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/4240d3f325038686e2a916ca573df28b5419429d19ef9f1fd5be7f51ed88675a.jpg',
+      url: 'https://twitter.com/____baran',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1453288651027320840#favorited-by-110158960',
+    published: null,
+    'wm-received': '2021-10-27T15:00:20Z',
+    'wm-id': 1296591,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1453288651027320840/110158960',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Rob Kendal 👨‍💻',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/86191a6f58d4089f536f513e458187d722a36b762c7212e3782f2791fa87a89b.jpg',
+      url: 'https://twitter.com/kendalmintcode',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1453316758631288832',
+    published: '2021-10-27T11:04:51+00:00',
+    'wm-received': '2021-10-27T15:00:18Z',
+    'wm-id': 1296589,
+    'wm-source':
+      'https://brid.gy/comment/twitter/kendalmintcode/1453288651027320840/1453316758631288832',
+    'wm-target': 'https://robkendal.co.uk/',
+    content: {
+      html: 'Thanks buddy ☺️ it’ll look better once the code examples are nicely formatted again\n<a class="u-mention" href="https://twitter.com/EddyVinckk"></a>',
+      text: 'Thanks buddy ☺️ it’ll look better once the code examples are nicely formatted again',
+    },
+    'in-reply-to': 'https://robkendal.co.uk/',
+    'wm-property': 'in-reply-to',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Michelle',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/6209d52116b93b545925c39beec269a814ce95c95f60a64aa62523e480176186.jpg',
+      url: 'https://twitter.com/MishaCreatrix',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1453288651027320840#favorited-by-210908037',
+    published: null,
+    'wm-received': '2021-10-27T15:00:18Z',
+    'wm-id': 1296590,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1453288651027320840/210908037',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Tom Salter',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/7d50ea3372995b9b293c2b8941ee014d743c8a3a2ad4ad7007f11c96a8dea226.jpg',
+      url: 'https://twitter.com/TomJSalter_',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1453288651027320840#favorited-by-1379089186184118274',
+    published: null,
+    'wm-received': '2021-10-27T11:00:42Z',
+    'wm-id': 1296558,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1453288651027320840/1379089186184118274',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Eddy Vinck',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/b6ca0fa1112d4117e2d66239cd688232483758cd406497f71e8c80be9a016f82.jpg',
+      url: 'https://twitter.com/EddyVinckk',
+    },
+    url: 'https://twitter.com/EddyVinckk/status/1453293087317446673',
+    published: '2021-10-27T09:30:47+00:00',
+    'wm-received': '2021-10-27T11:00:41Z',
+    'wm-id': 1296557,
+    'wm-source':
+      'https://brid.gy/comment/twitter/kendalmintcode/1453288651027320840/1453293087317446673',
+    'wm-target': 'https://robkendal.co.uk/',
+    content: {
+      html: 'Looks great Rob! I like the blue 💙\n<a class="u-mention" href="https://robkendal.co.uk/"></a>\n<a class="u-mention" href="https://twitter.com/kendalmintcode"></a>',
+      text: 'Looks great Rob! I like the blue 💙',
+    },
+    'in-reply-to': 'https://robkendal.co.uk/',
+    'wm-property': 'in-reply-to',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Eddy Vinck',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/b6ca0fa1112d4117e2d66239cd688232483758cd406497f71e8c80be9a016f82.jpg',
+      url: 'https://twitter.com/EddyVinckk',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1453288651027320840#favorited-by-633958151',
+    published: null,
+    'wm-received': '2021-10-27T11:00:40Z',
+    'wm-id': 1296556,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1453288651027320840/633958151',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'James Perkins',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/59e8aa184e4bbaace2ffc9a2fb878c0461c4163a8bd3e3997c05cd631f38a16a.png',
+      url: 'https://twitter.com/james_r_perkins',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1452242598991646732#favorited-by-1060954134193549317',
+    published: null,
+    'wm-received': '2021-10-24T13:48:50Z',
+    'wm-id': 1295484,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1452242598991646732/1060954134193549317',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Tom Hermans🤘🌈',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/795f03301969b7eb3f47673dca199228325e3a925defe302d9653b3f3283823f.jpg',
+      url: 'https://twitter.com/tomhermans',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1445589669257744391#favorited-by-10044152',
+    published: null,
+    'wm-received': '2021-10-07T09:56:19Z',
+    'wm-id': 1283819,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1445589669257744391/10044152',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Maciek Grzybek',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/2c4757bb03369c3d204924abad86c0fd10b4a92723fd5b75f1891aef70993031.jpg',
+      url: 'https://twitter.com/grzybek_maciek',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1413870013245804546#favorited-by-1304419816611217408',
+    published: null,
+    'wm-received': '2021-07-10T18:19:05Z',
+    'wm-id': 1215680,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1413870013245804546/1304419816611217408',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Mubashir Hassan',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/ebe3a3bcbec9c73e9a622c8e0c6d07cdf8602127e7bdd4c7159b1298117d69f3.jpg',
+      url: 'https://twitter.com/mhm13dev',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1413870013245804546#favorited-by-1288371831540506624',
+    published: null,
+    'wm-received': '2021-07-10T18:18:38Z',
+    'wm-id': 1215679,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1413870013245804546/1288371831540506624',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Roopesh Saravanan',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/b22c3b89dbbc2a9948e4590eb109035606064c32486bcb7aebdbeaccb4551e23.jpg',
+      url: 'https://twitter.com/heyroopesh',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1413870013245804546#favorited-by-852439354526101504',
+    published: null,
+    'wm-received': '2021-07-10T18:18:37Z',
+    'wm-id': 1215678,
+    'wm-source':
+      'https://brid.gy/like/twitter/kendalmintcode/1413870013245804546/852439354526101504',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'xmanilovechina',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/a308849d05e8025591b7d44d71179ebeb240f58bf2676c758d1f416b3b2b385f.jpg',
+      url: 'https://twitter.com/xmanilovechina',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1355217383498121216#favorited-by-92426610',
+    published: null,
+    'wm-received': '2021-01-30T14:04:06Z',
+    'wm-id': 1009972,
+    'wm-source':
+      'https://brid-gy.appspot.com/like/twitter/kendalmintcode/1355217383498121216/92426610',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Alberto 🇲🇽⚽️',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/d4c933df7c1dfcee143173ddd3c86895412207b2a4e68936c866cf70f58fa6a1.jpg',
+      url: 'https://twitter.com/RickHunter7',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1355217383498121216#favorited-by-183725497',
+    published: null,
+    'wm-received': '2021-01-30T02:14:10Z',
+    'wm-id': 1009465,
+    'wm-source':
+      'https://brid-gy.appspot.com/like/twitter/kendalmintcode/1355217383498121216/183725497',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Jhey 🐻🛠',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/51dda33cc5d54d8aea991662c9cb2dff93e29ef3bb7c9a233cc8afd5ed8e556d.jpg',
+      url: 'https://twitter.com/jh3yy',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1355217383498121216#favorited-by-2396811776',
+    published: null,
+    'wm-received': '2021-01-30T02:14:10Z',
+    'wm-id': 1009466,
+    'wm-source':
+      'https://brid-gy.appspot.com/like/twitter/kendalmintcode/1355217383498121216/2396811776',
+    'wm-target': 'https://robkendal.co.uk/',
+    'like-of': 'https://robkendal.co.uk/',
+    'wm-property': 'like-of',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Rob Kendal {{☕}}',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/d408bb7a0c70f21a191dbf3438ad506724e6aa56052631b9f636c968109a1168.jpg',
+      url: 'https://twitter.com/kendalmintcode',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1355267458945454084',
+    published: '2021-01-29T21:31:56+00:00',
+    'wm-received': '2021-01-30T02:14:09Z',
+    'wm-id': 1009464,
+    'wm-source':
+      'https://brid-gy.appspot.com/comment/twitter/kendalmintcode/1355217383498121216/1355267458945454084',
+    'wm-target': 'https://robkendal.co.uk/',
+    content: {
+      html: 'Thanks Alberto, if you’d like to see anything on there let me know — I’m always on the hunt for article topics ☺️\n<a class="u-mention" href="https://twitter.com/RickHunter7"></a>\n<a class="u-mention" href="https://twitter.com/jh3yy"></a>',
+      text: 'Thanks Alberto, if you’d like to see anything on there let me know — I’m always on the hunt for article topics ☺️',
+    },
+    'in-reply-to': 'https://robkendal.co.uk/',
+    'wm-property': 'in-reply-to',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Rob Kendal {{☕}}',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/d408bb7a0c70f21a191dbf3438ad506724e6aa56052631b9f636c968109a1168.jpg',
+      url: 'https://twitter.com/kendalmintcode',
+    },
+    url: 'https://twitter.com/kendalmintcode/status/1355267233094709248',
+    published: '2021-01-29T21:31:02+00:00',
+    'wm-received': '2021-01-30T02:14:08Z',
+    'wm-id': 1009463,
+    'wm-source':
+      'https://brid-gy.appspot.com/comment/twitter/kendalmintcode/1355217383498121216/1355267233094709248',
+    'wm-target': 'https://robkendal.co.uk/',
+    content: {
+      html: 'Thanks mate, means a lot from a CSS ledge such as yourself ☺️\n<a class="u-mention" href="https://twitter.com/jh3yy"></a>',
+      text: 'Thanks mate, means a lot from a CSS ledge such as yourself ☺️',
+    },
+    'in-reply-to': 'https://robkendal.co.uk/',
+    'wm-property': 'in-reply-to',
+    'wm-private': false,
+  },
+  {
+    type: 'entry',
+    author: {
+      type: 'card',
+      name: 'Jhey 🐻🛠',
+      photo:
+        'https://webmention.io/avatar/pbs.twimg.com/51dda33cc5d54d8aea991662c9cb2dff93e29ef3bb7c9a233cc8afd5ed8e556d.jpg',
+      url: 'https://twitter.com/jh3yy',
+    },
+    url: 'https://twitter.com/jh3yy/status/1355257070887596037',
+    published: '2021-01-29T20:50:39+00:00',
+    'wm-received': '2021-01-30T02:14:06Z',
+    'wm-id': 1009462,
+    'wm-source':
+      'https://brid-gy.appspot.com/comment/twitter/kendalmintcode/1355217383498121216/1355257070887596037',
+    'wm-target': 'https://robkendal.co.uk/',
+    content: {
+      html: 'Your site is beaut! 😍\nYou get extra points for the buttons! 👏 💯\n<a class="u-mention" href="https://robkendal.co.uk/"></a>\n<a class="u-mention" href="https://twitter.com/kendalmintcode"></a>',
+      text: 'Your site is beaut! 😍\nYou get extra points for the buttons! 👏 💯',
+    },
+    'in-reply-to': 'https://robkendal.co.uk/',
+    'wm-property': 'in-reply-to',
+    'wm-private': false,
+  },
+];
 
 try {
   const response = await fetch(
@@ -30,15 +469,25 @@ try {
 
 <div class="my-14">
   <h2 class="heading-2">Webmentions for this article</h2>
-  {
-    mentions.map((mention) => (
-      <figure class="">
-        <a href={mention.author.url} target="_blank" rel="noopener noreferrer">
-          <img src={mention.author.photo} alt={mention.author.name} />
-        </a>
-      </figure>
-    ))
-  }
+  <div class="flex gap-3 flex-wrap">
+    {
+      mentions.map((mention) => (
+        <figure class="w-14">
+          <a
+            href={mention?.['wm-source'] ?? mention?.author?.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={mention?.author?.photo}
+              alt={mention?.author?.name}
+              class="rounded-full shadow-md border"
+            />
+          </a>
+        </figure>
+      ))
+    }
+  </div>
   {
     mentions.length < 1 && (
       <p>
