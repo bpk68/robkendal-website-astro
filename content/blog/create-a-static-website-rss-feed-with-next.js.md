@@ -9,7 +9,7 @@ featuredimage: '/img/nextjs-with-wordpress-part3-blog-post.png'
 featured: true
 tags:
   - Tutorials
-  - Next.js
+  - Next
   - JavaScript
 ---
 

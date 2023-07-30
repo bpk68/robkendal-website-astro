@@ -10,12 +10,11 @@ description: 'Building a React project and have the error ''Hooks can only be ca
 
 '
 tags:
-- JavaScript
-- Development
-- Tutorials
-- React
-- Debugging
-
+  - JavaScript
+  - Development
+  - Tutorials
+  - React
+  - Debugging
 ---
 
 ![Blog header for article on invalid hook call warning](/img/fixing-invalid-hooks-warning-blog-header.png)

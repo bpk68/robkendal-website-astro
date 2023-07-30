@@ -2,25 +2,26 @@
 date: 2020-11-24T10:56:03
 published: true
 title: Signs to lookout for if you suspect you've ended up in the wrong career
-description: Avoiding ending up in the wrong career should be the priority of any
+description:
+  Avoiding ending up in the wrong career should be the priority of any
   worker. In this article we aim to help you recognise the signs to watch for if you
   think you're in the wrong career
-featuredimage: "/img/signs-youre-in-the-wrong-career-blog-post.png"
+featuredimage: '/img/signs-youre-in-the-wrong-career-blog-post.png'
 featured: false
 tags:
-- thoughts
-- career
-
+  - Thoughts
+  - Career
 ---
+
 ![](/img/signs-youre-in-the-wrong-career-blog-post.png)
 
-_This is a guest post by Artur Meyster. Artur is the CTO of Career Karma, an online marketplace that matches career switchers with coding bootcamps. He is also the host of the Breaking Into Startups podcast, which features people with non-traditional backgrounds who broke into tech. You can find Artur on_ [_Twitter_](https://twitter.com/arturmeyster "Find Artur on Twitter") _and_ [_LinkedIn_](https://www.linkedin.com/in/meyster "Connect with Artur on LinkedIn")_._ 
+_This is a guest post by Artur Meyster. Artur is the CTO of Career Karma, an online marketplace that matches career switchers with coding bootcamps. He is also the host of the Breaking Into Startups podcast, which features people with non-traditional backgrounds who broke into tech. You can find Artur on_ [_Twitter_](https://twitter.com/arturmeyster 'Find Artur on Twitter') _and_ [_LinkedIn_](https://www.linkedin.com/in/meyster 'Connect with Artur on LinkedIn')_._
 
 Ending up in the wrong career is a fate that many people end up suffering. There’s nothing wrong with ending up in the wrong career, but it can be a distressing experience once your eyes are finally opened to the truth. With that in mind, avoiding ending up in the wrong career should be the priority of any worker. Unfortunately, many of us simply take the first job that comes our way out of convenience or because it offered a salary.
 
 In fact, ending up in the wrong career and jumping on the first opportunity that comes along is one of the [things I wish I'd known as a junior developer](https://robkendal.co.uk/blog/things-i-wish-i-d-known-as-a-junior-developer "Things I wish I'd known as a junior developer").
 
-When it comes to reasons for accepting a job, doing so for the money or to appease others is almost always a bad idea. This can lead to you becoming dissatisfied with your work and feeling less happy overall with what you do. Your work will make up a large portion of your life and there’s no reason for you to go through all that time feeling disappointed in your career choice. 
+When it comes to reasons for accepting a job, doing so for the money or to appease others is almost always a bad idea. This can lead to you becoming dissatisfied with your work and feeling less happy overall with what you do. Your work will make up a large portion of your life and there’s no reason for you to go through all that time feeling disappointed in your career choice.
 
 Learn the common signs that point to the fact that you may be in the wrong career and act on them before your situation becomes worse.
 
