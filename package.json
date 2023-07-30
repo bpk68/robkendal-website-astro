@@ -14,7 +14,7 @@
   "dependencies": {
     "@astrojs/prism": "^2.1.2",
     "@astrojs/rss": "^2.4.3",
-    "@astrojs/sitemap": "^1.4.0",
+    "@astrojs/sitemap": "^2.0.0",
     "@astrojs/tailwind": "^4.0.0",
     "@markdoc/markdoc": "^0.3.0",
     "@tailwindcss/forms": "^0.5.4",
