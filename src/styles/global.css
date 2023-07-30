@@ -77,6 +77,37 @@
 
   /* dark theme */
   .theme-bubblegum.dark {
+    /*
+      Ark theme
+
+      dark-blue: #243544 - rgb(36, 53, 68)
+      blue: #388cc1 - rgb(56, 140, 193)
+      light-blue: #549fd7 - rgb(84, 159, 215)
+      lighter-blue: #b5e1f9 - rgb(181, 225, 249)
+
+      purple: #c68ff4 - rgb(198, 143, 244)
+      red: #e62b4a - rgb(230, 43, 74)
+      cream: #fdfaf6 - rgb(253, 250, 246)
+      grey: #edf2f4 - rgb(237, 242, 244)
+    */
+
+    /* Custom #243544 */
+    --color-brand-blue-dark: 36 53 68;
+    /* Custom #388cc1 */
+    --color-brand-blue: 56 140 193;
+    /* Custom #549fd7 */
+    --color-brand-blue-light: 84 159 215;
+    /* Custom #b5e1f9 */
+    --color-brand-blue-lighter: 181 225 249;
+    /* Custom #c68ff4 */
+    --color-brand-purple: 198 143 244;
+    /* Custom #e62b4a */
+    --color-brand-red: 230 43 74;
+    /* Custom #fdfaf6 */
+    --color-brand-cream: 253 250 246;
+    /* Custom #edf2f4 */
+    --color-brand-cream-light: 237 242 244;
+
     /* Tailwind blue-500 #3b82f6 */
     --color-primary-blue: 59 130 246;
     /* Tailwind lime-300 #bef264 */
@@ -118,6 +149,29 @@
     font-size: 1.125em;
     line-height: 1.85;
     scroll-behavior: smooth;
+
+    --color-brand-blue-dark: 36 53 68;
+    --color-brand-blue: 56 140 193;
+    --color-brand-blue-light: 84 159 215;
+    --color-brand-blue-lighter: 181 225 249;
+    --color-brand-purple: 198 143 244;
+    --color-brand-red: 230 43 74;
+    --color-brand-cream: 253 250 246;
+    --color-brand-cream-light: 237 242 244;
+    --color-primary-blue: 138 230 251;
+    --color-primary-green: 190 242 100;
+    --color-primary-yellow: 255 222 105;
+    --color-text-body: 62 51 85;
+    --color-text-heading: 62 51 85;
+    --color-text-bold: 62 51 85;
+    --color-text-muted: 100 116 139;
+    --color-text-link: 6 182 212;
+    --color-text-code: 0 0 0;
+    --color-text-selection: 0 0 0;
+    --color-bg-body: 255 255 255;
+    --color-bg-code: 254 243 199;
+    --color-bg-selection: 217 249 157;
+    --color-border-code: 255 237 213;
   }
 
   h1,

@@ -14,6 +14,12 @@ module.exports = {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
+        primary: {
+          // primary: 'rgb(var(--color-primary) / <alpha-value>)',
+          blue: 'rgb(var(--color-primary-blue) / <alpha-value>)',
+          green: 'rgb(var(--color-primary-green) / <alpha-value>)',
+          yellow: 'rgb(var(--color-primary-yellow) / <alpha-value>)',
+        },
         brand: {
           'blue-dark': 'rgb(var(--color-brand-blue-dark) / <alpha-value>)',
           blue: 'rgb(var(--color-brand-blue) / <alpha-value>)',
@@ -24,11 +30,6 @@ module.exports = {
           red: 'rgb(var(--color-brand-red) / <alpha-value>)',
           cream: 'rgb(var(--color-brand-cream) / <alpha-value>)',
           'cream-light': 'rgb(var(--color-brand-cream-light) / <alpha-value>)',
-        },
-        primary: {
-          blue: 'rgb(var(--color-primary-blue) / <alpha-value>)',
-          green: 'rgb(var(--color-primary-green) / <alpha-value>)',
-          yellow: 'rgb(var(--color-primary-yellow) / <alpha-value>)',
         },
         text: {
           body: 'rgb(var(--color-text-body) / <alpha-value>)',

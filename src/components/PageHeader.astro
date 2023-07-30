@@ -1,5 +1,5 @@
 ---
-import type { HTMLTag } from "astro/types";
+import type { HTMLTag } from 'astro/types';
 
 interface Props {
   level?: 1 | 2 | 3;
@@ -10,33 +10,27 @@ const { level = 1, classes } = Astro.props;
 
 let Tag: HTMLTag = `h${level}`;
 
-let headingClass = "text-4xl md:text-5xl pt-4 pb-2";
+let headingClass = 'text-4xl md:text-5xl pt-4 pb-2';
 
 switch (level) {
   case 2:
-    headingClass = "text-2xl md:text-3xl pt-4 pb-2";    
+    headingClass = 'text-2xl md:text-3xl pt-4 pb-2';
     break;
-  case 3:  
-    headingClass = "text-xl md:text-2xl pt-4 pb-2";    
-    break;  
+  case 3:
+    headingClass = 'text-xl md:text-2xl pt-4 pb-2';
+    break;
   default:
-    headingClass = "text-4xl md:text-5xl pt-4 pb-2";
+    headingClass = 'text-4xl md:text-5xl pt-4 pb-2';
     break;
 }
 ---
 
-<Tag class={`font-bold text-text-heading ${headingClass} ${classes} overflow-hidden`}>
+<Tag
+  class={`font-bold text-text-heading ${headingClass} ${classes} overflow-hidden`}
+>
   <span
-    class="
-      bg-gradient-to-bl
-      bg-no-repeat
-      bg-bottom bg-[length:100%_40%]
-      from-primary-blue
-      to-primary-blue
-      dark:from-primary-blue
-      dark:to-primary-blue
-    "
+    class="bg-gradient-to-bl from-primary-blue to-primary-blue bg-no-repeat bg-bottom bg-[length:100%_40%] dark:from-primary-blue dark:to-primary-blue"
   >
     <slot />
   </span>
-</h1>
+</Tag>

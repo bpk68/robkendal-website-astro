@@ -14,14 +14,14 @@
   "dependencies": {
     "@astrojs/prism": "^2.1.2",
     "@astrojs/rss": "^2.4.3",
-    "@astrojs/sitemap": "^1.4.0",
+    "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^4.0.0",
     "@markdoc/markdoc": "^0.3.0",
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
     "@tinacms/cli": "^1.5.26",
     "@types/sanitize-html": "^2.9.0",
-    "astro": "^2.9.2",
+    "astro": "^2.9.6",
     "astro-markdoc-renderer": "0.0.1-alpha.1",
     "globby": "^13.2.2",
     "gray-matter": "^4.0.3",
@@ -33,7 +33,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "prettier-plugin-astro": "^0.10.0",
+    "prettier-plugin-astro": "^0.11.0",
     "typescript": "^5.1.6"
   }
 }
