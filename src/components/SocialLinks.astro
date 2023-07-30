@@ -5,11 +5,17 @@ interface Props {
 
 const { centralise = false } = Astro.props;
 ---
-<div class={`social-links my-10 text-2xl flex gap-5 ${centralise ? "justify-center" : ""}`}>
+
+<div
+  class={`social-links my-10 text-2xl flex gap-5 ${
+    centralise ? 'justify-center' : ''
+  }`}
+>
   <a
     href="https://indieweb.social/@kendalmintcode"
     target="_blank"
-    rel="noreferrer noopener me"    
+    rel="noreferrer noopener me"
+    class="unset"
   >
     <span class="fa-brands fa-mastodon" aria-hidden="true"></span>
     <span class="screen-reader-text">Follow me on Mastodon</span>
@@ -17,7 +23,8 @@ const { centralise = false } = Astro.props;
   <a
     href="https://github.com/bpk68/"
     target="_blank"
-    rel="noreferrer noopener me"    
+    rel="noreferrer noopener me"
+    class="unset"
   >
     <span class="fa-brands fa-github" aria-hidden="true"></span>
     <span class="screen-reader-text">Check out my code on GitHub</span>
@@ -25,7 +32,8 @@ const { centralise = false } = Astro.props;
   <a
     href="https://codepen.io/robkendal/"
     target="_blank"
-    rel="noreferrer noopener me"    
+    rel="noreferrer noopener me"
+    class="unset"
   >
     <span class="fa-brands fa-codepen" aria-hidden="true"></span>
     <span class="screen-reader-text">Have a peek at my Codepen</span>
@@ -33,7 +41,8 @@ const { centralise = false } = Astro.props;
   <a
     href="https://dev.to/kendalmintcode"
     target="_blank"
-    rel="noreferrer noopener me"    
+    rel="noreferrer noopener me"
+    class="unset"
   >
     <span class="fa-brands fa-dev" aria-hidden="true"></span>
     <span class="screen-reader-text">Connect with me on Dev.to</span>
@@ -42,6 +51,7 @@ const { centralise = false } = Astro.props;
     href="https://anchor.fm/the-front-end"
     target="_blank"
     rel="noreferrer noopener"
+    class="unset"
   >
     <span class="fa-solid fa-podcast" aria-hidden="true"></span>
     <span class="screen-reader-text">
@@ -52,13 +62,14 @@ const { centralise = false } = Astro.props;
     href="https://robkendal.co.uk/rss.xml"
     target="_blank"
     rel="noreferrer noopener"
+    class="unset"
   >
     <span class="fa-solid fa-rss" aria-hidden="true"></span>
     <span class="screen-reader-text">Subscribe to my RSS feed</span>
   </a>
 </div>
 
-<style>  
+<style>
   .social-links a {
     display: block;
     text-decoration: none;
