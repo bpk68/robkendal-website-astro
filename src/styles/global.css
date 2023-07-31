@@ -361,6 +361,17 @@
       theme('colors.primary.blue')
     );
   }
+
+  ul.chevron-list > li::before {
+    position: absolute;
+    left: 0;
+    content: '»';
+    color: rgb(var(--color-text-muted));
+  }
+
+  .dark .btn-dark-toggle {
+    @apply bg-white;
+  }
   /* ------ REUSABLE UTILS - END ------ */
 
   /* ---------------------------------------------------------------------- */

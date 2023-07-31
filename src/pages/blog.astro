@@ -71,7 +71,7 @@ const archivedPosts = sortedPosts.slice(6);
     <ArticleList count={6} skip={1} showBlurb />
 
     <h2 class="heading-2">Articles archive</h2>
-    <ul>
+    <ul class="chevron-list">
       {
         archivedPosts.map((post) => {
           const formattedDate = new Date(
@@ -86,12 +86,7 @@ const archivedPosts = sortedPosts.slice(6);
               <div class="title">
                 <a
                   href={`/blog/${post.slug}`}
-                  class="unset
-                      transition-[background-size] duration-300 
-                      bg-gradient-to-r bg-left-bottom bg-no-repeat
-                      bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px]
-                      from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue
-                    "
+                  class="fancy-underline unset"
                 >
                   {post.frontmatter.title}
                 </a>
