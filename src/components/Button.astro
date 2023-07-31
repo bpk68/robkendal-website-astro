@@ -2,7 +2,7 @@
 interface Props {
   id?: string;
   href: string;
-  text: string;  
+  text: string;
   size?: 'sm' | 'md' | 'lg';
   variant?: 'default' | 'primary' | 'secondary';
   isOutline?: boolean;
@@ -10,22 +10,22 @@ interface Props {
   external?: boolean;
 }
 
-const { 
+const {
   id,
-  href, 
-  text, 
+  href,
+  text,
   size = 'md',
-  variant = 'default', 
+  variant = 'default',
   isOutline = false,
   classes = [],
   external = false,
- } = Astro.props;
+} = Astro.props;
 
- if(isOutline) {
+if (isOutline) {
   classes.push('');
- }
+}
 
- switch (size) {
+switch (size) {
   case 'sm':
     classes.push('text-base px-3 py-1');
     break;
@@ -37,9 +37,9 @@ const {
     break;
   default:
     break;
- }
+}
 
- switch (variant) {
+switch (variant) {
   case 'default':
     classes.push('bg-');
     break;
@@ -49,13 +49,13 @@ const {
   case 'secondary':
     classes.push('');
     break;
- 
+
   default:
     break;
- }
+}
 ---
 
-<a 
+<a
   href={href}
   class={`
     relative 
@@ -78,24 +78,10 @@ const {
   rel={`${external ? 'noopener noreferrer' : ''}`}
   id={id}
 >
-  <span 
-    class="
-      absolute 
-      inset-0 
-      w-full 
-      h-full 
-      transition 
-      duration-200 
-      ease-out 
-      transform 
-      translate-x-1 
-      translate-y-1 
-      bg-primary-blue 
-      group-hover:-translate-x-0 
-      group-hover:-translate-y-0
-    "
+  <span
+    class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-primary-blue group-hover:-translate-x-0 group-hover:-translate-y-0"
   ></span>
-  <span 
+  <span
     class={`
       absolute 
       inset-0 
@@ -106,16 +92,12 @@ const {
       border-gray-800 
       group-hover:bg-primary-blue    
     `}></span>
-  <span 
-    class="
-      relative 
-      text-black 
-      group-hover:text-white
-       mr-2
-    ">
+  <span class="relative text-black group-hover:text-white mr-2">
     {text}
   </span>
-  <span class='fa-solid fa-chevron-circle-right relative z-10'></span>
+  <span
+    class="fa-solid fa-chevron-circle-right relative z-10 text-black group-hover:text-white"
+  ></span>
 </a>
 
 <style>

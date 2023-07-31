@@ -7,6 +7,7 @@
     "start": "astro dev",
     "build": "tinacms build && astro build",
     "build:local": "tinacms build --local -c 'astro build'",
+    "build:astro": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "clean": "rm -rf dist"
