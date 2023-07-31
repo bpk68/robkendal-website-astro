@@ -372,6 +372,14 @@
   .dark .btn-dark-toggle {
     @apply bg-white;
   }
+
+  .dark .case-study-content {
+    background-color: theme('colors.primary.blue');
+  }
+
+  .dark .case-study-content > p:first-child {
+    color: theme('colors.slate.300');
+  }
   /* ------ REUSABLE UTILS - END ------ */
 
   /* ---------------------------------------------------------------------- */
