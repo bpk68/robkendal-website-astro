@@ -24,7 +24,7 @@
     "@tinacms/cli": "^1.5.26",
     "@types/sanitize-html": "^2.9.0",
     "astro": "^2.9.6",
-    "astro-compress": "^1.1.50",
+    "astro-compress": "^2.0.0",
     "astro-markdoc-renderer": "0.0.1-alpha.1",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
