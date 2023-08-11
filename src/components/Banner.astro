@@ -1,0 +1,14 @@
+---
+interface Props {
+  bold?: boolean;
+  icon?: string;
+}
+
+const { bold = false, icon } = Astro.props;
+---
+<div class={`bg-primary-yellow px-6 py-5 mb-3 sm:px-3 text-left md:text-center ${bold ? 'font-bold' : ''}`}>
+  <p class="text-sm flex flex-row justify-start md:justify-center items-center align-middle gap-2">
+    { icon && <i class={icon} />}
+    <slot />    
+  </p>  
+</div>

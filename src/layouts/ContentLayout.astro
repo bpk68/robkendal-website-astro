@@ -6,6 +6,7 @@
 
 import BasePageLayout from './BasePageLayout.astro';
 import PageHeader from 'src/components/PageHeader.astro';
+import Banner from 'src/components/Banner.astro';
 
 export interface Props {
   title: string;
@@ -19,11 +20,22 @@ const formattedDate = new Date(date).toLocaleDateString('en-us', {
   month: 'short',
   day: 'numeric',
 });
+const isArticleOutdated = date.getFullYear() <= (new Date().getFullYear() - 2);
 ---
 
 <BasePageLayout>
   <Fragment slot="meta">
     <slot name="meta" />
+  </Fragment>
+
+  <Fragment slot="banner">
+    {
+      isArticleOutdated && (
+        <Banner icon="fa-solid fa-warning text-lg" bold>
+          Heads up, this article is 2+ years old. Any technical information may be out of date so it's worth double checking for an updated version.
+        </Banner>
+      )
+    }   
   </Fragment>
 
   <Fragment slot="main">
@@ -52,6 +64,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-us', {
           </ul>
         </div>
       </div>
+         
       <section
         class="blog-post prose md:prose-lg max-w-none prose-bubblegum post-content"
       >
