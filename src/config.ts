@@ -9,5 +9,5 @@ export const TWITTER_HANDLE = '@kendalmintcode';
 export const MY_NAME = 'Rob Kendal';
 
 // setup in astro.config.mjs
-const BASE_URL = new URL(import.meta.env.SITE);
+const BASE_URL = new URL(import.meta.env.SITE_URL);
 export const SITE_URL = BASE_URL.origin;
