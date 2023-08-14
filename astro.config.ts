@@ -16,10 +16,6 @@ import compress from "astro-compress";
 */
 
 const SERVER_PORT = 3000;
-// the url to access your blog during local development
-const LOCALHOST_URL = `http://localhost:${SERVER_PORT}`;
-// this is the astro command your npm script runs
-let BASE_URL = import.meta.env.PROD ? import.meta.env.SITE_URL : LOCALHOST_URL;
 
 export default defineConfig({
   experimental: {
@@ -38,7 +34,7 @@ export default defineConfig({
   },
   compressHTML: true,
   server: { port: SERVER_PORT },
-  site: BASE_URL,
+  site: 'https://robkendal.co.uk',
   integrations: [
     sitemap(),
 		prefetch(),
