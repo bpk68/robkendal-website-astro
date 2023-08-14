@@ -22,21 +22,596 @@ You can check out the [Node API starter kit with TypeScript on GitHub](https://g
 
 ## 1. Node API project setup
 
-## 2. Building the new `server.ts` file
+I like to start any project (especially smaller ones like this skeleton Node API server) by installing dependencies we'll need and defining a skeleton folder and files structure. With that in mind, let's create a folder on your machine where the project will live and kick things off with a package.json file:
+
+```javascript
+pnpm init
+```
+
+> We'll be using pnpm as the package manager here. If you've not installed or used pnpm before, then head over to [pnpm.io ](pnpm.io)and get it installed on your machine. Alternatively, you can use npm or yarn just as easily if you prefer.
+
+Next, let's get a folder structure in place like this:
+
+```javascript
+/projectfolder
+--/data
+  --users.json
+--/server
+--/--/controllers
+        --types.ts
+        --users.ts
+--/--/routes
+        --index.ts
+        --users.ts
+server.ts
+package.json
+tsconfig.json
+```
+
+### Installing dependencies and build scripts
+
+With pnpm ready to go and our skeleton file structure in place, let's install some dependencies and add the build scripts to the package.json file.
+
+In your `package.json` file, add the following JSON:
+
+```json
+"scripts": {
+  "start": "nodemon server.ts"
+},
+```
+
+This is all we need for now, so let's move onto our dependencies. Run the following commands, separately, in your console:
+
+```javascript
+pnpm add -D @types/express @types/node ts-node typescript
+```
+
+This command will add some dev dependencies, namely some TypeScript types information for Express and Node, as well as TypeScript itself, and finally, ts-node, which is a library that allows us to run TypeScript in Node environments without having to precompile it first.
+
+Next, let's add some regular dependencies like this:
+
+```javascript
+pnpm add express module-alias nodemon
+```
+
+Here we're adding a couple of packages:
+
+* **Express**, which is a web application framework that offers us lots of HTTP utility methods and is the defacto standard for creating node-based API's.
+* **Nodemon**, (optional) a file-watcher that helps keep an eye on our files, reloading things if we change them during development.
+* **Module-alias**, again optional but we'll use this handy package to save us from having to type some ugly file paths for our module imports. We'll cover this later, but it's not a requirement for this project.
+
+### Configuring TypeScript
+
+Finally, as part of the project set up, we need to give TypeScript some solid defaults to work with. Open the `./tsconfig.json` file and add the following:
+
+```json
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "rootDir": "./",
+    "target": "ESNext",
+    "skipLibCheck": true,
+    "strict": true,
+    "sourceMap": true,
+    "lib": ["ESNext"],
+    "baseUrl": "./",
+    "paths": {
+      "@controllers/*": ["./server/controllers/*"],
+      "@routes/*": ["./server/routes/*"],
+      "@data/*": ["./data/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
+```
+
+### Adding some basic user data
+
+Our Node API server with TypeScript is founded on its ability to deal with data stored in JSON files. For us, we're going to start with some simple user data, so open up the `./data/users.json` file and flesh it out:
+
+```json
+{
+  "users": [
+    {
+      "name": "king arthur",
+      "password": "password1",
+      "profession": "king",
+      "id": 1
+    },
+    {
+      "name": "rob kendal",
+      "password": "password3",
+      "profession": "code fiddler",
+      "id": 2
+    },
+    {
+      "name": "ash ketchum",
+      "password": "pikapika",
+      "profession": "pokemon botherer",
+      "id": 3
+    }
+  ]
+}
+```
+
+Nothing too fancy, just some simple JSON data about a typical user including their name and profession.
+
+## 2. Building the new server.ts file
+
+With our project structure and dependencies in place, let's move on to building out our API server. Open up the `./server.ts` file and paste the following into it:
+
+```typescript
+import 'module-alias/register';
+import http from 'http';
+import express, { Express } from 'express';
+import routes from '@routes/index';
+
+const router: Express = express();
+
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
+
+router.use((req, res, next) => {
+  // set the CORS policy
+  res.header('Access-Control-Allow-Origin', '*');
+  // set the CORS headers
+  res.header(
+    'Access-Control-Allow-Headers',
+    'origin,X-Requested-With,Content-Type,Accept,Authorization'
+  );
+  // set the CORS method headers
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+    return res.status(200).json({});
+  }
+  next();
+});
+
+router.use('/', routes);
+
+/** Error handling */
+router.use((_, res) => {
+  const error = new Error('not found');
+  return res.status(404).json({
+    message: error.message,
+  });
+});
+
+// Start that server
+const httpServer = http.createServer(router);
+const PORT: string | number = process.env.PORT ?? 8080;
+httpServer.listen(PORT, () =>
+  console.log(`API server alive and kicking on port ${PORT}`)
+);
+```
+
+Although this is a relatively small file, there's a lot going on in it, so let's break it down...
+
+### The imports
+
+Right at the start, we bring in some dependencies:
+
+```javascript
+import 'module-alias/register';
+import http from 'http';
+import express, { Express } from 'express';
+import routes from '@routes/index';
+```
+
+The very first line where we `import module-alias/register` is an important line if you want to be able to use aliased paths for your module imports. There's an entire section coming up where we'll discuss this, but for now, just note that if you want to use imports like import thing from '@routes/myawesomefile' then you'll need this import right at the top of your project's entry point.
+
+We also bring in the http utility from the built-in http module, then Express (both the main package and the Express type for TypeScript) and finally our routing information from the `@routes/index` file — we'll create this later on so don't worry about it for now.
+
+### Setting up the Express router
+
+With our imports done, we can create an instance of the Express framework, and then set up some encoding rules to make sure the data we receive is encoded in the same way as is described in the OPTIONS argument that's sent before the main API request.
+
+```typescript
+const router: Express = express();
+
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
+```
+
+We also make use of the `json()` method so that our API server will parse JSON requests.
+
+### Configuring CORS
+
+CORS ([Cross-Origin Resource Sharing from MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)) can be a horrendously frustrating part of development life. It helps to restrict the origins from which HTTP requests are made. However, in doing so, it can thwart many a local development environment by cutting off access to some legitimate requests.
+
+That said, it is a necessary and important part of any API set up as it helps prevent bad actors from making requests from unauthorised URLs or origins.
+
+Our little server will be no different so let's set up CORS for our API server now:
+
+```javascript
+router.use((req, res, next) => {
+  // set the CORS policy
+  res.header('Access-Control-Allow-Origin', '*');
+  // set the CORS headers
+  res.header(
+    'Access-Control-Allow-Headers',
+    'origin,X-Requested-With,Content-Type,Accept,Authorization'
+  );
+  // set the CORS method headers
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+    return res.status(200).json({});
+  }
+  next();
+});
+```
+
+This is a simple portion of code that basically sets which origins our API server will allow access from, which types of requests (e.g. what's been set in the header), and then what sorts of methods we'll allow — e.g. here we're allowing the four main CRUD methods, GET, PUT, POST, and DELETE.
+
+> Note that in our example here, we're allowing all origins as denoted by the '\*' symbol. In production, you'll definitely want to restrict calling of this API to perhaps just your app's url(s), depending on your needs!
+
+### Adding in the routes and handling errors
+
+Of course, our API server will be of no use if we don't let it handle some routes. That's where the following line comes in:
+
+```javascript
+router.use('/', routes);
+```
+
+We've imported our routes object right at the start of the file and this will be further broken down (as we'll see later on) into sub-routes, each with their own controller and router handling logic. In our main server file, however, we just need to let the server know that anything starting with `/` will be handled by the imported routes object.
+
+Next up, we'll cater for any routes that aren't handled above:
+
+```javascript
+/** Error handling */
+router.use((_, res) => {
+  const error = new Error('not found');
+  return res.status(404).json({
+    message: error.message,
+  });
+});
+```
+
+Essentially, what we're saying here is 'any route that isn't already catered for, return an error message and a 404 status'.
+
+There's lots more you could do here to expand on it or handle different types of errors and that's probably quite a good idea to do in a larger app, or as your app begins to scale. For now, however, we can start simply and handle the most basic error where a request has tried to call a route that doesn't exist.
+
+### Starting the server
+
+Finally, we're ready to kick off the server and get things running. This last bit of code creates an instance of a http server, creates a port for the server to run on, and finally starts the server:
+
+```typescript
+// Start that server
+const httpServer = http.createServer(router);
+const PORT: string | number = process.env.PORT ?? 8080;
+httpServer.listen(PORT, () =>
+  console.log(`API server alive and kicking on port ${PORT}`)
+);
+```
+
+We try to use a PORT option that might be present in an environment variable, hence the process.env.PORT part, but if one isn't available, then the default port is simply '8080'.
+
+## 2a. Module aliases
+
+Before we go ahead with the meat and potatoes of the API server, we need to quickly go over module path aliasing. By default, you'll always need to import a local module or package from another file using a relative path. This is fine when your files are close together.
+
+However, when they're separated by different levels or in a larger, more complex folder structure, then you can end up with ugly (and confusing) import statements like this:
+
+```javascript
+import { SomeThing } from '../../../../path/to/file';
+```
+
+Not the worst thing in the world, but it gets messier the more of these you have and also creates a headache when you want to migrate or move files!
+
+It's much nicer to be able to do something like this:
+
+```javascript
+import { SomeThing } from 'module/file';
+```
+
+Some bundlers and code packagers will do this for you. If you've used Rollup, Vite or even Create React App, then you'll have lots of wonderful support from bundlers like Webpack that can offer some of this module path aliasing out of the box or with a simple config setting.
+
+TypeScript also has a nice idea of paths and in fact, we've already set this up earlier in our process. Check out the `./tsconfig.json` file towards the end of the file:
+
+```json
+"paths": {
+  "@controllers/*": ["./server/controllers/*"],
+  "@routes/*": ["./server/routes/*"],
+  "@data/*": ["./data/*"]
+}
+```
+
+Here, we've added a couple of helper routes so that wherever we have `@controllers/any_file_path_here` this will be replaced by TypeScript with `./server/controllers/any_file_path_here`. Neat!
+
+> I've used little '@' symbols here because it looks pretty cool and I like it, but it's not part of the syntax, you could use whatever you like or just leave it as 'controllers/'.
+
+Unfortunately, whilst we can configure this from a TypeScript point of view, Node doesn't know what to do with this. Your options are to implement some sort of middle man transpiler to handle these paths for us and then run the server, or we can use the handle module-aliases package, which handily we installed earlier!
+
+The only downside (and it's a small downside) is that we have to duplicate our path aliases into our package.json file as outlined here:
+
+```json
+"_moduleAliases": {
+  "@controllers": "./server/controllers",
+  "@routes": "./server/routes",
+  "@data": "./data"
+},
+```
+
+We add in the extra "\_moduleAliases" property into the package.json file and then everything should work nicely and we can use our funky, shorter paths 👍.
 
 ## 3. Mapping the routes
 
+With our server prepped and ready to go, we need to feed it some routes to handle and serve. When someone requests an API endpoint such as https://api.domain.com/users/123 we need to have a matching route within our server that can listen for and accept the route, then provide some sort of meaningful response to the requestee.
+
+In our case, we're going to be loading and saving JSON data about users, such as username, password, name, etc. For that, we need to define a series of user endpoint routes and we'll do that within the `./server/routes/users.ts` file:
+
+```typescript
+import type { Router } from 'express';
+import {
+  getUser,
+  getUsers,
+  addUser,
+  updateUser,
+  deleteUser,
+} from '@controllers/users';
+
+const userRoutes = (router: Router) => {
+  router.get('/users', getUsers);
+  router.get('/user/:id', getUser);
+  router.post('/users', addUser);
+  router.put('/user/:id', updateUser);
+  router.delete('/user/:id', deleteUser);
+
+  return router;
+};
+
+export default userRoutes;
+```
+
+First, we're bringing in the Router type from Express as we'll be passing in a router object to our user routes handling code in a moment. Next, we import some common CRUD-style handler functions from our controller, which we'll define in the next part.
+
+We've got a getUser function which will fetch and return a single user, and then `getUsers` which will, in turn, fetch us multiple users. After that, we handle adding a new user, updating a user, and deleting a user from our files.
+
+> We haven't touched on the concept of a controller yet, but a controller's purpose is to deal with the data handling part of the request. The routes and router are designed to merely handle the incoming request and route it to the appropriate place. Once a route has been captured, the controller is called upon to do something meaningful  whether that's fetching some data, or manipulating it in some way before saving it against a data store. In our case, this is a JSON file stored on disk.
+
+Next, we create a `userRoutes` function which accepts an instance of a Router object, which is an Express item that can be used to define routes. That's what we do next. We call `router.[method]` where 'method' is the request type (e.g. GET or POST), passing it a route we want to handle (e.g. '/users') and the function from our controller which will deal with the data business for that route.
+
+Where we have something like `:id` this is a route parameter. It will be substituted with a real world value when the API route is called. We can use this within our controller to access this substituted value and use it to access specific data. For example, in the route `/user/:id` the real API would be called like `/user/AFC34OI` where the value `AFC340I` is the 'id' value of a user and we can use it to search a database or similar for said user.
+
+After we add a bunch of supporting CRUD-like routes and their controller handlers, we return the updated router object from the function.
+
+### Adding user routes to our main router
+
+Doing the above is not quite enough to have the API handle those routes for us. We need to connect the user route handlers to the main Express router.
+
+Open up the `./server/routes/index.ts` and add in the following:
+
+```javascript
+import express from 'express';
+
+// Import individual route profiles from controllers
+import usersRoute from '@routes/users';
+
+const router = express.Router();
+
+// Pass our router instance to controllers
+router.use('/users', usersRoute(router));
+
+export default router;
+```
+
+We pull in our usersRoute here and this is where you'd add in any other additional routes that you create later down the line.
+
+Next, we create an instance of the Express Router. In the next line down we fire off the `router.use()` function and supply it with our base users route, `/users` and pass it the handling function, usersRoute which itself is passed the express router.
+
+Any route that begins with `/users` will be handled by our `usersRoute` handler.
+
+Finally, we export the router that we consumed in our `server.ts` file earlier. All done, nice and simple.
+
 ## 4. Creating our controller
+
+The controller is where our data handling will occur. It doesn't know about what route it's serving, just that it has a specific job to fetch or update certain data and respond to the request with that data in a particular shape or format (e.g. JSON, text or XML).
+
+For us, we'll start simply by showing how handle fetching all the users from the store. Open up the `./server/controllers/users.ts` file and add in the following:
+
+```typescript
+import type { Request, Response } from 'express';
+import type { UserList, User } from './types';
+import fs from 'fs/promises';
+
+const dataPath = 'data/users.json';
+
+export const getUsers = async (req: Request, res: Response) => {
+  try {
+    const data = await fs.readFile(dataPath, {
+      encoding: 'utf8',
+    });
+
+    res.status(200).send(JSON.parse(data));
+  } catch (error) {
+    res.status(500).send('An error occurred when fetching the users');
+  }
+};
+
+export default {
+  getUsers,
+};
+
+```
+
+We import some types from Express and our locally defined ones (see the next section) and then the `fs` file handling package from Node. This will help us deal with reading from and writing to our local files.
+
+With getUsers we use the `fs` package to asynchronously read from the `users.json` file and send it straight back to the request via the res or 'response' object. If we're successful, we set the status to 200 (i.e. a successful response), and parse the users data into JSON for the response.
+
+Finally, we can export the getUsers function as part of a default object.
+
+> Notice that the main body of code in getUsers is wrapped in a try catch block. If an error occurs, it's captured here and an appropriate status is returned (a 500 code) along with a simple string message. There's lot of different error handling and logging approaches, but this is fine for a simple app like ours.
+
+## User types for TypeScript
+
+In the last section, you'll see we imported some local types, namely UserList and User. You can add these or change them to your needs, but open up `./server/controllers/types.ts` and add in the following:
+
+```typescript
+export interface User {
+  name: string;
+  password: string;
+  profession: string;
+  id: number;
+}
+
+export interface UserList {
+  users: User[];
+}
+
+```
+
+Nothing too fancy or complex, but notice how the structure of the data here maps to that of our users JSON data from the beginning of the article.
 
 ## 5. Testing the API server
 
+With our server all put together, the only sensible thing to do is to fire up the server and test it! Save all your files and then open up your nearest and favourite console or terminal and enter the command `pnpm start` and you should see the following:
+
+```javascript
+API server alive and kicking on port 8080
+```
+
+Nothing too exciting here. Instead, head into a simple browser and navigate to `http://localhost:8080/users/` and what you should see now is a list of our available users from our `./data/users.json` file. Alternatively you could use an app like Postman or Rapid API to check your own API too and they'll work just as well.
+
 ## 6. Extending the API server with CRUD
+
+We've missed a few parts out of the users.ts file for brevity, but here is the entire file for completeness. Whilst long, it should be fairly straightforward to scan and understand and a lot of the code is very similar, especially around updating and deleting users.
+
+```typescript
+import type { Request, Response } from 'express';
+import type { UserList, User } from './types';
+import fs from 'fs/promises';
+
+const dataPath = 'data/users.json';
+
+export const getUsers = async (req: Request, res: Response) => {
+  try {
+    const data = await fs.readFile(dataPath, {
+      encoding: 'utf8',
+    });
+
+    res.status(200).send(JSON.parse(data));
+  } catch (error) {
+    res.status(500).send('An error occurred when fetching the users');
+  }
+};
+
+export const getUser = async (req: Request, res: Response) => {
+  try {
+    let user = {};
+    const userId = req.params.id;
+    const data = await fs.readFile(dataPath, {
+      encoding: 'utf8',
+    });
+
+    if (data.length > 0) {
+      const allUsers: UserList = JSON.parse(data);
+      user = {
+        ...allUsers.users.find((user) => user.id === Number(userId)),
+      };
+    }
+
+    res.status(200).send(user);
+  } catch (error) {
+    res
+      .status(500)
+      .send(
+        'An error occurred when fetching the user with id ' + req.params.id
+      );
+  }
+};
+
+export const addUser = async (req: Request, res: Response) => {
+  try {
+    const data = await fs.readFile(dataPath, {
+      encoding: 'utf8',
+    });
+    const allUsers: UserList = JSON.parse(data);
+    const newUser: User = req.body;
+
+    // Note: this isn't ideal for production use.
+    // ideally, use something like a UUID or other GUID for a unique ID value
+    const newUserId = Date.now();
+
+    newUser.id = newUserId;
+    allUsers.users.push(newUser);
+
+    await fs.writeFile(dataPath, JSON.stringify(allUsers, null, 2), {
+      encoding: 'utf8',
+    });
+
+    res.status(200).send(newUser);
+  } catch (error) {
+    res.status(500).send('An error occurred when adding the new user');
+  }
+};
+
+export const updateUser = async (req: Request, res: Response) => {
+  try {
+    const data = await fs.readFile(dataPath, {
+      encoding: 'utf8',
+    });
+    const allUsers: UserList = JSON.parse(data);
+    const userId: number = Number(req.params.id);
+    const userToUpdate: User = req.body;
+
+    allUsers.users = allUsers.users.map((user) =>
+      user.id === userId ? { ...user, ...userToUpdate } : user
+    );
+
+    console.log(allUsers);
+
+    await fs.writeFile(dataPath, JSON.stringify(allUsers, null, 2), {
+      encoding: 'utf8',
+    });
+
+    res.status(200).send(allUsers);
+  } catch (error) {
+    res
+      .status(500)
+      .send('An error occurred when updating the user with id' + req.params.id);
+  }
+};
+
+export const deleteUser = async (req: Request, res: Response) => {
+  try {
+    const data = await fs.readFile(dataPath, {
+      encoding: 'utf8',
+    });
+    const allUsers: UserList = JSON.parse(data);
+    const userId: number = Number(req.params.id);
+
+    allUsers.users = allUsers.users.filter((user) => user.id !== userId);
+
+    await fs.writeFile(dataPath, JSON.stringify(allUsers, null, 2), {
+      encoding: 'utf8',
+    });
+
+    res.status(200).send(allUsers);
+  } catch (error) {
+    res
+      .status(500)
+      .send('An error occurred when deleting the user with id' + req.params.id);
+  }
+};
+
+export default {
+  getUsers,
+  getUser,
+  addUser,
+  updateUser,
+  deleteUser,
+};
+
+```
+
+> As a challenge you could look to extend this to handle some other user editing options, or refactor it to reduce some of the similar code across the different functions.
 
 ## Enjoy your fully functional Node-based API server
 
-There's lots more you could add to extend this, such as authentication handling, talking to a database, different routes, and so on. As it stands, we've got a fully functional API server base that will happily serve you some information from a JSON file store. 
+There's lots more you could add to extend this, such as authentication handling, talking to a database, different routes, and so on. As it stands, we've got a fully functional API server base that will happily serve you some information from a JSON file store.
 
 You can [visit the GitHub repository for the starter API server](https://github.com/bpk68/api-server-starter-ts) to download, checkout or fork to your heart's content.
-
 
 If there's anything I've missed or that you'd like to know more about, let me know in the comments or shoot me an email to me\[at]robkendal.co.uk.

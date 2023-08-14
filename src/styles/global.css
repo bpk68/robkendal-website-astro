@@ -247,20 +247,20 @@
   }
 
   code:not(pre code):not(.unset) {
-    /* background-color: theme('colors.bg.code'); */
-    /* color: theme('colors.text.code'); */
+    background-color: theme('colors.bg.code');
+    color: theme('colors.text.code');
     padding: 0.125rem 0.25rem;
     border-radius: 0.25rem;
     font-size: 0.875em;
     font-weight: 600;
-    /* border: 1px solid theme('colors.border.code'); */
+    border: 1px solid theme('colors.border.code');
     margin-bottom: 1.25em;
   }
 
-  /* html.dark code:not(pre code) {
+  html.dark code:not(pre code) {
     background-color: rgb(var(--color-bg-code) / 0.15);
     border-color: rgb(var(--color-border-code) / 0.15);
-  } */
+  }
 
   ul:not(:where([class~='prose'] *, .unset)) {
     padding-left: 0;
