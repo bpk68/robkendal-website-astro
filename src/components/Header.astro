@@ -5,7 +5,7 @@ import Button from './Button.astro';
 ---
 
 <header
-  class="flex items-center justify-between lg:justify-center gap-10 lg:gap-40"
+  class="flex items-center justify-between lg:justify-center gap-10 lg:gap-40 mt-5"
 >
   <div>
     <a
@@ -20,8 +20,9 @@ import Button from './Button.astro';
     class="justify-self-end py-2 flex items-center content-center text-text-bold gap-4"
   >
     <a
-      class="fancy-underline fancy-underline--yellow unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-yellow text-2xl"
+      class="hidden sm:block fancy-underline fancy-underline--yellow unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-yellow text-2xl"
       href="https://github.com/bpk68"
+      target="_blank"
     >
       <i
         class="fa-brands fa-github"
@@ -30,8 +31,9 @@ import Button from './Button.astro';
       <span class="is-sr-only">GitHub</span>
     </a>
     <a
-      class="fancy-underline unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-blue text-2xl"
+      class="hidden sm:block fancy-underline unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-blue text-2xl"
       href="https://www.linkedin.com/in/robkendal"
+      target="_blank"
     >
       <i
         class="fa-brands fa-linkedin"
