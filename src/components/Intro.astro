@@ -1,5 +1,4 @@
 ---
-import snippets from '../data/content-snippets.json';
 import BenefitsList from '../components/BenefitsList.astro';
 import ServicesList from './ServicesList.astro';
 import BrandsList from './BrandsList.astro';
@@ -8,6 +7,16 @@ import CallToAction from './CallToAction.astro';
 import ArticleList from './ArticleList.astro';
 import Button from './Button.astro';
 import PageHeader from './PageHeader.astro';
+
+ const benefits = [
+  "A fullstack developer with 15+ years experience building fast, lead-generating websites.",
+  "A reliable development professional who will always give you straightforward, honest advice.",
+  "A freelancer with expert skills in <a href='/freelance-shopify-developer'><strong>Shopify development</strong></a>, <a href='/small-business-websites'><strong>small business websites</strong></a> and <a href='/enterprise-software-development'><strong>enterprise software development</strong></a>",
+  "Marketing website design and Shopify development driven by your business growth goals.",
+  "Award-winning marketing and Search Engine Optimisation (SEO) knowledge and support.",
+  "Expert web development services using forward-thinking echnologies such as Frontity, Gatsby.js, Next.js, WordPress REST API, GraphQL and the Jamstack.",
+  "Help and support launching super fast, accessible, static websites that rank well on search engines."
+];
 ---
 
 <section class="my-8">
@@ -56,7 +65,7 @@ import PageHeader from './PageHeader.astro';
     <h2 class="heading-2 text-center overflow-hidden mb-4 z-10 block relative">
       Working with me gets you:
     </h2>
-    <BenefitsList list={snippets.homepage.benefits} />
+    <BenefitsList list={benefits} />
   </div>
   <div class="text-center my-20 text-2xl border-t-2 pt-8">
     <p class="mb-6">
@@ -83,7 +92,7 @@ import PageHeader from './PageHeader.astro';
   <Testimonials
     title="Don't take my word for it"
     intro="I've been trusted by UK-wide and local Yorkshire businesses for years. Here's what they say about my work."
-    list={snippets.testimonials}
+    shuffle
   />
   <CallToAction
     type="global"

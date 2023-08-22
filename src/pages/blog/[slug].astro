@@ -1,6 +1,5 @@
 ---
-import { readOne, readAll } from '../../lib/markdoc/read';
-import { blog } from '../../lib/markdoc/frontmatter.schema';
+import { getCollection, getEntryBySlug } from 'astro:content';
 import { SITE_URL } from '../../config';
 import Renderer from '../../components/Renderer.astro';
 import BlogPostMeta from '../../components/BlogPostMeta.astro';
@@ -12,13 +11,10 @@ import PostComments from 'src/components/PostComments.astro';
 import RelatedPosts from 'src/components/RelatedPosts.astro';
 
 export async function getStaticPaths() {
-  const posts = await readAll({
-    directory: 'blog',
-    frontmatterSchema: blog,
-  });
+  const posts = await getCollection('blog');
 
   // We don't want to generate pages for posts that are in draft status
-  const filteredPosts = posts.filter((p) => p.frontmatter.draft !== true);
+  const filteredPosts = posts.filter((p) => p.data.draft !== true);
 
   return filteredPosts.map((post) => {
     return { params: { slug: post.slug } };
@@ -30,60 +26,80 @@ if (typeof slug !== 'string') {
   throw Error(`slug should be string. Received: ${slug}`);
 }
 
-const { content, frontmatter } = await readOne({
-  directory: 'blog',
-  slug,
-  frontmatterSchema: blog,
-});
+const post = await getEntryBySlug('blog', slug);
 
-const imageUrl = frontmatter.ogImagePath ?? frontmatter.featuredimage;
+if(!post) {
+  throw new Error(`Could not find post with slug: ${slug}`);
+}
+
+const { Content } = await post.render();
+const imageUrl = post?.data.featuredimage;
 const ogImageAbsoluteUrl = imageUrl
   ? new URL(imageUrl, SITE_URL).toString()
   : '';
 ---
 
 <ContentLayout
-  title={frontmatter.title}
-  date={frontmatter.date}
-  tags={frontmatter.tags}
+  title={post.data.title}
+  date={post.data.date}
+  tags={post.data.tags}
 >
   <BlogPostMeta
-    title={frontmatter.title}
-    description={frontmatter.description}
-    publishDate={frontmatter.date.toISOString()}
+    title={post.data.title}
+    description={post.data.description}
+    publishDate={post.data.date.toISOString()}
     pagePath={`/blog/${slug}`}
     ogImageAbsoluteUrl={ogImageAbsoluteUrl}
     slot="meta"
   />
-  <Renderer content={content} slot="content" />
+  
+  <Content slot="content" /> 
 
   <Fragment slot="additional-content">
     <div class="border-b"></div>
-    <CallToAction
-      type="post"
-      title="Learn React from scratch"
-      img="/img/publications/react-guide-course.png"
-      buttons={[
-        {
-          href: 'https://robkendal.co.uk/publications',
-          text: 'Find out more',
-        },
-      ]}
-    >
-      The Beginner's Guide to Real World React
-    </CallToAction>
+    {post.data.tags.some(tag => tag.toLowerCase() === 'react') ? (
+      <CallToAction
+        type="post"
+        title="Learn React from scratch"
+        img="/img/publications/react-guide-course.png"
+        buttons={[
+          {
+            href: 'https://robkendal.co.uk/publications',
+            text: 'Find out more',
+          },
+        ]}
+      >
+        The Beginner's Guide to Real World React
+      </CallToAction>
+    ) : (
+      <CallToAction
+        type="post"
+        title="Find your perfect remote job"
+        img="/img/cta/cta-remote-dev-jobs.png"
+        buttons={[
+          {
+            href: 'https://remotedevjobs.uk',
+            text: 'Take a look',
+          },
+        ]}
+        variant='secondary'
+      >
+        My latest project will help pair developers looking for a new job with the best fully 
+        remote roles that the UK has to offer.
+      </CallToAction>
+    )}
     <AuthorBio />
     <WebMentions url={`blog/${slug}`} />
     <PostComments slug={slug} />
     <div class="border-b"></div>
-    <RelatedPosts tags={frontmatter.tags} pathToSkip={slug} />
+    <RelatedPosts tags={post.data.tags} pathToSkip={slug} />
   </Fragment>
 </ContentLayout>
 
 <script
   define:vars={{
     id: slug,
-    tags: frontmatter.tags,
+    tags: post.data.tags,
   }}
 >
 const adHtml = `

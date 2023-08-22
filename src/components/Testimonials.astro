@@ -1,16 +1,17 @@
 ---
-import type { TestimonialItem } from '../lib/types';
-import { shuffle } from '../lib/utils';
+import { getCollection } from 'astro:content';
 
 interface Props {
   title: string;
   intro: string;
-  list: TestimonialItem[];
+  shuffle: boolean
 }
 
-const { title, intro, list: unsortedList } = Astro.props;
+const { title, intro, shuffle } = Astro.props;
 
-const list = shuffle(unsortedList).slice(0, 5);
+const allTestimonials = await getCollection('testimonials');
+
+const testimonials = allTestimonials.sort(() => Math.random() - 0.5).slice(0, 5);
 ---
 
 <section class="section is-md my-14">
@@ -19,7 +20,7 @@ const list = shuffle(unsortedList).slice(0, 5);
     {intro}
   </p>
   {
-    list.map((item: TestimonialItem, i) => (
+    testimonials.map(async (item, i) => (
       <blockquote
         class={`
       mb-8
@@ -39,15 +40,15 @@ const list = shuffle(unsortedList).slice(0, 5);
       >
         <figure class="float-left md:float-none mr-4 md:mr-0">
           <img
-            src={item.avatar}
-            alt={item.avatarAlt}
+            src={item.data.avatar}
+            alt={item.data.avatarAlt}
             class="max-w-[5rem] rounded-full shadow-md mt-2"
           />
         </figure>
         <p>
           <span class="fa-solid fa-quote-left text-2xl pr-2" />
-          {item.text}
-          <cite class="block text-right mt-2">- {item.cite}</cite>
+          {item.body}
+          <cite class="block text-right mt-2">- {item.data.cite}</cite>
         </p>
       </blockquote>
     ))

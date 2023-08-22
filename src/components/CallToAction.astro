@@ -12,9 +12,10 @@ interface Props {
   title: string;
   buttons: CtaButton[];
   img?: string;
+  variant?: 'primary' | 'secondary';
 }
 
-const { type, title, buttons, img } = Astro.props;
+const { type, title, buttons, img, variant = 'primary' } = Astro.props;
 const baseClasses = `
   relative    
   my-20 
@@ -54,8 +55,13 @@ const baseClasses = `
 
 {
   type === 'post' && (
-    <div class={`${baseClasses} lg:px-12 border-primary-blue bg-primary-blue`}>
-      <CtaBg />
+    <div class={`
+      ${baseClasses} 
+      lg:px-12 
+      ${variant === 'primary' && 'border-primary-blue bg-primary-blue'}
+      ${variant === 'secondary' && 'border-brand-purple bg-brand-purple'}
+    `}>
+      <CtaBg bgClass={variant === 'secondary' ? 'bg-brand-purple' : 'bg-primary-blue' } />
       <div class="relative flex flex-col md:flex-row items-center gap-2 md:gap-6">
         <figure class="w-auto md:w-1/2">
           <img src={img} alt="Promotional content for current article" />

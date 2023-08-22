@@ -1,8 +1,27 @@
 ---
+interface Props {
+  bgClass?: string;
+}
+
+const { bgClass = 'bg-primary-blue '} = Astro.props;
 ---
 
 <span
-  class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"
+  class={`
+    absolute 
+    inset-0 
+    w-full 
+    h-full 
+    transition 
+    duration-200 
+    ease-out 
+    transform 
+    translate-x-1 
+    translate-y-1 
+    bg-black 
+    group-hover:-translate-x-0 
+    group-hover:-translate-y-0
+    `}
 ></span>
 <span
   class={`
@@ -10,8 +29,8 @@
     inset-0 
     w-full 
     h-full 
-    bg-primary-blue 
     border-2 
     border-gray-800 
-    group-hover:bg-primary-blue    
+    ${bgClass}
+    group-hover:${bgClass}
   `}></span>

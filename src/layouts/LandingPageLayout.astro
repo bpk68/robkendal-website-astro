@@ -1,5 +1,4 @@
 ---
-import snippets from '../data/content-snippets.json';
 import PageLayout from '../layouts/PageLayout.astro';
 import PageMeta from '../components/PageMeta.astro';
 import PageHeader from 'src/components/PageHeader.astro';
@@ -148,7 +147,7 @@ const {
     <Testimonials
       title={testimonials.title}
       intro={testimonials.intro}
-      list={snippets.testimonials}
+      shuffle
     />
 
     <slot name="cta" />

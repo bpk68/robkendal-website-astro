@@ -1,21 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
 import PageLayout from '../../layouts/PageLayout.astro';
 import PageMeta from '../../components/PageMeta.astro';
 import PageHeader from 'src/components/PageHeader.astro';
 import ArticleList from 'src/components/ArticleList.astro';
-import { readAll } from '../../lib/markdoc/read';
-import { blog } from '../../lib/markdoc/frontmatter.schema';
 
 export async function getStaticPaths() {
-  const posts = await readAll({
-    directory: 'blog',
-    frontmatterSchema: blog,
-  });
+  const posts = await getCollection('blog');
 
   // We don't want to generate pages for posts that are in draft status
-  const filteredPosts = posts.filter((p) => p.frontmatter.draft !== true);
+  const filteredPosts = posts.filter((p) => p.data.draft !== true);
   const uniqueTags = [
-    ...new Set(filteredPosts.map((p) => p.frontmatter.tags).flat()),
+    ...new Set(filteredPosts.map((p) => p.data.tags).flat()),
   ];
 
   return uniqueTags.map((tag) => {
