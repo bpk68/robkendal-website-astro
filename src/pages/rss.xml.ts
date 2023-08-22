@@ -1,52 +1,35 @@
+import { getCollection } from 'astro:content';
 import rss from '@astrojs/rss';
 import sanitizeHtml from 'sanitize-html';
-import Markdoc from '@markdoc/markdoc';
-import { blog } from '../lib/markdoc/frontmatter.schema';
-import { readAll } from '../lib/markdoc/read';
+import MarkdownIt from 'markdown-it';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../config';
 
-export const get = async () => {
-  const posts = await readAll({
-    directory: 'blog',
-    frontmatterSchema: blog,
-  });
+const parser = new MarkdownIt();
+
+export async function get() {
+  const posts = await getCollection('blog');
 
   const sortedPosts = posts
-    .filter((p) => p.frontmatter.draft !== true)
+    .filter((p) => p.data.draft !== true)
     .sort(
       (a, b) =>
-        new Date(b.frontmatter.date).valueOf() -
-        new Date(a.frontmatter.date).valueOf()
+        new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
     );
-
-  let baseUrl = SITE_URL;
-  // removing trailing slash if found
-  // https://example.com/ => https://example.com
-  baseUrl = baseUrl.replace(/\/+$/g, '');
-
-  const rssItems = sortedPosts.map(
-    ({ frontmatter, slug, content: postContent }) => {
-      const title = frontmatter.title;
-      const pubDate = frontmatter.date;
-      const description = frontmatter.description;
-      const link = `${baseUrl}/blog/${slug}`;
-      const htmlContent = Markdoc.renderers.html(postContent);
-      const content = sanitizeHtml(htmlContent);
-
-      return {
-        title,
-        pubDate,
-        description,
-        content,
-        link,
-      };
-    }
-  );
 
   return rss({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    site: baseUrl,
-    items: rssItems,
+    site: SITE_URL,
+    items: sortedPosts.map((post) => ({
+      ...post.data,
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: post.data.description,
+      customData: post.data.customData,
+      // Compute RSS link from post `slug`
+      // This example assumes all posts are rendered as `/blog/[slug]` routes
+      link: `/blog/${post.slug}/`,
+      content: sanitizeHtml(parser.render(post.body)),
+    })),
   });
-};
+}
