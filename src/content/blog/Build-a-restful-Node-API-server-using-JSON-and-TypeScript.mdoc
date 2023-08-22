@@ -5,7 +5,7 @@ featured: false
 date: 2023-08-10T23:00:00.000Z
 description: >-
   In this updated tutorial article, we'll build a simple Node API server with
-  TypeScript that uses JSON files to serve our data. 
+  TypeScript that uses JSON files to serve our data.
 tags:
   - Node
   - TypeScript
@@ -76,9 +76,9 @@ pnpm add express module-alias nodemon
 
 Here we're adding a couple of packages:
 
-* **Express**, which is a web application framework that offers us lots of HTTP utility methods and is the defacto standard for creating node-based API's.
-* **Nodemon**, (optional) a file-watcher that helps keep an eye on our files, reloading things if we change them during development.
-* **Module-alias**, again optional but we'll use this handy package to save us from having to type some ugly file paths for our module imports. We'll cover this later, but it's not a requirement for this project.
+- **Express**, which is a web application framework that offers us lots of HTTP utility methods and is the defacto standard for creating node-based API's.
+- **Nodemon**, (optional) a file-watcher that helps keep an eye on our files, reloading things if we change them during development.
+- **Module-alias**, again optional but we'll use this handy package to save us from having to type some ugly file paths for our module imports. We'll cover this later, but it's not a requirement for this project.
 
 ### Configuring TypeScript
 
@@ -336,6 +336,8 @@ The only downside (and it's a small downside) is that we have to duplicate our p
 
 We add in the extra "\_moduleAliases" property into the package.json file and then everything should work nicely and we can use our funky, shorter paths 👍.
 
+[![](/img/cta/cta-remote-dev-jobs_banner.png)](https://remotedevjobs.uk 'Find your next fully remote deb job in the UK')
+
 ## 3. Mapping the routes
 
 With our server prepped and ready to go, we need to feed it some routes to handle and serve. When someone requests an API endpoint such as https://api.domain.com/users/123 we need to have a matching route within our server that can listen for and accept the route, then provide some sort of meaningful response to the requestee.
@@ -369,7 +371,7 @@ First, we're bringing in the Router type from Express as we'll be passing in a r
 
 We've got a getUser function which will fetch and return a single user, and then `getUsers` which will, in turn, fetch us multiple users. After that, we handle adding a new user, updating a user, and deleting a user from our files.
 
-> We haven't touched on the concept of a controller yet, but a controller's purpose is to deal with the data handling part of the request. The routes and router are designed to merely handle the incoming request and route it to the appropriate place. Once a route has been captured, the controller is called upon to do something meaningful  whether that's fetching some data, or manipulating it in some way before saving it against a data store. In our case, this is a JSON file stored on disk.
+> We haven't touched on the concept of a controller yet, but a controller's purpose is to deal with the data handling part of the request. The routes and router are designed to merely handle the incoming request and route it to the appropriate place. Once a route has been captured, the controller is called upon to do something meaningful whether that's fetching some data, or manipulating it in some way before saving it against a data store. In our case, this is a JSON file stored on disk.
 
 Next, we create a `userRoutes` function which accepts an instance of a Router object, which is an Express item that can be used to define routes. That's what we do next. We call `router.[method]` where 'method' is the request type (e.g. GET or POST), passing it a route we want to handle (e.g. '/users') and the function from our controller which will deal with the data business for that route.
 
@@ -433,7 +435,6 @@ export const getUsers = async (req: Request, res: Response) => {
 export default {
   getUsers,
 };
-
 ```
 
 We import some types from Express and our locally defined ones (see the next section) and then the `fs` file handling package from Node. This will help us deal with reading from and writing to our local files.
@@ -459,7 +460,6 @@ export interface User {
 export interface UserList {
   users: User[];
 }
-
 ```
 
 Nothing too fancy or complex, but notice how the structure of the data here maps to that of our users JSON data from the beginning of the article.
@@ -603,7 +603,6 @@ export default {
   updateUser,
   deleteUser,
 };
-
 ```
 
 > As a challenge you could look to extend this to handle some other user editing options, or refactor it to reduce some of the similar code across the different functions.
