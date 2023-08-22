@@ -200,328 +200,321 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
-"2019-04-26-using-parcel-bundler-as-a-webpack-alternative.md": {
-	id: "2019-04-26-using-parcel-bundler-as-a-webpack-alternative.md";
+"2019-04-26-using-parcel-bundler-as-a-webpack-alternative.mdoc": {
+	id: "2019-04-26-using-parcel-bundler-as-a-webpack-alternative.mdoc";
   slug: "2019-04-26-using-parcel-bundler-as-a-webpack-alternative";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2019-04-29-using-parcel-bundler-with-react-js.md": {
-	id: "2019-04-29-using-parcel-bundler-with-react-js.md";
+} & { render(): Render[".mdoc"] };
+"2019-04-29-using-parcel-bundler-with-react-js.mdoc": {
+	id: "2019-04-29-using-parcel-bundler-with-react-js.mdoc";
   slug: "2019-04-29-using-parcel-bundler-with-react-js";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2019-05-04-getting-hired-as-a-developer-in-the-tech-industry.md": {
-	id: "2019-05-04-getting-hired-as-a-developer-in-the-tech-industry.md";
+} & { render(): Render[".mdoc"] };
+"2019-05-04-getting-hired-as-a-developer-in-the-tech-industry.mdoc": {
+	id: "2019-05-04-getting-hired-as-a-developer-in-the-tech-industry.mdoc";
   slug: "2019-05-04-getting-hired-as-a-developer-in-the-tech-industry";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2019-05-10-fighting-imposter-syndrome-as-a-developer.md": {
-	id: "2019-05-10-fighting-imposter-syndrome-as-a-developer.md";
+} & { render(): Render[".mdoc"] };
+"2019-05-10-fighting-imposter-syndrome-as-a-developer.mdoc": {
+	id: "2019-05-10-fighting-imposter-syndrome-as-a-developer.mdoc";
   slug: "2019-05-10-fighting-imposter-syndrome-as-a-developer";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2019-05-13-configure-parcel-js-and-babel-to-use-javascript-proposal-class-properties.md": {
-	id: "2019-05-13-configure-parcel-js-and-babel-to-use-javascript-proposal-class-properties.md";
+} & { render(): Render[".mdoc"] };
+"2019-05-13-configure-parcel-js-and-babel-to-use-javascript-proposal-class-properties.mdoc": {
+	id: "2019-05-13-configure-parcel-js-and-babel-to-use-javascript-proposal-class-properties.mdoc";
   slug: "2019-05-13-configure-parcel-js-and-babel-to-use-javascript-proposal-class-properties";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2019-05-23-are-companies-missing-out-on-talent-by-fear-of-remote-working.md": {
-	id: "2019-05-23-are-companies-missing-out-on-talent-by-fear-of-remote-working.md";
+} & { render(): Render[".mdoc"] };
+"2019-05-23-are-companies-missing-out-on-talent-by-fear-of-remote-working.mdoc": {
+	id: "2019-05-23-are-companies-missing-out-on-talent-by-fear-of-remote-working.mdoc";
   slug: "2019-05-23-are-companies-missing-out-on-talent-by-fear-of-remote-working";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2019-06-07-getting-past-developers-block.md": {
-	id: "2019-06-07-getting-past-developers-block.md";
+} & { render(): Render[".mdoc"] };
+"2019-06-07-getting-past-developers-block.mdoc": {
+	id: "2019-06-07-getting-past-developers-block.mdoc";
   slug: "2019-06-07-getting-past-developers-block";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2019-12-22-solving-react-hooks-invalid-hook-call-warning.md": {
-	id: "2019-12-22-solving-react-hooks-invalid-hook-call-warning.md";
+} & { render(): Render[".mdoc"] };
+"2019-12-22-solving-react-hooks-invalid-hook-call-warning.mdoc": {
+	id: "2019-12-22-solving-react-hooks-invalid-hook-call-warning.mdoc";
   slug: "2019-12-22-solving-react-hooks-invalid-hook-call-warning";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-01-07-what-should-you-know-as-a-frontend-developer.md": {
-	id: "2020-01-07-what-should-you-know-as-a-frontend-developer.md";
+} & { render(): Render[".mdoc"] };
+"2020-01-07-what-should-you-know-as-a-frontend-developer.mdoc": {
+	id: "2020-01-07-what-should-you-know-as-a-frontend-developer.mdoc";
   slug: "2020-01-07-what-should-you-know-as-a-frontend-developer";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-01-14-how-to-survive-remote-working.md": {
-	id: "2020-01-14-how-to-survive-remote-working.md";
+} & { render(): Render[".mdoc"] };
+"2020-01-14-how-to-survive-remote-working.mdoc": {
+	id: "2020-01-14-how-to-survive-remote-working.mdoc";
   slug: "2020-01-14-how-to-survive-remote-working";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-01-21-react-redux-components-apis-and-handler-utilities.md": {
-	id: "2020-01-21-react-redux-components-apis-and-handler-utilities.md";
+} & { render(): Render[".mdoc"] };
+"2020-01-21-react-redux-components-apis-and-handler-utilities.mdoc": {
+	id: "2020-01-21-react-redux-components-apis-and-handler-utilities.mdoc";
   slug: "2020-01-21-react-redux-components-apis-and-handler-utilities";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-01-23-10-hot-tips-for-better-debugging.md": {
-	id: "2020-01-23-10-hot-tips-for-better-debugging.md";
+} & { render(): Render[".mdoc"] };
+"2020-01-23-10-hot-tips-for-better-debugging.mdoc": {
+	id: "2020-01-23-10-hot-tips-for-better-debugging.mdoc";
   slug: "2020-01-23-10-hot-tips-for-better-debugging";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-01-27-react-redux-components-apis-and-handler-utilities-part-two.md": {
-	id: "2020-01-27-react-redux-components-apis-and-handler-utilities-part-two.md";
+} & { render(): Render[".mdoc"] };
+"2020-01-27-react-redux-components-apis-and-handler-utilities-part-two.mdoc": {
+	id: "2020-01-27-react-redux-components-apis-and-handler-utilities-part-two.mdoc";
   slug: "2020-01-27-react-redux-components-apis-and-handler-utilities-part-two";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-02-04-creating-unique-merged-arrays-using-javascripts-set-and-more.md": {
-	id: "2020-02-04-creating-unique-merged-arrays-using-javascripts-set-and-more.md";
+} & { render(): Render[".mdoc"] };
+"2020-02-04-creating-unique-merged-arrays-using-javascripts-set-and-more.mdoc": {
+	id: "2020-02-04-creating-unique-merged-arrays-using-javascripts-set-and-more.mdoc";
   slug: "2020-02-04-creating-unique-merged-arrays-using-javascripts-set-and-more";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-02-20-creating-a-react-code-editor-and-syntax-highlighter.md": {
-	id: "2020-02-20-creating-a-react-code-editor-and-syntax-highlighter.md";
+} & { render(): Render[".mdoc"] };
+"2020-02-20-creating-a-react-code-editor-and-syntax-highlighter.mdoc": {
+	id: "2020-02-20-creating-a-react-code-editor-and-syntax-highlighter.mdoc";
   slug: "2020-02-20-creating-a-react-code-editor-and-syntax-highlighter";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-04-02-funky-text-backgrounds-with-background-clip-css.md": {
-	id: "2020-04-02-funky-text-backgrounds-with-background-clip-css.md";
+} & { render(): Render[".mdoc"] };
+"2020-04-02-funky-text-backgrounds-with-background-clip-css.mdoc": {
+	id: "2020-04-02-funky-text-backgrounds-with-background-clip-css.mdoc";
   slug: "2020-04-02-funky-text-backgrounds-with-background-clip-css";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-04-07-replacing-reacts-redux-library-with-usereducer-hook.md": {
-	id: "2020-04-07-replacing-reacts-redux-library-with-usereducer-hook.md";
+} & { render(): Render[".mdoc"] };
+"2020-04-07-replacing-reacts-redux-library-with-usereducer-hook.mdoc": {
+	id: "2020-04-07-replacing-reacts-redux-library-with-usereducer-hook.mdoc";
   slug: "2020-04-07-replacing-reacts-redux-library-with-usereducer-hook";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-04-17-saving-text-to-client-side-file-using-vanilla-js.md": {
-	id: "2020-04-17-saving-text-to-client-side-file-using-vanilla-js.md";
+} & { render(): Render[".mdoc"] };
+"2020-04-17-saving-text-to-client-side-file-using-vanilla-js.mdoc": {
+	id: "2020-04-17-saving-text-to-client-side-file-using-vanilla-js.mdoc";
   slug: "2020-04-17-saving-text-to-client-side-file-using-vanilla-js";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-05-29-github-activity-graphs-are-meaningless.md": {
-	id: "2020-05-29-github-activity-graphs-are-meaningless.md";
+} & { render(): Render[".mdoc"] };
+"2020-05-29-github-activity-graphs-are-meaningless.mdoc": {
+	id: "2020-05-29-github-activity-graphs-are-meaningless.mdoc";
   slug: "2020-05-29-github-activity-graphs-are-meaningless";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2020-06-12-30-helpful-tools-apps-and-websites.md": {
-	id: "2020-06-12-30-helpful-tools-apps-and-websites.md";
+} & { render(): Render[".mdoc"] };
+"2020-06-12-30-helpful-tools-apps-and-websites.mdoc": {
+	id: "2020-06-12-30-helpful-tools-apps-and-websites.mdoc";
   slug: "2020-06-12-30-helpful-tools-apps-and-websites";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2021-06-07-should-you-learn-react-angular-or-vue.md": {
-	id: "2021-06-07-should-you-learn-react-angular-or-vue.md";
+} & { render(): Render[".mdoc"] };
+"2021-06-07-should-you-learn-react-angular-or-vue.mdoc": {
+	id: "2021-06-07-should-you-learn-react-angular-or-vue.mdoc";
   slug: "2021-06-07-should-you-learn-react-angular-or-vue";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"2021-09-03-sending-contact-forms-with-next-js-and-wordpress.md": {
-	id: "2021-09-03-sending-contact-forms-with-next-js-and-wordpress.md";
+} & { render(): Render[".mdoc"] };
+"2021-09-03-sending-contact-forms-with-next-js-and-wordpress.mdoc": {
+	id: "2021-09-03-sending-contact-forms-with-next-js-and-wordpress.mdoc";
   slug: "2021-09-03-sending-contact-forms-with-next-js-and-wordpress";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"Build-a-restful-Node-API-server-using-JSON-and-TypeScript.md": {
-	id: "Build-a-restful-Node-API-server-using-JSON-and-TypeScript.md";
+} & { render(): Render[".mdoc"] };
+"Build-a-restful-Node-API-server-using-JSON-and-TypeScript.mdoc": {
+	id: "Build-a-restful-Node-API-server-using-JSON-and-TypeScript.mdoc";
   slug: "build-a-restful-node-api-server-using-json-and-typescript";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"are-tech-tests-still-relevant-in-todays-hiring-landscape.md": {
-	id: "are-tech-tests-still-relevant-in-todays-hiring-landscape.md";
+} & { render(): Render[".mdoc"] };
+"are-tech-tests-still-relevant-in-todays-hiring-landscape.mdoc": {
+	id: "are-tech-tests-still-relevant-in-todays-hiring-landscape.mdoc";
   slug: "are-tech-tests-still-relevant-in-todays-hiring-landscape";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"configuring-wordpress-as-a-headless-cms-with-next.js.md": {
-	id: "configuring-wordpress-as-a-headless-cms-with-next.js.md";
+} & { render(): Render[".mdoc"] };
+"configuring-wordpress-as-a-headless-cms-with-next.js.mdoc": {
+	id: "configuring-wordpress-as-a-headless-cms-with-next.js.mdoc";
   slug: "configuring-wordpress-as-a-headless-cms-with-nextjs";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"continuous-refactoring-avoiding-technical-debt-in-the-here-and-now.md": {
-	id: "continuous-refactoring-avoiding-technical-debt-in-the-here-and-now.md";
+} & { render(): Render[".mdoc"] };
+"continuous-refactoring-avoiding-technical-debt-in-the-here-and-now.mdoc": {
+	id: "continuous-refactoring-avoiding-technical-debt-in-the-here-and-now.mdoc";
   slug: "continuous-refactoring-avoiding-technical-debt-in-the-here-and-now";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"create-a-static-website-rss-feed-with-next.js.md": {
-	id: "create-a-static-website-rss-feed-with-next.js.md";
+} & { render(): Render[".mdoc"] };
+"create-a-static-website-rss-feed-with-next.js.mdoc": {
+	id: "create-a-static-website-rss-feed-with-next.js.mdoc";
   slug: "create-a-static-website-rss-feed-with-nextjs";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"design-systems-are-important.md": {
-	id: "design-systems-are-important.md";
+} & { render(): Render[".mdoc"] };
+"design-systems-are-important.mdoc": {
+	id: "design-systems-are-important.mdoc";
   slug: "design-systems-are-important";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"how-becoming-a-parent-made-me-a-better-coder.md": {
-	id: "how-becoming-a-parent-made-me-a-better-coder.md";
+} & { render(): Render[".mdoc"] };
+"how-becoming-a-parent-made-me-a-better-coder.mdoc": {
+	id: "how-becoming-a-parent-made-me-a-better-coder.mdoc";
   slug: "how-becoming-a-parent-made-me-a-better-coder";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"how-to-build-a-multi-image-carousel-in-react-and-tailwind-alt.mdoc": {
-	id: "how-to-build-a-multi-image-carousel-in-react-and-tailwind-alt.mdoc";
-  slug: "how-to-build-a-multi-image-carousel-in-react-and-tailwind-alt";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
 } & { render(): Render[".mdoc"] };
-"how-to-build-a-multi-image-carousel-in-react-and-tailwind.md": {
-	id: "how-to-build-a-multi-image-carousel-in-react-and-tailwind.md";
+"how-to-build-a-multi-image-carousel-in-react-and-tailwind.mdoc": {
+	id: "how-to-build-a-multi-image-carousel-in-react-and-tailwind.mdoc";
   slug: "how-to-build-a-multi-image-carousel-in-react-and-tailwind";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"how-to-build-a-restful-node-js-api-server-using-json-files.md": {
-	id: "how-to-build-a-restful-node-js-api-server-using-json-files.md";
+} & { render(): Render[".mdoc"] };
+"how-to-build-a-restful-node-js-api-server-using-json-files.mdoc": {
+	id: "how-to-build-a-restful-node-js-api-server-using-json-files.mdoc";
   slug: "how-to-build-a-restful-node-js-api-server-using-json-files";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"how-to-fix-property-does-not-exist-on-window-type-in-typescript.md": {
-	id: "how-to-fix-property-does-not-exist-on-window-type-in-typescript.md";
+} & { render(): Render[".mdoc"] };
+"how-to-fix-property-does-not-exist-on-window-type-in-typescript.mdoc": {
+	id: "how-to-fix-property-does-not-exist-on-window-type-in-typescript.mdoc";
   slug: "how-to-fix-property-does-not-exist-on-window-type-in-typescript";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"how-to-get-intro-the-web-development-industry.md": {
-	id: "how-to-get-intro-the-web-development-industry.md";
+} & { render(): Render[".mdoc"] };
+"how-to-get-intro-the-web-development-industry.mdoc": {
+	id: "how-to-get-intro-the-web-development-industry.mdoc";
   slug: "how-to-get-intro-the-web-development-industry";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"how-to-use-arrow-functions-in-javascript-es6.md": {
-	id: "how-to-use-arrow-functions-in-javascript-es6.md";
+} & { render(): Render[".mdoc"] };
+"how-to-use-arrow-functions-in-javascript-es6.mdoc": {
+	id: "how-to-use-arrow-functions-in-javascript-es6.mdoc";
   slug: "how-to-use-arrow-functions-in-javascript-es6";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"job-hunting-in-the-tech-industry-tips-tricks-and-experiences.md": {
-	id: "job-hunting-in-the-tech-industry-tips-tricks-and-experiences.md";
+} & { render(): Render[".mdoc"] };
+"job-hunting-in-the-tech-industry-tips-tricks-and-experiences.mdoc": {
+	id: "job-hunting-in-the-tech-industry-tips-tricks-and-experiences.mdoc";
   slug: "job-hunting-in-the-tech-industry-tips-tricks-and-experiences";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"nest-cam-nest-protect-and-nest-thermostat-review-1-year-in.md": {
-	id: "nest-cam-nest-protect-and-nest-thermostat-review-1-year-in.md";
+} & { render(): Render[".mdoc"] };
+"nest-cam-nest-protect-and-nest-thermostat-review-1-year-in.mdoc": {
+	id: "nest-cam-nest-protect-and-nest-thermostat-review-1-year-in.mdoc";
   slug: "nest-cam-nest-protect-and-nest-thermostat-review-1-year-in";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"quick-start-javascript-projects-with-this-webpack-project-starter-kit.md": {
-	id: "quick-start-javascript-projects-with-this-webpack-project-starter-kit.md";
+} & { render(): Render[".mdoc"] };
+"quick-start-javascript-projects-with-this-webpack-project-starter-kit.mdoc": {
+	id: "quick-start-javascript-projects-with-this-webpack-project-starter-kit.mdoc";
   slug: "quick-start-javascript-projects-with-this-webpack-project-starter-kit";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"reading-google-sheets-data-using-javascript-with-google-sheets-reader.md": {
-	id: "reading-google-sheets-data-using-javascript-with-google-sheets-reader.md";
+} & { render(): Render[".mdoc"] };
+"reading-google-sheets-data-using-javascript-with-google-sheets-reader.mdoc": {
+	id: "reading-google-sheets-data-using-javascript-with-google-sheets-reader.mdoc";
   slug: "reading-google-sheets-data-using-javascript-with-google-sheets-reader";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"signs-to-lookout-for-if-you-suspect-you-ve-ended-up-in-the-wrong-career.md": {
-	id: "signs-to-lookout-for-if-you-suspect-you-ve-ended-up-in-the-wrong-career.md";
+} & { render(): Render[".mdoc"] };
+"signs-to-lookout-for-if-you-suspect-you-ve-ended-up-in-the-wrong-career.mdoc": {
+	id: "signs-to-lookout-for-if-you-suspect-you-ve-ended-up-in-the-wrong-career.mdoc";
   slug: "signs-to-lookout-for-if-you-suspect-you-ve-ended-up-in-the-wrong-career";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"things-i-wish-i-d-known-as-a-junior-developer.md": {
-	id: "things-i-wish-i-d-known-as-a-junior-developer.md";
+} & { render(): Render[".mdoc"] };
+"things-i-wish-i-d-known-as-a-junior-developer.mdoc": {
+	id: "things-i-wish-i-d-known-as-a-junior-developer.mdoc";
   slug: "things-i-wish-i-d-known-as-a-junior-developer";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"use-webpack-and-require-context-to-load-html-files.md": {
-	id: "use-webpack-and-require-context-to-load-html-files.md";
+} & { render(): Render[".mdoc"] };
+"use-webpack-and-require-context-to-load-html-files.mdoc": {
+	id: "use-webpack-and-require-context-to-load-html-files.mdoc";
   slug: "use-webpack-and-require-context-to-load-html-files";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"using-css-custom-properties-to-apply-themes-in-javascript-or-react.md": {
-	id: "using-css-custom-properties-to-apply-themes-in-javascript-or-react.md";
+} & { render(): Render[".mdoc"] };
+"using-css-custom-properties-to-apply-themes-in-javascript-or-react.mdoc": {
+	id: "using-css-custom-properties-to-apply-themes-in-javascript-or-react.mdoc";
   slug: "using-css-custom-properties-to-apply-themes-in-javascript-or-react";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"using-wordpress-as-a-headless-cms-with-next.js.md": {
-	id: "using-wordpress-as-a-headless-cms-with-next.js.md";
+} & { render(): Render[".mdoc"] };
+"using-wordpress-as-a-headless-cms-with-next.js.mdoc": {
+	id: "using-wordpress-as-a-headless-cms-with-next.js.mdoc";
   slug: "using-wordpress-as-a-headless-cms-with-nextjs";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"what-bruce-lee-taught-me-about-business.md": {
-	id: "what-bruce-lee-taught-me-about-business.md";
+} & { render(): Render[".mdoc"] };
+"what-bruce-lee-taught-me-about-business.mdoc": {
+	id: "what-bruce-lee-taught-me-about-business.mdoc";
   slug: "what-bruce-lee-taught-me-about-business";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"why-is-css-in-js-a-bad-or-good-idea.md": {
-	id: "why-is-css-in-js-a-bad-or-good-idea.md";
+} & { render(): Render[".mdoc"] };
+"why-is-css-in-js-a-bad-or-good-idea.mdoc": {
+	id: "why-is-css-in-js-a-bad-or-good-idea.mdoc";
   slug: "why-is-css-in-js-a-bad-or-good-idea";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdoc"] };
 };
 "projects": {
 "g-sheets.md": {
