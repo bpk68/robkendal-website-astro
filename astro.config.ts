@@ -1,9 +1,9 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import { defineConfig } from 'astro/config';
-// import tailwind from '@astrojs/tailwind';
-import prefetch from "@astrojs/prefetch";
+import prefetch from '@astrojs/prefetch';
 import sitemap from '@astrojs/sitemap';
-import compress from "astro-compress";
+import compress from 'astro-compress';
+import markdoc from '@astrojs/markdoc';
 
 /* 
   We are doing some URL mumbo jumbo here to tell Astro what the URL of your website will be.
@@ -19,9 +19,9 @@ const SERVER_PORT = 3000;
 
 export default defineConfig({
   experimental: {
-		assets: true,
-		viewTransitions: true,
-	},
+    assets: true,
+    viewTransitions: true,
+  },
   redirects: {
     '/sitemap.xml': {
       status: 301,
@@ -35,11 +35,7 @@ export default defineConfig({
   compressHTML: true,
   server: { port: SERVER_PORT },
   site: 'https://robkendal.co.uk',
-  integrations: [
-    sitemap(),
-		prefetch(),
-		compress({ logger: 1 }),
-  ],
+  integrations: [markdoc(), sitemap(), prefetch(), compress({ logger: 1 })],
   markdown: {
     shikiConfig: {
       theme: 'nord',
@@ -47,8 +43,8 @@ export default defineConfig({
     },
   },
   vite: {
-		build: {
-			sourcemap: true,
-		},
-	},
+    build: {
+      sourcemap: true,
+    },
+  },
 });

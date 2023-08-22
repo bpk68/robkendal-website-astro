@@ -37,10 +37,3 @@ export interface IPageMetaReturnObj {
   og: PageOgMeta;
   twitter: TwitterMeta;
 }
-
-export interface TestimonialItem {
-  avatar: string;
-  avatarAlt: string;
-  text: string;
-  cite: string;
-}
