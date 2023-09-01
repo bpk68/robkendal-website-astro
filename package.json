@@ -20,7 +20,7 @@
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
     "@types/sanitize-html": "^2.9.0",
-    "astro": "^2.10.12",
+    "astro": "^3.0.0",
     "astro-compress": "^2.0.14",
     "autoprefixer": "^10.4.15",
     "cssnano": "^6.0.1",
