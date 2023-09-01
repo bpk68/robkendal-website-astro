@@ -12,8 +12,8 @@ dependencies:
     specifier: ^0.4.0
     version: 0.4.0
   '@astrojs/prism':
-    specifier: ^2.1.2
-    version: 2.1.2
+    specifier: ^3.0.0
+    version: 3.0.0
   '@astrojs/rss':
     specifier: ^2.4.4
     version: 2.4.4
