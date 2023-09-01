@@ -12,8 +12,8 @@ dependencies:
     specifier: ^0.3.0
     version: 0.3.0
   '@astrojs/prism':
-    specifier: ^2.1.2
-    version: 2.1.2
+    specifier: ^3.0.0
+    version: 3.0.0
   '@astrojs/rss':
     specifier: ^2.4.4
     version: 2.4.4
@@ -196,6 +196,13 @@ packages:
   /@astrojs/prism@2.1.2:
     resolution: {integrity: sha512-3antim1gb34689GHRQFJ88JEo93HuZKQBnmxDT5W/nxiNz1p/iRxnCTEhIbJhqMOTRbbo5h2ldm5qSxx+TMFQA==}
     engines: {node: '>=16.12.0'}
+    dependencies:
+      prismjs: 1.29.0
+    dev: false
+
+  /@astrojs/prism@3.0.0:
+    resolution: {integrity: sha512-g61lZupWq1bYbcBnYZqdjndShr/J3l/oFobBKPA3+qMat146zce3nz2kdO4giGbhYDt4gYdhmoBz0vZJ4sIurQ==}
+    engines: {node: '>=18.14.1'}
     dependencies:
       prismjs: 1.29.0
     dev: false
