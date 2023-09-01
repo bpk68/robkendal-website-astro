@@ -1,72 +1,83 @@
 ---
-import { getCollection } from "astro:content";
-import PageLayout from "../layouts/PageLayout.astro";
-import PageMeta from "../components/PageMeta.astro";
-import PageHeader from "src/components/PageHeader.astro";
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import PageMeta from '../components/PageMeta.astro';
+import PageHeader from 'src/components/PageHeader.astro';
 
 const projects = await getCollection('projects');
 ---
 
 <PageLayout>
-  <PageMeta 
-    title='Discover open source projects and resources by Rob Kendal, freelance developer'
-    description='Find out more about my open source projects, such as the Google Sheets API Reader and React Query Builder'
-    slot="meta" 
+  <PageMeta
+    title="Discover open source projects and resources by Rob Kendal, freelance developer"
+    description="Find out more about my open source projects, such as the Google Sheets API Reader and React Query Builder"
+    slot="meta"
   />
   <section slot="main">
     <div class="prose max-w-none prose-bubblegum">
-      <PageHeader>
-        Projects
-      </PageHeader>
+      <PageHeader>Projects</PageHeader>
       <p>
         I have a few open source projects and repositories that I'm working on
         or have available on{' '}
-        <a href='https://github.com/bpk68/'>my GitHub account</a>.
+        <a href="https://github.com/bpk68/">my GitHub account</a>.
       </p>
       <p>
-        I've broken down a few of the more popular ones here. Check them out
-        and feel free to fork, feedback, leave pull requests, or request
-        features :D.
+        I've broken down a few of the more popular ones here. Check them out and
+        feel free to fork, feedback, leave pull requests, or request features
+        :D.
       </p>
-    </div>    
+    </div>
 
-    {projects.map(async (project) => {
-      const { Content } = await project.render();
-      return (
-        <div class="my-16 group">
-          <article class="flex gap-10 items-start mx-auto" >
-            <figure class="w-1/4 aspect-square mt-2">
-              <a href={project.data.href}>
-                <img src={project.data.img} alt={`intro image for article ${project.data.imgAlt}`} class="w-full block h-auto" />
-              </a>
-            </figure>
-            <div class="w-3/4">
-              <span class="text-gray-500 uppercase">{project.data.subtitle}</span>
-              <h3 class="heading-2 m-0 p-0 mb-2">
-                <a href={project.data.href} class="fancy-underline unset">
-                  {project.data.title}
-                </a>  
-              </h3>            
-              <Content />
-              <p class="text-right font-bold mt-4">
-                <a href={project.data.href}>Find out more <i class="fa-solid fa-chevron-circle-right"></i></a>  
-              </p>
+    {
+      projects
+        .sort((a, b) => (a.data.order < b.data.order ? -1 : 1))
+        .map(async (project) => {
+          const { Content } = await project.render();
+          return (
+            <div class="my-16 group">
+              <article class="flex gap-10 items-start mx-auto">
+                <figure class="w-1/4 aspect-square mt-2">
+                  <a href={project.data.href} target="_blank">
+                    <img
+                      src={project.data.img}
+                      alt={`intro image for article ${project.data.imgAlt}`}
+                      class="w-full block h-auto"
+                    />
+                  </a>
+                </figure>
+                <div class="w-3/4">
+                  <span class="text-gray-500 uppercase">
+                    {project.data.subtitle}
+                  </span>
+                  <h3 class="heading-2 m-0 p-0 mb-2">
+                    <a
+                      href={project.data.href}
+                      target="_blank"
+                      class="fancy-underline unset"
+                    >
+                      {project.data.title}
+                    </a>
+                  </h3>
+                  <Content />
+                  <p class="text-right font-bold mt-4">
+                    <a href={project.data.href} target="_blank">
+                      Find out more{' '}
+                      <i class="fa-solid fa-chevron-circle-right" />
+                    </a>
+                  </p>
+                </div>
+              </article>
+              <div class="h-3 mx-auto border-b-slate-200 border-b pt-6 pb-2 group-last:border-none" />
             </div>
-          </article>
-          <div class="h-3 mx-auto border-b-slate-200 border-b pt-6 pb-2 group-last:border-none"></div>
-        </div>
-      )
-    })}
-    
+          );
+        })
+    }
+
     <br />
     <iframe
-      src='https://github.com/sponsors/bpk68/card'
-      title='Sponsor me'
-      height='225'
-      style={{ border: '0', width: '100%' }}
-    ></iframe>
-  </section> 
+      src="https://github.com/sponsors/bpk68/card"
+      title="Sponsor me"
+      height="225"
+      style={{ border: '0', width: '100%' }}></iframe>
+  </section>
 </PageLayout>
-        
-
-        

@@ -16,6 +16,7 @@
     "@astrojs/rss": "^2.4.4",
     "@astrojs/sitemap": "^2.0.2",
     "@astrojs/tailwind": "^4.0.0",
+    "@fortawesome/fontawesome-free": "^6.4.2",
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
     "@types/sanitize-html": "^2.9.0",
