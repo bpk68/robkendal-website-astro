@@ -1,5 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+
 import SocialLinks from './SocialLinks.astro';
+
+import logo from '../assets/k-tech-logo-white.png';
 ---
 
 <footer class="md:text-sm leading-[1.75] mt-4 border-t-2 pt-8">
@@ -31,10 +35,18 @@ import SocialLinks from './SocialLinks.astro';
       <SocialLinks centralise />
     </div>
   </div>
-  <p class="mt-4 pb-8 text-xs text-center block">
-    Copyright &copy; {new Date().getFullYear()} Rob Kendal. View the <a
-      href="/privacy">privacy policy</a
-    > and
+  <div class="my-2 flex justify-center">
+    <Image
+      src={logo}
+      alt="K-Tech logo, a colourful letter K"
+      width={50}
+      height={50}
+    />
+  </div>
+  <p class="mt-4 pb-8 text-xs text-center block leading-relaxed">
+    Copyright &copy; {new Date().getFullYear()} Rob Kendal (trading as K-Tech).<br
+    />
+     View the <a href="/privacy">privacy policy</a> and
     <a href="/terms">terms</a>
   </p>
 </footer>

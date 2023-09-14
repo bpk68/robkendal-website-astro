@@ -42,10 +42,19 @@
     /* Custom #edf2f4 */
     --color-brand-cream-light: 237 242 244;
 
-    /* Custom #8AE6FB */
+    /* Custom #8AE6FB
     --color-primary-blue: 138 230 251;
     /* Tailwind lime-300 #bef264 */
+    /* --color-primary-green: 190 242 100; */
+    /* Custom #FFDE69 */
+    /* --color-primary-yellow: 255 222 105; */
+
+    /* Custom #5CE2E6 */
+    --color-primary-blue: 92 226 230;
+    /* Tailwind lime-300 #bef264 */
     --color-primary-green: 190 242 100;
+    /* Custom #ff8bd2 */
+    --color-primary-pink: 255 139 210;
     /* Custom #FFDE69 */
     --color-primary-yellow: 255 222 105;
 
@@ -109,7 +118,9 @@
     --color-brand-cream-light: 237 242 244;
 
     /* Tailwind blue-500 #3b82f6 */
-    --color-primary-blue: 59 130 246;
+    /* --color-primary-blue: 59 130 246; */
+    /* Custom #5c7d9b */
+    --color-primary-blue: 92 125 155;
     /* Tailwind lime-300 #bef264 */
     --color-primary-green: 190 242 100;
     /* Custom #FFDE69 */

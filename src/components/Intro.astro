@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 import BenefitsList from '../components/BenefitsList.astro';
 import ServicesList from './ServicesList.astro';
 import BrandsList from './BrandsList.astro';
@@ -8,14 +10,16 @@ import ArticleList from './ArticleList.astro';
 import Button from './Button.astro';
 import PageHeader from './PageHeader.astro';
 
- const benefits = [
-  "A fullstack developer with 15+ years experience building fast, lead-generating websites.",
-  "A reliable development professional who will always give you straightforward, honest advice.",
+import signature from '../assets/rob-kendal-signature.png';
+
+const benefits = [
+  'A fullstack developer with 15+ years experience building fast, lead-generating websites.',
+  'A reliable development professional who will always give you straightforward, honest advice.',
   "A freelancer with expert skills in <a href='/freelance-shopify-developer'><strong>Shopify development</strong></a>, <a href='/small-business-websites'><strong>small business websites</strong></a> and <a href='/enterprise-software-development'><strong>enterprise software development</strong></a>",
-  "Marketing website design and Shopify development driven by your business growth goals.",
-  "Award-winning marketing and Search Engine Optimisation (SEO) knowledge and support.",
-  "Expert web development services using forward-thinking echnologies such as Frontity, Gatsby.js, Next.js, WordPress REST API, GraphQL and the Jamstack.",
-  "Help and support launching super fast, accessible, static websites that rank well on search engines."
+  'Marketing website design and Shopify development driven by your business growth goals.',
+  'Award-winning marketing and Search Engine Optimisation (SEO) knowledge and support.',
+  'Expert web development services using forward-thinking echnologies such as Frontity, Gatsby.js, Next.js, WordPress REST API, GraphQL and the Jamstack.',
+  'Help and support launching super fast, accessible, static websites that rank well on search engines.',
 ];
 ---
 
@@ -28,39 +32,73 @@ import PageHeader from './PageHeader.astro';
       alt="Rob Kendal freelance Shopify developer, software developer and headless CMS developer"
       class="border-gray-800 border-4 rounded-md max-w-[15rem] sm:max-w-[10rem] -rotate-3"
     />
-    <PageHeader>I build software to help your business</PageHeader>
+    <PageHeader>
+      A freelance Shopify developer and software engineer based in Yorkshire
+    </PageHeader>
   </div>
-  <p class="text-xl text-center sm:text-left">
-    Hi, I'm Rob Kendal. If you've been searching for a <strong
-      >freelance web developer</strong
-    > who knows <strong>Shopify</strong>, <strong>
-      fullstack web development
-    </strong> on the Jamstack inside and out, you've come to the right place.
-  </p>
+
+  <blockquote
+    class="space-y-6
+      text-xl
+      text-center
+      sm:text-left
+      sm:px-14
+      sm:my-14
+      my-8"
+  >
+    <p>
+      <span class="fa-solid fa-quote-left text-4xl pr-2"></span>
+       Hi, I'm Rob Kendal. If you've been searching for a <strong
+        >freelance web developer</strong
+      > who knows <strong>Shopify</strong>, and <strong>
+        fullstack web development
+      </strong> on the Jamstack inside and out, you've come to the right place.
+    </p>
+    <p>
+      For the past 20 years, I've worked closely with businesses to design and
+      develop web apps and software that helps them do more and hit their growth
+      goals.
+    </p>
+    <p>
+      I put your customers first, giving them a first-class user experience.
+      Everything I build is designed using robust modern technologies and
+      delivered on laser fast global hosting.
+    </p>
+    <p>
+      Let's talk about your project and how I can help your business.
+      <Image
+        src={signature}
+        alt="Rob Kendal Freelance Shopify Developer, K-Tech logo, a colourful letter K"
+        width={150}
+        height={150}
+        class="sm:float-right mb-10 mx-auto"
+      />
+    </p>
+  </blockquote>
+
   <div
-    class="
-      relative 
-      my-8 
-      before:z-0 
-      before:block 
-      before:absolute 
-      before:-inset-1 
-      before:-skew-y-2 
-      before:-rotate-2 
-      before:bg-gradient-to-bl 
-      before:bg-no-repeat 
-      before:bg-bottom 
-      before:bg-[length:95%_95%] 
-      before:from-primary-blue 
-      before:to-primary-blue 
-      before:dark:from-primary-blue 
+    class="relative
+      clear-both
+      my-8
+      before:z-0
+      before:block
+      before:absolute
+      before:-inset-1
+      before:-skew-y-2
+      before:-rotate-2
+      before:bg-gradient-to-bl
+      before:bg-no-repeat
+      before:bg-bottom
+      before:bg-[length:95%_95%]
+      before:from-primary-blue
+      before:to-primary-blue
+      before:dark:from-primary-blue
       before:dark:to-primary-blue
       before:bg-primary-blue
       before:dark:bg-primary-blue
       sm:before:w-[95%]
       before:mx-auto
-      before:w-auto
-    "
+      before:w-auto"
   >
     <h2 class="heading-2 text-center overflow-hidden mb-4 z-10 block relative">
       Working with me gets you:
@@ -73,7 +111,12 @@ import PageHeader from './PageHeader.astro';
       deliver it could save you a fortune!
     </p>
     <div class="flex flex-col sm:flex-row justify-center gap-5 items-center">
-      <Button href="/contact" text="hire me" variant="primary" classes={['w-full sm:w-auto']} />
+      <Button
+        href="/contact"
+        text="hire me"
+        variant="primary"
+        classes={['w-full sm:w-auto']}
+      />
       <Button
         href="/blog"
         text="read my articles"

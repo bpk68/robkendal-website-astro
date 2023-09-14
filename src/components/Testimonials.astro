@@ -4,14 +4,16 @@ import { getCollection } from 'astro:content';
 interface Props {
   title: string;
   intro: string;
-  shuffle: boolean
+  shuffle: boolean;
 }
 
 const { title, intro, shuffle } = Astro.props;
 
 const allTestimonials = await getCollection('testimonials');
 
-const testimonials = allTestimonials.sort(() => Math.random() - 0.5).slice(0, 5);
+const testimonials = allTestimonials
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 5);
 ---
 
 <section class="section is-md my-14">
@@ -34,7 +36,8 @@ const testimonials = allTestimonials.sort(() => Math.random() - 0.5).slice(0, 5)
       md:flex
       items-start
       space-between
-      gap-10      
+      gap-10 
+      dark:text-slate-700
       ${i % 2 === 0 ? '-rotate-1' : 'rotate-1'}
     `}
       >
