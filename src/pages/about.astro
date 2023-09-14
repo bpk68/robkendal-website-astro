@@ -1,22 +1,24 @@
 ---
-import PageLayout from "../layouts/PageLayout.astro";
-import PageMeta from "../components/PageMeta.astro";
+import { Image } from 'astro:assets';
+
+import PageLayout from '../layouts/PageLayout.astro';
+import PageMeta from '../components/PageMeta.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import ContactForm from '../components/ContactForm.astro';
-import PageHeader from "src/components/PageHeader.astro";
+import PageHeader from 'src/components/PageHeader.astro';
+
+import signature from '../assets/rob-kendal-signature.png';
 ---
 
 <PageLayout>
-  <PageMeta 
+  <PageMeta
     title="About Rob Kendal, freelance web developer"
     description="I'm Rob Kendal, a freelance software developer specialising in enterprise websites, applications and headless CMS web development. I work with clients remotely from my office in Wakefield, West Yorkshire"
-    slot="meta" 
+    slot="meta"
   />
   <section slot="main">
     <div class="prose max-w-none prose-bubblegum">
-      <PageHeader>
-        About Rob Kendal
-      </PageHeader>
+      <PageHeader>About Rob Kendal</PageHeader>
       <p>
         I've been fortunate enough to have discovered computers during their
         golden beginnings when I was young. Although I liked maths and science,
@@ -50,7 +52,7 @@ import PageHeader from "src/components/PageHeader.astro";
       <p>
         A few years later, after working alongside some world class designers
         and developers in digital agencies, I was introduced to WordPress
-        through a very talented graphic designer friend of mine who runs{" "}
+        through a very talented graphic designer friend of mine who runs{' '}
         <a
           href="https://www.createdfor.co.uk"
           target="_blank"
@@ -58,7 +60,7 @@ import PageHeader from "src/components/PageHeader.astro";
         >
           CreatedFor
         </a>
-        .
+         .
       </p>
       <p>
         Fast forward almost two decades later and the web has changed
@@ -82,21 +84,21 @@ import PageHeader from "src/components/PageHeader.astro";
       </p>
       <p>
         I like to write and to document my knowledge right out in the open. I do
-        this through publishing regular{" "}
-        <a href="/blog">articles on my blog</a> and being an active member
-        of the 
+        this through publishing regular{' '}
+        <a href="/blog">articles on my blog</a> and being an active member of
+        the
         <a href="https://indieweb.social/@kendalmintcode">
           Indie Web tech community on Mastodon
         </a>
-        .
+         .
       </p>
       <p>
         I help give back to the development community by providing support,
-        advice and guidance to aspiring developers through 
+        advice and guidance to aspiring developers through
         <a href="/mentorship">my mentorship program</a>.
       </p>
       <p>
-        You can listen to the web development podcast I run called 
+        You can listen to the web development podcast I run called
         <a
           href="https://thefrontendpodcast.site"
           target="_blank"
@@ -104,7 +106,7 @@ import PageHeader from "src/components/PageHeader.astro";
         >
           The Front End
         </a>
-        which is available on
+         which is available on
         <a
           href="https://anchor.fm/the-front-end"
           target="_blank"
@@ -112,21 +114,31 @@ import PageHeader from "src/components/PageHeader.astro";
         >
           Anchor podcasts
         </a>
-        .
+         .
       </p>
       <p>
         When I'm not recording a podcast,
         <a href="/small-business-websites">
           offering web development consultancy services
-        </a>{" "}
-        or coding something exciting, then you'll find me right at home in 
-        West Yorkshire in a small village South of the market town of Pontefract
+        </a>{' '}
+         or coding something exciting, then you'll find me right at home in West
+        Yorkshire in a small village South of the market town of Pontefract
         where I live with my wife and children.
       </p>
-      <h2 class="heading-2">Connect with me</h2>
+      <p>
+        Let's talk about your project and how I can help your business.
+        <Image
+          src={signature}
+          alt="Rob Kendal Freelance Shopify Developer, K-Tech logo, a colourful letter K"
+          width={150}
+          height={150}
+          class="sm:float-right mb-10"
+        />
+      </p>
+      <h2 class="heading-2 clear-both">Connect with me</h2>
       <SocialLinks />
     </div>
     <h2 class="heading-2">Hire me</h2>
-    <ContactForm action="/contact/thanks" />   
-  </section> 
+    <ContactForm action="/contact/thanks" />
+  </section>
 </PageLayout>

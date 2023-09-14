@@ -18,10 +18,6 @@ import markdoc from '@astrojs/markdoc';
 const SERVER_PORT = 3000;
 
 export default defineConfig({
-  experimental: {
-    assets: true,
-    viewTransitions: true,
-  },
   redirects: {
     '/sitemap.xml': {
       status: 301,

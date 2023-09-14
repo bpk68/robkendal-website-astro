@@ -1,5 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+
 import HeaderLink from './HeaderLink.astro';
+
+import logo from '../assets/k-tech-logo-initial-white.png';
 ---
 
 <Fragment>
@@ -8,9 +12,11 @@ import HeaderLink from './HeaderLink.astro';
       <ul class="unset flex gap-4 [&>li]:p-0 items-center">
         <li>
           <HeaderLink href="/">
-            <img
-              src="/img/ark-labs-logo_trans.png"
-              alt="Rob Kendal Freelance Shopify Developer"
+            <Image
+              src={logo}
+              alt="Rob Kendal Freelance Shopify Developer, K-Tech logo, a colourful letter K"
+              width={50}
+              height={50}
               class="max-w-[50px]"
             />
           </HeaderLink>
@@ -85,31 +91,31 @@ import HeaderLink from './HeaderLink.astro';
           <li><HeaderLink href="/contact">contact</HeaderLink></li>
         </ul>
         <div
-            class="justify-self-end py-5 flex items-center content-center text-text-bold gap-4 px-6"
+          class="justify-self-end py-5 flex items-center content-center text-text-bold gap-4 px-6"
+        >
+          <a
+            class="fancy-underline fancy-underline--yellow unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-yellow text-2xl"
+            href="https://github.com/bpk68"
+            target="_blank"
           >
-            <a
-              class="fancy-underline fancy-underline--yellow unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-yellow text-2xl"
-              href="https://github.com/bpk68"
-              target="_blank"
-            >
-              <i
-                class="fa-brands fa-github"
-                aria-hidden="true"
-                title="View Rob Kendal's GitHub profile"></i>
-              <span class="is-sr-only">GitHub</span>
-            </a>
-            <a
-              class="fancy-underline unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-blue text-2xl"
-              href="https://www.linkedin.com/in/robkendal"
-              target="_blank"
-            >
-              <i
-                class="fa-brands fa-linkedin"
-                aria-hidden="true"
-                title="Connect with Rob Kendal on LinkedIn"></i>
-              <span class="is-sr-only">Linked In</span>
-            </a>
-          </div>
+            <i
+              class="fa-brands fa-github"
+              aria-hidden="true"
+              title="View Rob Kendal's GitHub profile"></i>
+            <span class="is-sr-only">GitHub</span>
+          </a>
+          <a
+            class="fancy-underline unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-blue text-2xl"
+            href="https://www.linkedin.com/in/robkendal"
+            target="_blank"
+          >
+            <i
+              class="fa-brands fa-linkedin"
+              aria-hidden="true"
+              title="Connect with Rob Kendal on LinkedIn"></i>
+            <span class="is-sr-only">Linked In</span>
+          </a>
+        </div>
       </div>
     </section>
   </nav>
