@@ -3,6 +3,7 @@ import PageLayout from 'src/layouts/PageLayout.astro';
 import PageMeta from 'src/components/PageMeta.astro';
 import ContactForm from 'src/components/ContactForm.astro';
 import PageHeader from 'src/components/PageHeader.astro';
+import Button from 'src/components/Button.astro';
 ---
 
 <PageLayout>
@@ -21,8 +22,57 @@ import PageHeader from 'src/components/PageHeader.astro';
         <a href="/mentorship"> coding mentorship support</a>
          ?
       </p>
+    </div>
+
+    <div
+      class="relative
+          clear-both
+          my-12
+          before:z-0
+          before:block
+          before:absolute
+          before:-inset-1
+          before:-skew-y-2
+          before:-rotate-2
+          before:bg-gradient-to-bl
+          before:bg-no-repeat
+          before:bg-bottom
+          before:bg-[length:95%_95%]
+          before:from-primary-purple
+          before:to-primary-yellow
+          before:dark:from-primary-blue
+          before:dark:to-primary-blue
+          before:bg-primary-yellow
+          before:dark:bg-primary-blue
+          sm:before:w-[95%]
+          before:mx-auto
+          before:w-auto"
+    >
+      <h2
+        class="heading-2 text-center overflow-hidden mb-4 z-10 block relative"
+      >
+        5 minute introduction
+      </h2>
+      <p class="text-center z-10 relative mx-auto max-w-2xl mb-5">
+        The quickest way is to fill out my quick <a
+          href="https://app.hellobonsai.com/f/a2ae2662d2eb13e"
+          target="_blank">5 minute intro form</a
+        >
+         to help <meta /> understand a little more about your project and its
+        needs.
+      </p>
+      <p class="text-center z-10 relative mx-auto max-w-2xl mb-5 pb-5">
+        <Button
+          href="https://app.hellobonsai.com/f/a2ae2662d2eb13e"
+          text="Take the 5 min survey"
+        />
+      </p>
+    </div>
+
+    <div class="prose max-w-none prose-bubblegum">
+      <h2 class="heading-2 mb-4">Send me a message directly</h2>
       <p>
-        Send me a message below and <strong
+        Alternatively, send me a message below and <strong
           >I'll get back to you within 24 hours</strong
         >
       </p>
