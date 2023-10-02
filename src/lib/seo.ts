@@ -55,8 +55,6 @@ export function getPageMeta({
     imageHeight: ogImageHeight ? String(ogImageHeight) : undefined,
   };
 
-  // const metaType: T as PageMetaType = 'website';
-
   if (metaType === PageMetaType.blog) {
     og.type = 'article';
     og.author = authorName;
