@@ -69,6 +69,15 @@ const caseStudies = [
       'Ashes With Art are an artisan jewellery crafter, making truly memorable gifts. I their SEO consultancy work, improving the speed of their Shopify store across mobile devices, and lifting their search engine positions.',
     link: 'ashes-with-art',
   },
+  {
+    id: 8,
+    title: 'Core Groundworks York',
+    subTitle: 'Bespoke web design',
+    img: 'core-groundworks-screenshot.png',
+    blurb:
+      'Core Groundworks York is a local Yorkshire earth and groundworks firm who needed to migrate their Wix website to a professional, bespoke website. I designed and developed a branded website to help them raise their online image.',
+    link: 'core-groundworks',
+  },
 ];
 ---
 
@@ -83,8 +92,10 @@ const caseStudies = [
       <PageHeader>Case studies</PageHeader>
       <p>
         I've worked with some great clients over the years on a diverse range of
-        <a href="/freelance-shopify-developer">Shopify</a> projects, both ecommerce
-        and non-ecommerce business websites.
+
+
+        <a href="/freelance-shopify-developer">Shopify</a> projects, both
+        ecommerce and non-ecommerce business websites.
       </p>
       <p>
         You can explore a few of the more recent and challenging ones here.
@@ -139,9 +150,14 @@ const caseStudies = [
                 />
               </a>
               <div class="p-5 md:p-8 dark:bg-primary-blue case-study-content">
-                <p class="uppercase text-text-muted m-0 dark:text-slate-300">{item.subTitle}</p>
+                <p class="uppercase text-text-muted m-0 dark:text-slate-300">
+                  {item.subTitle}
+                </p>
                 <h2 class="heading-2 text-4xl mt-0 p-0">
-                  <a href={`/case-studies/${item.link}`} class="unset text-text-heading">
+                  <a
+                    href={`/case-studies/${item.link}`}
+                    class="unset text-text-heading"
+                  >
                     {item.title}
                   </a>
                 </h2>
