@@ -8,6 +8,7 @@ interface Props {
   isOutline?: boolean;
   classes?: string[];
   external?: boolean;
+  hideIconOnMobile?: boolean;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   isOutline = false,
   classes = [],
   external = false,
+  hideIconOnMobile = false,
 } = Astro.props;
 
 if (isOutline) {
@@ -96,8 +98,15 @@ switch (variant) {
     {text}
   </span>
   <span
-    class="fa-solid fa-chevron-circle-right relative z-10 text-black group-hover:text-white"
-  ></span>
+    class={`
+      fa-solid 
+      fa-chevron-circle-right 
+      relative 
+      z-10 
+      text-black 
+      group-hover:text-white 
+      ${hideIconOnMobile ? 'hidden sm:inline-block' : ''}
+    `}></span>
 </a>
 
 <style>
