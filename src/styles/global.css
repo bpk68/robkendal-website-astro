@@ -437,4 +437,9 @@
     margin: 2.5em 0 1.66667em;
     position: relative;
   }
+
+  .blog-post p > img {
+    width: 100%;
+    object-fit: fill;
+  }
 }
