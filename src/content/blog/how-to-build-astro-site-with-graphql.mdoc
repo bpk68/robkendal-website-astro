@@ -1,0 +1,519 @@
+---
+date: 2023-10-03T09:25:41
+published: true
+title: How to build a fullstack Astro website with GraphQL
+description: Building an Astro site with GraphQL is easier than you think!
+  Learn how to build an Astro website in SSR mode, that runs a serverless
+  GraphQL API to serve data from anywhere you like.
+imgtitle: 'FULLSTACK ASTRO + GRAPHQL'
+featuredimage: '/img/blog-headers/astro-and-graphql-blog-header.png'
+featured: true
+tags:
+  - Tutorial
+  - Development
+  - Astro
+---
+
+![Blog header image for building a fullstack Astro site and GraphQL](/img/blog-headers/astro-and-graphql-blog-header.png 'Blog header image for fullstack Astro and GraphQL')
+
+[Astro](https://astro.build/) is a brilliant front-end framework for content-driven sites. Hooking it up to an API is easy, but using it in a fullstack approach like you would with Next JS is less obvious.
+
+If, like me, you've been looking for a way to **build a fullstack web app using Astro and GraphQL**, but struggled to find much information online, then keep reading as we're doing just that!
+
+There's a little intro next, but you can [skip to the building](#tutorial-start) if you're keen to start building your very own fullstack app with Astro and GraphQL.
+
+## Getting help along the way
+
+I have a handy [Astro starter repository](https://github.com/bpk68/astro-examples) with a growing list of examples that you might find useful. The first folder in the repo (`astro-graphql`) is the one we'll be working through here.
+
+## Why Astro and not XYZ?
+
+If you're familar with something like Next, it has a great routing paradigm where you can implement custom routes and route handlers. This particular set of skills allows you to essentially build a fullstack app where the UI is a React app, whilst the backend API and data fetching becomes a set of serverless functions that handle them. However, this is _all_ within the same application. It's really neat.
+
+However, Next can be complicated and get out of hand if you're not a seasoned Next developer. It's also locked into React, which might not be your bag. And then there are comparible meta-frameworks for other libraries, such as Nuxt for Vue and SvelteKit for Svelte. We're not here to debate what's best (spoiler alert: whichever you choose will be the best for you!), but Astro offers something _different_.
+
+[Astro](https://astro.build/) is my favourite development tool at the moment, my favourate framework. In fact, this very website is built using Astro.
+
+Its focus is on helping you create lightning fast front-end applications built as static sites at build time, with an emphasis on developing very close to the HTML output.
+
+At some point, though, you're going to want to start connecting the front to some data (as with Next above). If you're lucky enough to have a separate backend API kicking around, then getting data from it is stupid easy. Astro has access to the global `fetch()` function for [easy data fetching](https://docs.astro.build/en/guides/data-fetching/).
+
+However...
+
+Sometimes you don't have an existing, separate API. Sometimes it's not worth the complexities of _building_ and _hosting_ a separate API or data service. Especially for smaller web applications or MVPs.
+
+Thanksfully, Astro has us covered and offers both [Server-side Rendering](https://docs.astro.build/en/guides/server-side-rendering/) options and a special [API endpoint system](https://docs.astro.build/en/core-concepts/endpoints/#server-endpoints-api-routes) in its route handling.
+
+This makes Astro a really powerful new kid on the block. It empowers us developers to create fully featured fullstack applications, without having the overhead or complexities of React + (insert all your extra dependencies here).
+
+### What about GraphQL?
+
+Astro's supports SSR via a special endpoints mechanism. They have a special syntax that exports one or more functions named after the HTTP verbs they handle. It might look like this:
+
+```typescript
+import { getArticles } from '../lib/db';
+
+export async function GET({ params }) {
+  const id = params.id;
+  const articles = await getArticles();
+
+  if (!articles || articles.length < 1) {
+    return new Response(null, {
+      status: 404,
+      statusText: 'Not found',
+    });
+  }
+
+  return new Response(JSON.stringify(articles), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+```
+
+Using this approach we can build out any number of REST-like endpoints to handle data in's and out's. But what if we want to leverage the powerful features of GraphQL? This is where things get tricky and there is surprisingly little documentation out there on how to build a fullstack application using Astro and GraphQL.
+
+Calling an endpoint from the UI in Astro using GraphQL is easy, it's just a `fetch` call with a GraphQL query. Building a backend route that _handles_ GraphQL requests? It's not as obvious as you'd think.
+
+## What we're building
+
+In this tutorial, we'll be replicating Next 13's routing pattern to enable us to handle GraphQL requests in Astro's SSR mode. We'll build out a really simple Astro site that provides a straightforward GraphQL server (running as a serverless function) that will return us some mocked product data from an imaginary shopping cart.
+
+Let's dig in!
+
+## Building out the fullstack app with Astro and GraphQL
+
+<a name="tutorial-start"></a>
+
+First things first, we'll be using a few different packages to make this work. They're listed below with a little explanation of what they do:
+
+- `astro` - The star of the show, [Astro](https://astro.build) is the main framework package that makes the magic happen.
+- `@astrojs/node` - This is an [Astro adapter](https://docs.astro.build/en/guides/integrations-guide/node) which helps to run our backend parts as SSR endpoints in a node environment.
+- `@apollo/client` - This is optional (we'll discuss that later), but makes writing GraphQL requests in your UI much nicer and easier. Plus it comes with a bunch of other benefits such as memory caching.
+- `graphql` - Without the `graphql` package, we won't get very far in doing GraphQL things. Other packages, such as `graphql-yoga` depend on this to work.
+- `graphql-yoga` - [GraphQL Yoga](https://the-guild.dev/graphql/yoga-server) is mainly used as a a GraphQL server. However, it makes creating schemas and defining queries much easier, even without the server parts.
+- `graphql-tag` - This is a tiny helper utility that, among other things, provides the `gql` template literal tag to parse our GraphQL strings.
+
+> Some of the packages above are optional and I'm just using them here for the nicer developer experience they offer. For example, you could swap out GraphQL Yoga with a number of similar packages and you don't need Apollo at all. Instead, you can simply use the built-in `fetch` and define a GraphQL query that way.
+> Bringing in extra packageas is always a trade off between performance, added maintenance and management, and developer productivity!
+
+### Creating an Astro project
+
+The very first thing to do is create a new Astro project. You can do this with the `create` command like so (we're using `pnpm` but whatever your package manager of choice is, the command is very similar):
+
+```node
+pnpm create astro@latest
+```
+
+And you'll get a really nice terminal walkthrough with some options that looks like this:
+
+![Installing Astro and creating a new project](/img/astro-install.png 'Astro project installation guide')
+
+You can choose whatever options you wish during the guided installation, but we'll be using TypeScript for this article so it'll help to do the same. Also, when you come to choosing a starter template, just choose 'blank' as it'll be easier to walk through our files when we create them, rather than having to empty out some existing starter stuff.
+
+With the installation done, `cd ..` into your new Astro project and open up your favourite code editor.
+
+### Adding the dependencies
+
+Next up, we'll add in some dependencies as outlined previously. Fire up your terminal and add them in:
+
+```node
+pnpm add @astrojs/node @apollo/client graphql graphql-yoga graphql-tag
+```
+
+### Configuring Astro
+
+With the dependencies in place, we need to make a couple of changes in the `astro.config.mjs` file, located in the root of your project:
+
+```js
+import { defineConfig } from 'astro/config';
+import node from '@astrojs/node';
+
+// https://astro.build/config
+export default defineConfig({
+  output: 'server',
+  adapter: node({
+    mode: 'standalone',
+  }),
+});
+```
+
+We're not doing too much in here, but what we _do_ do will unlock the power! We bring in the Node adapter, `node` from the `@astrojs/node` module and then add it under the `adapter` options in the Astro config. The `standalone` setting tells the adapter to work on its own. You would set this to `middleware` if you were using something like Express to host an API server.
+
+> There's a good chance you may need some sort of deployment adapter if you're planning on deploying things with a service like Netlify. That's outside the scope of this article, but the Astro docs have some [superb help on this matter here](https://docs.astro.build/en/guides/integrations-guide/netlify/).
+
+The other main change here is to turn on SSR mode (Server-side Rendering). The `output` option can be set to `server` or `hybrid`. For `server` as we have here, we're turning on full SSR mode where every request is sent to the server to be processed and some sort of HTML returned. For `hybrid`, static mode is the default, but you can opt _in_ to SSR on a page-by-page basis.
+
+### Creating the files and folders we'll need
+
+For smaller tutorials like this we can create all the files and folders in one go and fill them out once we're done. With that in mind, create the following folder structure -- bear in mind that all of the files and folders you'll create should live in the `./src` directory:
+
+```node
+./src
+  -| /components
+    - CartRow.astro
+  -| /data
+    - cart.ts
+    - types.ts
+  -| /lib
+    - apollo-client.ts
+  -| /styles
+    - main.css
+  -| /pages
+    -| /api
+      -graphql.ts
+```
+
+### Adding some styles
+
+This is the easiest file to add and update. Really it's just some simple styles to make our cart table look pretty. You can skip this if you want, but the styles are short, simple and I'm sure you'll get the gist of what's going on here:
+
+```css
+html,
+body {
+  box-sizing: border-box;
+  font-family: Tahoma, Geneva, sans-serif;
+  color: #54585d;
+  padding: 1rem 2rem;
+}
+
+table {
+  border-collapse: collapse;
+  margin-block-start: 2rem;
+}
+table td {
+  padding: 0.75rem;
+}
+table thead th {
+  background-color: #54585d;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.85rem;
+  border: 1px solid #54585d;
+  text-align: center;
+  padding: 0.75rem;
+}
+table thead th:first-child {
+  text-align: left;
+}
+table tbody td {
+  color: #636363;
+  border: 1px solid #dddfe1;
+  text-align: center;
+}
+table tbody td:first-child {
+  text-align: left;
+}
+table tbody tr {
+  background-color: #f9fafb;
+}
+table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+```
+
+### Defining types and some dummy data
+
+Since we're using TypeScript, we may as well define some types for our dummy data and then the data itself. Remember, this is going to be a sample shopping cart, so open up the `./src/data/types.ts` file and pop in a `CartItem` type:
+
+```typescript
+export type CartItem = {
+  id: number;
+  name: string;
+  price: number;
+  qty: number;
+};
+```
+
+Nice. Nice and simple. Next, open up the `./src/data/cart.ts` file and we'll create a sample array of `CartItem` items that represent our shopping cart:
+
+```typescript
+import type { CartItem } from './types';
+
+const ShoppingCart: Array<CartItem> = [
+  {
+    id: 1,
+    name: 'Apple',
+    price: 0.59,
+    qty: 4,
+  },
+  {
+    id: 2,
+    name: 'Shampoo',
+    price: 1.2,
+    qty: 3,
+  },
+  {
+    id: 3,
+    name: 'Wholemeal bread',
+    price: 0.75,
+    qty: 1,
+  },
+  {
+    id: 4,
+    name: 'Dozen eggs - large',
+    price: 2.95,
+    qty: 2,
+  },
+  {
+    id: 5,
+    name: 'Large mayonnaise',
+    price: 1.43,
+    qty: 1,
+  },
+];
+
+export default ShoppingCart;
+```
+
+Nothing super fancy here, but this is the data that will be returned from our GraphQL query once it fires up.
+
+### Getting Apollo Client involved
+
+The full in's and out's of Apollo are beyond the scope of this article. Suffice to say it's one of the leading platforms for API development based on GraphQL. You can read all about the excellent features the Apollo Client offers in [Apollo's GraphQL documentation](https://www.apollographql.com/docs/react/).
+
+We're using it here to simplify our GraphQL calls and eventually to make some use of its features, such as in-memory caching (although we're not going to explore this right now. That's for another day.).
+
+Open up the `./src/lib/apollo-client.ts` file and enter the following code:
+
+```typescript
+import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4321/api/graphql',
+  cache: new InMemoryCache(),
+});
+
+export default client;
+```
+
+This is a very tiny file, but it unlocks a lot of power from Apollo. We've brought in the `ApolloClient` function and the `InMemoryCache` helper and then created an instance of `ApolloClient`, passing in the API route that Astro will provide us. After that, we can simply export the client, ready to be used in one of our components or pages.
+
+> **Note**: you'll notice that we're hard-coding the URL here with the default Astro localhost address it typically uses. If your local development URL is different, update it here to match. You could also move that `uri` value to an environment variable instead and then you've only got to update it in one place.
+
+### Defining the GraphQL schema and creating the GraphQL endpoint
+
+Now it's time for the biggest bit of coding in the entire project (and even then it's not that big). Open up the `./src/pages/api/graphql.ts` file and enter the following code, then we'll step through it:
+
+```typescript
+import type { APIRoute } from 'astro';
+import { createYoga, createSchema } from 'graphql-yoga';
+
+import ShoppingCart from '../../data/cart';
+
+const schema = createSchema({
+  typeDefs: `
+    type CartItem {
+      id: Int!
+      name: String!
+      price: Float!
+      qty: Int!
+    }
+    type Query {
+      cart: [CartItem!]
+    }    
+  `,
+  resolvers: {
+    Query: {
+      cart: () => ShoppingCart,
+    },
+  },
+});
+
+const { handleRequest } = createYoga({
+  schema,
+  graphqlEndpoint: '/api/graphql',
+  fetchAPI: {
+    Request: Request,
+    Response: Response,
+  },
+});
+
+export const POST: APIRoute = async (context) => {
+  const { request } = context;
+  return handleRequest(request, context);
+};
+```
+
+The first few lines bring in the `createYoga` and `createSchema` functions. These allow us to define a GraphQL schema and then create a GraphQL Yoga object, one which will usually then be passed to a GraphQL Yoga _server_. We also pull in our dummy data, `ShoppingCart` and a special Astro type `APIRoute`.
+
+> Astro is fairly unopinionated when it comes to how you build your websites and apps. The main thing it prefers you do is create your pages under the `/pages` folder so it knows how to route them. For example, a page under `/pages/about-us.astro` would be displayed on the route `mysite.com/about-us`. However, when it comes to using endpoints as API routes, Astro is quite insistent that you export some sort of APIRoute function that is named as the HTTP verb it handles. That's why we have our 'POST' function here to handle 'POST' requests.
+
+Then we define our schema. We have a CartItem type with properties that match our TypeScript type of the same name. And then we have a query, `cart` that returns an array of CartItem objects. This isn't a mind-blowingly complex schema with lots of relationships, but it wouldn't be any different if it were. The execution is the same and the API route we're making would work just as well.
+
+Of course, queries or mutations are no good without a GraphQL resolver to _resolve_ them and, ultimately, give us some data back. The `cart` resolver here just simply returns our `ShoppingCart` dummy data array.
+
+The final part of the puzzle handles how our end point will cope with GraphQL requests _without_ running a dedicated server, which is usually what something like GraphQL Yoga would offer us. We create a new Yoga instance using the `createYoga` function, passing in our schema and defining an endpoint.
+
+This endpont matches our current route, `/api/graphql`. If we'd named it something mad like `./src/pages/batman/likes/black/batarangs.ts` then the `graphqlEndpoint` value would be `/batman/likes/black/batarangs`.
+
+> One other thing to highlight is that you don't have to put all your endpoint handling routes in an `/api` folder. We've done that here because contextually it makes sense: we're using the endpoint as an API for our UI.
+
+Finally, we need to add the incoming global Request and Response objects to the `fetchAPI` property, otherwise the entire thing falls apart and won't know how to handle the incoming request and response business.
+
+The only thing left to do to wire it together is to export a 'POST' function. This function invokes the `handleRequest` method provided by GraphQL Yoga. We pass it our incoming request and the request context from Astro.
+
+Bosh, all done! And that's really how simple it is to implement a GraphQL server in an Astro project. You can read more about [Astro's endpoint system](https://docs.astro.build/en/core-concepts/endpoints/) in their docs.
+
+Now onto the UI part to actually do something with our shopping cart data.
+
+### Building a table row
+
+The penultimate task is for us to create a small Astro component that will represent a HTML table row. Open up the `./src/components/CartRow.astro` file and add in this code:
+
+```jsx
+---
+import type { CartItem } from '../data/types';
+
+interface Props {
+  item: CartItem;
+}
+
+const { item } = Astro.props;
+---
+
+<tr>
+  <td>{item.name}</td>
+  <td>{item.qty}</td>
+  <td>£{item.price}</td>
+  <td><strong>£{(item.price * item.qty).toFixed(2)}</strong></td>
+</tr>
+```
+
+Nothing too complex here. We're bringing in our CartItem type and creating a 'Props' interface so our component knows what to expect to be passed by a parent component.
+
+Astro has a handy (and magical) mechanism for dealing with props. All you have to do is create a 'Props' interface, outlining the sorts of data your component will receive, and then destructure this from the `Astro.props` object. The `props` object is automatically provided to you by Astro at runtime and buildtime.
+
+From here, we just create a standard HTML table row with some cells in, pulling out the various properties from our CartItem type.
+
+### Bringing it all together in the home page
+
+The very last thing we need to do (apart from running the project) is to pull everything together in our home page so we can gaze upon the fruits of our labour.
+
+Find the `./src/pages/index.astro` file that is included with the empty project you created right at the beginning. Open it up and replace the entire basic contents with the following:
+
+```jsx
+---
+import client from '../lib/apollo-client';
+import gql from 'graphql-tag';
+
+// Styles
+import '../styles/main.css';
+
+// Components
+import CartRow from '../components/CartRow.astro';
+
+import type { CartItem } from '../data/types';
+
+const { data, loading } = await client.query({
+  query: gql`
+    query ShoppingCart {
+      cart {
+        name
+        price
+        qty
+      }
+    }
+  `,
+});
+
+const cartItems: Array<CartItem> = data.cart;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro and Graphql</title>
+  </head>
+  <body>
+    <h1>Welcome to the shopping cart</h1>
+    <p>Here's what's in your shopping cart today:</p>
+
+    {loading && <p>Loading your cart...</p>}
+
+    {
+      !loading && (
+        <table>
+					<thead>
+						<tr>
+							<th>Product name</th>
+							<th>Quantity</th>
+							<th>Item price</th>
+							<th>Row total</th>
+						</tr>
+					</thead>
+					<tbody>
+          	{cartItems.map((item) => <CartRow item={item} />)}
+					</tbody>
+        </table>
+      )
+    }
+  </body>
+</html>
+```
+
+Since we don't have any parent layout components, we're just defining a standard HTML page. Up in the top front-matter where we do Astro coding things; we're bringing in our Apollo Client instance and the `gql` template literal helper. Then we bring in our styles and the `CartRow` component.
+
+Next, we can use the Apollo Client's `client.query` function to create our GraphQL query. If you're familiar with this from other React projects then you'll be at home with the usage here.
+
+We can extract `data` and `loading` variables from the query before creating a `cartItems` variable from the data that's returned from the API.
+
+After that, the main logic is really simple. We can use the `loading` value from Apollo to switch on some loading UI:
+
+```jsx
+{
+  loading && <p>Loading your cart...</p>;
+}
+```
+
+Conversely, when `data` has something for us, we'll show our table:
+
+```jsx
+{
+  !loading && (
+    <table>
+      <thead>
+        <tr>
+          <th>Product name</th>
+          <th>Quantity</th>
+          <th>Item price</th>
+          <th>Row total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {cartItems.map((item) => (
+          <CartRow item={item} />
+        ))}
+      </tbody>
+    </table>
+  );
+}
+```
+
+Much like React, we can iterate over our `cartItems` array and spit out any sort of UI that we like. Notice how much cleaner it is to return a `<CartItem />` component here rather than defining a new table row and cells each time!
+
+## Running the Astro site with GraphQL
+
+And that, believe it or not, is all there is to it!
+
+Let's run the project to make sure it's working as expected. Fire up your terminal and enter the run command:
+
+```node
+pnpm dev
+```
+
+You should get a browser window opened at something like `https://localhost:4321` and our glorious UI come to life.
+
+You probably won't see the loading part at all because we're not physically going anywhere offsite to fetch data, such as a database. That said, the result is quite nice:
+
+![Screenshot of the graphql table with the shopping cart items listed](/img/astro-graphql-results-table.png 'Screenshot of the graphql table with the shopping cart items listed')
+
+## Further reading and resources
+
+- Check out my [Astro starter repository](https://github.com/bpk68/astro-examples) for more examples like this one.
+- I hugely recommend reading through the [Astro docs](https://docs.astro.build/en/) as they are some of the best in the business.
