@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { generateSocialImage } from 'src/lib/utils';
 import PageLayout from '../layouts/PageLayout.astro';
 import PageMeta from '../components/PageMeta.astro';
 import PageHeader from '../components/PageHeader.astro';
@@ -9,10 +10,33 @@ const posts = await getCollection('blog');
 
 const sortedPosts = posts
   .filter((p) => p.data.draft !== true)
+  .map((post) => {
+    const returnPost = {
+      ...post,
+      data: {
+        ...post.data,
+        featuredImage:
+          post.data.featuredimage ??
+          generateSocialImage({
+            title: post.data.imgtitle ?? '',
+          }),
+      },
+    };
+
+    return {
+      ...post,
+      data: {
+        ...post.data,
+        featuredImage:
+          post.data.featuredimage ??
+          generateSocialImage({
+            title: post.data.imgtitle ?? post.data.title,
+          }),
+      },
+    };
+  })
   .sort(
-    (a, b) =>
-      new Date(b.data.date).valueOf() -
-      new Date(a.data.date).valueOf()
+    (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
   );
 
 const currentPost = sortedPosts[0];
@@ -32,7 +56,7 @@ const archivedPosts = sortedPosts.slice(6);
       <figure class="aspect-video">
         <a href={`/blog/${currentPost.slug}`} class="unset">
           <img
-            src={currentPost.data.featuredimage}
+            src={currentPost.data.featuredImage}
             alt={`intro image for article ${currentPost.data.title}`}
             class="shadow-md"
           />
@@ -70,20 +94,18 @@ const archivedPosts = sortedPosts.slice(6);
     <ul class="chevron-list">
       {
         archivedPosts.map((post) => {
-          const formattedDate = new Date(
-            post.data.date
-          ).toLocaleDateString('en-us', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-          });
+          const formattedDate = new Date(post.data.date).toLocaleDateString(
+            'en-us',
+            {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            }
+          );
           return (
             <li class="grid grid-cols-[1fr_auto] mb-3 gap-2 items-start border-b pb-2 sm:pb-0 sm:border-none">
               <div class="title">
-                <a
-                  href={`/blog/${post.slug}`}
-                  class="fancy-underline unset"
-                >
+                <a href={`/blog/${post.slug}`} class="fancy-underline unset">
                   {post.data.title}
                 </a>
               </div>
