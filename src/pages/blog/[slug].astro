@@ -1,7 +1,7 @@
 ---
 import { getCollection, getEntryBySlug } from 'astro:content';
 import { SITE_URL } from '../../config';
-import Renderer from '../../components/Renderer.astro';
+import { generateSocialImage } from 'src/lib/utils';
 import BlogPostMeta from '../../components/BlogPostMeta.astro';
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import CallToAction from 'src/components/CallToAction.astro';
@@ -28,15 +28,17 @@ if (typeof slug !== 'string') {
 
 const post = await getEntryBySlug('blog', slug);
 
-if(!post) {
+if (!post) {
   throw new Error(`Could not find post with slug: ${slug}`);
 }
 
 const { Content } = await post.render();
-const imageUrl = post?.data.featuredimage;
-const ogImageAbsoluteUrl = imageUrl
-  ? new URL(imageUrl, SITE_URL).toString()
-  : '';
+
+const socialImagePath = generateSocialImage({ title: post?.data.imgtitle });
+
+const imageUrl = socialImagePath ?? post?.data.featuredimage;
+const ogImageAbsoluteUrl =
+  socialImagePath ?? imageUrl ? new URL(imageUrl, SITE_URL).toString() : '';
 ---
 
 <ContentLayout
@@ -52,42 +54,57 @@ const ogImageAbsoluteUrl = imageUrl
     ogImageAbsoluteUrl={ogImageAbsoluteUrl}
     slot="meta"
   />
-  
-  <Content slot="content" /> 
+
+  <Fragment slot="content">
+    {
+      !post.data.featuredimage && (
+        <div class="not-prose">
+          <img
+            src={imageUrl}
+            alt={`blog header image for article on ${post.data.title}`}
+            class="mt-7"
+          />
+        </div>
+      )
+    }
+    <Content />
+  </Fragment>
 
   <Fragment slot="additional-content">
     <div class="border-b"></div>
-    {post.data.tags.some(tag => tag.toLowerCase() === 'react') ? (
-      <CallToAction
-        type="post"
-        title="Learn React from scratch"
-        img="/img/publications/react-guide-course.png"
-        buttons={[
-          {
-            href: 'https://robkendal.co.uk/publications',
-            text: 'Find out more',
-          },
-        ]}
-      >
-        The Beginner's Guide to Real World React
-      </CallToAction>
-    ) : (
-      <CallToAction
-        type="post"
-        title="Find your perfect remote job"
-        img="/img/cta/cta-remote-dev-jobs.png"
-        buttons={[
-          {
-            href: 'https://remotedevjobs.uk',
-            text: 'Take a look',
-          },
-        ]}
-        variant='secondary'
-      >
-        My latest project will help pair developers looking for a new job with the best fully 
-        remote roles that the UK has to offer.
-      </CallToAction>
-    )}
+    {
+      post.data.tags.some((tag) => tag.toLowerCase() === 'react') ? (
+        <CallToAction
+          type="post"
+          title="Learn React from scratch"
+          img="/img/publications/react-guide-course.png"
+          buttons={[
+            {
+              href: 'https://robkendal.co.uk/publications',
+              text: 'Find out more',
+            },
+          ]}
+        >
+          The Beginner's Guide to Real World React
+        </CallToAction>
+      ) : (
+        <CallToAction
+          type="post"
+          title="Find your perfect remote job"
+          img="/img/cta/cta-remote-dev-jobs.png"
+          buttons={[
+            {
+              href: 'https://remotedevjobs.uk',
+              text: 'Take a look',
+            },
+          ]}
+          variant="secondary"
+        >
+          My latest project will help pair developers looking for a new job with
+          the best fully remote roles that the UK has to offer.
+        </CallToAction>
+      )
+    }
     <AuthorBio />
     <WebMentions url={`blog/${slug}`} />
     <PostComments slug={slug} />
