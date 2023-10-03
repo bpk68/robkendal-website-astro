@@ -42,7 +42,11 @@ export function getPageMeta({
       : ogImageAltText;
   }
 
-  const meta: PageMeta = { title: pageTitle, description: description };
+  const meta: PageMeta = {
+    title: pageTitle,
+    description: description,
+    canonicalUrl: baseUrl,
+  };
 
   const og: PageOgMeta = {
     title: pageTitle,
