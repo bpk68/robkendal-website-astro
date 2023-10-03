@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { generateSocialImage } from 'src/lib/utils';
 
 interface Props {
   title?: string;
@@ -34,14 +35,23 @@ const sortedPosts = posts
     (p) =>
       !sanitisedTags?.length ||
       (sanitisedTags?.length &&
-        p.data.tags.some((t) =>
-          sanitisedTags.includes(t.toLocaleLowerCase())
-        ))
+        p.data.tags.some((t) => sanitisedTags.includes(t.toLocaleLowerCase())))
   )
+  .map((post) => {
+    return {
+      ...post,
+      data: {
+        ...post.data,
+        featuredImage:
+          post.data.featuredimage ??
+          generateSocialImage({
+            title: post.data.imgtitle ?? post.data.title,
+          }),
+      },
+    };
+  })
   .sort(
-    (a, b) =>
-      new Date(b.data.date).valueOf() -
-      new Date(a.data.date).valueOf()
+    (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
   );
 ---
 
@@ -64,7 +74,7 @@ const sortedPosts = posts
             class={`md:max-w-[20%] aspect-video ${showBlurb ? 'mt-2' : ''}`}
           >
             <img
-              src={article.data.featuredimage}
+              src={article.data.featuredImage}
               alt={`intro image for article ${article.data.title}`}
               class="shadow-md"
             />

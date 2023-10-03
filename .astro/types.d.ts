@@ -395,6 +395,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdoc"] };
+"how-to-build-astro-site-with-graphql.mdoc": {
+	id: "how-to-build-astro-site-with-graphql.mdoc";
+  slug: "how-to-build-astro-site-with-graphql";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdoc"] };
 "how-to-fix-property-does-not-exist-on-window-type-in-typescript.mdoc": {
 	id: "how-to-fix-property-does-not-exist-on-window-type-in-typescript.mdoc";
   slug: "how-to-fix-property-does-not-exist-on-window-type-in-typescript";
