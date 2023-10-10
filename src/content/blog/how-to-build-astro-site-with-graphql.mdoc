@@ -345,7 +345,7 @@ Of course, queries or mutations are no good without a GraphQL resolver to _resol
 
 The final part of the puzzle handles how our end point will cope with GraphQL requests _without_ running a dedicated server, which is usually what something like GraphQL Yoga would offer us. We create a new Yoga instance using the `createYoga` function, passing in our schema and defining an endpoint.
 
-This endpont matches our current route, `/api/graphql`. If we'd named it something mad like `./src/pages/batman/likes/black/batarangs.ts` then the `graphqlEndpoint` value would be `/batman/likes/black/batarangs`.
+This endpont matches our current route, `/api/graphql`. If we'd named it something mad like `./src/pages/batman/likes/black.ts` then the `graphqlEndpoint` value would be `/batman/likes/black`.
 
 > One other thing to highlight is that you don't have to put all your endpoint handling routes in an `/api` folder. We've done that here because contextually it makes sense: we're using the endpoint as an API for our UI.
 
