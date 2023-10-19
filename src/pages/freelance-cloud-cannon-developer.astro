@@ -1,0 +1,186 @@
+---
+import { Image } from 'astro:assets';
+
+import LandingPageLayout from 'src/layouts/LandingPageLayout.astro';
+import BenefitsList from 'src/components/BenefitsList.astro';
+import CallToAction from 'src/components/CallToAction.astro';
+import Button from 'src/components/Button.astro';
+
+import cloudcannonlogo from '../assets/partnerships/cloudcannon-logo.svg';
+
+const benefits = [
+  "You're looking to launch a new CloudCannon website or app and want support with planning the project.",
+  "You're existing CloudCannon website is not working how you want or has become complex and needs auditing.",
+  "You've tried other solutions like WordPress and want to move to a more modern CMS with a robust visual editor.",
+  "You want to migrate your current website to CloudCannon but don't know where to start.",
+  "You want to maximise your site's performance by using CloudCannon coupled with a static site generator such as Astro or Next.js.",
+  'You want help and support in auditing your existing CloudCannon website to optimise conversions or improve your search rankings.',
+  'You want to design and develop a custom CloudCannon website and theme.',
+];
+const services = [
+  {
+    icon: 'far fa-hand-pointer',
+    title: 'CloudCannon websites',
+    blurb:
+      'Content-driven websites and CloudCannon are a perfect fit. From existing sites to complete greenfield builds with CloudCannon at their core.',
+  },
+  {
+    icon: 'fas fa-suitcase-rolling',
+    title: 'Website migrations',
+    blurb:
+      'I can take the headaches out of moving an existing website from a platform such as WordPress to CloudCannon. No fuss, no muss, no loss of traffic.',
+  },
+  {
+    icon: 'fas fa-chess-rook',
+    title: 'Strategy & planning',
+    blurb:
+      'I support complete CloudCannon development projects by working with you during early planning and strategy sessions to get things right from the start.',
+  },
+  {
+    icon: 'fas fa-rocket',
+    title: 'CRO, SEO & UX audits',
+    blurb:
+      "Your existing CloudCannon site not quite performing as well? I offer full site audits to flag up where you're well and areas that can be improved.",
+  },
+  {
+    icon: 'fas fa-server',
+    title: 'CloudCannon integrations',
+    blurb:
+      "If you need to level up your CloudCannon website with external data providers to build a 360 marketing machine, let's talk about your options.",
+  },
+  {
+    icon: 'fa-solid fa-palette',
+    title: 'Theme development',
+    blurb:
+      'I build custom CloudCannon-powered themes that can improve your existing site without the worry of content interruptions or site downtime.',
+  },
+];
+const callouts = [
+  'Support from a freelance CloudCannon developer with over 20 years in the business.',
+  "A source of straightforward, honest advice that always has you and your business' interests in mind.",
+  'A winning approach based on strong marketing goals, conversion-optimised CloudCannon websites and return on investments.',
+  'Gold-standard guidance from the get go, throughout development, to project launch and beyond!',
+  'Marketing and Search Engine Optimisation (SEO) services that have been recognised by national business awards.',
+  'Expert CloudCannon services and modern development practices including, Next.js, GraphQL, Astro and the Jamstack with CloudCannon at its centre.',
+  'Help and support launching super fast, accessible, static websites that rank well on search engines',
+];
+---
+
+<LandingPageLayout
+  title="A freelance CloudCannon developer backed by CloudCannon themselves"
+  metaTitle="Freelance CloudCannon developer | CloudCannon consultant Yorkshire | Rob Kendal, freelance CloudCannon partner"
+  description="As a freelance CloudCannon developer based in Wakefield and Leeds, West Yorkshire. I build CloudCannon websites and offer CloudCannon consultancy services."
+  benefits={{
+    title:
+      'My CloudCannon development and consultancy services can help in several ways:',
+    list: benefits,
+  }}
+  services={{
+    title: 'How I can support your CloudCannon website',
+    intro:
+      "As an official CloudCannon partner, I'm expertly positioned to help you with a variety of content-driven projects.",
+    list: services,
+  }}
+  brands={{
+    title: 'Great brands; amazing clients!',
+    intro:
+      "As a freelance CloudCannon developer, I've worked with some amazing Yorkshire companies and some big national brands",
+  }}
+  testimonials={{
+    title: 'Winning projects means happy clients',
+    intro:
+      "From CloudCannon website development to CloudCannon planning and strategy, here's what some of my clients have to say.",
+  }}
+>
+  <Fragment slot="intro">
+    If you've been on the hunt for an experienced, reliable <strong
+      >freelance CloudCannon developer</strong
+    > based in Wakefield and Leeds. Then read on.<br /><br />
+     I help businesses just like yours to audit their online presence and
+    develop content-driven websites powered by leading visual content management
+    system, CloudCannon.
+  </Fragment>
+
+  <Fragment slot="additional-content">
+    <div class="mt-20 -mb-4 text-center">
+      <h2 class="heading-2">Proud to be a trusted CloudCannon partner</h2>
+      <p class="mb-8">
+        Being a CloudCannon partner means I've done my homework and have been
+        given an official seal of approval by CloudCannon themselves. It
+        recognises expertise in their platform to support clients looking to
+        develop and deliver quality visual CMS solutions.
+      </p>
+      <figure class="text-center mx-auto flex justify-center">
+        <Image
+          src={cloudcannonlogo}
+          alt="CloudCannon Partners logo with a blue cloud over the words CloudCannon"
+          width={350}
+          height={200}
+          class="hidden xl:block"
+        />
+      </figure>
+    </div>
+  </Fragment>
+
+  <Fragment slot="hireme">
+    Tell me about your CloudCannon project and see how we can work together.
+  </Fragment>
+
+  <Fragment slot="callout">
+    <div class="flex flex-col xl:flex-row gap-10 relative z-10 items-center">
+      <figure class="flex items-center flex-col md:w-3/4 xl:w-1/3 2xl:w-1/2">
+        <img
+          src="/img/example-cloudcannon.png"
+          alt="Example CloudCannon website solution displayed on a laptop"
+          class=""
+        />
+        <Image
+          src={cloudcannonlogo}
+          alt="CloudCannon Partners logo with a blue cloud over the words CloudCannon"
+          width={450}
+          height={300}
+          class="hidden xl:block"
+        />
+      </figure>
+      <div class="xl:w-2/3 2xl:w-1/2">
+        <h2 class="heading-2">CloudCannon development services</h2>
+        <p class="mb-6">
+          I design and develop CloudCannon powered websites clients just like
+          you. I can also provide CloudCannon consultancy services for existing
+          projects.
+        </p>
+        <p class="mb-6">
+          With me, as well as an experienced CloudCannon partner, you get all of
+          this:
+        </p>
+        <BenefitsList list={callouts} unset />
+        <p class="mb-6">
+          Let's talk about your CloudCannon project and how we can work together
+          to make it happen.
+        </p>
+        <Button
+          href="/contact"
+          text="discuss your project"
+          variant="primary"
+          classes={['block w-full text-center md:w-auto md:text-left']}
+        />
+      </div>
+    </div>
+  </Fragment>
+
+  <Fragment slot="cta">
+    <CallToAction
+      type="global"
+      title="Let's discover a CloudCannon solution together"
+      buttons={[
+        {
+          href: '/contact',
+          text: 'discuss your project',
+        },
+      ]}
+    >
+      Advice and support from a dedicated CloudCannon partner. For websites, web
+      apps, planning and migrations, let's find out how to make it happen.
+    </CallToAction>
+  </Fragment>
+</LandingPageLayout>

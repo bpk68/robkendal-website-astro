@@ -9,8 +9,10 @@ import CallToAction from './CallToAction.astro';
 import ArticleList from './ArticleList.astro';
 import Button from './Button.astro';
 import PageHeader from './PageHeader.astro';
+import PartnershipInfo from './PartnershipInfo.astro';
 
 import signature from '../assets/rob-kendal-signature.png';
+import signatureinverted from '../assets/rob-kendal-signature-inverted.png';
 
 const benefits = [
   'A fullstack developer with 15+ years experience building fast, lead-generating websites.',
@@ -18,7 +20,8 @@ const benefits = [
   "A freelancer with expert skills in <a href='/freelance-shopify-developer'><strong>Shopify development</strong></a>, <a href='/small-business-websites'><strong>small business websites</strong></a> and <a href='/enterprise-software-development'><strong>enterprise software development</strong></a>",
   'Marketing website design and Shopify development driven by your business growth goals.',
   'Award-winning marketing and Search Engine Optimisation (SEO) knowledge and support.',
-  'Expert web development services using forward-thinking echnologies such as Frontity, Gatsby.js, Next.js, WordPress REST API, GraphQL and the Jamstack.',
+  "An trusted <a href='/freelance-storyblok-developer'><strong>Storyblok Partner</strong></a>, and experienced <a href='/freelance-cloud-cannon-developer'><strong>CloudCannon developer</strong></a> to help you deliver headless CMS solutions to wow your audiences.",
+  'Expert web development services using forward-thinking technologies such as Storyblok, Supabase, Astro, Next.js, GraphQL and the Jamstack.',
   'Help and support launching super fast, accessible, static websites that rank well on search engines.',
 ];
 ---
@@ -50,7 +53,8 @@ const benefits = [
       <span class="fa-solid fa-quote-left text-4xl pr-2"></span>
        Hi, I'm Rob Kendal. If you've been searching for a <strong
         >freelance web developer</strong
-      > who knows <strong>Shopify</strong>, and <strong>
+      > who knows <strong>Shopify</strong>, <strong>Storyblok</strong>, and <strong
+      >
         fullstack web development
       </strong> on the Jamstack inside and out, you've come to the right place.
     </p>
@@ -71,7 +75,14 @@ const benefits = [
         alt="Rob Kendal Freelance Shopify Developer, K-Tech logo, a colourful letter K"
         width={150}
         height={150}
-        class="sm:float-right mb-10 mx-auto"
+        class="sm:float-right mb-10 mx-auto dark:hidden"
+      />
+      <Image
+        src={signatureinverted}
+        alt="Rob Kendal Freelance Shopify Developer, K-Tech logo, a colourful letter K"
+        width={150}
+        height={150}
+        class="sm:float-right mb-10 mx-auto dark:block hidden"
       />
     </p>
   </blockquote>
@@ -105,6 +116,7 @@ const benefits = [
     </h2>
     <BenefitsList list={benefits} />
   </div>
+  <PartnershipInfo />
   <div class="text-center my-20 text-2xl border-t-2 pt-8">
     <p class="mb-6">
       Talking about your project costs nothing; choosing the right partner to
@@ -128,6 +140,7 @@ const benefits = [
   </div>
 
   <ServicesList />
+
   <BrandsList
     title="Trusted by brands big and small"
     intro="I've been honoured to work with local and national brands to build Shopify stores, websites, and business software."

@@ -24,6 +24,20 @@ const services: Service[] = [
     href: '/enterprise-software-development',
   },
   {
+    icon: 'fa-solid fa-cubes',
+    title: 'Storyblok CMS development',
+    blurb:
+      'As an official Storyblok partner I can help design and develop first-class content-driven user experiences using the Storyblok platform.',
+    href: '/freelance-storyblok-developer',
+  },
+  {
+    icon: 'fa-solid fa-gears',
+    title: 'CloudCannon CMS development',
+    blurb:
+      "As a trusted CloudCannon partner, I can help with building static sites inside CloudCannon's visual site builder, migrations, and more.",
+    href: '/freelance-cloud-cannon-developer',
+  },
+  {
     icon: 'fa-regular fa-window-restore',
     title: 'Small business websites',
     blurb:
@@ -108,5 +122,22 @@ const services: Service[] = [
         </div>
       ))
     }
+    <div class="relative border-2 rounded-sm py-5 px-6">
+      <div class="relative z-10">
+        <i class="text-7xl text-center block fa-solid fa-question"></i>
+        <h3 class="heading-3 text-center">Something else...</h3>
+        <p class="mb-6">
+          Can't see what you're looking for? Get in touch. I might be able to
+          help with your project. Or I'm happy to try and connect you with
+          someone who can.
+        </p>
+        <Button
+          href="/contact"
+          text="Get in touch"
+          variant="primary"
+          classes={['mx-auto', 'block', 'w-full', 'text-center']}
+        />
+      </div>
+    </div>
   </div>
 </section>
