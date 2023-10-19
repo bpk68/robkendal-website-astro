@@ -11,6 +11,7 @@ import LPServicesList from 'src/components/LPServicesList.astro';
 import Testimonials from 'src/components/Testimonials.astro';
 
 import signature from '../assets/rob-kendal-signature.png';
+import signatureinverted from '../assets/rob-kendal-signature-inverted.png';
 
 interface Props {
   title: string;
@@ -86,7 +87,14 @@ const {
           alt="Rob Kendal Freelance Shopify Developer, K-Tech logo, a colourful letter K"
           width={150}
           height={150}
-          class="sm:float-right mb-10 mx-auto"
+          class="sm:float-right mb-10 mx-auto dark:hidden"
+        />
+        <Image
+          src={signatureinverted}
+          alt="Rob Kendal Freelance Shopify Developer, K-Tech logo, a colourful letter K"
+          width={150}
+          height={150}
+          class="sm:float-right mb-10 mx-auto dark:block hidden"
         />
       </p>
     </blockquote>
