@@ -4,41 +4,61 @@ import { Image } from 'astro:assets';
 import cloudcannonlogo from '../assets/partnerships/cloudcannon-logo.svg';
 import storybloklogo from '../assets/partnerships/sb-p-light.svg';
 import shopifylogo from '../assets/partnerships/shopify-partner.png';
+import supabaselogolight from '../assets/partnerships/supabase-logo-wordmark--light.svg';
+import supabaselogodark from '../assets/partnerships/supabase-logo-wordmark--dark.svg';
 ---
 
 <div class="relative clear-both my-14">
   <h2 class="heading-2 text-center overflow-hidden mb-4 z-10 block relative">
     Expert level partner
   </h2>
-  <p class="text-center text-md max-w-2xl mx-auto mb-10">
+  <p class="text-center text-md mx-auto mb-10 max-w-3xl">
     I'm proud to have my skills recognised as an official partner with headless
     content management platforms <a
       href="https://www.storyblok.com"
       target="_blank">Storyblok</a
-    > and <a href="https://cloudcannon.com" target="_blank">CloudCannon</a>, and
-    ecommerce giant Shopify.
+    > and <a href="https://cloudcannon.com" target="_blank">CloudCannon</a>,
+    database provider
+    <a href="https://supabase.com" target="_blank">Supabase</a>
+     and ecommerce giant Shopify.
   </p>
 
-  <div class="flex flex-col sm:flex-row gap-5 items-center justify-center">
+  <div
+    class="flex flex-col md:flex-row flex-wrap gap-6 items-center justify-center lg:-mx-40 xl:-mx-52 my-20"
+  >
     <Image
       src={storybloklogo}
       alt="Storyblok Partner logo with the Storyblok title and iconic letter 'B'"
-      width={300}
+      width={275}
       height={150}
       class=""
     />
     <Image
       src={cloudcannonlogo}
       alt="CloudCannon Partners logo with a blue cloud over the words CloudCannon"
-      width={350}
+      width={275}
       height={200}
       class=""
+    />
+    <Image
+      src={supabaselogolight}
+      alt="Supabase Partners logo with the words Supabase in light writing and their signature Supabase S"
+      width={300}
+      height={150}
+      class="dark:hidden"
+    />
+    <Image
+      src={supabaselogodark}
+      alt="Supabase Partners logo with the words Supabase in dark writing and their signature Supabase S"
+      width={300}
+      height={150}
+      class="hidden dark:block"
     />
     <div class="dark:bg-brand-cream py-5 px-3 rounded-md">
       <Image
         src={shopifylogo}
         alt="Shopify Partners logo the green Shopify title and the word partners and the iconic Shopify green shopping bag"
-        width={300}
+        width={325}
         height={150}
         class=""
       />
