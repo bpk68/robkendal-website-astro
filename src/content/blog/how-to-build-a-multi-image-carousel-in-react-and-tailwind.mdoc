@@ -26,7 +26,7 @@ To be honest, it's difficult to find a solid definition of what exactly a 'multi
 
 My definition or requirements looked like this:
 
-> I wanted to create a fixed-width container that housed several child items (mainly images with overlays for my purposes) arranged horizontally with an equal gap between them. Any child items that overflowed the container's bounds would be hidden offscreen, yet scrollable to bring them into view along the horizontal axis.
+> I wanted to create a fixed-width container that housed several child items (mainly images with overlays for my purposes) arranged horizontally with an equal gap between them. Any child items that overflowed the container's bounds would be hidden off-screen, yet scrollable to bring them into view along the horizontal axis.
 
 See the following image to illustrate what I mean:
 
@@ -166,7 +166,7 @@ We've already mentioned the data that we're pulling in from our JSON file, but y
 
 ### The carousel JSX
 
-Perhaps counterintuitively we'll start with the output JSX from the component. It looks like this:
+Perhaps counter-intuitively we'll start with the output JSX from the component. It looks like this:
 
 ```jsx
 return (
@@ -354,7 +354,7 @@ Both buttons have a `disabled` property that's calculated using the `isDisabled(
 And each button has a butt load of Tailwind classes on it, but they essentially do the following:
 
 - Add base background colours and opacity
-- Add hover colors with less opactiy
+- Add hover colors with less opacity
 - Add disabled styles (i.e. when you can't move left or right any further)
 - Set the height and width
 - Set some base transitions just for nice look and feel when you hover over them
@@ -477,7 +477,7 @@ const movePrev = () => {
 
 For moving backwards, the `movePrev` function handles button clicks on the 'prev' button. We check to see if the `currentIndex` value is greater than zero and if it _is_, then we simply update the value in state to one _less_ than the current value.
 
-If we're already at zero then it doesn't make sense to go back anymore so the function short circuits out and doesn't do anything.
+If we're already at zero then it doesn't make sense to go back any more so the function short circuits out and doesn't do anything.
 
 ```jsx
 const moveNext = () => {
@@ -494,7 +494,7 @@ When the 'next' button is clicked it's `moveNext`'s time to shine. We're essenti
 
 Instead, we need to work out if the currently visible slice (i.e. width) of the carousel, times the current _page_, is going to be _less than_ the maximum scrollable width of the carousel's content -- i.e. the carousel's total width, even that which isn't visible.
 
-If it's going to be _more_ than the max-width, it doesn't make sense to allow users to scroll anymore, so we don't do anything.
+If it's going to be _more_ than the max-width, it doesn't make sense to allow users to scroll any more, so we don't do anything.
 
 However, if our conditional statement passes, we do the opposite of `movePrev` and update the `currentIndex` value in state to one higher than its current value.
 
@@ -522,7 +522,7 @@ Whilst the `movePrev` and `moveNext` click handlers will take care of actually t
 
 On each render and rerender of the component, the buttons call out to the `isDisabled` function to see if their `disabled` attribute should be true, or false.
 
-It accepts a `direction` argument and checks that first. You'll see that the conditional statements are very similar to the `movePrev` and `moveNext` ones. If we can't scroll left (previous) anymore, then it'll return _true_ so that the button is disabled. Likewise, if we can't scroll right (next) anymore we'll also return _true_ so the next button is disabled.
+It accepts a `direction` argument and checks that first. You'll see that the conditional statements are very similar to the `movePrev` and `moveNext` ones. If we can't scroll left (previous) any more, then it'll return _true_ so that the button is disabled. Likewise, if we can't scroll right (next) any more we'll also return _true_ so the next button is disabled.
 
 Failing all else, we'll just return _false_ so that the buttons aren't disabled should the execution fall past our 'if' statements.
 

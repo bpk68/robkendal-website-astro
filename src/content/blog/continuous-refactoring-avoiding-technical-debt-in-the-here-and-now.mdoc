@@ -24,17 +24,16 @@ First, however, let's take a look at how we end up with refactoring nightmares..
 
 _(Pssst...you can skip to the [continuous refactoring part](#enter-continuous-refactoring) if you like)_
 
-How did we get like this?
--------------------------
+## How did we get like this?
 
 In some ways, the feature image of this post (the fetching toilet being scrubbed) does a good job of representing the tangled mess of wires that large scale development projects often become: they're messy, hard to clean and generally a thankless task that no one wants to take on (well, maybe some of the more sadistic coders out there).
 
 The larger the code base, the more problems you can encounter:
 
-*   They become harder to maintain
-*   Optimising and improving is a challenge due to spaghetti code or unknown dependencies
-*   It can be difficult to change feature 'x' without impacting widget 'y'
-*   Code bases have their own set of bugs without the fear of introducing more by refactoring large parts of the code
+- They become harder to maintain
+- Optimising and improving is a challenge due to spaghetti code or unknown dependencies
+- It can be difficult to change feature 'x' without impacting widget 'y'
+- Code bases have their own set of bugs without the fear of introducing more by refactoring large parts of the code
 
 It's no one's fault, specifically, how projects end up in this state, yet we all share some of the blame in fostering a culture of 'getting stuff done _quickly,_ now' at the sacrifice of 'how to get stuff done _easily_ and _smoothly_, in the future'.
 
@@ -56,16 +55,15 @@ Again, there's nothing wrong with keeping up-to-date, but diving in head-first w
 
 ### Bickering about what the other guys are doing
 
-There are a lot of arguments on Twitter at the moment in the development world around topics such as [CSS-in-JS](https://robkendal.co.uk/everthing-wrong-with-css-in-js/) or how we're all doing HTML wrong. The irony is that rarely is any one side right or wrong, they just prefer a different approach.
+There are a lot of arguments on Twitter at the moment in the development world around topics such as [CSS-in-JS](/blog/why-is-css-in-js-a-bad-or-good-idea) or how we're all doing HTML wrong. The irony is that rarely is any one side right or wrong, they just prefer a different approach.
 
-There's nothing horrendously bad about [CSS-in-JS](https://robkendal.co.uk/everthing-wrong-with-css-in-js/), for example (even though I hate the idea...\*shudders\*), but these debates tend to create a divide in how people tackle a common goal (in this case, including CSS into their final output).
+There's nothing horrendously bad about [CSS-in-JS](/blog/why-is-css-in-js-a-bad-or-good-idea), for example (even though I hate the idea...\*shudders\*), but these debates tend to create a divide in how people tackle a common goal (in this case, including CSS into their final output).
 
 The upshot this can be a team mixing-and-matching coding conventions which makes refactoring difficult. It can also slow down on-boarding of new team members as they struggle to get to grips with different areas of the same app, developed in a different way.
 
 Besides, getting caught up in arguments about CSS-in-JS, or why framework 'ThingyJS' is better than library 'McGuffin.io' rather than '**which will work best for us to produce, robust, well-structured, maintainable, code that we can improve, scale and release quickly**', means you're asking the wrong questions.
 
-<a name="enter-continuous-refactoring"></a>Enter continuous refactoring
-----------------------------
+## <a name="enter-continuous-refactoring"></a>Enter continuous refactoring
 
 So how can we tackle and reduce the burden of bloat and technical debt and make time to refactor? Simple, _continuous refactoring_.
 
@@ -75,13 +73,13 @@ It really can be as simple as it sounds:
 
 There's a little more to it if you want to dig deeper of course. Here are some of the best approaches I've experienced over the years and the habits I try to foster now to ensure that code is as tip top as it can be:
 
-*   Reduce the need for massive refactors with planning
-*   Commit small, commit often
-*   Refactor as you go
-*   Ask your team for help
-*   Get refactoring conventions in place
-*   Don't use third parties because 'it's easy'
-*   Document document document
+- Reduce the need for massive refactors with planning
+- Commit small, commit often
+- Refactor as you go
+- Ask your team for help
+- Get refactoring conventions in place
+- Don't use third parties because 'it's easy'
+- Document document document
 
 ### Reduce the need for massive refactors with planning
 
@@ -95,8 +93,8 @@ OK, it's not really refactoring, but by having a plan (a pre-emptive refactor, i
 
 Again, with a big nod to Robin's article, his use of Git versioning involves making more frequent, yet smaller commits to repositories. This is a great approach for several reasons including:
 
-*   Documenting decision making as you go
-*   Making it easy to roll back smaller changes, rather than having a huge commit with many files
+- Documenting decision making as you go
+- Making it easy to roll back smaller changes, rather than having a huge commit with many files
 
 ### Refactor as you go
 
@@ -118,10 +116,10 @@ They're a great way to make improvements before committing to the code base beca
 
 They can highlight:
 
-*   Ways to improve what you're written
-*   Issues you may have overlooked
-*   Others' experience to help rework something
-*   Where you can trim duplicate work (e.g. something like that already exists to solve 'xyz').
+- Ways to improve what you're written
+- Issues you may have overlooked
+- Others' experience to help rework something
+- Where you can trim duplicate work (e.g. something like that already exists to solve 'xyz').
 
 ### Get refactoring conventions in place
 
@@ -131,11 +129,11 @@ When it comes to refactoring, having some documented, agreed-upon habits and con
 
 Some of those conventions might include:
 
-*   How large files should be (e.g. 300 line JS files are too long)
-*   When should a class be broken down into separate modules?
-*   At what point do we use a functional, stateless component over a regular React component class?
-*   Striving to use [arrow functions](https://robkendal.co.uk/arrow-functions-in-javascript/) over regular 'function()' declarations
-*   How to nest BEM classes in SASS
+- How large files should be (e.g. 300 line JS files are too long)
+- When should a class be broken down into separate modules?
+- At what point do we use a functional, stateless component over a regular React component class?
+- Striving to use [arrow functions](/blog/how-to-use-arrow-functions-in-javascript-es6) over regular 'function()' declarations
+- How to nest BEM classes in SASS
 
 Tools like linters for CSS and JS can help enforce some of these agreed conventions to a degree.
 
@@ -151,10 +149,10 @@ But we have to **think carefully before chucking another dependency on what is u
 
 When considering adding a third party dependency into the mix, ask yourself a few questions:
 
-*   How much extra time will this save above creating it the same feature in-house?
-*   What additional weight will it add to the project? Is that worth the trade-off?
-*   Is the third-party package generally well-maintained and regular improved/added to?
-*   Will it introduce any errors or problems in any other areas of the site/app/etc. - e.g. conflicts?
+- How much extra time will this save above creating it the same feature in-house?
+- What additional weight will it add to the project? Is that worth the trade-off?
+- Is the third-party package generally well-maintained and regular improved/added to?
+- Will it introduce any errors or problems in any other areas of the site/app/etc. - e.g. conflicts?
 
 ### Document document document
 
@@ -162,7 +160,6 @@ A fairly obvious addition to the list, but document all the things! It's never n
 
 Whilst not strictly a refactoring measure, the aim of refactoring is to make our development lives easier down the line and to aid in creating new and maintaining old. With that in mind, good documentation can only help us.
 
-How do you keep things neat, tidy and smooth as butter?
--------------------------------------------------------
+## How do you keep things neat, tidy and smooth as butter?
 
 So that's _continuous refactoring_. What are your thoughts? Do you have any ideas, practices you've seen work well? Share them in the comments. Let's all try to be better developers by slaying the beast of technical debt.

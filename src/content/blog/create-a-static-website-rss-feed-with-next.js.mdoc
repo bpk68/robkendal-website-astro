@@ -17,8 +17,8 @@ tags:
 
 If you've been following along with the series, you'll have come across the previous posts:
 
-- [Configuring WordPress for use as a headless CMS and setting up a Next.js project](https://robkendal.co.uk/blog/configuring-wordpress-as-a-headless-cms-with-next.js 'Configuring WordPress as a headless CMS with Next.js')
-- [Using WordPress as a headless CMS with Next.js](https://robkendal.co.uk/blog/using-wordpress-as-a-headless-cms-with-next.js 'Using WordPress as a headless CMS with Next.js')
+- [Configuring WordPress for use as a headless CMS and setting up a Next.js project](/blog/configuring-wordpress-as-a-headless-cms-with-nextjs 'Configuring WordPress as a headless CMS with Next.js')
+- [Using WordPress as a headless CMS with Next.js](/blog/using-wordpress-as-a-headless-cms-with-nextjs 'Using WordPress as a headless CMS with Next.js')
 
 In part three, we're going to cover an important aspect of any good blogging site or marketing site that is frequently updated: an RSS feed.
 
@@ -62,7 +62,7 @@ export async function getServerSideProps(context) {
 }
 ```
 
-You can read more about `getServerSideProps` [on the Next.js website](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering 'Nexxt.js documentation on the getServerSideProps').
+You can read more about `getServerSideProps` [on the Next.js website](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering 'Next.js documentation on the getServerSideProps').
 
 ### Next.js sites hosted on Netlify (or non-Vercel hosts)
 
@@ -91,7 +91,7 @@ In summary, you have a few ways to handle this:
 3. Generate a static XML RSS feed at build time using a separate Node script as part of the build process  
    This is what we'll be doing in this article!
 
-> The programatic options above will work with the code we're going to outline in a moment. The main difference is that if you stick to using vanilla Next.js then you can run this as a separate page (e.g. `rss.js`) and use the `getServerSideProps()` function to push the feed as XML content to the response object. **We won't have that option, so we'll incorporate a separate Node command as part of our build process.**
+> The programmatic options above will work with the code we're going to outline in a moment. The main difference is that if you stick to using vanilla Next.js then you can run this as a separate page (e.g. `rss.js`) and use the `getServerSideProps()` function to push the feed as XML content to the response object. **We won't have that option, so we'll incorporate a separate Node command as part of our build process.**
 
 I based my final code on this [excellent article by Fredrik Bergqvist on Dev](https://dev.to/fredrikbergqvist/how-to-add-an-rss-feed-to-your-next-js-site-1h02 'How to add an rss feed to your Next.js site').
 

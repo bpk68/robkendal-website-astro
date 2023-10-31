@@ -53,7 +53,7 @@ After much searching and debugging, the problem seemed to definitely lay with th
 
 In fact, the answer lay at the end of the helpful React Hooks documentation above. There was a link to an extended [GitHub discussion on the pesky invalid hook call warning error](https://github.com/facebook/react/issues/13991) and plenty of fellow devs with the exact same woes. More importantly, it had lots of different possible solutions to different situations.
 
-For my particular scenario, I'd used my very own [Parcel JS starter project (complete with React)](https://robkendal.co.uk/blog/2019-04-29-using-parcel-bundler-with-react-js/) to build the query builder. I did take note of the 'multiple versions of React' no no from the above list and had used [Parcel's alias feature](https://parceljs.org/module_resolution.html#aliases), as well as making sure to employ the `peerDependencies` config setting in package.json.
+For my particular scenario, I'd used my very own [Parcel JS starter project (complete with React)](/blog/2019-04-29-using-parcel-bundler-with-react-js/) to build the query builder. I did take note of the 'multiple versions of React' no no from the above list and had used [Parcel's alias feature](https://parceljs.org/module_resolution.html#aliases), as well as making sure to employ the `peerDependencies` config setting in package.json.
 
     "peerDependencies": {
         "react": ">=16.8.0",

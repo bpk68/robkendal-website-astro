@@ -18,7 +18,7 @@ I've recently become a [mentor on Coding Coach](https://codingcoach.io/) and fou
 
 Depending on what you want to work with there are lots of options out there, including [Create React App](https://facebook.github.io/create-react-app/) (for React-based projects) and bundlers such as Webpack for more general JavaScript web apps or if you want more control over your projects in's and out's.
 
-Webpack in particular is awesome, but quite involved to get configured to a decent spec for most modern web projects. To help with this, I created the [Webpack starter kit](https://robkendal.co.uk/blog/quick-start-javascript-projects-with-this-webpack-project-starter-kit/), that includes common helper plugins and all the configuration for development and production environments.
+Webpack in particular is awesome, but quite involved to get configured to a decent spec for most modern web projects. To help with this, I created the [Webpack starter kit](/blog/quick-start-javascript-projects-with-this-webpack-project-starter-kit/), that includes common helper plugins and all the configuration for development and production environments.
 
 Great, I hear you say, so why are we talking about [Parcel](https://parceljs.org/)?
 
@@ -99,9 +99,9 @@ And that's it (for now). Parcel handily includes a development server (you can b
 
 ## Introducing the Parcel JS starter kit
 
-Using those four simple steps above, you can get a project flying off the ground in under 10 minutes. However, if you want something a little bit more, such as the ability to use SASS or newer, ES6 langauge features, you'll need some addtional config to get started.
+Using those four simple steps above, you can get a project flying off the ground in under 10 minutes. However, if you want something a little bit more, such as the ability to use SASS or newer, ES6 language features, you'll need some additional config to get started.
 
-That's why (along with my [Webpack starter kit](https://robkendal.co.uk/blog/quick-start-javascript-projects-with-this-webpack-project-starter-kit/)) I've created a similar starter project for those interested in using Parcel.
+That's why (along with my [Webpack starter kit](/blog/quick-start-javascript-projects-with-this-webpack-project-starter-kit/)) I've created a similar starter project for those interested in using Parcel.
 
 ### What's included in the kit?
 
@@ -111,7 +111,7 @@ Specifically, working through the project, it includes:
 
 - `index.html` - where it all begins. This file is set as the main entry point in your `package.json` file and where Parcel takes its cue to load the resources it finds from there. This base HTML starting point adds a few niceties in such as a mobile viewport meta and 'no script' tags.
 - `.babelrc` - if you want to use newer JS language features right now, you need Babel. Babel is installed as a dependency in the project already, but you need this small config file in your project root to enable the Babel goodness.
-- `package.json` - nothing too fancy in here beyong the usual project information. It does, however, contain a `start `command for running development services locally and a `build` command that will bundle your project up and add it to the `/dist` folder for deployment.
+- `package.json` - nothing too fancy in here beyond the usual project information. It does, however, contain a `start `command for running development services locally and a `build` command that will bundle your project up and add it to the `/dist` folder for deployment.
 - `src/index.js` - the first file that Parcel looks for at the start of its bundling journey. Parcel will begin here and look for any other files that are referenced within it, loading them up and bundling as needed.
 - `src/app.scss` - a simple, starting point for your SASS files. It adds a default font family and size, but should be used as a starting point for the rest of your project's style files.
 - `/dist` - this folder contains (or will contain) the squished, bundled files that are output by Parcel, following a production build command -- available from the `package.json` file as `yarn build`.

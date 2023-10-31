@@ -27,6 +27,8 @@ After what felt like a decade of rummaging through complex documentation and hun
 
 But enough preamble, let's do this thing! Strap in, it's gonna be a long one!!
 
+> **Note**, there is [an updated article on how to build a Node API server](/blog/build-a-restful-node-api-server-using-json-and-typescript) which uses more up to date techniques and languages including TypeScript, and an updated version of Express.
+
 ## 1\. Node API server setup
 
 First things first, you'll need to make sure you have Node.js installed on your machine and preferably an up to date version of NPM.
@@ -130,7 +132,7 @@ This achieves a couple of things:
 
 Now, we can't quite run our server. Since there's nothing defined in our routing file, it's very likely you'll get a `TypeError: require(...) is not a function` error. Not very helpful, but all will be resolved once we add some routes.
 
-[![Follow me on Mastodon @kendalmintcode@indieweb.social](/img/mastodon_cta.png)](http://twitter.com/kendalmintcode)
+[![Follow me on Mastodon @kendalmintcode@indieweb.social](/img/mastodon_cta.png)](https://www.threads.net/@kendalmintcode)
 
 ## 3\. Building the route handling system
 
@@ -211,7 +213,7 @@ Hurrah, our very first route is almost ready. Whilst not much to look at, notice
 
 A couple of other points to mention here:
 
-1. We're using the ES6 formatting within our JavaScript files, including arrow function ([I have another article about arrow functions](/arrow-functions-in-javascript/) right here).
+1. We're using the ES6 formatting within our JavaScript files, including arrow function ([I have another article about arrow functions](/blog/how-to-use-arrow-functions-in-javascript-es6/) right here).
 2. Within the body of the GET handler, we're calling the Node `fs` library we passed in to call the `readFile()` method. This helps us to access the underlying file system and load up a file
 
 ### Hook up our first route to the main route handler
@@ -275,7 +277,7 @@ Let's keep going while we're on a roll. In this section, we'll pad out our limit
 
 ### Refactoring what we've got
 
-As a huge fan of the [continuous refactoring technique](/continuous-refactoring-avoiding-technical-debt-in-the-here-and-now/), I'm always looking to improve code as I go. Looking at the file `users.js` now, we're going to start repeating a lot of code with the `fs.readFile()` and `fs.writeFile()` methods. Let's refactor them up to the top of the `users.js` file now:
+As a huge fan of the [continuous refactoring technique](/blog/continuous-refactoring-avoiding-technical-debt-in-the-here-and-now/), I'm always looking to improve code as I go. Looking at the file `users.js` now, we're going to start repeating a lot of code with the `fs.readFile()` and `fs.writeFile()` methods. Let's refactor them up to the top of the `users.js` file now:
 
 ```javascript
 const userRoutes = (app, fs) => {

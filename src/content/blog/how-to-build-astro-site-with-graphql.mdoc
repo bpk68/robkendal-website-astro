@@ -28,11 +28,11 @@ I have a handy [Astro starter repository](https://github.com/bpk68/astro-example
 
 ## Why Astro and not XYZ?
 
-If you're familar with something like Next, it has a great routing paradigm where you can implement custom routes and route handlers. This particular set of skills allows you to essentially build a fullstack app where the UI is a React app, whilst the backend API and data fetching becomes a set of serverless functions that handle them. However, this is _all_ within the same application. It's really neat.
+If you're familiar with something like Next, it has a great routing paradigm where you can implement custom routes and route handlers. This particular set of skills allows you to essentially build a fullstack app where the UI is a React app, whilst the backend API and data fetching becomes a set of serverless functions that handle them. However, this is _all_ within the same application. It's really neat.
 
-However, Next can be complicated and get out of hand if you're not a seasoned Next developer. It's also locked into React, which might not be your bag. And then there are comparible meta-frameworks for other libraries, such as Nuxt for Vue and SvelteKit for Svelte. We're not here to debate what's best (spoiler alert: whichever you choose will be the best for you!), but Astro offers something _different_.
+However, Next can be complicated and get out of hand if you're not a seasoned Next developer. It's also locked into React, which might not be your bag. And then there are comparable meta-frameworks for other libraries, such as Nuxt for Vue and SvelteKit for Svelte. We're not here to debate what's best (spoiler alert: whichever you choose will be the best for you!), but Astro offers something _different_.
 
-[Astro](https://astro.build/) is my favourite development tool at the moment, my favourate framework. In fact, this very website is built using Astro.
+[Astro](https://astro.build/) is my favourite development tool at the moment, my favourite framework. In fact, this very website is built using Astro.
 
 Its focus is on helping you create lightning fast front-end applications built as static sites at build time, with an emphasis on developing very close to the HTML output.
 
@@ -42,7 +42,7 @@ However...
 
 Sometimes you don't have an existing, separate API. Sometimes it's not worth the complexities of _building_ and _hosting_ a separate API or data service. Especially for smaller web applications or MVPs.
 
-Thanksfully, Astro has us covered and offers both [Server-side Rendering](https://docs.astro.build/en/guides/server-side-rendering/) options and a special [API endpoint system](https://docs.astro.build/en/core-concepts/endpoints/#server-endpoints-api-routes) in its route handling.
+Thankfully, Astro has us covered and offers both [Server-side Rendering](https://docs.astro.build/en/guides/server-side-rendering/) options and a special [API endpoint system](https://docs.astro.build/en/core-concepts/endpoints/#server-endpoints-api-routes) in its route handling.
 
 This makes Astro a really powerful new kid on the block. It empowers us developers to create fully featured fullstack applications, without having the overhead or complexities of React + (insert all your extra dependencies here).
 
@@ -95,7 +95,7 @@ First things first, we'll be using a few different packages to make this work. T
 - `graphql-tag` - This is a tiny helper utility that, among other things, provides the `gql` template literal tag to parse our GraphQL strings.
 
 > Some of the packages above are optional and I'm just using them here for the nicer developer experience they offer. For example, you could swap out GraphQL Yoga with a number of similar packages and you don't need Apollo at all. Instead, you can simply use the built-in `fetch` and define a GraphQL query that way.
-> Bringing in extra packageas is always a trade off between performance, added maintenance and management, and developer productivity!
+> Bringing in extra packages is always a trade off between performance, added maintenance and management, and developer productivity!
 
 ### Creating an Astro project
 
@@ -345,7 +345,7 @@ Of course, queries or mutations are no good without a GraphQL resolver to _resol
 
 The final part of the puzzle handles how our end point will cope with GraphQL requests _without_ running a dedicated server, which is usually what something like GraphQL Yoga would offer us. We create a new Yoga instance using the `createYoga` function, passing in our schema and defining an endpoint.
 
-This endpont matches our current route, `/api/graphql`. If we'd named it something mad like `./src/pages/batman/likes/black.ts` then the `graphqlEndpoint` value would be `/batman/likes/black`.
+This endpoint matches our current route, `/api/graphql`. If we'd named it something mad like `./src/pages/batman/likes/black.ts` then the `graphqlEndpoint` value would be `/batman/likes/black`.
 
 > One other thing to highlight is that you don't have to put all your endpoint handling routes in an `/api` folder. We've done that here because contextually it makes sense: we're using the endpoint as an API for our UI.
 
@@ -382,7 +382,7 @@ const { item } = Astro.props;
 
 Nothing too complex here. We're bringing in our CartItem type and creating a 'Props' interface so our component knows what to expect to be passed by a parent component.
 
-Astro has a handy (and magical) mechanism for dealing with props. All you have to do is create a 'Props' interface, outlining the sorts of data your component will receive, and then destructure this from the `Astro.props` object. The `props` object is automatically provided to you by Astro at runtime and buildtime.
+Astro has a handy (and magical) mechanism for dealing with props. All you have to do is create a 'Props' interface, outlining the sorts of data your component will receive, and then destructure this from the `Astro.props` object. The `props` object is automatically provided to you by Astro at runtime and build time.
 
 From here, we just create a standard HTML table row with some cells in, pulling out the various properties from our CartItem type.
 
@@ -507,7 +507,7 @@ pnpm dev
 
 You should get a browser window opened at something like `https://localhost:4321` and our glorious UI come to life.
 
-You probably won't see the loading part at all because we're not physically going anywhere offsite to fetch data, such as a database. That said, the result is quite nice:
+You probably won't see the loading part at all because we're not physically going anywhere off-site to fetch data, such as a database. That said, the result is quite nice:
 
 ![Screenshot of the graphql table with the shopping cart items listed](/img/astro-graphql-results-table.png 'Screenshot of the graphql table with the shopping cart items listed')
 

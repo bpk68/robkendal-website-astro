@@ -16,7 +16,7 @@ tags:
 
 ![Blog article on connecting WordPress as a headless CMS to Next.js](/img/next-js-with-wordpress-part-2-blog-post.png)
 
-In [part one of using WordPress as a headless CMS with Next.js](https://robkendal.co.uk/blog/configuring-wordpress-as-a-headless-cms-with-next.js 'Setting up WordPress as a headless CMS with GraphQL support'), we looked at the basics of setting up a WordPress instance so that we can access Posts and Pages and custom content via GraphQL using the Next.js framework. We also created a new Next.js app using the `create-next-app` tool.
+In [part one of using WordPress as a headless CMS with Next.js](/blog/configuring-wordpress-as-a-headless-cms-with-nextjs 'Setting up WordPress as a headless CMS with GraphQL support'), we looked at the basics of setting up a WordPress instance so that we can access Posts and Pages and custom content via GraphQL using the Next.js framework. We also created a new Next.js app using the `create-next-app` tool.
 
 For part two in the series, we're going to take those starting bases and connect the dots to supply content data from WordPress via the WPGraphQL plugin and access it in our Next.js project.
 
@@ -24,7 +24,7 @@ _If you like this article, you'll love the other helpful content I post on Masto
 
 ## Cleaning up the new Next.js project
 
-> **Note:** [in part one, we created a new Next.js application](https://robkendal.co.uk/blog/configuring-wordpress-as-a-headless-cms-with-next.js 'Part one of setting up WordPress as a headless CMS with GraphQL') using the `create-next-app` tool. I'd recommend going through the steps in part one first, to get that set up before continuing along here.
+> **Note:** [in part one, we created a new Next.js application](/blog/configuring-wordpress-as-a-headless-cms-with-nextjs 'Part one of setting up WordPress as a headless CMS with GraphQL') using the `create-next-app` tool. I'd recommend going through the steps in part one first, to get that set up before continuing along here.
 
 Out of the box, the `create-next-app` provided by Next.js adds in a lot of helpful stuff as a starter for ten. However, we can remove some of the cruft to get us down to a basic build and limit any possible confusion.
 
@@ -220,7 +220,7 @@ From here on out, we'll define our GraphQL queries that will shape the data we w
 
 As far as queries go, this is quite straightforward. We're looking at all posts, grabbing the first 20 results (for brevity), and ordering them by descending date order.
 
-With these exception of the `extraPostInfo` ACF custom fields [we defined in part one of this series](https://robkendal.co.uk/blog/configuring-wordpress-as-a-headless-cms-with-next.js 'Part one of configuring WordPress as a headless CMS with Next.js'), the rest of the data is standard WordPress data, such as title, id and the slug of the post.
+With these exception of the `extraPostInfo` ACF custom fields [we defined in part one of this series](/blog/configuring-wordpress-as-a-headless-cms-with-next.js 'Part one of configuring WordPress as a headless CMS with Next.js'), the rest of the data is standard WordPress data, such as title, id and the slug of the post.
 
 ```js
 // Notice the 'export' keyword here. We'll be calling this function

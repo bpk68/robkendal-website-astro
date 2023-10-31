@@ -81,7 +81,7 @@ That's simple enough, but then it means loading jQuery into the project, just to
 
 So then, since we're already using Webpack to build this thing, let's leverage one of Webpack's great features: require.context().
 
-(By the way, if you're looking for a [good Webpack starter kit](https://robkendal.co.uk/webpack-project-starter-kit/), then I have a [great template available on GitHub](https://github.com/bpk68/web-template))
+(By the way, if you're looking for a [good Webpack starter kit](/blog/quick-start-javascript-projects-with-this-webpack-project-starter-kit), then I have a [great template available on GitHub](https://github.com/bpk68/web-template))
 
 ### First, configure html-loader to process our files
 
@@ -145,7 +145,7 @@ Object.keys(htmlFragmentCache).forEach(
 );
 ```
 
-And it's as simple as that! Of course, even those scant few lines can be condensed into an [anonymous function](https://robkendal.co.uk/arrow-functions-in-javascript/) (really, an example of an [Immediately Invoked Function Expression](https://blog.mgechev.com/2012/08/29/self-invoking-functions-in-javascript-or-immediately-invoked-function-expression/) or IIFE) to create an even cleaner, terser end result:
+And it's as simple as that! Of course, even those scant few lines can be condensed into an [anonymous function](/blog/how-to-use-arrow-functions-in-javascript-es6) (really, an example of an [Immediately Invoked Function Expression](https://blog.mgechev.com/2012/08/29/self-invoking-functions-in-javascript-or-immediately-invoked-function-expression/) or IIFE) to create an even cleaner, terser end result:
 
 ```javascript
 ((context) => {
