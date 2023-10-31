@@ -10,9 +10,7 @@ export async function getStaticPaths() {
 
   // We don't want to generate pages for posts that are in draft status
   const filteredPosts = posts.filter((p) => p.data.draft !== true);
-  const uniqueTags = [
-    ...new Set(filteredPosts.map((p) => p.data.tags).flat()),
-  ];
+  const uniqueTags = [...new Set(filteredPosts.map((p) => p.data.tags).flat())];
 
   return uniqueTags.map((tag) => {
     return { params: { tag: tag.toLocaleLowerCase() } };

@@ -1,0 +1,3 @@
+# Need to match this pattern:
+# tags?tag=Next
+/tags tag=:tag  /tags/:tag  301

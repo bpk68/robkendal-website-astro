@@ -1,0 +1,23 @@
+---
+// Aiming to match this pattern:
+// tags?tag=Next
+const tag = Astro.url.searchParams.get('tag')! || '';
+
+if (tag.length) {
+  Astro.redirect(`/tag/{tag}`);
+}
+---
+
+<script>
+  // If we've got this far, then we'll have to do a redirect manually
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+
+  if (params && params.tag?.length) {
+    // Redirect to /tag/[tag]
+    window.location.replace(
+      `${window.location.origin}/tags/${params.tag.toLocaleLowerCase()}`
+    );
+  }
+  console.log(params);
+</script>
