@@ -91,7 +91,7 @@ dependencies:
     version: 3.3.3
   zod:
     specifier: ^3.22.2
-    version: 3.22.2
+    version: 3.22.4
 
 devDependencies:
   prettier-plugin-astro:
@@ -5085,10 +5085,6 @@ packages:
 
   /zod@3.21.1:
     resolution: {integrity: sha512-+dTu2m6gmCbO9Ahm4ZBDapx2O6ZY9QSPXst2WXjcznPMwf2YNpn3RevLx4KkZp1OPW/ouFcoBtBzFz/LeY69oA==}
-    dev: false
-
-  /zod@3.22.2:
-    resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
     dev: false
 
   /zod@3.22.4:
