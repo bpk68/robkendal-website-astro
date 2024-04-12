@@ -1,8 +1,6 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import { defineConfig } from 'astro/config';
-import prefetch from '@astrojs/prefetch';
 import sitemap from '@astrojs/sitemap';
-import compress from 'astro-compress';
 import markdoc from '@astrojs/markdoc';
 
 /* 
@@ -87,7 +85,8 @@ export default defineConfig({
   compressHTML: true,
   server: { port: SERVER_PORT },
   site: 'https://robkendal.co.uk',
-  integrations: [markdoc(), sitemap(), prefetch(), compress({ logger: 1 })],
+  prefetch: true,
+  integrations: [markdoc(), sitemap(),], // (await import("@playform/compress")).default()],
   markdown: {
     shikiConfig: {
       theme: 'nord',

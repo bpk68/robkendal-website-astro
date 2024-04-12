@@ -42,7 +42,7 @@ const ogImageAbsoluteUrl =
 ---
 
 <ContentLayout
-  title={post.data.title}
+  title={post.data.title || ''}
   date={post.data.date}
   tags={post.data.tags}
 >
@@ -119,7 +119,7 @@ const ogImageAbsoluteUrl =
     tags: post.data.tags,
   }}
 >
-const adHtml = `
+  const adHtml = `
       <div
           data-ea-publisher="robkendal-co-uk"
           class="horizontal adaptive flat"
@@ -131,23 +131,23 @@ const adHtml = `
       />
     `;
 
-function applyAds() {
-  const articleContent = document.querySelector(
-    '#article-content .post-content'
-  );
-  const selectParagraph = articleContent.querySelectorAll('p')[3];
+  function applyAds() {
+    const articleContent = document.querySelector(
+      '#article-content .post-content'
+    );
+    const selectParagraph = articleContent.querySelectorAll('p')[3];
 
-  selectParagraph.insertAdjacentHTML('afterend', adHtml);
+    selectParagraph.insertAdjacentHTML('afterend', adHtml);
 
-  try {
-    if (ethicalads) {
-      ethicalads.load();
+    try {
+      if (ethicalads) {
+        ethicalads.load();
+      }
+    } catch (error) {
+      // ethical ads not found
     }
-  } catch (error) {
-    // ethical ads not found
   }
-}
-window.addEventListener('load', applyAds);
+  window.addEventListener('load', applyAds);
 
-return () => window.removeEventListener('load', applyAds);
+  return () => window.removeEventListener('load', applyAds);
 </script>

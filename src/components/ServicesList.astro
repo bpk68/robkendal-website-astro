@@ -10,18 +10,11 @@ interface Service {
 
 const services: Service[] = [
   {
-    icon: 'fa-brands fa-shopify',
-    title: 'Shopify development & support',
+    icon: 'fa-regular fa-handshake',
+    title: 'Learn to code',
     blurb:
-      'As a Shopify Partner, I can help with ecommerce websites on Shopify, store migrations, custom Shopify theme development and more.',
-    href: '/freelance-shopify-developer',
-  },
-  {
-    icon: 'fa-solid fa-database',
-    title: 'Enterprise software development',
-    blurb:
-      'With years of experience building custom web apps for organisations just like yours, I can help create software solutions for your business.',
-    href: '/enterprise-software-development',
+      'I help people learn to code and change careers. No matter your experience, I can help you learn what you need to know to land a job in tech.',
+    href: '/mentorship',
   },
   {
     icon: 'fa-solid fa-cubes',
@@ -29,13 +22,6 @@ const services: Service[] = [
     blurb:
       'As an official Storyblok partner I can help design and develop first-class content-driven user experiences using the Storyblok platform.',
     href: '/freelance-storyblok-developer',
-  },
-  {
-    icon: 'fa-solid fa-gears',
-    title: 'CloudCannon CMS development',
-    blurb:
-      "As a trusted CloudCannon partner, I can help with building static sites inside CloudCannon's visual site builder, migrations, and more.",
-    href: '/freelance-cloud-cannon-developer',
   },
   {
     icon: 'fa-regular fa-window-restore',
@@ -122,7 +108,9 @@ const services: Service[] = [
         </div>
       ))
     }
-    <div class="relative border-2 rounded-sm py-5 px-6">
+    <div
+      class="relative border-2 rounded-sm py-5 px-6 md:col-span-2 lg:col-span-3"
+    >
       <div class="relative z-10">
         <i class="text-7xl text-center block fa-solid fa-question"></i>
         <h3 class="heading-3 text-center">Something else...</h3>
