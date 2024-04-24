@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@astrojs/markdoc':
-    specifier: ^0.10.0
-    version: 0.10.0(astro@4.6.0)
+    specifier: ^0.11.0
+    version: 0.11.0(astro@4.6.0)
   '@astrojs/prism':
     specifier: ^3.1.0
     version: 3.1.0
@@ -128,8 +128,8 @@ packages:
     resolution: {integrity: sha512-6B13lz5n6BrbTqCTwhXjJXuR1sqiX/H6rTxzlXx+lN1NnV4jgnq/KJldCQaUWJzPL5SiWahQyinxAbxQtwgPHA==}
     dev: false
 
-  /@astrojs/markdoc@0.10.0(astro@4.6.0):
-    resolution: {integrity: sha512-oA091nwzhMYP8UgrSOx5nRpVevZD+3kPDTMUbWNPQHc1AAzNvtxnkVmWtpOhCQ2pkLXGEcXlbtgfDiM8o/z7Mw==}
+  /@astrojs/markdoc@0.11.0(astro@4.6.0):
+    resolution: {integrity: sha512-vEAIXrH9vdxmR1GgAC0gQO6MC2JjMrDIEdfVA1pkmEUcUahhylPG6LFUl7ae9hfHK3PU6nDZxRayA6ndO0WCgg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
@@ -137,14 +137,14 @@ packages:
       '@astrojs/internal-helpers': 0.4.0
       '@astrojs/markdown-remark': 5.1.0
       '@astrojs/prism': 3.1.0
-      '@markdoc/markdoc': 0.3.5
+      '@markdoc/markdoc': 0.4.0
       astro: 4.6.0(typescript@5.4.5)
-      esbuild: 0.19.12
+      esbuild: 0.20.2
       github-slugger: 2.0.0
       gray-matter: 4.0.3
       htmlparser2: 9.1.0
       kleur: 4.1.5
-      zod: 3.22.4
+      zod: 3.23.4
     transitivePeerDependencies:
       - '@types/react'
       - react
@@ -1113,8 +1113,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: false
 
-  /@markdoc/markdoc@0.3.5:
-    resolution: {integrity: sha512-Z3agu2wnodoOYd5kzKbtwZduSfX19Kbsg/FlK0TeMn29cTTEEVPJtjfgKSMTN/Wq+kUQXnPtOEhHRgke5d/Xiw==}
+  /@markdoc/markdoc@0.4.0:
+    resolution: {integrity: sha512-fSh4P3Y4E7oaKYc2oNzSIJVPDto7SMzAuQN1Iyx53UxzleA6QzRdNWRxmiPqtVDaDi5dELd2yICoG91csrGrAw==}
     engines: {node: '>=14.7.0'}
     peerDependencies:
       '@types/react': '*'
@@ -5320,6 +5320,10 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: false
+
+  /zod@3.23.4:
+    resolution: {integrity: sha512-/AtWOKbBgjzEYYQRNfoGKHObgfAZag6qUJX1VbHo2PRBgS+wfWagEY2mizjfyAPcGesrJOcx/wcl0L9WnVrHFw==}
     dev: false
 
   /zwitch@2.0.4:
