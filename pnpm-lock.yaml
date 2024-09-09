@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@astrojs/markdoc':
         specifier: ^0.10.0
-        version: 0.10.0(astro@4.6.0)
+        version: 0.10.0(astro@4.6.0(typescript@5.4.5))
       '@astrojs/prism':
         specifier: ^3.1.0
         version: 3.1.0
@@ -22,7 +22,7 @@ importers:
         version: 3.1.2
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.6.0)(tailwindcss@3.4.3)
+        version: 5.1.0(astro@4.6.0(typescript@5.4.5))(tailwindcss@3.4.3)
       '@fortawesome/fontawesome-free':
         specifier: ^6.5.2
         version: 6.5.2
@@ -31,7 +31,7 @@ importers:
         version: 0.5.7(tailwindcss@3.4.3)
       '@tailwindcss/typography':
         specifier: ^0.5.12
-        version: 0.5.12(tailwindcss@3.4.3)
+        version: 0.5.15(tailwindcss@3.4.3)
       '@types/sanitize-html':
         specifier: ^2.11.0
         version: 2.11.0
@@ -791,10 +791,10 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
 
-  '@tailwindcss/typography@0.5.12':
-    resolution: {integrity: sha512-CNwpBpconcP7ppxmuq3qvaCxiRWnbhANpY/ruH4L5qs2GCiVDJXde/pjj2HWPV1+Q4G9+V/etrwUYopdcjAlyg==}
+  '@tailwindcss/typography@0.5.15':
+    resolution: {integrity: sha512-AqhlCXl+8grUz8uqExv5OTtgpjuVIwFTSXTrh8y9/pw6q2ek7fJ+Y8ZEVw7EB2DCcuCOtEjf9w3+J3rzts01uA==}
     peerDependencies:
-      tailwindcss: '>=3.0.0 || insiders'
+      tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20'
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -2233,6 +2233,10 @@ packages:
     resolution: {integrity: sha512-A0RVJrX+IUkVZbW3ClroRWurercFhieevHB38sr2+l9eUClMqome3LmEmnhlNy+5Mr2EYN6B2Kaw9wYdd+VHiw==}
     engines: {node: '>=4'}
 
+  postcss-selector-parser@6.1.2:
+    resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
+    engines: {node: '>=4'}
+
   postcss-svgo@6.0.3:
     resolution: {integrity: sha512-dlrahRmxP22bX6iKEjOM+c8/1p+81asjKT+V5lrgOH944ryx/OHpclnIbGsKVd3uWOXFLYJwCVf0eEkJGvO96g==}
     engines: {node: ^14 || ^16 || >= 18}
@@ -2833,7 +2837,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.4.0': {}
 
-  '@astrojs/markdoc@0.10.0(astro@4.6.0)':
+  '@astrojs/markdoc@0.10.0(astro@4.6.0(typescript@5.4.5))':
     dependencies:
       '@astrojs/internal-helpers': 0.4.0
       '@astrojs/markdown-remark': 5.1.0
@@ -2888,7 +2892,7 @@ snapshots:
       sitemap: 7.1.1
       zod: 3.22.4
 
-  '@astrojs/tailwind@5.1.0(astro@4.6.0)(tailwindcss@3.4.3)':
+  '@astrojs/tailwind@5.1.0(astro@4.6.0(typescript@5.4.5))(tailwindcss@3.4.3)':
     dependencies:
       astro: 4.6.0(typescript@5.4.5)
       autoprefixer: 10.4.19(postcss@8.4.38)
@@ -3375,7 +3379,7 @@ snapshots:
       mini-svg-data-uri: 1.4.4
       tailwindcss: 3.4.3
 
-  '@tailwindcss/typography@0.5.12(tailwindcss@3.4.3)':
+  '@tailwindcss/typography@0.5.15(tailwindcss@3.4.3)':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
@@ -4903,7 +4907,7 @@ snapshots:
   postcss-calc@9.0.1(postcss@8.4.38):
     dependencies:
       postcss: 8.4.38
-      postcss-selector-parser: 6.0.16
+      postcss-selector-parser: 6.1.2
       postcss-value-parser: 4.2.0
 
   postcss-colormin@6.1.0(postcss@8.4.38):
@@ -4948,7 +4952,7 @@ snapshots:
   postcss-discard-unused@6.0.5(postcss@8.4.38):
     dependencies:
       postcss: 8.4.38
-      postcss-selector-parser: 6.0.16
+      postcss-selector-parser: 6.1.2
 
   postcss-import@15.1.0(postcss@8.4.38):
     dependencies:
@@ -4972,8 +4976,9 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.38):
     dependencies:
       lilconfig: 3.1.1
-      postcss: 8.4.38
       yaml: 2.4.1
+    optionalDependencies:
+      postcss: 8.4.38
 
   postcss-merge-idents@6.0.3(postcss@8.4.38):
     dependencies:
@@ -4993,7 +4998,7 @@ snapshots:
       caniuse-api: 3.0.0
       cssnano-utils: 4.0.2(postcss@8.4.38)
       postcss: 8.4.38
-      postcss-selector-parser: 6.0.16
+      postcss-selector-parser: 6.1.2
 
   postcss-minify-font-values@6.1.0(postcss@8.4.38):
     dependencies:
@@ -5017,7 +5022,7 @@ snapshots:
   postcss-minify-selectors@6.0.4(postcss@8.4.38):
     dependencies:
       postcss: 8.4.38
-      postcss-selector-parser: 6.0.16
+      postcss-selector-parser: 6.1.2
 
   postcss-nested@6.0.1(postcss@8.4.38):
     dependencies:
@@ -5107,6 +5112,11 @@ snapshots:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
+  postcss-selector-parser@6.1.2:
+    dependencies:
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
+
   postcss-svgo@6.0.3(postcss@8.4.38):
     dependencies:
       postcss: 8.4.38
@@ -5116,7 +5126,7 @@ snapshots:
   postcss-unique-selectors@6.0.4(postcss@8.4.38):
     dependencies:
       postcss: 8.4.38
-      postcss-selector-parser: 6.0.16
+      postcss-selector-parser: 6.1.2
 
   postcss-url@10.1.3(postcss@8.4.38):
     dependencies:
@@ -5533,7 +5543,7 @@ snapshots:
     dependencies:
       browserslist: 4.23.0
       postcss: 8.4.38
-      postcss-selector-parser: 6.0.16
+      postcss-selector-parser: 6.1.2
 
   sucrase@3.35.0:
     dependencies:
@@ -5648,7 +5658,7 @@ snapshots:
   ts-interface-checker@0.1.13: {}
 
   tsconfck@3.0.3(typescript@5.4.5):
-    dependencies:
+    optionalDependencies:
       typescript: 5.4.5
 
   tslib@2.6.2:
@@ -5795,7 +5805,7 @@ snapshots:
       fsevents: 2.3.3
 
   vitefu@0.2.5(vite@5.2.8):
-    dependencies:
+    optionalDependencies:
       vite: 5.2.8
 
   web-namespaces@2.0.1: {}
