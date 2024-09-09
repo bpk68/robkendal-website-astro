@@ -86,7 +86,7 @@ export default defineConfig({
   server: { port: SERVER_PORT },
   site: 'https://robkendal.co.uk',
   prefetch: true,
-  integrations: [markdoc(), sitemap(),], // (await import("@playform/compress")).default()],
+  integrations: [markdoc({ allowHTML: true }), sitemap(),], // (await import("@playform/compress")).default()],
   markdown: {
     shikiConfig: {
       theme: 'nord',

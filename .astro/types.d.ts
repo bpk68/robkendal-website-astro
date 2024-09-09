@@ -289,6 +289,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdoc"] };
+"2024-09-09-swot-analysis-choosing-javascript-framework.mdoc": {
+	id: "2024-09-09-swot-analysis-choosing-javascript-framework.mdoc";
+  slug: "2024-09-09-swot-analysis-choosing-javascript-framework";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdoc"] };
 "Build-a-restful-Node-API-server-using-JSON-and-TypeScript.mdoc": {
 	id: "Build-a-restful-Node-API-server-using-JSON-and-TypeScript.mdoc";
   slug: "build-a-restful-node-api-server-using-json-and-typescript";
