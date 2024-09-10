@@ -21,7 +21,7 @@
     "@types/sanitize-html": "^2.11.0",
     "astro": "^4.6.0",
     "autoprefixer": "^10.4.19",
-    "cssnano": "^6.1.2",
+    "cssnano": "^7.0.0",
     "cssnano-preset-advanced": "^6.1.2",
     "dotenv": "^16.4.5",
     "globby": "^14.0.1",
