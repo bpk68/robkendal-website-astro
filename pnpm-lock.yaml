@@ -40,7 +40,7 @@ importers:
         version: 4.6.0(typescript@5.4.5)
       autoprefixer:
         specifier: ^10.4.19
-        version: 10.4.19(postcss@8.4.38)
+        version: 10.4.20(postcss@8.4.38)
       cssnano:
         specifier: ^7.0.0
         version: 7.0.6(postcss@8.4.38)
@@ -910,8 +910,8 @@ packages:
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
-  autoprefixer@10.4.19:
-    resolution: {integrity: sha512-BaENR2+zBZ8xXhM4pUaKUxlVdxZ0EZhjvbopwnXmxRUfqDmwSpC2lAi/QXvx7NRdPCo1WKEcEF6mV64si1z4Ew==}
+  autoprefixer@10.4.20:
+    resolution: {integrity: sha512-XY25y5xSv/wEoqzDyXXME4AFfkZI0P23z6Fs3YgymDnKJkCGOnkL0iTxCa85UTqaSgfcqyf3UA6+c7wUvx/16g==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -1004,8 +1004,8 @@ packages:
   caniuse-lite@1.0.30001609:
     resolution: {integrity: sha512-JFPQs34lHKx1B5t1EpQpWH4c+29zIyn/haGsbpfq3suuV9v56enjFt23zqijxGTMwy1p/4H2tjnQMY+p1WoAyA==}
 
-  caniuse-lite@1.0.30001659:
-    resolution: {integrity: sha512-Qxxyfv3RdHAfJcXelgf0hU4DFUVXBGTjqrBUZLUh8AtlGnsDo+CnncYtTd95+ZKfnANUOzxyIQCuU/UeBZBYoA==}
+  caniuse-lite@1.0.30001660:
+    resolution: {integrity: sha512-GacvNTTuATm26qC74pt+ad1fW15mlQ/zuTzzY1ZoIzECTP8HURDfF43kNxPgf7H1jmelCBQTTbBNxdSXOA7Bqg==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -1287,6 +1287,10 @@ packages:
 
   escalade@3.1.2:
     resolution: {integrity: sha512-ErCHMCae19vR8vQGe50xIsVomy19rg6gFu3+r3jkEO46suLMWBksvVyoGgQV+jOfl84ZSOSlmv6Gxa89PmTGmA==}
+    engines: {node: '>=6'}
+
+  escalade@3.2.0:
+    resolution: {integrity: sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA==}
     engines: {node: '>=6'}
 
   escape-string-regexp@1.0.5:
@@ -3116,7 +3120,7 @@ snapshots:
   '@astrojs/tailwind@5.1.0(astro@4.6.0(typescript@5.4.5))(tailwindcss@3.4.3)':
     dependencies:
       astro: 4.6.0(typescript@5.4.5)
-      autoprefixer: 10.4.19(postcss@8.4.38)
+      autoprefixer: 10.4.20(postcss@8.4.38)
       postcss: 8.4.38
       postcss-load-config: 4.0.2(postcss@8.4.38)
       tailwindcss: 3.4.3
@@ -3806,13 +3810,13 @@ snapshots:
       - terser
       - typescript
 
-  autoprefixer@10.4.19(postcss@8.4.38):
+  autoprefixer@10.4.20(postcss@8.4.38):
     dependencies:
-      browserslist: 4.23.0
-      caniuse-lite: 1.0.30001609
+      browserslist: 4.23.3
+      caniuse-lite: 1.0.30001660
       fraction.js: 4.3.7
       normalize-range: 0.1.2
-      picocolors: 1.0.0
+      picocolors: 1.1.0
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
 
@@ -3899,7 +3903,7 @@ snapshots:
 
   browserslist@4.23.3:
     dependencies:
-      caniuse-lite: 1.0.30001659
+      caniuse-lite: 1.0.30001660
       electron-to-chromium: 1.5.18
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
@@ -3921,14 +3925,14 @@ snapshots:
 
   caniuse-api@3.0.0:
     dependencies:
-      browserslist: 4.23.0
-      caniuse-lite: 1.0.30001609
+      browserslist: 4.23.3
+      caniuse-lite: 1.0.30001660
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
   caniuse-lite@1.0.30001609: {}
 
-  caniuse-lite@1.0.30001659: {}
+  caniuse-lite@1.0.30001660: {}
 
   ccount@2.0.1: {}
 
@@ -4045,7 +4049,7 @@ snapshots:
 
   cssnano-preset-advanced@6.1.2(postcss@8.4.38):
     dependencies:
-      autoprefixer: 10.4.19(postcss@8.4.38)
+      autoprefixer: 10.4.20(postcss@8.4.38)
       browserslist: 4.23.0
       cssnano-preset-default: 6.1.2(postcss@8.4.38)
       postcss: 8.4.38
@@ -4276,6 +4280,8 @@ snapshots:
       '@esbuild/win32-x64': 0.20.2
 
   escalade@3.1.2: {}
+
+  escalade@3.2.0: {}
 
   escape-string-regexp@1.0.5: {}
 
@@ -6021,7 +6027,7 @@ snapshots:
       css-tree: 2.3.1
       css-what: 6.1.0
       csso: 5.0.5
-      picocolors: 1.0.0
+      picocolors: 1.1.0
 
   svgo@3.3.2:
     dependencies:
@@ -6031,7 +6037,7 @@ snapshots:
       css-tree: 2.3.1
       css-what: 6.1.0
       csso: 5.0.5
-      picocolors: 1.0.0
+      picocolors: 1.1.0
 
   tailwindcss@3.4.3:
     dependencies:
@@ -6227,7 +6233,7 @@ snapshots:
   update-browserslist-db@1.1.0(browserslist@4.23.3):
     dependencies:
       browserslist: 4.23.3
-      escalade: 3.1.2
+      escalade: 3.2.0
       picocolors: 1.1.0
 
   util-deprecate@1.0.2: {}
