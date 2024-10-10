@@ -22,7 +22,7 @@ importers:
         version: 3.2.0
       '@astrojs/tailwind':
         specifier: ^5.1.1
-        version: 5.1.1(astro@4.15.12(rollup@4.21.2)(typescript@5.6.3))(tailwindcss@3.4.13)
+        version: 5.1.2(astro@4.15.12(rollup@4.21.2)(typescript@5.6.3))(tailwindcss@3.4.13)
       '@fortawesome/fontawesome-free':
         specifier: ^6.6.0
         version: 6.6.0
@@ -138,8 +138,8 @@ packages:
   '@astrojs/sitemap@3.2.0':
     resolution: {integrity: sha512-SkrOCL3Z6HxdiXreZ1+aPBWgnBMJ31EgPdcscgQeLqI2Gqk/4EKLuw9q0SqKU9MmHpcPXXtcd0odfCk4barPoA==}
 
-  '@astrojs/tailwind@5.1.1':
-    resolution: {integrity: sha512-LwurA10uIKcGRxQP2R81RvAnBT0WPKzBntXZBF4hrAefDgM5Uumn0nsGr6tdIjSARgYz4X+Cq/Vh78t3bql3yw==}
+  '@astrojs/tailwind@5.1.2':
+    resolution: {integrity: sha512-IvOF0W/dtHElcXvhrPR35nHmhyV3cfz1EzPitMGtU7sYy9Hci3BNK1To6FWmVuuNKPxza1IgCGetSynJZL7fOg==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0 || ^5.0.0-beta.0
       tailwindcss: ^3.0.24
@@ -2552,7 +2552,7 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/tailwind@5.1.1(astro@4.15.12(rollup@4.21.2)(typescript@5.6.3))(tailwindcss@3.4.13)':
+  '@astrojs/tailwind@5.1.2(astro@4.15.12(rollup@4.21.2)(typescript@5.6.3))(tailwindcss@3.4.13)':
     dependencies:
       astro: 4.15.12(rollup@4.21.2)(typescript@5.6.3)
       autoprefixer: 10.4.20(postcss@8.4.47)
