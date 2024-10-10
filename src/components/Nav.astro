@@ -1,9 +1,9 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import HeaderLink from './HeaderLink.astro';
+import HeaderLink from "./HeaderLink.astro";
 
-import logo from '../assets/k-tech-logo-initial-white.png';
+import logo from "../assets/k-tech-logo-initial-white.png";
 ---
 
 <Fragment>
@@ -23,6 +23,9 @@ import logo from '../assets/k-tech-logo-initial-white.png';
         </li>
         <li><HeaderLink href="/about">about</HeaderLink></li>
         <li><HeaderLink href="/publications">work</HeaderLink></li>
+        <li>
+          <HeaderLink href="/freelance-shopify-developer">shopify</HeaderLink>
+        </li>
         <li>
           <HeaderLink href="/enterprise-software-development">
             software
@@ -136,18 +139,18 @@ import logo from '../assets/k-tech-logo-initial-white.png';
 
 <script>
   // @ts-nocheck
-  document.querySelector('#mobile-menu-open').addEventListener('click', () => {
-    const menuElem = document.querySelector('#mobile-menu');
-    menuElem.classList.remove('hide-menu');
-    menuElem.classList.add('show-menu');
-    document.body.style.overflow = 'hidden';
+  document.querySelector("#mobile-menu-open").addEventListener("click", () => {
+    const menuElem = document.querySelector("#mobile-menu");
+    menuElem.classList.remove("hide-menu");
+    menuElem.classList.add("show-menu");
+    document.body.style.overflow = "hidden";
   });
 
-  document.querySelector('#mobile-menu-close').addEventListener('click', () => {
-    const menuElem = document.querySelector('#mobile-menu');
-    menuElem.classList.remove('show-menu');
-    menuElem.classList.add('hide-menu');
-    document.body.style.overflow = 'auto';
+  document.querySelector("#mobile-menu-close").addEventListener("click", () => {
+    const menuElem = document.querySelector("#mobile-menu");
+    menuElem.classList.remove("show-menu");
+    menuElem.classList.add("hide-menu");
+    document.body.style.overflow = "auto";
   });
 </script>
 

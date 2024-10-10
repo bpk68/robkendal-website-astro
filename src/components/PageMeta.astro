@@ -1,12 +1,12 @@
 ---
-import { PageMetaType } from '../lib/types';
-import { getPageMeta } from '../lib/seo';
+import { PageMetaType } from "../lib/types";
+import { getPageMeta } from "../lib/seo";
 import {
   SITE_TITLE,
   SITE_DESCRIPTION,
   SITE_URL,
   TWITTER_HANDLE,
-} from '../config';
+} from "../config";
 
 export interface Props {
   title?: string;
@@ -15,7 +15,7 @@ export interface Props {
 
 const { title, description } = Astro.props;
 const shortTitle =
-  'Freelance Shopify developer, Jamstack developer, Website consultant';
+  "Freelance Shopify developer, Jamstack developer, Website consultant";
 
 const { meta, og, twitter } = getPageMeta({
   title: title || SITE_TITLE,
@@ -32,7 +32,7 @@ const { meta, og, twitter } = getPageMeta({
 ---
 
 <!-- Primary Meta Tags -->
-<title>{meta.title}</title>
+<title>{meta.title} | Software developer | Rob Kendal</title>
 <meta name="title" content={meta.title} />
 {meta.description && <meta name="description" content={meta.description} />}
 {meta.canonicalUrl && <link rel="canonical" href={meta.canonicalUrl} />}

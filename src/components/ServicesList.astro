@@ -1,5 +1,5 @@
 ---
-import Button from '../components/Button.astro';
+import Button from "../components/Button.astro";
 
 interface Service {
   icon: string;
@@ -10,25 +10,39 @@ interface Service {
 
 const services: Service[] = [
   {
-    icon: 'fa-regular fa-handshake',
-    title: 'Learn to code',
+    icon: "fa-brands fa-shopify",
+    title: "Shopify development & support",
     blurb:
-      'I help people learn to code and change careers. No matter your experience, I can help you learn what you need to know to land a job in tech.',
-    href: '/mentorship',
+      "As a Shopify Partner, I can help with ecommerce websites on Shopify, store migrations, custom Shopify theme development and more.",
+    href: "/freelance-shopify-developer",
   },
   {
-    icon: 'fa-solid fa-cubes',
-    title: 'Storyblok CMS development',
+    icon: "fa-solid fa-database",
+    title: "Enterprise software development",
     blurb:
-      'As an official Storyblok partner I can help design and develop first-class content-driven user experiences using the Storyblok platform.',
-    href: '/freelance-storyblok-developer',
+      "With years of experience building custom web apps for organisations just like yours, I can help create software solutions for your business.",
+    href: "/enterprise-software-development",
   },
   {
-    icon: 'fa-regular fa-window-restore',
-    title: 'Small business websites',
+    icon: "fa-regular fa-handshake",
+    title: "Learn to code",
+    blurb:
+      "I help people learn to code and change careers. No matter your experience, I can help you learn what you need to know to land a job in tech.",
+    href: "/mentorship",
+  },
+  {
+    icon: "fa-solid fa-cubes",
+    title: "Storyblok CMS development",
+    blurb:
+      "As an official Storyblok partner I can help design and develop first-class content-driven user experiences using the Storyblok platform.",
+    href: "/freelance-storyblok-developer",
+  },
+  {
+    icon: "fa-regular fa-window-restore",
+    title: "Small business websites",
     blurb:
       "I help build blazing fast, accessible & beautiful websites for businesses of all shapes and sizes using headless CMS's powering Jamstack technologies.",
-    href: '/small-business-websites',
+    href: "/small-business-websites",
   },
 ];
 ---
@@ -46,7 +60,7 @@ const services: Service[] = [
         <div
           class={`
             ${
-              index === services.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''
+              index === services.length - 1 ? "md:col-span-2 lg:col-span-1" : ""
             }
             relative 
             bg-brand-blue-dark 
@@ -102,15 +116,13 @@ const services: Service[] = [
               href={service.href}
               text="Find out more"
               variant="primary"
-              classes={['mx-auto', 'block', 'w-full', 'text-center']}
+              classes={["mx-auto", "block", "w-full", "text-center"]}
             />
           </div>
         </div>
       ))
     }
-    <div
-      class="relative border-2 rounded-sm py-5 px-6 md:col-span-2 lg:col-span-3"
-    >
+    <div class="relative border-2 rounded-sm py-5 px-6">
       <div class="relative z-10">
         <i class="text-7xl text-center block fa-solid fa-question"></i>
         <h3 class="heading-3 text-center">Something else...</h3>
@@ -123,7 +135,7 @@ const services: Service[] = [
           href="/contact"
           text="Get in touch"
           variant="primary"
-          classes={['mx-auto', 'block', 'w-full', 'text-center']}
+          classes={["mx-auto", "block", "w-full", "text-center"]}
         />
       </div>
     </div>
