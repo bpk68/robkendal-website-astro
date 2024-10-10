@@ -1,17 +1,17 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import PageLayout from '../layouts/PageLayout.astro';
-import PageMeta from '../components/PageMeta.astro';
-import PageHeader from 'src/components/PageHeader.astro';
-import BenefitsList from 'src/components/BenefitsList.astro';
-import BrandsList from 'src/components/BrandsList.astro';
-import Button from 'src/components/Button.astro';
-import LPServicesList from 'src/components/LPServicesList.astro';
-import Testimonials from 'src/components/Testimonials.astro';
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+import PageHeader from "src/components/PageHeader.astro";
+import BenefitsList from "src/components/BenefitsList.astro";
+import BrandsList from "src/components/BrandsList.astro";
+import Button from "src/components/Button.astro";
+import LPServicesList from "src/components/LPServicesList.astro";
+import Testimonials from "src/components/Testimonials.astro";
 
-import signature from '../assets/rob-kendal-signature.png';
-import signatureinverted from '../assets/rob-kendal-signature-inverted.png';
+import signature from "../assets/rob-kendal-signature.png";
+import signatureinverted from "../assets/rob-kendal-signature-inverted.png";
 
 interface Props {
   title: string;
@@ -84,14 +84,14 @@ const {
         Let's talk about your project and how I can help your business.
         <Image
           src={signature}
-          alt="Rob Kendal Freelance Shopify Developer, K-Tech logo, a colourful letter K"
+          alt="Rob Kendal Freelance Shopify Developer, a colourful letter K"
           width={150}
           height={150}
           class="sm:float-right mb-10 mx-auto dark:hidden"
         />
         <Image
           src={signatureinverted}
-          alt="Rob Kendal Freelance Shopify Developer, K-Tech logo, a colourful letter K"
+          alt="Rob Kendal Freelance Shopify Developer, a colourful letter K"
           width={150}
           height={150}
           class="sm:float-right mb-10 mx-auto dark:block hidden"
