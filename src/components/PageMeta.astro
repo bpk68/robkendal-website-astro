@@ -2,32 +2,35 @@
 import { PageMetaType } from "../lib/types";
 import { getPageMeta } from "../lib/seo";
 import {
-  SITE_TITLE,
-  SITE_DESCRIPTION,
-  SITE_URL,
-  TWITTER_HANDLE,
+	SITE_TITLE,
+	SITE_DESCRIPTION,
+	SITE_URL,
+	TWITTER_HANDLE,
 } from "../config";
 
 export interface Props {
-  title?: string;
-  description?: string;
+	title?: string;
+	description?: string;
+	url?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, url } = Astro.props;
+const { pathname } = Astro.url;
+
 const shortTitle =
-  "Freelance Shopify developer, Jamstack developer, Website consultant";
+	"Freelance Shopify developer, Jamstack developer, Website consultant";
 
 const { meta, og, twitter } = getPageMeta({
-  title: title || SITE_TITLE,
-  description: description || SITE_DESCRIPTION,
-  baseUrl: SITE_URL,
-  ogImageAbsoluteUrl: `${SITE_URL}/img/rob-kendal-social-card.png`,
-  ogImageAltText: title ?? shortTitle,
-  ogImageWidth: 1200,
-  ogImageHeight: 630,
-  siteOwnerTwitterHandle: TWITTER_HANDLE,
-  contentAuthorTwitterHandle: TWITTER_HANDLE,
-  metaType: PageMetaType.page,
+	title: title || SITE_TITLE,
+	description: description || SITE_DESCRIPTION,
+	baseUrl: `${SITE_URL}${url ?? pathname}`,
+	ogImageAbsoluteUrl: `${SITE_URL}/img/rob-kendal-social-card.png`,
+	ogImageAltText: title ?? shortTitle,
+	ogImageWidth: 1200,
+	ogImageHeight: 630,
+	siteOwnerTwitterHandle: TWITTER_HANDLE,
+	contentAuthorTwitterHandle: TWITTER_HANDLE,
+	metaType: PageMetaType.page,
 });
 ---
 
