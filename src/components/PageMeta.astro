@@ -1,6 +1,7 @@
 ---
 import { PageMetaType } from "../lib/types";
 import { getPageMeta } from "../lib/seo";
+import { fixTrailingSlashPath } from "../lib/utils";
 import {
 	SITE_TITLE,
 	SITE_DESCRIPTION,
@@ -17,13 +18,15 @@ export interface Props {
 const { title, description, url } = Astro.props;
 const { pathname } = Astro.url;
 
+// TODO: need to add a trailing slash if one isn't present...
+
 const shortTitle =
 	"Freelance Shopify developer, Jamstack developer, Website consultant";
 
 const { meta, og, twitter } = getPageMeta({
 	title: title || SITE_TITLE,
 	description: description || SITE_DESCRIPTION,
-	baseUrl: `${SITE_URL}${url ?? pathname}`,
+	baseUrl: `${SITE_URL}${url ?? fixTrailingSlashPath(pathname)}`,
 	ogImageAbsoluteUrl: `${SITE_URL}/img/rob-kendal-social-card.png`,
 	ogImageAltText: title ?? shortTitle,
 	ogImageWidth: 1200,
