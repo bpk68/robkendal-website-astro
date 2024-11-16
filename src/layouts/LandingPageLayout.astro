@@ -14,40 +14,40 @@ import signature from "../assets/rob-kendal-signature.png";
 import signatureinverted from "../assets/rob-kendal-signature-inverted.png";
 
 interface Props {
-  title: string;
-  metaTitle: string;
-  description: string;
-  benefits: {
-    title: string;
-    list: string[];
-  };
-  services: {
-    title: string;
-    intro: string;
-    list: {
-      icon: string;
-      title: string;
-      blurb: string;
-    }[];
-  };
-  brands: {
-    title: string;
-    intro: string;
-  };
-  testimonials: {
-    title: string;
-    intro: string;
-  };
+	title: string;
+	metaTitle: string;
+	description: string;
+	benefits: {
+		title: string;
+		list: string[];
+	};
+	services: {
+		title: string;
+		intro: string;
+		list: {
+			icon: string;
+			title: string;
+			blurb: string;
+		}[];
+	};
+	brands: {
+		title: string;
+		intro: string;
+	};
+	testimonials: {
+		title: string;
+		intro: string;
+	};
 }
 
 const {
-  title,
-  metaTitle,
-  description,
-  benefits,
-  services,
-  brands,
-  testimonials,
+	title,
+	metaTitle,
+	description,
+	benefits,
+	services,
+	brands,
+	testimonials,
 } = Astro.props;
 ---
 
@@ -181,7 +181,6 @@ const {
     <Testimonials
       title={testimonials.title}
       intro={testimonials.intro}
-      shuffle
     />
 
     <slot name="cta" />

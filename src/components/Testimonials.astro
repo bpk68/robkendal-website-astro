@@ -1,59 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
 
 interface Props {
-  title: string;
-  intro: string;
-  shuffle: boolean;
+	title: string;
+	intro: string;
 }
 
-const { title, intro, shuffle } = Astro.props;
-
-const allTestimonials = await getCollection('testimonials');
-
-const testimonials = allTestimonials
-  .sort(() => Math.random() - 0.5)
-  .slice(0, 5);
+const { title, intro } = Astro.props;
 ---
 
-<section class="section is-md my-14">
+<section class="section is-md my-14 lg:-mx-40">
   <h2 class="heading-2 text-center">{title}</h2>
   <p class="text-center text-md max-w-xl mx-auto mb-8">
-    {intro}
+    {intro} <br />
+    <span class="text-sm">Psst! You can also see <a href="https://shapo.io/wall-of-love/1734138339" target="_blank">more glowing reviews</a> here.</span>
   </p>
-  {
-    testimonials.map(async (item, i) => (
-      <blockquote
-        class={`
-      mb-8
-      py-4 
-      px-6
-      bg-blue-50 
-      border 
-      rounded
-      border-b-primary-blue 
-      border-b-4 
-      md:flex
-      items-start
-      space-between
-      gap-10 
-      dark:text-slate-700
-      ${i % 2 === 0 ? '-rotate-1' : 'rotate-1'}
-    `}
-      >
-        <figure class="float-left md:float-none mr-4 md:mr-0">
-          <img
-            src={item.data.avatar}
-            alt={item.data.avatarAlt}
-            class="max-w-[5rem] rounded-full shadow-md mt-2"
-          />
-        </figure>
-        <p>
-          <span class="fa-solid fa-quote-left text-2xl pr-2" />
-          {item.body}
-          <cite class="block text-right mt-2">- {item.data.cite}</cite>
-        </p>
-      </blockquote>
-    ))
-  }
+  <div id="shapo-widget-8ff8443098dafe56e99a"></div>
+  <script id="shapo-embed-js" type="text/javascript" src="https://cdn.shapo.io/js/embed.js" defer></script>
 </section>
