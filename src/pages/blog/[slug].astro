@@ -1,44 +1,50 @@
 ---
-import { getCollection, getEntryBySlug } from 'astro:content';
-import { SITE_URL } from '../../config';
-import { generateSocialImage } from 'src/lib/utils';
-import BlogPostMeta from '../../components/BlogPostMeta.astro';
-import ContentLayout from '../../layouts/ContentLayout.astro';
-import CallToAction from 'src/components/CallToAction.astro';
-import AuthorBio from 'src/components/AuthorBio.astro';
-import WebMentions from 'src/components/WebMentions.astro';
-import PostComments from 'src/components/PostComments.astro';
-import RelatedPosts from 'src/components/RelatedPosts.astro';
+import { getCollection, getEntryBySlug } from "astro:content";
+import { SITE_URL } from "../../config";
+import { generateSocialImage } from "src/lib/utils";
+import BlogPostMeta from "../../components/BlogPostMeta.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import CallToAction from "src/components/CallToAction.astro";
+import AuthorBio from "src/components/AuthorBio.astro";
+import WebMentions from "src/components/WebMentions.astro";
+import PostComments from "src/components/PostComments.astro";
+import RelatedPosts from "src/components/RelatedPosts.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+	const posts = await getCollection("blog");
 
-  // We don't want to generate pages for posts that are in draft status
-  const filteredPosts = posts.filter((p) => p.data.draft !== true);
+	// We don't want to generate pages for posts that are in draft status
+	const filteredPosts = posts.filter((p) => p.data.draft !== true);
 
-  return filteredPosts.map((post) => {
-    return { params: { slug: post.slug } };
-  });
+	return filteredPosts.map((post) => {
+		return { params: { slug: post.slug } };
+	});
 }
 
 const { slug } = Astro.params;
-if (typeof slug !== 'string') {
-  throw Error(`slug should be string. Received: ${slug}`);
+if (typeof slug !== "string") {
+	throw Error(`slug should be string. Received: ${slug}`);
 }
 
-const post = await getEntryBySlug('blog', slug);
+const post = await getEntryBySlug("blog", slug);
 
 if (!post) {
-  throw new Error(`Could not find post with slug: ${slug}`);
+	throw new Error(`Could not find post with slug: ${slug}`);
 }
 
 const { Content } = await post.render();
 
-const socialImagePath = generateSocialImage({ title: post?.data.imgtitle });
+const socialImagePath = generateSocialImage({
+	title: post?.data.imgtitle ?? post?.data.title,
+});
 
 const imageUrl = socialImagePath ?? post?.data.featuredimage;
 const ogImageAbsoluteUrl =
-  socialImagePath ?? imageUrl ? new URL(imageUrl, SITE_URL).toString() : '';
+	(socialImagePath ?? imageUrl) ? new URL(imageUrl, SITE_URL).toString() : "";
+
+console.log(imageUrl);
+console.log(socialImagePath);
+console.log(post?.data.featuredimage);
 ---
 
 <ContentLayout
@@ -57,7 +63,7 @@ const ogImageAbsoluteUrl =
 
   <Fragment slot="content">
     {
-      !post.data.featuredimage && (
+      imageUrl && (
         <div class="not-prose">
           <img
             src={imageUrl}

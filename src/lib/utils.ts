@@ -5,7 +5,7 @@ export function shuffle<T>(arr: T[]): T[] {
 export function generateSocialImage({
 	title = "",
 	cloudName = "k-tech-uk",
-	imagePublicID = "k-tech-social-image_nucvkg.png",
+	imagePublicID = "k-tech-social-image_nucvkg",
 	cloudinaryUrlBase = "https://res.cloudinary.com",
 	version = null,
 	titleFont = "p3h2baj8hz4r4pbuurvg.woff2",
@@ -48,7 +48,7 @@ export function generateSocialImage({
 		"image",
 		"upload",
 		imageConfig,
-		// underlayClonfig,
+		// underlayConfig,
 		titleConfig,
 		version,
 		imagePublicID,

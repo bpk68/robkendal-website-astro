@@ -1,0 +1,94 @@
+---
+templateKey: blog-post
+title: How to detect light or dark mode at the OS level with JavaScript
+date: 2024-11-21T14:46:11.293Z
+featured: true
+imgtitle: 'Detecting user colour schemes with JavaScript'
+description: >-
+  Detecting user dark mode or light mode preferences at the browser or OS level with JavaScript is really easy, let's see how
+tags:
+  - JavaScript
+  - Svelte
+---
+
+Recently I needed to update some settings and swap out some components in a Svelte app depending on the users colour theme choice -- i.e. light or dark mode. 
+
+We'd been using Svelte's built in state handling mechanism (Svelte 4, so not Runes, but the `writeable()` stores business) and checking that. This was set directly by the user when they got in amongst the settings area of the app. It worked; all was well. 
+
+That was, until we discovered that if you load the app without choosing a particular light or dark theme in the app, leaving it as `system` then the app relies on your OS or browser-level theme choice. 
+
+The challenging part was that the user preference was still _set_, but the app wasn't deriving this from state. TL;DR: I needed to know what their preferences were from a higher, system level.
+
+But how do you find out a user's colour theme preferences directly from the OS or browser using JavaScript? 
+
+Turns out it's maddeningly simple as you'll see...
+
+## Show me the JavaScript
+
+OK, here's the current way I'm doing this using plain ol' vanilla JavaScript:
+
+```js
+window.matchMedia("(prefers-color-scheme: dark)").matches
+```
+
+That's it! Dead simple, no?! That tiny snippet will return you a true/false value that matches whether a user has a dark mode preference set at their system level. 
+
+Of course, you can edit this and replace the 'dark' with 'light' to discover the opposite. Again, dead simple.
+
+[![course banner for beginners React course](/img/react-course-cta.png "Beginner's Guide to Real-World React")](https://www.newline.co/courses/beginners-guide-to-real-world-react/ "See the Beginner's Guide to Real-World React")
+
+### Watching for changes
+
+You might need to do something more reactive based on if this preference changes though, and that's really easy too. 
+
+Here's how I'd do it:
+
+```js
+const switchColourScheme = (isDarkMode) => {
+  // Do something here with the isDarkMode value
+};
+
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", (event) => switchColourScheme(event.matches));
+```
+
+Once more, really simple and clean. All we're doing is adding in a plain ol' event listener that fires when the `prefers-color-scheme` value changes, then passing the `matches` value (i.e. true/false) into a separate function that does something with it. It's a little cleaner to do that in my opinion, but not necessary. 
+
+That extra function might do something like update state, change the UI, set other values, whatever you need.
+
+_If you like this article, you’ll love the other helpful content I post on socials like Threads._ [Find me on Threads @kendalmintcode](https://www.threads.net/@kendalmintcode) _and say hi._
+
+## Example with Svelte
+
+I have a lot of love for Svelte, it's like a full-circle web development moment where we're back to using HTML/CSS/JS but with superpowers. Very clean, easy to use but powerful to boot. Anyway, my original need for this particular piece of code came about from within a Svelte app where I also had to respect the user's app settings choice _as well as_ their system preference, with the former trumping the latter.
+
+Here's how I ended up doing it in the Svelte app:
+
+```svelte
+<script lang="ts">
+  import { theme } from "$lib/stores";
+  
+  let isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  theme.subscribe((value) => {
+    if(['light', 'dark'].includes(value)) {
+      isDarkMode = value === 'dark';
+    }
+  });
+	
+  window
+	  .matchMedia("(prefers-color-scheme: dark)")
+	  .addEventListener("change", (event) => {
+		  isDarkMode = event.matches;
+	  });
+</script>
+
+{#if isDarkMode}
+  <!-- Do dark mode things  -->
+{:else}
+  <!-- Do light mode things -->
+{/if}
+```
+
+And that's all folks. Nice and simple, clean and easy to work into your app if you need a vanilla JavaScript means of detecting a user's colour scheme preferences for dark mode or light mode.
