@@ -60,7 +60,9 @@ import Footer from "../components/Footer.astro";
       // trailing slashes and non-trailing slashes
       // From: https://flaviocopes.com/netlify-fix-trailing-slash-rewrite/
       (function() {
-        if (location.href.endsWith('/')) {
+        const isHomePage = location.href.replace(location.origin, '') === '/';
+
+        if (location.href.endsWith('/') && !isHomePage) {
           window.location = location.href.replace(/\/+$/, "");
         }
       }())
