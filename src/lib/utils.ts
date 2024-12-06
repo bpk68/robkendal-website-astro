@@ -66,7 +66,3 @@ export function fixTrailingSlashPath(pathname: string) {
 
 	return `${pathname}/`;
 }
-
-export function removeTrailingSlash(str: string) {
-	return str.replace(/\/+$/, "");
-}

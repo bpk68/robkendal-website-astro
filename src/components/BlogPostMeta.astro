@@ -8,7 +8,7 @@ import {
 	TWITTER_HANDLE,
 	MY_NAME,
 } from "../config";
-import { removeTrailingSlash } from "src/lib/utils";
+import { fixTrailingSlashPath } from "src/lib/utils";
 
 export interface Props {
 	title?: string;
@@ -52,7 +52,7 @@ const { meta, og, twitter } = getPageMeta({
 <title>{meta.title}</title>
 <meta name="title" content={meta.title} />
 {meta.description && <meta name="description" content={meta.description} />}
-{meta.canonicalUrl && <link rel="canonical" href={removeTrailingSlash(meta.canonicalUrl)} />}
+{meta.canonicalUrl && <link rel="canonical" href={fixTrailingSlashPath(meta.canonicalUrl)} />}
 
 <!-- Open Graph / Facebook -->
 {og.title && <meta property="og:title" content={og.title} />}

@@ -1,7 +1,7 @@
 ---
 import { PageMetaType } from "../lib/types";
 import { getPageMeta } from "../lib/seo";
-import { fixTrailingSlashPath, removeTrailingSlash } from "../lib/utils";
+import { fixTrailingSlashPath } from "../lib/utils";
 import {
 	SITE_TITLE,
 	SITE_DESCRIPTION,
@@ -39,7 +39,7 @@ const { meta, og, twitter } = getPageMeta({
 <title>{meta.title}</title>
 <meta name="title" content={meta.title} />
 {meta.description && <meta name="description" content={meta.description} />}
-{meta.canonicalUrl && <link rel="canonical" href={removeTrailingSlash(meta.canonicalUrl)} />}
+{meta.canonicalUrl && <link rel="canonical" href={fixTrailingSlashPath(meta.canonicalUrl)} />}
 
 <!-- Open Graph / Facebook -->
 {og.title && <meta property="og:title" content={og.title} />}

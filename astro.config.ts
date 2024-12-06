@@ -85,10 +85,6 @@ export default defineConfig({
 			status: 302,
 			destination: "/blog/2024-11-21-detecting-os-level-dark-mode",
 		},
-		"/*": {
-			status: 301,
-			destination: "/*/",
-		},
 	},
 	compressHTML: true,
 	server: { port: SERVER_PORT },

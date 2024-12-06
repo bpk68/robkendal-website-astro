@@ -54,18 +54,5 @@ import Footer from "../components/Footer.astro";
         src="https://media.ethicalads.io/media/client/ethicalads.min.js"
       ></script>
     </div>
-
-    <!-- <script>
-      // Clunky version of forced page redirects to avoid mixing 
-      // trailing slashes and non-trailing slashes
-      // From: https://flaviocopes.com/netlify-fix-trailing-slash-rewrite/
-      (function() {
-        const isHomePage = location.href.replace(location.origin, '') === '/';
-
-        if (location.href.endsWith('/') && !isHomePage) {
-          window.location = location.href.replace(/\/+$/, "");
-        }
-      }())
-    </script> -->
   </body>
 </html>
