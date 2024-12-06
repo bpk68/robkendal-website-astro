@@ -41,10 +41,6 @@ const socialImagePath = generateSocialImage({
 const imageUrl = socialImagePath ?? post?.data.featuredimage;
 const ogImageAbsoluteUrl =
 	(socialImagePath ?? imageUrl) ? new URL(imageUrl, SITE_URL).toString() : "";
-
-console.log(imageUrl);
-console.log(socialImagePath);
-console.log(post?.data.featuredimage);
 ---
 
 <ContentLayout

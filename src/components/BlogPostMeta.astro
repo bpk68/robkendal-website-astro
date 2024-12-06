@@ -1,49 +1,50 @@
 ---
-import { PageMetaType } from '../lib/types';
-import { getPageMeta } from '../lib/seo';
+import { PageMetaType } from "../lib/types";
+import { getPageMeta } from "../lib/seo";
 import {
-  SITE_TITLE,
-  SITE_DESCRIPTION,
-  SITE_URL,
-  TWITTER_HANDLE,
-  MY_NAME,
-} from '../config';
+	SITE_TITLE,
+	SITE_DESCRIPTION,
+	SITE_URL,
+	TWITTER_HANDLE,
+	MY_NAME,
+} from "../config";
+import { removeTrailingSlash } from "src/lib/utils";
 
 export interface Props {
-  title?: string;
-  description?: string;
-  publishDate: string;
-  pagePath?: string;
-  ogImageAbsoluteUrl?: string;
-  ogImageAltText?: string;
-  ogImageWidth?: number;
-  ogImageHeight?: number;
+	title?: string;
+	description?: string;
+	publishDate: string;
+	pagePath?: string;
+	ogImageAbsoluteUrl?: string;
+	ogImageAltText?: string;
+	ogImageWidth?: number;
+	ogImageHeight?: number;
 }
 
 const {
-  title,
-  description,
-  publishDate,
-  pagePath,
-  ogImageAbsoluteUrl,
-  ogImageAltText,
-  ogImageWidth,
-  ogImageHeight,
+	title,
+	description,
+	publishDate,
+	pagePath,
+	ogImageAbsoluteUrl,
+	ogImageAltText,
+	ogImageWidth,
+	ogImageHeight,
 } = Astro.props;
 
 const { meta, og, twitter } = getPageMeta({
-  title: title || SITE_TITLE,
-  description: description || SITE_DESCRIPTION,
-  baseUrl: pagePath ? new URL(pagePath, SITE_URL).toString() : '',
-  authorName: MY_NAME,
-  publishDate,
-  ogImageAbsoluteUrl,
-  ogImageAltText,
-  ogImageWidth,
-  ogImageHeight,
-  siteOwnerTwitterHandle: TWITTER_HANDLE,
-  contentAuthorTwitterHandle: TWITTER_HANDLE,
-  metaType: PageMetaType.blog,
+	title: title || SITE_TITLE,
+	description: description || SITE_DESCRIPTION,
+	baseUrl: pagePath ? new URL(pagePath, SITE_URL).toString() : "",
+	authorName: MY_NAME,
+	publishDate,
+	ogImageAbsoluteUrl,
+	ogImageAltText,
+	ogImageWidth,
+	ogImageHeight,
+	siteOwnerTwitterHandle: TWITTER_HANDLE,
+	contentAuthorTwitterHandle: TWITTER_HANDLE,
+	metaType: PageMetaType.blog,
 });
 ---
 
@@ -51,7 +52,7 @@ const { meta, og, twitter } = getPageMeta({
 <title>{meta.title}</title>
 <meta name="title" content={meta.title} />
 {meta.description && <meta name="description" content={meta.description} />}
-{meta.canonicalUrl && <link rel="canonical" href={meta.canonicalUrl} />}
+{meta.canonicalUrl && <link rel="canonical" href={removeTrailingSlash(meta.canonicalUrl)} />}
 
 <!-- Open Graph / Facebook -->
 {og.title && <meta property="og:title" content={og.title} />}

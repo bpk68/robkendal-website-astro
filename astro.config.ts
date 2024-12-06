@@ -1,7 +1,7 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
-import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
-import markdoc from '@astrojs/markdoc';
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
+import markdoc from "@astrojs/markdoc";
 
 /* 
   We are doing some URL mumbo jumbo here to tell Astro what the URL of your website will be.
@@ -16,86 +16,95 @@ import markdoc from '@astrojs/markdoc';
 const SERVER_PORT = 3000;
 
 export default defineConfig({
-  redirects: {
-    '/sitemap.xml': {
-      status: 301,
-      destination: '/sitemap-index.xml',
-    },
-    '/freelance-jamstack-developer': {
-      status: 302,
-      destination: '/enterprise-software-development',
-    },
-    '/blog/using-wordpress-as-a-headless-cms-with-next.js': {
-      status: 302,
-      destination: '/blog/using-wordpress-as-a-headless-cms-with-nextjs',
-    },
-    '/blog/create-a-static-website-rss-feed-with-next.js': {
-      status: 302,
-      destination: '//blog/create-a-static-website-rss-feed-with-nextjs',
-    },
-    '/arrow-functions-in-javascript': {
-      status: 302,
-      destination: '/blog/how-to-use-arrow-functions-in-javascript-es6',
-    },
-    '/build-a-restful-node-api-server-using-json-files': {
-      status: 302,
-      destination:
-        '/blog/build-a-restful-node-api-server-using-json-and-typescript',
-    },
-    '/tags/java-script': {
-      status: 302,
-      destination: '/tags/javascript',
-    },
-    '/headless-wordpress-websites': {
-      status: 302,
-      destination: '/enterprise-software-development',
-    },
-    '/blog/configuring-wordpress-as-a-headless-cms-with-next.js': {
-      status: 302,
-      destination: '/blog/configuring-wordpress-as-a-headless-cms-with-nextjs',
-    },
-    '/blog/how-to-get-intro-the-web-development-industry': {
-      status: 302,
-      destination: '/blog',
-    },
-    '/everthing-wrong-with-css-in-js': {
-      status: 302,
-      destination: '/blog/why-is-css-in-js-a-bad-or-good-idea',
-    },
-    '/how-to-land-that-dev-job-youve-always-wanted': {
-      status: 302,
-      destination: '/blog',
-    },
-    '/nest-smart-home-review': {
-      status: 302,
-      destination:
-        '/blog/nest-cam-nest-protect-and-nest-thermostat-review-1-year-in',
-    },
-    '/are-tech-tests-still-relevant': {
-      status: 302,
-      destination:
-        '/blog/are-tech-tests-still-relevant-in-todays-hiring-landscape',
-    },
-    '/webpack-project-starter-kit': {
-      status: 302,
-      destination:
-        '/blog/quick-start-javascript-projects-with-this-webpack-project-starter-kit',
-    },
-  },
-  compressHTML: true,
-  server: { port: SERVER_PORT },
-  site: 'https://robkendal.co.uk',
-  prefetch: true,
-  integrations: [markdoc({ allowHTML: true }), sitemap(),], // (await import("@playform/compress")).default()],
-  markdown: {
-    shikiConfig: {
-      theme: 'nord',
-      wrap: true,
-    },
-  },
-  vite: {
-    build: {
-      sourcemap: true,
-    },
-  },
+	redirects: {
+		"/sitemap.xml": {
+			status: 301,
+			destination: "/sitemap-index.xml",
+		},
+		"/freelance-jamstack-developer": {
+			status: 302,
+			destination: "/enterprise-software-development",
+		},
+		"/blog/using-wordpress-as-a-headless-cms-with-next.js": {
+			status: 302,
+			destination: "/blog/using-wordpress-as-a-headless-cms-with-nextjs",
+		},
+		"/blog/create-a-static-website-rss-feed-with-next.js": {
+			status: 302,
+			destination: "/blog/create-a-static-website-rss-feed-with-nextjs",
+		},
+		"/arrow-functions-in-javascript": {
+			status: 302,
+			destination: "/blog/how-to-use-arrow-functions-in-javascript-es6",
+		},
+		"/build-a-restful-node-api-server-using-json-files": {
+			status: 302,
+			destination:
+				"/blog/build-a-restful-node-api-server-using-json-and-typescript",
+		},
+		"/tags/java-script": {
+			status: 302,
+			destination: "/tags/javascript",
+		},
+		"/headless-wordpress-websites": {
+			status: 302,
+			destination: "/enterprise-software-development",
+		},
+		"/blog/configuring-wordpress-as-a-headless-cms-with-next.js": {
+			status: 302,
+			destination: "/blog/configuring-wordpress-as-a-headless-cms-with-nextjs",
+		},
+		"/blog/how-to-get-intro-the-web-development-industry": {
+			status: 302,
+			destination: "/blog",
+		},
+		"/everthing-wrong-with-css-in-js": {
+			status: 302,
+			destination: "/blog/why-is-css-in-js-a-bad-or-good-idea",
+		},
+		"/how-to-land-that-dev-job-youve-always-wanted": {
+			status: 302,
+			destination: "/blog",
+		},
+		"/nest-smart-home-review": {
+			status: 302,
+			destination:
+				"/blog/nest-cam-nest-protect-and-nest-thermostat-review-1-year-in",
+		},
+		"/are-tech-tests-still-relevant": {
+			status: 302,
+			destination:
+				"/blog/are-tech-tests-still-relevant-in-todays-hiring-landscape",
+		},
+		"/webpack-project-starter-kit": {
+			status: 302,
+			destination:
+				"/blog/quick-start-javascript-projects-with-this-webpack-project-starter-kit",
+		},
+		"/blog/2024-11-21-detecting-os-level-dark-mode-": {
+			status: 302,
+			destination: "/blog/2024-11-21-detecting-os-level-dark-mode",
+		},
+		"/*": {
+			status: 301,
+			destination: "/*/",
+		},
+	},
+	compressHTML: true,
+	server: { port: SERVER_PORT },
+	site: "https://robkendal.co.uk",
+	prefetch: true,
+	integrations: [markdoc({ allowHTML: true }), sitemap()], // (await import("@playform/compress")).default()],
+	trailingSlash: "never",
+	markdown: {
+		shikiConfig: {
+			theme: "nord",
+			wrap: true,
+		},
+	},
+	vite: {
+		build: {
+			sourcemap: true,
+		},
+	},
 });

@@ -54,5 +54,16 @@ import Footer from "../components/Footer.astro";
         src="https://media.ethicalads.io/media/client/ethicalads.min.js"
       ></script>
     </div>
+
+    <script>
+      // Clunky version of forced page redirects to avoid mixing 
+      // trailing slashes and non-trailing slashes
+      // From: https://flaviocopes.com/netlify-fix-trailing-slash-rewrite/
+      (function() {
+        if (!location.href.endsWith('/')) {
+          window.location = location.href + '/'
+        }
+      }())
+    </script>
   </body>
 </html>
