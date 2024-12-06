@@ -1,0 +1,89 @@
+---
+import Button from "./Button.astro";
+
+interface CaseStudyItem {
+	id: number;
+	title: string;
+	subTitle: string;
+	img: string;
+	blurb: string;
+	link: string;
+}
+
+interface Props {
+	item: CaseStudyItem;
+	isShortened?: boolean;
+}
+
+const { item, isShortened = false } = Astro.props;
+---
+
+ <article class="shadow-md relative border-2 border-primary-blue rounded-sm">
+  <span
+    class="
+      absolute 
+      inset-0 
+      w-full 
+      h-full 
+      transition 
+      duration-200 
+      ease-out 
+      transform 
+      translate-x-1 
+      translate-y-1 
+      bg-black
+      group-hover:-translate-x-0 
+      group-hover:-translate-y-0
+    "
+  />
+  <span
+    class={`
+      absolute 
+      inset-0 
+      w-full 
+      h-full 
+      bg-white
+      border-2 
+      border-gray-800 
+      group-hover:bg-primary-blue    
+    `}
+  />
+  <div class="relative">
+    <a
+      href={`/case-studies/${item.link}`}
+      class={`unset block overflow-hidden ${isShortened ? "max-h-[15rem]" : "max-h-[20rem]"}`}
+    >
+      <img
+        src={`/img/case-studies/${item.img}`}
+        alt={`Screenshot of the ${item.title} website`}
+        class="object-cover p-1"
+      />
+    </a>
+    <div class="p-5 md:p-8 dark:bg-primary-blue case-study-content">
+      <p class="uppercase text-text-muted m-0 dark:text-slate-300">
+        {item.subTitle}
+      </p>
+      <h2 class="heading-2 text-4xl mt-0 p-0">
+        <a
+          href={`/case-studies/${item.link}`}
+          class="unset text-text-heading"
+        >
+          {item.title}
+        </a>
+      </h2>
+      <p class={`mt-5 mb-8 ${isShortened && "md:line-clamp-2"}`}>
+        {item.blurb}
+      </p>
+      <p>
+        <Button
+          href={`/case-studies/${item.link}`}
+          text="Read the full story"
+          variant="primary"
+          classes={[
+            "block w-full text-center md:w-auto md:text-left",
+          ]}
+        />
+      </p>
+    </div>
+  </div>
+</article>
