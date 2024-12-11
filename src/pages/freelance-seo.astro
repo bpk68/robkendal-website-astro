@@ -1,0 +1,231 @@
+---
+import LandingPageLayout from "src/layouts/LandingPageLayout.astro";
+import CallToAction from "src/components/CallToAction.astro";
+import Button from "src/components/Button.astro";
+
+const benefits = [
+	"Thorough technical audits of your website identify opportunities for better search rankings",
+	"Detailed keyword and competitor analysis help you decide on which content to improve and how",
+	"Website performance and optimisation measurements will help improve your visitors' experience (and boost your search rankings!)",
+	"UX and accessibility reviews zone in on important changes to maximise your audience reach",
+	"CRO walkthroughs offer clear guidance on how to structure your content to convert more visitors into leads",
+	"Plain English recommendation reports give you a path to see genuine search performance gains",
+];
+---
+
+<LandingPageLayout
+  title="A freelance SEO and CRO based in Yorkshire that can help boost your search rankings"
+  metaTitle="Freelance SEO | Freelance CRO Yorkshire | Rob Kendal, freelance SEO"
+  description="As a freelance SEO and CRO specialist based in Leeds, Wakefield and York, I can help grow your website traffic through search engine optimisation"
+  benefits={{
+    title: "Here's a few ways my SEO and CRO services can help your website:",
+    list: benefits,
+  }}
+  brands={{
+    title: "I've worked with some great brands",
+    intro:
+      "As a freelance search engine optimisation consultant, I've enjoyed working with some brilliant local and national brands, as well as a host of local Yorkshire businesses",
+  }}
+  testimonials={{
+    title: "Successful projects equal happy clients",
+    intro:
+      "From SEO consultancy on Shopify ecommerce websites through to conversion rate optimisation services on business websites I've left a lot of happy clients along the way.",
+  }}
+>
+  <Fragment slot="intro">
+    Website not ranking well on Google? Not turning visitors into leads as often as you'd like? Well, it 
+    sounds like you're in need of <strong>freelance search engine optimisation (SEO) services</strong> 
+    based in sunny Leeds and Yorkshire to help grow your audience and reach. 
+    
+    <p>If you're got the audience but you want to 
+    generate more leads for your business, my <strong>freelance conversation rate optimisation (CRO)</strong>
+    consultancy can help you turn visitors into customers.</p>
+  </Fragment>
+
+  <Fragment slot="additional-content">
+    <section class="section is-md my-20">
+      <h2 class="heading-2 text-center mb-1">Simple SEO services. No strings attached</h2>
+      <p class="text-center text-md max-w-xl mx-auto">
+        The best starting place to kick off your SEO journey is with one of my standalone SEO
+        packages. You'll get a thorough review of your website and a comprehensive report 
+        full of recommendations and actionable advice to help improve your website traffic 
+        from search engines, as well as converting more visitors into leads. 
+      </p>
+      <div class="grid grid-cols-2 gap-6 mt-24 mb-10 place-items-stretch -mx-20">
+        <div class="border-2 border-gray-600 rounded-b-sm shadow-md">
+          <div class="bg-white p-8">
+            <i class="text-7xl text-center block fas fa-rocket" />
+            <h2>Essential SEO</h2>
+            <p>Ideal for small businesses looking to optimise their search presence</p>
+            <h3 class="heading-2 text-4xl">
+               &pound;599 
+            </h3>
+            <div class="prose max-w-none prose-bubblegum">
+              <p>
+                Aimed at the smaller end clients who just want to make sure they are set with both the right technical 
+                SEO aspects (run an SEO audit) to show them a 100/100 Ahrefs site score and a keyword map with 
+                recommendations from a content perspective to send them in the right direction from that perspective
+              </p>
+              <p>Essential includes:</p>
+              <ul>
+                <li>Technical SEO audit of up to 100 web pages</li>
+                <li>Competitor analysis (3 competitors)</li>
+                <li>Keyword research & optimisation (25 keywords)</li>
+                <li>Mobile optimisation review</li>
+                <li>Page speed analysis</li>
+                <li>Core on-page SEO recommendations</li>
+                <li>30-day action programme</li>
+                <li>One-to-one consultation</li>
+
+                For example, we could include a technical review of the site from a performance point of view (it’s touches on in the bullets you shared),  
+                Accessibility audit
+                UX/CRO assessment and recommendations — e.g. it’s no good getting more traffic if you’re not converting or your user journey is pants.
+
+              </ul>
+            </div>
+            <p class="text-center mt-10">
+              <Button
+                href="https://pay.gocardless.com/AL000374P14DRK"
+                text="Sign me up!"
+                variant="primary"
+              />
+            </p>
+          </div>
+        </div>
+  
+        <div class="border-2 border-gray-600 rounded-b-sm shadow-md">
+          <div class="bg-white p-8">
+            <i class="text-7xl text-center block fas fa-rocket" />
+            <h2>Professional growth</h2>
+            <p>Comprehensive analysis for growing organisations</p>
+            <h3 class="heading-2 text-4xl">
+               &pound;999 
+            </h3>
+            <h3 class="heading-2 text-4xl">
+               &pound;99
+            </h3>
+            <div class="prose max-w-none prose-bubblegum">
+              <p>
+                aimed at the more established sites, where they get all the above but more in depth and more bespoke 
+                especially on the content side. Start to look at more competitors and where there are gaps as well 
+                start to analyse their backlink profile (where they can get more links/how they can do this). 
+              </p>
+              <p>Professional includes:</p>
+              <ul>
+                <li>Technical SEO audit of up to 250 web pages</li>
+                <li>Competitor analysis (5 competitors)</li>
+                <li>Keyword research & optimisation (50 keywords)</li>
+                <li>Content gap analysis</li>
+                <li>Backlink portfolio analysis</li>
+                <li>Mobile & Core Web Vitals optimisation</li>
+                <li>Bespoke content strategy</li>
+                <li>90-day action programme</li>
+                <li>2 consultation sessions</li>
+                <li>Priority email enquiry support</li>
+              </ul>
+            </div>
+            <p class="text-center mt-10">
+              <Button
+                href="https://pay.gocardless.com/AL00039PXAH73Q"
+                text="Sign me up!"
+                variant="primary"
+              />
+            </p>
+          </div>
+        </div>
+
+        <div class="border-2 border-gray-600 rounded-b-sm shadow-md col-span-2">
+          <div class="bg-white p-8">
+            <i class="text-7xl text-center block fas fa-rocket" />
+            <h2>Enterprise excellence</h2>
+            <p>Advanced strategies for large-scale websites</p>
+            <h3 class="heading-2 text-4xl">
+               &pound;1999 
+            </h3>
+            <div class="prose max-w-none prose-bubblegum">
+              <p>
+                they basically get a full on SEO strategy right from the get go covering the on page, technical 
+                and off page, what I would literally do for the next 180 days, every single task (e.g. they 
+                would have a written up content calendar ready to go). The only thing they would need to action 
+                is someone actually doing it, if that makes sense (I put e-commerce as I think that tends 
+                to be the types of clients).
+              </p>
+              <p>Enterprise includes:</p>
+              <ul>
+                <li>Technical SEO audit of up to 1,000 web pages</li>
+                <li>Competitor analysis (8 competitors)</li>
+                <li>Keyword research & optimisation (100+ keywords)</li>
+                <li>International SEO assessment</li>
+                <li>E-commerce optimisation</li>
+                <li>Advanced schema markup strategy</li>
+                <li>Content hierarchy planning</li>
+                <li>Link building programme</li>
+                <li>180-day action programme</li>
+                <li>4 consultation sessions</li>
+                <li>24/7 priority support</li>
+                <li>Monthly progress reporting</li>
+              </ul>
+            </div>
+            <p class="text-center mt-10">
+              <Button
+                href="https://pay.gocardless.com/AL00039PXAH73Q"
+                text="Sign me up!"
+                variant="primary"
+              />
+            </p>
+          </div>
+        </div>
+
+        <div class="border-2 border-gray-600 rounded-b-sm shadow-md col-span-2">
+          <div class="bg-white p-8">
+            <i class="text-7xl text-center block fas fa-rocket" />
+            <h2>Starter essentials</h2>
+            <p>Entry level assessment to understand the playing field</p>
+            <h3 class="heading-2 text-4xl">
+               &pound;299 
+            </h3>
+            <div class="prose max-w-none prose-bubblegum">
+              <p>
+                Essential review of UX/CRO and general website optimisation
+              </p>
+              <p>Starter includes:</p>
+              <ul>
+                <li>General technical SEO review of website and main landing pages</li>
+                <li>Mobile optimisation review</li>
+                <li>Page speed analysis and site performance review</li>
+                <li>Immediate improvement areas highlighted in plain English</li>
+                <li>Accessibility audit with key points to improve</li>
+                <li>Personlised user experience and conversion rate optimisation video review </li>
+                <li>Actionable takeaways to make immediate improvements</li>
+              </ul>
+            </div>
+            <p class="text-center mt-10">
+              <Button
+                href="https://pay.gocardless.com/AL00039PXAH73Q"
+                text="Sign me up!"
+                variant="primary"
+              />
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Fragment>
+
+  <Fragment slot="cta">
+    <CallToAction
+      type="global"
+      title="Want more website visitors that convert?"
+      buttons={[
+        {
+          href: "/contact",
+          text: "Boost your rankings",
+        },
+      ]}
+    >
+      If you're in need of a freelance search engine optimisation specialist
+      to help your business get found by more people on Google, and convert 
+      more visitors into leads, then let's have a chat.
+    </CallToAction>
+  </Fragment>
+</LandingPageLayout>

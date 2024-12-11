@@ -21,7 +21,7 @@ interface Props {
 		title: string;
 		list: string[];
 	};
-	services: {
+	services?: {
 		title: string;
 		intro: string;
 		list: {
@@ -151,31 +151,35 @@ const {
       </div>
     </div>
 
-    <LPServicesList
-      title={services.title}
-      intro={services.intro}
-      list={services.list}
-    />
+    {services && services.list?.length && (
+      <LPServicesList
+        title={services.title}
+        intro={services.intro}
+        list={services.list}
+      />
+    )}
 
-    <div
-      class="relative bg-primary-blue-OLD p-5 md:p-10 lg:-mx-32 xl:-mx-52 2xl:-mx-72"
-    >
-      <span
-        class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"
-      ></span>
-      <span
-        class={`
-          absolute 
-          inset-0 
-          w-full 
-          h-full 
-          bg-primary-blue 
-          border-2 
-          border-gray-800 
-          group-hover:bg-primary-blue    
-        `}></span>
-      <slot name="callout" />
-    </div>
+    {Astro.slots.has('callout') && (
+      <div
+        class="relative bg-primary-blue-OLD p-5 md:p-10 lg:-mx-32 xl:-mx-52 2xl:-mx-72"
+      >
+        <span
+          class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"
+        ></span>
+        <span
+          class={`
+            absolute 
+            inset-0 
+            w-full 
+            h-full 
+            bg-primary-blue 
+            border-2 
+            border-gray-800 
+            group-hover:bg-primary-blue    
+          `}></span>
+        <slot name="callout" />
+      </div>
+    )}
 
     <BrandsList title={brands.title} intro={brands.intro} />
     <Testimonials

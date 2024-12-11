@@ -1,5 +1,6 @@
 {
-  "files.associations": {
-    "*.mdoc": "markdown"
-  }
+	"files.associations": {
+		"*.mdoc": "markdown"
+	},
+	"cSpell.words": ["analyse"]
 }
