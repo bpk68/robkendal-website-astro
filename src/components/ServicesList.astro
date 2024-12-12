@@ -6,6 +6,7 @@ interface Service {
 	title: string;
 	blurb: string;
 	href: string;
+	sticker?: string;
 }
 
 const services: Service[] = [
@@ -29,6 +30,7 @@ const services: Service[] = [
 		blurb:
 			"SEO helps gain visibility by ranking higher on search engines. CRO helps you convert more website visitors into leads and paying customers. I can help you do both.",
 		href: "/freelance-seo",
+		sticker: "New for 2025",
 	},
 	{
 		icon: "fa-solid fa-cubes",
@@ -50,8 +52,8 @@ const services: Service[] = [
 <section class="section my-10 lg:-mx-40">
   <h2 class="heading-2 text-center">How can I help?</h2>
   <p class="text-center text-md max-w-2xl mx-auto">
-    As a freelance Shopify developer, Shopify partner and software development
-    consultant, I can help build your next business website, enterprise software
+    As a freelance Storyblok web developer, Shopify partner and freelance SEO consultant, 
+    I can help build your next business website or web app, enterprise software
     application, or ecommerce store.
   </p>
   <div class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
@@ -100,6 +102,14 @@ const services: Service[] = [
           `}
           />
           <div class="relative z-10">
+            {service.sticker && (
+              <div class="text-center absolute -top-12 right-10 rotate-12">
+                <div class="relative w-full h-full">
+                  <i class="fa-solid fa-certificate text-brand-red text-8xl absolute" />
+                  <span class="text-sm absolute z-10 top-4 left-7 font-semibold">{service.sticker}</span>
+                </div>
+              </div>
+            )}
             <i class={`text-7xl text-center block ${service.icon}`} />
             <h3 class="heading-3 text-brand-cream text-center">
               <span
