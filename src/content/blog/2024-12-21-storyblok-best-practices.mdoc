@@ -1,0 +1,122 @@
+---
+templateKey: blog-post
+title: Top 5 best practices for using Storyblok or a headless CMS
+date: 2024-12-21T07:46:11.293Z
+featured: true
+imgtitle: '5 best practices for using Storyblok'
+description: >-
+  Get tips and tricks for using Storyblok CMS including my top 5 personal best practices
+tags:
+  - Guides
+  - Storyblok
+  - Headless CMS
+---
+
+
+As a [freelance Storyblok developer](/freelance-storyblok-developer), most of my clients fall into one of these categories:
+
+- They're looking to build/rebuild a website and want advice on how to do it.
+- They already have Storyblok and want to improve on its use.
+- They _want_ to use a headless CMS like Storyblok but aren't sure what to do.
+
+As a Storyblok partner, my goto advice is to of course recommend Storyblok as a CMS to power just about any situation. I love using it and do so every day on a variety of projects. It's flexible, powerful, and offers an intuitive editing experience for marketers and content creators, whilst simultaneously offering a great developer experience to make the most of that valuable content.
+
+> **What is headless anyway?**<br />
+> The non-technical muggles among us tend to be unfamiliar with the term 'headless'. In the context of a content system, it means that you would be entering your content in one place (e.g. Storyblok) and consuming it in another, separate place (e.g. a website). <br />
+> The benefits of this include improved content workflows, being able to power multiple end points from the same content management system, and building better user experiences without being locked into any specific choices (e.g. WordPress).
+
+
+That aside, you're here for some tips, tricks, and best practices for using Storyblok as your primary CMS, so let's get to it!
+
+## 1. Structure Your Content Thoughtfully
+
+Storyblok’s component-based architecture is one of its most powerful features. No matter your background, technical or not, it empowers users to create reusable, modular blocks for your content. To make the most of this, focus on designing components with scalability and flexibility in mind:
+
+- **Avoid overcomplication**: <br />
+Aim to break your content into small, reusable components that can be easily combined. For example, instead of creating a unique component for every type of hero section, create a flexible hero component with customisable fields.
+- **Use nesting carefully**: <br />
+While Storyblok supports nesting of components, you should be mindful to avoid excessive nesting as it can make the content editor interface difficult to navigate. There's a balance to be had between flexibility and complexity for editors.
+- **Plan ahead**: <br />
+Define your content model in advance based on your website’s needs. This will help reduce the need for significant restructuring later. It can help to do some simple drawings of a page of your website and break down all the content on there and how it will be modelled and structured.
+
+By designing intuitive and reusable components, you not only streamline content creation but also empower editors to work independently and efficiently.
+
+### Real world examples
+
+Here's a couple of examples from one of my clients' Storyblok instances. The first, shown below, is how we've structured a `blockquote` component. You can see it's very simple with a message element, possible image (it could be used in a avatar for example or testimonial), and name and company fields for a citation display. This block can be reused as much as you like across the platform and added to larger modules or blocks of content.
+
+<div class="w-1/2 mx-auto">
+![modular content editing of blockquote component](/img/storyblok-components-1.png)
+</div>
+
+With the next example I've built out a classic FAQ item list. The `faq-list` block is super simple, it has a Blocks field (Storyblok's special field type that allows child blocks to be added to it) called 'items'. You can see in the second image that I've restricted the _type_ of content that can be added to this list-style component. In this case you can only add an `faq-item`, but you can add as many as you like. 
+
+<div class="flex flex-row gap-2 justify-evenly mx-auto">
+  <div>
+    <img src="/img/storyblok-components-2.png" class="block">
+  </div>
+  <div>
+    <img src="/img/storyblok-components-3.png" class="block">
+  </div>
+</div>
+
+This approach allows us to offer content editors flexibility on how they build out their content, whilst adding safety rails and restrictions so that things don't go off piste. 
+
+
+## 2. Leverage Roles and Permissions
+
+Storyblok allows you to define roles and permissions to manage user access effectively. Use this feature to ensure that each team member only accesses the areas they need:
+
+- **Separate developer and editor tasks**: Developers can focus on technical implementation, while marketers and content creators work on editing and managing content without fear of breaking the system.
+- **Custom workflows**: Create workflows that reflect your content approval process. For example, one of my clients has sales team members who can add new business listings, but require a final editor approval before the content is published.
+- **Restrict access**: Limit user permissions based on their roles. For example, grant editors access to content folders while reserving schema editing rights for developers.
+
+This approach minimises errors, improves collaboration, and enhances security within your projects.
+
+
+## 3. Take Advantage of Visual Editing
+
+Storyblok’s real-time visual editor is a standout feature that can drastically improve content management. This tool allows editors to see changes to the website as they make them, reducing the need for constant developer intervention:
+
+- **Train your team**: Provide training for your content team on how to use the visual editor effectively. This ensures everyone understands its capabilities, including inline editing and previewing changes.
+- **Preview content across devices**: Use the visual editor to preview content on different devices (desktop, tablet, mobile) to ensure consistency and responsiveness.
+- **Enable collaboration**: The editor allows multiple users to work on content simultaneously, streamlining workflows for large teams.
+
+The visual editor not only enhances productivity but also helps bridge the gap between technical and non-technical team members. The other nice bonus here is that you can enjoy full visual editing of the destination's content (e.g. a website) _before_ committing to publishing it live. 
+
+
+## 4. Integrate Third-Party Tools
+
+One of Storyblok’s key strengths is its flexibility to integrate with other tools and frameworks, thanks to its API-first approach. Whilst this might not interest you much as a potential client of mine or a business interested in improving their content editing experience, it makes a _huge_ difference to your development team. Storyblok's developer experience is superb, and I say this as someone's who's worked with Storyblok's Content API for a few years.
+
+To make the most of this feature, identify and implement integrations that enhance your project’s functionality:
+
+- **Framework compatibility**: Storyblok works seamlessly with popular frameworks like Nuxt.js, Next.js, Sveltekit and React, and even just plain vanilla JavaScript, so choose the one that aligns with your development goals.
+- **Marketing tools**: Integrate Storyblok with tools like Google Analytics, HubSpot, or Salesforce to optimise your marketing and customer experience strategies.
+- **E-commerce platforms**: Pair Storyblok with platforms like Shopify or BigCommerce to create dynamic, content-driven e-commerce sites.
+
+Custom integrations enable you to really bend Storyblok your will to get the best out of it for your project’s needs, ensuring a cohesive and efficient digital ecosystem.
+
+
+## 5. Maintain a Clean Content Repository
+
+A well-organised content repository is crucial for long-term success, especially as your project grows. Storyblok provides tools to help you manage and maintain your content repository efficiently:
+
+- **Organise folders**: Group content into folders by type or project (e.g. blog posts, landing pages, product pages). This makes it easy for editors to find what they need. This is especially key for organising your media/assets folder -- images and files get out of hand really fast if you're not careful!
+- **Use datasources**: Storyblok's datasources are a great way to organise and categorise content. For example, I use blog categories all the time to help give some order to articles within the CMS.
+- **Use naming conventions**: Establish a clear and consistent naming convention for components, folders, and content entries to avoid confusion and help with self-service for your content editors.
+- **Archive outdated content**: Regularly audit and archive or delete content that is no longer in use to keep your repository clutter-free.
+
+A clean repository not only makes day-to-day operations smoother but also reduces the risk of errors when updating or reusing content. This also helps reduce the learning curve for new editors trying to get up to speed.
+
+
+## More Storyblok help
+
+These are my top 5 Storyblok best practices and will help you to create and maintain a clean, tidy, and efficient content editing workspace that will scale with you.
+
+Storyblok’s powerful features make it an excellent choice for creating dynamic, content-driven digital experiences. Sounds fancy and grandiose, but really we're talking about creating a centralised content base that can provide content to several other separate digital end points; this might be a website, or a mobile app, or digital billboard. 
+
+By structuring your content thoughtfully, leveraging roles and permissions, embracing the visual editor, integrating useful third-party tools, and maintaining a clean repository, you can unlock Storyblok's full potential. These best practices ensure a smoother workflow, better collaboration between teams, and an enhanced content management experience.
+
+If you have any specific questions about Storyblok (or any headless content management system) and how it can help power your business' digital platforms then you can [arrange an intro with me](/contact) and I'd be happy to share my experience.
+
