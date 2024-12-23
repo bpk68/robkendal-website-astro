@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 
 import shopifylogo from "../assets/partnerships/shopify-partner.png";
-import storybloklogo from "../assets/partnerships/sb-p-light.svg";
 import supabaselogolight from "../assets/partnerships/supabase-logo-wordmark--light.svg";
 import supabaselogodark from "../assets/partnerships/supabase-logo-wordmark--dark.svg";
 ---
@@ -24,13 +23,12 @@ import supabaselogodark from "../assets/partnerships/supabase-logo-wordmark--dar
   <div
     class="flex flex-col md:flex-row flex-wrap gap-6 items-center justify-center lg:-mx-40 xl:-mx-52 my-20"
   >
-    <Image
-      src={storybloklogo}
+    <img 
+      src="/img/partnerships/sb-p-light.svg" 
       alt="Storyblok Partner logo with the Storyblok title and iconic letter 'B'"
-      width={275}
-      height={150}
-      class=""
-    />
+      width="275"
+      height="150"
+    >
     <Image
       src={supabaselogolight}
       alt="Supabase Partners logo with the words Supabase in light writing and their signature Supabase S"
