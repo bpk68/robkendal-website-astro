@@ -1,14 +1,14 @@
 ---
-import Button from './Button.astro';
+import Button from "./Button.astro";
 
 interface Props {
-  title: string;
-  intro: string;
-  list: {
-    icon: string;
-    title: string;
-    blurb: string;
-  }[];
+	title: string;
+	intro: string;
+	list: {
+		icon: string;
+		title: string;
+		blurb: string;
+	}[];
 }
 
 const { title, intro, list } = Astro.props;
@@ -53,7 +53,9 @@ const { title, intro, list } = Astro.props;
           `}
           />
           <div class="relative z-10">
-            <i class={`text-7xl text-center block ${service.icon}`} />
+            <div class="text-center">
+              <i class={`text-7xl ${service.icon}`} />
+            </div>
             <h3 class="heading-3 text-brand-cream text-center">
               <span
                 class="

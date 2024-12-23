@@ -110,7 +110,9 @@ const services: Service[] = [
                 </div>
               </div>
             )}
-            <i class={`text-7xl text-center block ${service.icon}`} />
+            <div class="text-center">
+              <i class={`text-7xl ${service.icon}`} />
+            </div>
             <h3 class="heading-3 text-brand-cream text-center">
               <span
                 class="
@@ -134,7 +136,9 @@ const services: Service[] = [
     }
     <div class="relative border-2 rounded-sm py-5 px-6">
       <div class="relative z-10">
-        <i class="text-7xl text-center block fa-solid fa-question"></i>
+        <div class="text-center">
+          <i class="text-7xl fa-solid fa-question"></i>
+        </div>
         <h3 class="heading-3 text-center">Something else...</h3>
         <p class="mb-6">
           Can't see what you're looking for? Get in touch. I might be able to
