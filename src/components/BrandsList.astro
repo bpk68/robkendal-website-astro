@@ -1,7 +1,16 @@
 ---
+import { Image } from "astro:assets";
+
+import nhsLogo from "../assets/logos/nhs-logo.png";
+import hubspotLogo from "../assets/logos/hubspot-logo.png";
+import caLogo from "../assets/logos/citizens-advice-logo.png";
+import nyccLogo from "../assets/logos/north-yorkshire-council.png";
+import shepherdsLogo from "../assets/logos/shepherd-purse-cheeses.png";
+import rugbyLogo from "../assets/logos/rugby-world-cup.png";
+
 interface Props {
-  title: string;
-  intro: string;
+	title: string;
+	intro: string;
 }
 
 const { title, intro } = Astro.props;
@@ -13,36 +22,11 @@ const { title, intro } = Astro.props;
     {intro}
   </p>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-5 mt-5">
-    <img
-      src="/img/logos/nhs-logo.png"
-      alt="NHS logo"
-      class="w-full shadow-md bg-white"
-    />
-    <img
-      src="/img/logos/hubspot-logo.png"
-      alt="HubSpot logo"
-      class="w-full shadow-md bg-white"
-    />
-    <img
-      src="/img/logos/citizens-advice-logo.png"
-      alt="Citizens Advice logo"
-      class="w-full shadow-md bg-white"
-    />
-    <!-- <img src='/img/logos/enterprise-partnership.png' alt='Yorkshire Enterprise Partnership logo' class="w-full aspect-video" /> -->
-    <img
-      src="/img/logos/north-yorkshire-council.png"
-      alt="North Yorkshire County Council logo"
-      class="w-full shadow-md bg-white"
-    />
-    <img
-      src="/img/logos/shepherd-purse-cheeses.png"
-      alt="Shepherds Purse Cheeses logo"
-      class="w-full shadow-md bg-white"
-    />
-    <img
-      src="/img/logos/rugby-world-cup.png"
-      alt="Rugby World Cup 2023 logo"
-      class="w-full shadow-md bg-white"
-    />
+    <Image src={nhsLogo} alt="NHS logo" class="w-full shadow-md bg-white" />
+    <Image src={hubspotLogo} alt="NHS logo" class="w-full shadow-md bg-white" />
+    <Image src={caLogo} alt="NHS logo" class="w-full shadow-md bg-white" />
+    <Image src={nyccLogo} alt="NHS logo" class="w-full shadow-md bg-white" />
+    <Image src={shepherdsLogo} alt="NHS logo" class="w-full shadow-md bg-white" />
+    <Image src={rugbyLogo} alt="NHS logo" class="w-full shadow-md bg-white" />
   </div>
 </section>

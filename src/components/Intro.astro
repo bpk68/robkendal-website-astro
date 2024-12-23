@@ -13,6 +13,7 @@ import PartnershipInfo from "./PartnershipInfo.astro";
 
 import signature from "../assets/rob-kendal-signature.png";
 import signatureinverted from "../assets/rob-kendal-signature-inverted.png";
+import robKendalProfile from "../assets/avatars/rob-kendal-profile-circle.png";
 
 const benefits = [
 	"A fullstack developer with 20+ years experience building fast, lead-generating websites.",
@@ -31,10 +32,10 @@ const benefits = [
   <div
     class="flex flex-col text-center md:text-left items-center sm:flex-row align-middle my-8 gap-6"
   >
-    <img
-      src="/img/avatars/rob-kendal-profile-circle.png"
+    <Image
+      src={robKendalProfile}
       alt="Rob Kendal freelance Shopify developer, software developer and headless CMS developer"
-      class="max-w-[15rem] sm:max-w-[12rem]"
+      class="max-w-[15rem] sm:max-w-[12rem]" 
     />
     <PageHeader>
       A freelance Shopify developer and software engineer based in Yorkshire
@@ -80,7 +81,7 @@ const benefits = [
       />
       <Image
         src={signatureinverted}
-        alt="Rob Kendal Freelance Shopify beveloper, a colourful letter K"
+        alt="Rob Kendal Freelance Shopify developer, a colourful letter K"
         width={150}
         height={150}
         class="sm:float-right mb-10 mx-auto dark:block hidden"

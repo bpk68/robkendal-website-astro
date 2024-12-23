@@ -1,0 +1,134 @@
+{
+  "$ref": "#/definitions/blog",
+  "definitions": {
+    "blog": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "pubDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "customData": {
+          "type": "string"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "author": {
+          "type": "string"
+        },
+        "commentsUrl": {
+          "type": "string"
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "url",
+            "title"
+          ],
+          "additionalProperties": false
+        },
+        "enclosure": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "length": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "url",
+            "length",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        "link": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "featured": {
+          "type": "boolean"
+        },
+        "featuredimage": {
+          "type": "string"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imgtitle": {
+          "type": "string"
+        },
+        "draft": {
+          "type": "boolean"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "date",
+        "tags"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

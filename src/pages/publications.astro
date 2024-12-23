@@ -1,4 +1,9 @@
 ---
+import { Image } from "astro:assets";
+
+import reactCourseImg from "../assets/publications/react-guide-course.png";
+import aspireCourseImg from "../assets/publications/from-aspire-to-hired-cover.png";
+
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
 import PageHeader from "src/components/PageHeader.astro";
@@ -33,11 +38,7 @@ import Button from "src/components/Button.astro";
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img
-            src="/img/publications/react-guide-course.png"
-            alt="The Beginners Guide to Real-World React course cover"
-            class=""
-          />
+          <Image src={reactCourseImg} alt="The Beginners Guide to Real-World React course cover" />
         </a>
       </div>
       <div
@@ -93,11 +94,7 @@ import Button from "src/components/Button.astro";
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img
-            src="/img/publications/from-aspire-to-hired-cover.png"
-            alt="From Aspire to Hired cover"
-            class="unstyled"
-          />
+          <Image src={aspireCourseImg} alt="From Aspire to Hired cover" />
         </a>
       </div>
       <div

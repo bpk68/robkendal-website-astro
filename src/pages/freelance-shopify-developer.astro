@@ -1,8 +1,14 @@
 ---
+import { Image } from "astro:assets";
+
 import LandingPageLayout from "src/layouts/LandingPageLayout.astro";
 import BenefitsList from "src/components/BenefitsList.astro";
 import CallToAction from "src/components/CallToAction.astro";
 import Button from "src/components/Button.astro";
+
+import shopifyPartnerLogo from "../assets/shopify-partner.png";
+import shopifyExample from "../assets/example-shopify.png";
+import shopifyLogoWhite from "../assets/shopify_logo_white.png";
 
 const benefits = [
 	"You're looking to launch a new Shopify ecommerce website and need planning and development advice to get started.",
@@ -104,7 +110,11 @@ const callouts = [
       </p>
       <div class="dark:bg-brand-cream py-5 px-3 rounded-md">
         <figure class="text-center mx-auto flex justify-center">
-          <img src="/img/shopify-partner.png" alt="Shopify Partners logo" />
+          <Image
+            src={shopifyPartnerLogo}
+            alt="Shopify Partners logo"
+            class=""
+          />
         </figure>
       </div>
     </div>
@@ -117,13 +127,13 @@ const callouts = [
   <Fragment slot="callout">
     <div class="flex flex-col xl:flex-row gap-10 relative z-10 items-center">
       <figure class="flex items-center flex-col md:w-3/4 xl:w-1/3 2xl:w-1/2">
-        <img
-          src="/img/example-shopify.png"
+        <Image
+          src={shopifyExample}
           alt="Example small business website displayed on a laptop"
           class=""
         />
-        <img
-          src="/img/shopify_logo_white.png"
+        <Image
+          src={shopifyLogoWhite}
           alt="Shopify logo"
           class="hidden xl:block"
         />

@@ -6,10 +6,75 @@ import HeaderLink from "./HeaderLink.astro";
 import logo from "../assets/k-tech-logo-initial-white.png";
 ---
 
-<Fragment>
-  <nav class="hidden lg:inline">
-    <section class="text-text-bold">
-      <ul class="unset flex gap-4 [&>li]:p-0 items-center">
+
+<nav class="hidden lg:inline">
+  <section class="text-text-bold">
+    <ul class="unset flex gap-4 [&>li]:p-0 items-center">
+      <li>
+        <HeaderLink href="/">
+          <Image
+            src={logo}
+            alt="Rob Kendal Freelance Shopify Developer, a colourful letter K"
+            width={50}
+            height={50}
+            class="max-w-[50px]"
+          />
+        </HeaderLink>
+      </li>
+      <li><HeaderLink href="/about">about</HeaderLink></li>
+      <li><HeaderLink href="/publications">work</HeaderLink></li>
+      <li>
+        <HeaderLink href="/freelance-shopify-developer">shopify</HeaderLink>
+      </li>
+      <li>
+        <HeaderLink href="/freelance-storyblok-developer">storyblok</HeaderLink>
+      </li>
+      <li>
+        <HeaderLink href="/enterprise-software-development">
+          software
+        </HeaderLink>
+      </li>
+      <li>
+        <HeaderLink href="/freelance-seo">seo</HeaderLink>
+      </li>
+      <li><HeaderLink href="/case-studies">case studies</HeaderLink></li>
+      <li><HeaderLink href="/blog">articles</HeaderLink></li>
+      <li class="is-sr-only">
+        <HeaderLink href="/contact">contact</HeaderLink>
+      </li>
+    </ul>
+  </section>
+</nav>
+<nav class="lg:hidden relative z-20">
+  <div class="flex gap-4 items-center">
+    <HeaderLink href="/">
+      <Image
+        src={logo}
+        alt="Rob Kendal Freelance Shopify Developer, a colourful letter K"
+        width={50}
+        height={50}
+        class="max-w-[50px]"
+      />
+    </HeaderLink>
+    <button id="mobile-menu-open">
+      <i class="fa-solid fa-bars" aria-hidden="true" title="Open mobile menu"
+      ></i>
+      <span class="fa-sr-only">Open mobile menu</span>
+    </button>
+  </div>
+  <section
+    id="mobile-menu"
+    class="hide-menu fixed top-0 left-0 z-10 w-full h-full transition-transform bg-black/75 border-primary-blue"
+  >
+    <div class="bg-bg-body w-[75%] h-full drop-shadow-2xl">
+      <button id="mobile-menu-close" class="px-6 h-[5rem] text-lg xml-[1px]">
+        <i
+          class="fa-solid fa-xmark"
+          aria-hidden="true"
+          title="Close mobile menu"></i>
+        <span class="fa-sr-only">Close mobile menu</span>
+      </button>
+      <ul class="unset flex flex-col text-text-bold gap-4 [&>li]:p-0 px-6">
         <li>
           <HeaderLink href="/">
             <Image
@@ -24,126 +89,60 @@ import logo from "../assets/k-tech-logo-initial-white.png";
         <li><HeaderLink href="/about">about</HeaderLink></li>
         <li><HeaderLink href="/publications">work</HeaderLink></li>
         <li>
-          <HeaderLink href="/freelance-shopify-developer">shopify</HeaderLink>
+          <HeaderLink href="/freelance-shopify-developer">
+            Shopify development
+          </HeaderLink>
         </li>
         <li>
-          <HeaderLink href="/freelance-storyblok-developer">storyblok</HeaderLink>
+          <HeaderLink href="/freelance-storyblok-developer">
+            Storyblok development
+          </HeaderLink>
+        </li>
+        <li>
+          <HeaderLink href="/freelance-seo">
+            search engine optimisation
+          </HeaderLink>
         </li>
         <li>
           <HeaderLink href="/enterprise-software-development">
             software
           </HeaderLink>
         </li>
-        <li>
-          <HeaderLink href="/freelance-seo">seo</HeaderLink>
-        </li>
         <li><HeaderLink href="/case-studies">case studies</HeaderLink></li>
         <li><HeaderLink href="/blog">articles</HeaderLink></li>
-        <li class="is-sr-only">
-          <HeaderLink href="/contact">contact</HeaderLink>
-        </li>
+        <li><HeaderLink href="/contact">contact</HeaderLink></li>
       </ul>
-    </section>
-  </nav>
-  <nav class="lg:hidden relative z-20">
-    <div class="flex gap-4 items-center">
-      <HeaderLink href="/">
-        <Image
-          src={logo}
-          alt="Rob Kendal Freelance Shopify Developer, a colourful letter K"
-          width={50}
-          height={50}
-          class="max-w-[50px]"
-        />
-      </HeaderLink>
-      <button id="mobile-menu-open">
-        <i class="fa-solid fa-bars" aria-hidden="true" title="Open mobile menu"
-        ></i>
-        <span class="fa-sr-only">Open mobile menu</span>
-      </button>
-    </div>
-    <section
-      id="mobile-menu"
-      class="hide-menu fixed top-0 left-0 z-10 w-full h-full transition-transform bg-black/75 border-primary-blue"
-    >
-      <div class="bg-bg-body w-[75%] h-full drop-shadow-2xl">
-        <button id="mobile-menu-close" class="px-6 h-[5rem] text-lg xml-[1px]">
-          <i
-            class="fa-solid fa-xmark"
-            aria-hidden="true"
-            title="Close mobile menu"></i>
-          <span class="fa-sr-only">Close mobile menu</span>
-        </button>
-        <ul class="unset flex flex-col text-text-bold gap-4 [&>li]:p-0 px-6">
-          <li>
-            <HeaderLink href="/">
-              <Image
-                src={logo}
-                alt="Rob Kendal Freelance Shopify Developer, a colourful letter K"
-                width={50}
-                height={50}
-                class="max-w-[50px]"
-              />
-            </HeaderLink>
-          </li>
-          <li><HeaderLink href="/about">about</HeaderLink></li>
-          <li><HeaderLink href="/publications">work</HeaderLink></li>
-          <li>
-            <HeaderLink href="/freelance-shopify-developer">
-              Shopify development
-            </HeaderLink>
-          </li>
-          <li>
-            <HeaderLink href="/freelance-storyblok-developer">
-              Storyblok development
-            </HeaderLink>
-          </li>
-          <li>
-            <HeaderLink href="/freelance-seo">
-              search engine optimisation
-            </HeaderLink>
-          </li>
-          <li>
-            <HeaderLink href="/enterprise-software-development">
-              software
-            </HeaderLink>
-          </li>
-          <li><HeaderLink href="/case-studies">case studies</HeaderLink></li>
-          <li><HeaderLink href="/blog">articles</HeaderLink></li>
-          <li><HeaderLink href="/contact">contact</HeaderLink></li>
-        </ul>
-        <div
-          class="justify-self-end py-5 flex items-center content-center text-text-bold gap-4 px-6"
+      <div
+        class="justify-self-end py-5 flex items-center content-center text-text-bold gap-4 px-6"
+      >
+        <a
+          class="fancy-underline fancy-underline--yellow unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-yellow text-2xl"
+          href="https://github.com/bpk68"
+          target="_blank"
         >
-          <a
-            class="fancy-underline fancy-underline--yellow unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-yellow text-2xl"
-            href="https://github.com/bpk68"
-            target="_blank"
-          >
-            <i
-              class="fa-brands fa-github"
-              aria-hidden="true"
-              title="View Rob Kendal's GitHub profile"></i>
-            <span class="is-sr-only">GitHub</span>
-          </a>
-          <a
-            class="fancy-underline unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-blue text-2xl"
-            href="https://www.linkedin.com/in/robkendal"
-            target="_blank"
-          >
-            <i
-              class="fa-brands fa-linkedin"
-              aria-hidden="true"
-              title="Connect with Rob Kendal on LinkedIn"></i>
-            <span class="is-sr-only">Linked In</span>
-          </a>
-        </div>
+          <i
+            class="fa-brands fa-github"
+            aria-hidden="true"
+            title="View Rob Kendal's GitHub profile"></i>
+          <span class="is-sr-only">GitHub</span>
+        </a>
+        <a
+          class="fancy-underline unset rounded-sm duration-150 dark:bg-none dark:hover:text-primary-blue text-2xl"
+          href="https://www.linkedin.com/in/robkendal"
+          target="_blank"
+        >
+          <i
+            class="fa-brands fa-linkedin"
+            aria-hidden="true"
+            title="Connect with Rob Kendal on LinkedIn"></i>
+          <span class="is-sr-only">Linked In</span>
+        </a>
       </div>
-    </section>
-  </nav>
-</Fragment>
+    </div>
+  </section>
+</nav>
 
-<script>
+<script is:inline>
   // @ts-nocheck
   document.querySelector("#mobile-menu-open").addEventListener("click", () => {
     const menuElem = document.querySelector("#mobile-menu");
@@ -160,7 +159,7 @@ import logo from "../assets/k-tech-logo-initial-white.png";
   });
 </script>
 
-<style>
+<style is:inline>
   .hide-menu {
     transform: translateX(-100%);
   }

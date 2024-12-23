@@ -7,7 +7,6 @@
 import "../styles/global.css";
 
 import GoogleFont from "./GoogleFont.astro";
-import FontAwesome from "./FontAwesome.astro";
 import ThemeScript from "./ThemeScript.astro";
 import Sitemap from "./Sitemap.astro";
 import WebMentions from "./WebMentions.astro";
@@ -25,10 +24,8 @@ import Footer from "../components/Footer.astro";
     <slot name="meta" />
     <GoogleFont />
     <ThemeScript />
-    <FontAwesome />
     <Sitemap />
     <WebMentions />
-    <script id="shapo-embed-js" type="text/javascript" src="https://cdn.shapo.io/js/embed.js" defer></script>
     <script type="application/ld+json" id="shapo-ratingschema-9318fa2f9e"></script>
     <script
       defer
@@ -53,7 +50,8 @@ import Footer from "../components/Footer.astro";
         async
         src="https://media.ethicalads.io/media/client/ethicalads.min.js"
       ></script>
-      <script>
+      <script id="shapo-embed-js" type="text/javascript" src="https://cdn.shapo.io/js/embed.js" defer async></script>
+      <script is:inline>
         (function (p, l, u, t, i, o) {
           p[t] = p[t] || function () {
             (p[t].q = p[t].q || []).push(arguments);
