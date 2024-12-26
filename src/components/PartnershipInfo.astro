@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 
+import sbLogo from "../assets/partnerships/sb-p-light@2x.png";
+import sbLogoDark from "../assets/partnerships/sb-p-dark@2x.png";
 import shopifylogo from "../assets/partnerships/shopify-partner.png";
 import supabaselogolight from "../assets/partnerships/supabase-logo-wordmark--light.svg";
 import supabaselogodark from "../assets/partnerships/supabase-logo-wordmark--dark.svg";
@@ -23,12 +25,19 @@ import supabaselogodark from "../assets/partnerships/supabase-logo-wordmark--dar
   <div
     class="flex flex-col md:flex-row flex-wrap gap-6 items-center justify-center lg:-mx-40 xl:-mx-52 my-20"
   >
-    <img 
-      src="/img/partnerships/sb-p-light.svg" 
+  <Image
+    src={sbLogo}
+    alt="Storyblok Partner logo with the Storyblok title and iconic letter 'B'"
+    
+    class="dark:hidden"
+    />
+    <Image
+      src={sbLogoDark}
       alt="Storyblok Partner logo with the Storyblok title and iconic letter 'B'"
-      width="275"
-      height="150"
-    >
+      width={275}
+      height={150}
+      class="hidden dark:block"
+    />
     <Image
       src={supabaselogolight}
       alt="Supabase Partners logo with the words Supabase in light writing and their signature Supabase S"
@@ -43,7 +52,7 @@ import supabaselogodark from "../assets/partnerships/supabase-logo-wordmark--dar
       height={150}
       class="hidden dark:block"
     />
-    <div class="dark:bg-brand-cream py-5 px-3 rounded-md">
+    <div class="dark:bg-brand-cream py-1 px-2 rounded-md">
       <Image
         src={shopifylogo}
         alt="Shopify Partners logo the green Shopify title and the word partners and the iconic Shopify green shopping bag"
