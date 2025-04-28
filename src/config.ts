@@ -2,9 +2,9 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE =
-	"Freelance Shopify Developer | Freelance Storyblok Developer | Rob Kendal";
+	"Freelance Web Developer | Freelance Storyblok Developer | Rob Kendal";
 export const SITE_DESCRIPTION =
-	"Freelance Shopify and Storyblok developer serving Leeds, York, and Wakefield. Freelance website and software development with over 20 years experience.";
+	"Freelance Software and Storyblok developer serving Leeds, York, and Wakefield. Freelance website and software development with over 20 years experience.";
 export const TWITTER_HANDLE = "@kendalmintcode";
 export const MY_NAME = "Rob Kendal";
 
