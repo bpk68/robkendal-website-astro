@@ -1,4 +1,5 @@
 ---
+import { URLS } from "src/lib/constants";
 import Button from "./Button.astro";
 ---
 
@@ -35,14 +36,14 @@ import Button from "./Button.astro";
   </h2>
   <p class="text-center z-10 relative mx-auto max-w-2xl mb-5">
     The quickest way is to fill out my quick <a
-      href="https://k-tech.plutio.com/p/form/buKEibPpSxPdfuAM7"
+      href={URLS.meeting_link}
       target="_blank">5 minute intro form</a
     >
     to help me understand a little more about your project and its needs.
   </p>
   <p class="text-center z-10 relative mx-auto max-w-2xl mb-5 pb-5">
     <Button
-      href="https://k-tech.plutio.com/p/form/buKEibPpSxPdfuAM7"
+      href={URLS.meeting_link}
       text="Take the 5 min survey"
     />
   </p>

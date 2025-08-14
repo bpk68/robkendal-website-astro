@@ -1,4 +1,5 @@
 ---
+import { URLS } from "src/lib/constants";
 import LandingPageLayout from "src/layouts/LandingPageLayout.astro";
 import CallToAction from "src/components/CallToAction.astro";
 import Button from "src/components/Button.astro";
@@ -235,7 +236,7 @@ const benefits = [
 
        <p class="text-center mt-16">
         Not quite ready to commit to a package just yet? <br><a href="/contact">Send me a message</a> or 
-        <a href="https://k-tech.plutio.com/p/form/buKEibPpSxPdfuAM7" target="_blank">book an
+        <a href={URLS.meeting_link} target="_blank">book an
         intro meeting</a> and let's discuss your options.
       </p>
     </section>

@@ -1,10 +1,10 @@
 ---
+import { URLS } from "src/lib/constants";
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageMeta from "../../components/PageMeta.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import ContactForm from "../../components/ContactForm.astro";
 import CaseStudyListItem from "src/components/CaseStudyListItem.astro";
-import IntroductionForm from "src/components/IntroductionForm.astro";
 
 const caseStudies = [
 	{
@@ -143,17 +143,16 @@ const caseStudies = [
       }
     </div>
     <h2 class="heading-2">Tell me how I can help</h2>
-     <p>
-        Got lots of ideas busting at the seams? Want to get it all off your chest?
-         Tell me all about your next business website, Shopify store, or Storyblok development 
-         needs and let's make it happen.
-      </p>
-    <IntroductionForm />
+		<p>
+			Got lots of ideas busting at the seams? Want to get it all off your chest?
+				Tell me all about your next business website, Shopify store, or Storyblok development 
+				needs and let's make it happen.
+		</p>
     <div class="prose max-w-none prose-bubblegum">
       <h3 class="heading-3 mb-4">Send me a message directly</h3>
       <p>
         If you're ready to dive right in then you <a
-          href="https://k-tech.plutio.com/p/form/buKEibPpSxPdfuAM7"
+          href={URLS.meeting_link}
           target="_blank">book an intro chat with me</a
         >, or send me a message below and <strong
           >I'll get back to you within 24 hours</strong

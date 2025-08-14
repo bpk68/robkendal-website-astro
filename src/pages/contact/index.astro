@@ -1,10 +1,10 @@
 ---
+import { URLS } from "src/lib/constants";
 import PageLayout from "src/layouts/PageLayout.astro";
 import PageMeta from "src/components/PageMeta.astro";
 import ContactForm from "src/components/ContactForm.astro";
 import PageHeader from "src/components/PageHeader.astro";
 import Availability from "src/components/Availability.astro";
-import IntroductionForm from "src/components/IntroductionForm.astro";
 
 const available = true;
 ---
@@ -28,15 +28,13 @@ const available = true;
       </p>
     </div>
 
-    <IntroductionForm />
-
     {!available && <Availability />}
 
     <div class="prose max-w-none prose-bubblegum">
       <h2 class="heading-2 mb-4">Send me a message directly</h2>
       <p>
         Alternatively, you can <a
-          href="https://k-tech.plutio.com/p/form/buKEibPpSxPdfuAM7"
+          href={URLS.meeting_link}
           target="_blank">book a quick meeting with me</a
         >, or send me a message below and <strong
           >I'll get back to you within 24 hours</strong
