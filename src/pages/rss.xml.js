@@ -6,7 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../config';
 
 const parser = new MarkdownIt();
 
-export async function get() {
+export async function GET(context) {
   const posts = await getCollection('blog');
 
   const sortedPosts = posts

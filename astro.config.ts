@@ -109,13 +109,6 @@ export default defineConfig({
 			destination: "/blog/configuring-wordpress-as-a-headless-cms-with-nextjs",
 		},
 	},
-	// image: {
-	// 	// Used for all `<Image />` and `<Picture />` components unless overridden
-	// 	experimentalLayout: "responsive",
-	// },
-	experimental: {
-		responsiveImages: true,
-	},
 	compressHTML: true,
 	server: { port: SERVER_PORT },
 	site: "https://robkendal.co.uk",
