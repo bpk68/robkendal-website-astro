@@ -1,12 +1,9 @@
 ---
-import { URLS } from "src/lib/constants";
 import PageLayout from "src/layouts/PageLayout.astro";
 import PageMeta from "src/components/PageMeta.astro";
 import ContactForm from "src/components/ContactForm.astro";
 import PageHeader from "src/components/PageHeader.astro";
 import Availability from "src/components/Availability.astro";
-
-const available = true;
 ---
 
 <PageLayout>
@@ -19,26 +16,24 @@ const available = true;
     <div class="prose max-w-none prose-bubblegum">
       <PageHeader>Let's talk!</PageHeader>
       <p>
-        Ready to talk about your business software development needs, Storyblok
-        CMS project, small business website, or your next web UI project? Need
-        help with web development support and maintenance? Or want to know more
-        about my
-        <a href="/mentorship"> coding mentorship support</a>
-        ?
+        I'm happy to talk about any potential software developer roles, 
+        guest appearances on podcasts, or any other opportunities to share 
+        my knowledge and experience. 
+      </p>
+      <p>
+        I'm also always happy to talk about my work and the projects 
+        I've been involved in, so if you have any questions or just want 
+        to say hi, please don't hesitate to get in touch.
       </p>
     </div>
 
-    {!available && <Availability />}
+    <Availability />
 
     <div class="prose max-w-none prose-bubblegum">
       <h2 class="heading-2 mb-4">Send me a message directly</h2>
       <p>
-        Alternatively, you can <a
-          href={URLS.meeting_link}
-          target="_blank">book a quick meeting with me</a
-        >, or send me a message below and <strong
-          >I'll get back to you within 24 hours</strong
-        >
+        Send me a message below and <strong>I'll get back to 
+          you within 24 hours</strong>
       </p>
     </div>
     <ContactForm action="/contact/thanks" />

@@ -27,6 +27,22 @@ export default defineConfig({
 			status: 301,
 			destination: "/enterprise-software-development",
 		},
+		"/freelance-cloud-cannon-developer": {
+			status: 301,
+			destination: "/enterprise-software-development",
+		},
+		"/freelance-seo": {
+			status: 301,
+			destination: "/enterprise-software-development",
+		},
+		"/small-business-websites": {
+			status: 301,
+			destination: "/enterprise-software-development",
+		},
+		"/wordpress-consultancy": {
+			status: 301,
+			destination: "/enterprise-software-development",
+		},
 		"/blog/using-wordpress-as-a-headless-cms-with-next.js": {
 			status: 301,
 			destination: "/blog/using-wordpress-as-a-headless-cms-with-nextjs",
@@ -113,7 +129,7 @@ export default defineConfig({
 	server: { port: SERVER_PORT },
 	site: "https://robkendal.co.uk",
 	prefetch: true,
-	integrations: [markdoc({ allowHTML: true }), sitemap(), playformCompress()], // (await import("@playform/compress")).default()],
+	integrations: [markdoc({ allowHTML: true }), sitemap(), playformCompress()],
 	trailingSlash: "never",
 	markdown: {
 		shikiConfig: {

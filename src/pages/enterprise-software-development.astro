@@ -1,186 +1,82 @@
 ---
 import LandingPageLayout from 'src/layouts/LandingPageLayout.astro';
-import BenefitsList from 'src/components/BenefitsList.astro';
 import CallToAction from 'src/components/CallToAction.astro';
-import Button from 'src/components/Button.astro';
-import FlowTriangles from 'src/components/FlowTriangles.astro';
-
-const benefits = [
-  "You're planning to build a new software product for your business and you need planning and technical advice to help get started.",
-  "You need to develop reporting software that helps track OKR's, KPI's and business-critical data points.",
-  'You have multiple different B2B data sources and want to know your options when it comes to integrations.',
-  "You want to build out a multi-user platform, such as a learning & development system and don't know where to start.",
-  'Your business has a great idea but needs an MVP or proof of concept quickly so you can prototype the features.',
-  "You want to help improve your users' experiences by identifying bottlenecks and performance issues within your apps.",
-  'You want simple, straightforward advice to help highlight your choices without all the technical jargon and sales pitch.',
-];
-const services = [
-  {
-    icon: 'fas fa-screwdriver-wrench',
-    title: 'Critical business software',
-    blurb:
-      'Your business needs dependable, robust software that can support your day to day business operations. I can design and deliver mission-critical software that works harder for your business.',
-  },
-  {
-    icon: 'fas fa-rocket',
-    title: 'Internal applications',
-    blurb:
-      'Intranets, learning and development platforms, inventory management software, customer support portals, and everything in between. I help to build key internal software to support your business.',
-  },
-  {
-    icon: 'fas fa-handshake',
-    title: 'B2B integrations & interfaces',
-    blurb:
-      "You've got data, your partners have theirs, and you need an way to talk between the two. That's where a reliable integration point comes in.",
-  },
-  {
-    icon: 'fas fa-users',
-    title: 'Multi-user platforms',
-    blurb:
-      "Whether it's forums, professional development platforms, or ecommerce experiences, we can help to design and build software that supports 1000's of users getting the job done.",
-  },
-  {
-    icon: 'fas fa-clipboard-check',
-    title: 'UX/UI & software audits',
-    blurb:
-      "With a thorough user interface and visitor journey audit we can identify bottlenecks in your business software and improve your users' experience to help them get more from it.",
-  },
-  {
-    icon: 'fas fa-chart-pie',
-    title: 'Visualisation & reporting tools',
-    blurb:
-      "For big data sets it's vital to be able to visualise the key information and report back to the C-Suite team. I can help build reporting platforms and portals to break down the raw data.",
-  },
-];
-const callouts = [
-  'Simple, honest advice and straightforward options from a professional software developer with 20 years of industry experience.',
-  "Reliable business software development services that are tailored to your business and its needs. Everything you need, nothing you don't!",
-  'A software design and development process that keeps <em>you</em> in the picture and <em>your business</em> top of mind with regular feedback sessions.',
-  'Iterative development habits built on Agile foundations and a flexibility to help your software adapt to the market just like your business.',
-  'First class support from the start, during the development process, and for the lifetime of your business software.',
-];
-const process = [
-  {
-    title: '1. Discuss',
-    description:
-      "We'll talk through your business needs, scope, budgets and how software can help",
-  },
-  {
-    title: '2. Design',
-    description:
-      'Here, we map out user journeys, wireframes, and the look and feel of the finished software.',
-  },
-  {
-    title: '3. Develop',
-    description:
-      'Your software gets built in key stages, checking in along the way to make revisions and amendments.',
-  },
-  {
-    title: '4. Deploy',
-    description:
-      "Once your software is ready for launch, it'll be deployed on powerful servers to cope with increased demands.",
-  },
-];
 ---
 
 <LandingPageLayout
   title="A business software developer for your next app, platform or SaaS product"
-  metaTitle="Business software developer | Freelance software developer Wakefield | Rob Kendal, business software developer"
+  metaTitle="Software developer for hire | software developer Wakefield | Rob Kendal, business software developer"
   description="As a freelance business software developer based in Pontefract, West Yorkshire, I help build enterprise software for your business. Talk to me about your next internal website, software platform or SaaS product."
-  benefits={{
-    title: 'I can help deliver your business software project:',
-    list: benefits,
-  }}
-  services={{
-    title:
-      "How I can help deliver your business' next internal app or software platform",
-    intro:
-      "For over 20 years I've helped businesses design, build, and deliver robust enterprise software platforms that help their businesses to grow and thrive. All delivered with first class support!",
-    list: services,
-  }}
   brands={{
     title: 'Big brand trust, small-team dedicated service',
     intro:
-      'Lots of Yorkshire (and national) brands trust me to deliver their enterprise software platforms, apps and services.',
+      "I've worked with some amazing local and national brands, as well as a host of local Yorkshire businesses.",
   }}
   testimonials={{
-    title: 'Robust software means happy clients',
+    title: 'Robust software means happy users',
     intro:
-      "From large national organisations to small teams, my clients' satisfaction is the cornerstone of my business.",
+      "From large national organisations to small teams, end user satisfaction is the cornerstone of my work.",
   }}
 >
   <Fragment slot="intro">
-    If you've been searching for an experienced <strong
-      >freelance software developer</strong
-    > based in Wakefield, Leeds, and Yorkshire, to help design and build robust,
+    If you've been searching for an experienced <strong>software developer</strong> 
+    based in Wakefield, Leeds, and Yorkshire, to help design and build robust,
     optimised <strong>business software</strong>, multi-user applications, or
     enterprise SaaS products, then you've come to the right place.
   </Fragment>
 
-  <Fragment slot="additional-content">
-    <div class="my-16">
-      <h2 class="heading-2">Keeping the process simple</h2>
-      <p class="mb-6">
-        Complex software doesn't need a complex process to deliver. We talk
-        requirements, design a solution, build it using the right coding
-        standards and approach, then deliver it to you ready to go.
-      </p>
-      <FlowTriangles list={process} />
+  <Fragment slot="intro-content">
+    <div class="rounded-sm bg-blue-50 p-4 mt-10 mb-28">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg
+            class="h-5 w-5 text-blue-400"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        <div class="ml-3 text-xl text-blue-700 space-y-3">
+          <p>
+            <strong class="text-blue-700">
+              I'm no longer taking on new freelance projects
+            </strong>. 
+          </p>
+          <p>
+            I'm looking to move away from freelance work to focus on building 
+            software products as part of a larger team. If you're looking for an
+            experienced software developer to join your team, please do reach out
+            and we can see if there's a fit!
+          </p>
+        </div>
+      </div>
     </div>
   </Fragment>
 
   <Fragment slot="hireme">
-    I'm here to help you and your business by providing the right software
-    services to you. No fuss. No muss.
-  </Fragment>
-
-  <Fragment slot="callout">
-    <div class="flex flex-col xl:flex-row gap-10 relative z-10 items-center">
-      <figure class="flex items-center flex-col md:w-3/4 xl:w-1/3 2xl:w-1/2">
-        <img
-          src="/img/example-shopify.png"
-          alt="Example small business website displayed on a laptop"
-          class=""
-        />
-      </figure>
-      <div class="xl:w-2/3 2xl:w-1/2">
-        <h2 class="heading-2">
-          Expert-level business software development services
-        </h2>
-        <p class="mb-6">
-          With me, as well as two decades of enterprise-level software
-          development knowledge and experience, you'll always get:
-        </p>
-        <BenefitsList list={callouts} />
-        <p class="mb-6">
-          Let's discuss your business software needs and look through the
-          possible software solutions that can help make them a reality.
-        </p>
-        <Button
-          href="/contact"
-          text="discuss your project"
-          variant="primary"
-          classes={['block w-full text-center md:w-auto md:text-left']}
-        />
-      </div>
-    </div>
+    I'm here to help you and your team by providing the right software
+    development services to you. No fuss. No muss.
   </Fragment>
 
   <Fragment slot="cta">
     <CallToAction
       type="global"
-      title="Tell me about your software needs"
+      title="Need help on your next software project?"
       buttons={[
         {
           href: '/contact',
-          text: 'discuss your project',
+          text: "let's work together",
         },
       ]}
     >
       It costs nothing to have a chat about your project, but it could save you
       a fortune by choosing the right partner to deliver it! Tell me about what
-      software you're looking to have planned, built and delivered, and I'll
-      help advise you of your best options.
+      project you're working on and how I could join your team to help you deliver it.
     </CallToAction>
   </Fragment>
 </LandingPageLayout>

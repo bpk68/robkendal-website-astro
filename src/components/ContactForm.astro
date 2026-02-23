@@ -100,7 +100,7 @@ const path = pageLocation ?? Astro.request.url;
           required></textarea>
       </div>
     </div>
-    <div class="">
+    <div class="md:flex md:justify-end">
       <button
         type="submit"
         class="relative inline-block px-5 py-3 group rounded-sm font-bold text-bold text-shadow text-lg transition duration-200 ease-out hover:-rotate-2 w-full text-center md:w-auto md:text-left"
@@ -110,15 +110,15 @@ const path = pageLocation ?? Astro.request.url;
         ></span>
         <span
           class={`
-                absolute 
-                inset-0 
-                w-full 
-                h-full 
-                bg-white 
-                border-2 
-                border-gray-800 
-                group-hover:bg-primary-blue    
-              `}></span>
+            absolute 
+            inset-0 
+            w-full 
+            h-full 
+            bg-white 
+            border-2 
+            border-gray-800 
+            group-hover:bg-primary-blue    
+          `}></span>
         <span class="relative text-black group-hover:text-white mr-2">Send</span>
         <span class="fa-solid fa-chevron-circle-right relative z-10"></span>
       </button>

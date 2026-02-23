@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 
 import BenefitsList from "../components/BenefitsList.astro";
-import ServicesList from "./ServicesList.astro";
 import BrandsList from "./BrandsList.astro";
 import Testimonials from "./Testimonials.astro";
 import CallToAction from "./CallToAction.astro";
@@ -16,13 +15,11 @@ import signatureinverted from "../assets/rob-kendal-signature-inverted.png";
 import robKendalProfile from "../assets/avatars/rob-kendal-profile-circle.png";
 
 const benefits = [
-	"A fullstack developer with 20+ years experience building fast, lead-generating websites.",
+	"A fullstack developer with 20+ years experience building fast, robust software applications.",
 	"A reliable development professional who will always give you straightforward, honest advice.",
-	"A freelance consultant web developer with expert skills in <a href='/small-business-websites'><strong>small business websites</strong></a> and <a href='/enterprise-software-development'><strong>enterprise software development</strong></a>",
-	"Marketing website design driven by your business growth goals.",
-	"Award-winning marketing knowledge and support.",
-	"An trusted and experienced <a href='/freelance-storyblok-developer'><strong>Storyblok Partner</strong></a> to help you deliver headless CMS solutions to wow your audiences.",
-	"Expert web development services using forward-thinking technologies such as Storyblok, Supabase, Astro, Next.js, GraphQL and the Jamstack.",
+	"A UI and UX software specialist with expert skills in designing and building user interfaces that are intuitive, accessible and a joy to use.",
+	"An trusted and experienced <strong>Storyblok Partner</strong> to help you deliver headless CMS solutions to wow your audiences.",
+	"Expert web development services using forward-thinking technologies such as Storyblok, Supabase, Astro, Next.js, GraphQL, Svelte and more!",
 	"Help and support launching super fast, accessible, static websites that rank well on search engines.",
 	"Mentorship services that have helped tons of students change career and learn to code.",
 ];
@@ -34,11 +31,11 @@ const benefits = [
   >
     <Image
       src={robKendalProfile}
-      alt="Rob Kendal freelance web developer, software developer and headless CMS developer"
+      alt="Rob Kendal web developer, software developer and headless CMS developer"
       class="max-w-[15rem] sm:max-w-[12rem]" 
     />
     <PageHeader>
-      A freelance UI, web, and software developer based in Yorkshire
+      A full-stack software engineer and UI specialist in Yorkshire
     </PageHeader>
   </div>
 
@@ -53,35 +50,27 @@ const benefits = [
   >
     <p>
       <span class="fa-solid fa-quote-left text-4xl pr-2"></span>
-      Hi, I'm Rob Kendal. If you've been searching for a <strong
-        >freelance web developer</strong
-      > who knows <strong>Storyblok</strong>, and <strong
-      >
+      Hi, I'm Rob Kendal. If you've been searching for a 
+      <strong>senior software engineer</strong> who knows <strong>
         fullstack web development
-      </strong> on the Jamstack inside and out, you've come to the right place.
+      </strong> using Svelte and React, you've come to the right place.
     </p>
     <p>
-      For the past 20 years, I've worked closely with businesses to design and
-      develop web apps and software that helps them do more and hit their growth
-      goals.
+      For the past 20 years, I've been part of teams that design and
+      develop web apps and software that help businesses do more.
     </p>
     <p>
-      I put your customers first, giving them a first-class user experience.
-      Everything I build is designed using robust modern technologies and
-      delivered on laser fast global hosting.
-    </p>
-    <p>
-      Let's talk about your project and how I can help your business.
+      Let's talk about your project and how I can become a part of your team.
       <Image
         src={signature}
-        alt="Rob Kendal Freelance web developer, a colourful letter K"
+        alt="Rob Kendal web developer, a colourful letter K"
         width={150}
         height={150}
         class="sm:float-right mb-10 mx-auto dark:hidden"
       />
       <Image
         src={signatureinverted}
-        alt="Rob Kendal Freelance web developer, a colourful letter K"
+        alt="Rob Kendal web developer, a colourful letter K"
         width={150}
         height={150}
         class="sm:float-right mb-10 mx-auto dark:block hidden"
@@ -93,6 +82,7 @@ const benefits = [
     class="relative
       clear-both
       my-8
+      py-8
       before:z-0
       before:block
       before:absolute
@@ -121,13 +111,13 @@ const benefits = [
   <PartnershipInfo />
   <div class="text-center my-20 text-2xl border-t-2 pt-8">
     <p class="mb-6">
-      Talking about your project costs nothing; choosing the right partner to
-      deliver it could save you a fortune!
+      Talking about your project costs nothing; choosing the right developer to
+      be part of it could save you a fortune!
     </p>
     <div class="flex flex-col sm:flex-row justify-center gap-5 items-center">
       <Button
         href="/contact"
-        text="hire me"
+        text="contact me"
         variant="primary"
         classes={["w-full sm:w-auto"]}
       />
@@ -141,19 +131,17 @@ const benefits = [
     </div>
   </div>
 
-  <ServicesList />
-
   <BrandsList
     title="Trusted by brands big and small"
-    intro="I've been honoured to work with local and national brands to build websites, and business software."
+    intro="I've been honoured to work with local and national brands to build apps, websites, and business software."
   />
   <Testimonials
     title="Don't take my word for it"
-    intro="I've been trusted by UK-wide and local Yorkshire businesses for years. Here's what they say about my work."
+    intro="National organisations and local Yorkshire businesses have trusted me and my work for years. Here's what they had to say."
   />
   <CallToAction
     type="global"
-    title="Need some help?"
+    title="How can I help?"
     buttons={[
       {
         href: "/contact",
@@ -165,7 +153,7 @@ const benefits = [
       },
     ]}
   >
-    Whether you need a freelance web developer for your website project, or
+    Whether you're looking for a new developer to join your team, or
     you're getting into code and need some personal support and mentorship, it
     costs absolutely nothing to start the conversation.
   </CallToAction>
